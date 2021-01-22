@@ -9,5 +9,12 @@ public class RWBow
 	protected override void Fire()
 	{
 		// check raycast and draw trail
+		GameObject hitObj = CheckRayHit( shotDist );
+		if( hitObj != null )
+		{
+			print( hitObj.name );
+		}
 	}
+
+	[SerializeField] float shotDist = 10.0f;
 }

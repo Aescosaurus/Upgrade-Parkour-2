@@ -948,6 +948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refire:
     duration: 0.5
+  shotDist: 35
 --- !u!1 &1871821282
 GameObject:
   m_ObjectHideFlags: 0
