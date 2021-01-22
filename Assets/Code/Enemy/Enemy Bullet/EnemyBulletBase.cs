@@ -16,5 +16,12 @@ public class EnemyBulletBase
 		// destroy gameobject
 	}
 
+	public void Fire( Vector3 dir )
+	{
+		transform.forward = dir;
+		GetComponent<Rigidbody>().AddForce( dir.normalized * moveSpeed,ForceMode.Impulse );
+	}
+
 	[SerializeField] float lifetime = 5.0f;
+	[SerializeField] float moveSpeed = 10.0f;
 }

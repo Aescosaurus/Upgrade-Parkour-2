@@ -23,7 +23,8 @@ public class TestBoss
 			// }
 
 			// Fire( shotDir );
-			Lob( player.transform.position );
+			// Lob( player.transform.position );
+			SpawnBopper( shotDir );
 
 			// for( int i = -shotCount / 2; i < shotCount / 2; ++i )
 			// {
