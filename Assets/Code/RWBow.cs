@@ -9,11 +9,11 @@ public class RWBow
 	protected override void Fire()
 	{
 		// check raycast and draw trail
-		GameObject hitObj = CheckRayHit( shotDist );
-		if( hitObj != null )
-		{
-			print( hitObj.name );
-		}
+		var rrt = CheckRayHit( shotDist );
+		var trailLoc = rrt.hit.point;
+		if( trailLoc == Vector3.zero ) trailLoc = rrt.ray.GetPoint( shotDist );
+		SpawnTrail( trailLoc );
+		rrt.hit.transform?.GetComponent<EnemyBase>()?.Damage( 1.0f );
 	}
 
 	[SerializeField] float shotDist = 10.0f;

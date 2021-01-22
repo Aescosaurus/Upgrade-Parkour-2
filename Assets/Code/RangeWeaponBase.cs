@@ -6,6 +6,12 @@ public abstract class RangeWeaponBase
 	:
 	WeaponBase
 {
+	protected class RayReturnType
+	{
+		public Ray ray;
+		public RaycastHit hit;
+	}
+
 	void Start()
 	{
 		cam = Camera.main;
@@ -13,21 +19,18 @@ public abstract class RangeWeaponBase
 	}
 
 	// todo raycast from cam
-	protected GameObject CheckRayHit( float dist )
+	protected RayReturnType CheckRayHit( float dist )
 	{
 		Ray ray = new Ray( cam.transform.position,cam.transform.forward );
 		RaycastHit hit;
 
-		SpawnTrail( ray.GetPoint( dist ) );
+		// SpawnTrail( ray.GetPoint( dist ) );
 
-		if( Physics.Raycast( ray,out hit,dist ) )
-		{
-			return( hit.transform.gameObject );
-		}
-		else
-		{
-			return( null );
-		}
+		Physics.Raycast( ray,out hit,dist );
+		var rrt = new RayReturnType();
+		rrt.ray = ray;
+		rrt.hit = hit;
+		return( rrt );
 	}
 
 	protected void SpawnTrail( Vector3 hitLoc )
