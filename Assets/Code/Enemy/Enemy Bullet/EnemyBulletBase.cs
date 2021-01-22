@@ -11,5 +11,10 @@ public class EnemyBulletBase
 		Destroy( gameObject,lifetime );
 	}
 
+	protected virtual void OnTriggerEnter( Collider coll )
+	{
+		// destroy gameobject
+	}
+
 	[SerializeField] float lifetime = 5.0f;
 }

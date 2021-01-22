@@ -22,18 +22,19 @@ public class TestBoss
 			// 		) );
 			// }
 
-			Fire( shotDir );
+			// Fire( shotDir );
+			Lob( player.transform.position );
 
-			for( int i = -shotCount / 2; i < shotCount / 2; ++i )
-			{
-				for( float yAng = -Mathf.PI / 5.0f; yAng < Mathf.PI / 5.0f; yAng += spacing )
-				{
-					if( Random.Range( 0.0f,1.0f ) < 0.6f )
-					{
-						Fire( new Vector3( Mathf.Cos( shotAng + i * spacing ),yAng,Mathf.Sin( shotAng + i * spacing ) ) );
-					}
-				}
-			}
+			// for( int i = -shotCount / 2; i < shotCount / 2; ++i )
+			// {
+			// 	for( float yAng = -ySpacing; yAng < ySpacing; yAng += spacing )
+			// 	{
+			// 		if( Random.Range( 0.0f,1.0f ) < 0.6f )
+			// 		{
+			// 			Fire( new Vector3( Mathf.Cos( shotAng + i * spacing ),yAng,Mathf.Sin( shotAng + i * spacing ) ) );
+			// 		}
+			// 	}
+			// }
 		}
 	}
 
@@ -41,4 +42,6 @@ public class TestBoss
 	[SerializeField] int shotCount = 10;
 	[Range( 0.0f,Mathf.PI )]
 	[SerializeField] float spacing = Mathf.PI / 10.0f;
+	[Range( 0.0f,Mathf.PI )]
+	[SerializeField] float ySpacing = Mathf.PI / 5.0f;
 }

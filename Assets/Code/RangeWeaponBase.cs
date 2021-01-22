@@ -16,6 +16,7 @@ public abstract class RangeWeaponBase
 	{
 		cam = Camera.main;
 		bulletPrefab = Resources.Load<GameObject>( "Prefabs/Bullet" );
+		bulletMask = ~LayerMask.GetMask( "EnemyBullet" );
 	}
 
 	// todo raycast from cam
@@ -26,7 +27,7 @@ public abstract class RangeWeaponBase
 
 		// SpawnTrail( ray.GetPoint( dist ) );
 
-		Physics.Raycast( ray,out hit,dist );
+		Physics.Raycast( ray,out hit,dist,bulletMask );
 		var rrt = new RayReturnType();
 		rrt.ray = ray;
 		rrt.hit = hit;
@@ -46,4 +47,5 @@ public abstract class RangeWeaponBase
 
 	Camera cam;
 	GameObject bulletPrefab;
+	LayerMask bulletMask;
 }
