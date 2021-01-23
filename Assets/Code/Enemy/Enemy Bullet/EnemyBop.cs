@@ -24,13 +24,10 @@ public class EnemyBop
 			scale.y = 2.0f;
 			transform.localScale = scale;
 
-			ouch = true;
 			Destroy( gameObject,despawnTime );
 		}
 	}
 
 	[SerializeField] Timer activationTime = new Timer( 0.7f );
 	[SerializeField] float despawnTime = 1.0f;
-
-	[SerializeField] bool ouch = false;
 }

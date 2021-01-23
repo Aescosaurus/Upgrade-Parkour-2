@@ -44,7 +44,7 @@ public class EnemyBase
 	{
 		var bullet = Instantiate( bopperPrefab );
 		bullet.transform.position = transform.position;
-		bullet.GetComponent<EnemyBulletBase>().Fire( dir );
+		bullet.GetComponent<EnemyBulletBase>().Fire( new Vector3( dir.x,0.0f,dir.z ) );
 	}
 
 	[SerializeField] float hp = 10.0f;

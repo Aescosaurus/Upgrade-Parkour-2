@@ -90,6 +90,7 @@ public class PlayerWalk
 		// body.MovePosition( transform.position + new Vector3( xMove,yVel,yMove ) * moveSpeed * Time.deltaTime );
 		charCtrl.Move( new Vector3( xMove,yVel,yMove ) * moveSpeed * Time.deltaTime );
 
+		curVel.Set( xMove,yVel,yMove );
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
 		// animCtrl.SetBool( "jump",!canJump );
 	}
@@ -117,6 +118,11 @@ public class PlayerWalk
 		yVel /= 2.0f;
 	}
 
+	public Vector3 GetVel()
+	{
+		return( curVel );
+	}
+
 	Rigidbody body;
 	Camera cam;
 	Animator animCtrl;
@@ -135,4 +141,6 @@ public class PlayerWalk
 	[SerializeField] float gravAcc = 0.3f;
 
 	float yVel = 0.0f;
+
+	Vector3 curVel = Vector3.zero;
 }

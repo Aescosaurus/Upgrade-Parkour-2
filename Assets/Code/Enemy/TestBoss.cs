@@ -11,38 +11,21 @@ public class TestBoss
 		if( shotTimer.Update( Time.deltaTime ) )
 		{
 			shotTimer.Reset();
-			var shotDir = player.transform.position - transform.position;
-			var shotAng = Mathf.Atan2( shotDir.z,shotDir.x );
-			// for( int i = 0; i < shotCount; ++i )
-			// {
-			// 	Fire( shotDir + new Vector3(
-			// 		Random.Range( -1.0f,1.0f ),
-			// 		Random.Range( -1.0f,1.0f ),
-			// 		Random.Range( -1.0f,1.0f )
-			// 		) );
-			// }
+			var targetPos = player.transform.position;
+			if( Random.Range( 0.0f,1.0f ) < 0.5f ) targetPos += player.GetComponent<PlayerWalk>().GetVel() * predictFactor;
+			var shotDir = targetPos - transform.position;
 
-			// Fire( shotDir );
-			// Lob( player.transform.position );
-			SpawnBopper( shotDir );
-
-			// for( int i = -shotCount / 2; i < shotCount / 2; ++i )
-			// {
-			// 	for( float yAng = -ySpacing; yAng < ySpacing; yAng += spacing )
-			// 	{
-			// 		if( Random.Range( 0.0f,1.0f ) < 0.6f )
-			// 		{
-			// 			Fire( new Vector3( Mathf.Cos( shotAng + i * spacing ),yAng,Mathf.Sin( shotAng + i * spacing ) ) );
-			// 		}
-			// 	}
-			// }
+			if( Random.Range( 0.0f,1.0f ) < 0.9f ) Fire( shotDir );
+			if( Random.Range( 0.0f,1.0f ) < 0.3f ) Lob( player.transform.position );
+			if( Random.Range( 0.0f,1.0f ) < 0.6f ) SpawnBopper( shotDir );
 		}
 	}
 
 	[SerializeField] Timer shotTimer = new Timer( 0.5f );
-	[SerializeField] int shotCount = 10;
-	[Range( 0.0f,Mathf.PI )]
-	[SerializeField] float spacing = Mathf.PI / 10.0f;
-	[Range( 0.0f,Mathf.PI )]
-	[SerializeField] float ySpacing = Mathf.PI / 5.0f;
+	// [SerializeField] int shotCount = 10;
+	// [Range( 0.0f,Mathf.PI )]
+	// [SerializeField] float spacing = Mathf.PI / 10.0f;
+	// [Range( 0.0f,Mathf.PI )]
+	// [SerializeField] float ySpacing = Mathf.PI / 5.0f;
+	[SerializeField] float predictFactor = 5.0f;
 }
