@@ -88,7 +88,9 @@ public class PlayerWalk
 		}
 
 		// body.MovePosition( transform.position + new Vector3( xMove,yVel,yMove ) * moveSpeed * Time.deltaTime );
-		charCtrl.Move( new Vector3( xMove,yVel,yMove ) * moveSpeed * Time.deltaTime );
+		charCtrl.Move( ( new Vector3( xMove,yVel,yMove ) +
+			Vector3.Lerp( knockbackForce,Vector3.zero,knockbackDuration.GetPercent() ) ) *
+			moveSpeed * Time.deltaTime );
 
 		curVel.Set( xMove,yVel,yMove );
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
@@ -105,6 +107,12 @@ public class PlayerWalk
 			animCtrl.SetBool( "aim",true );
 		}
 		else animCtrl.SetBool( "aim",false );
+
+		knockbackDuration.Update( Time.deltaTime );
+		if( Input.GetKey( KeyCode.Q ) )
+		{
+			ApplyKnockback( -cam.transform.forward,12.0f );
+		}
 	}
 
 	bool CanJump()
@@ -128,6 +136,12 @@ public class PlayerWalk
 		jumpTimer.Reset();
 		minJump.Reset();
 		yVel /= 2.0f;
+	}
+
+	public void ApplyKnockback( Vector3 dir,float force )
+	{
+		knockbackDuration.Reset();
+		knockbackForce = dir * force;
 	}
 
 	public Vector3 GetVel()
@@ -155,4 +169,7 @@ public class PlayerWalk
 	float yVel = 0.0f;
 
 	Vector3 curVel = Vector3.zero;
+
+	[SerializeField] Timer knockbackDuration = new Timer( 0.5f );
+	Vector3 knockbackForce = Vector3.zero;
 }

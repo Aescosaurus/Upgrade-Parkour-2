@@ -608,6 +608,8 @@ MonoBehaviour:
   minJump:
     duration: 0.05
   gravAcc: 3.3
+  knockbackDuration:
+    duration: 0.17
 --- !u!54 &471840932
 Rigidbody:
   m_ObjectHideFlags: 0
