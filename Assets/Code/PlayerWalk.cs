@@ -93,6 +93,18 @@ public class PlayerWalk
 		curVel.Set( xMove,yVel,yMove );
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
 		animCtrl.SetBool( "jump",!canJump );
+
+		if( Input.GetAxis( "Fire1" ) > 0.0f )
+		{
+			var rot = transform.eulerAngles;
+			// rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
+			// rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
+			rot.y = cam.transform.eulerAngles.y;
+			transform.eulerAngles = rot;
+
+			animCtrl.SetBool( "aim",true );
+		}
+		else animCtrl.SetBool( "aim",false );
 	}
 
 	bool CanJump()

@@ -27,6 +27,11 @@ public class Timer
 		return ( curTime >= duration );
 	}
 
+	public float GetDuration()
+	{
+		return( duration );
+	}
+
 	[SerializeField] float duration;
 	float curTime = 0.0f;
 }
