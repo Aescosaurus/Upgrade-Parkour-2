@@ -35,11 +35,11 @@ public class PlayerWalk
 			rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
 			transform.eulerAngles = rot;
 
-			// animCtrl.SetBool( "walk",true );
+			animCtrl.SetBool( "walk",true );
 		}
 		else
 		{
-			// animCtrl.SetBool( "walk",false );
+			animCtrl.SetBool( "walk",false );
 		}
 
 		bool canJump = CanJump();
@@ -92,7 +92,7 @@ public class PlayerWalk
 
 		curVel.Set( xMove,yVel,yMove );
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
-		// animCtrl.SetBool( "jump",!canJump );
+		animCtrl.SetBool( "jump",!canJump );
 	}
 
 	bool CanJump()
