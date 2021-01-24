@@ -34,7 +34,7 @@ public class EnemyBipedBase
 		charCtrl.Move( dir.normalized * moveSpeed * Time.deltaTime );
 	}
 
-	protected void Stop()
+	protected void StopMoving()
 	{
 		animCtrl.SetBool( "walk",false );
 	}

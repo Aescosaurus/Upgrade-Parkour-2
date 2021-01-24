@@ -2300,10 +2300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96570e75a91480e4db742c3232817b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 50
   moveSpeed: 5.5
   rotSpeed: 2.4
   gravAcc: 0.3
+  stopDist: 2.5
 --- !u!143 &1691807952
 CharacterController:
   m_ObjectHideFlags: 0

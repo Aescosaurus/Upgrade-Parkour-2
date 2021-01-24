@@ -11,7 +11,16 @@ public class ZombieAI
 		base.Update();
 
 		var dir = player.transform.position - transform.position;
-		dir.y = 0.0f;
-		Move( dir );
+		if( dir.sqrMagnitude > stopDist * stopDist )
+		{
+			dir.y = 0.0f;
+			Move( dir );
+		}
+		else
+		{
+			StopMoving();
+		}
 	}
+
+	[SerializeField] float stopDist = 1.5f;
 }

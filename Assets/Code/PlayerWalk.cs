@@ -13,6 +13,7 @@ public class PlayerWalk
 		animCtrl = GetComponent<Animator>();
 		coll = GetComponent<Collider>();
 		charCtrl = GetComponent<CharacterController>();
+		wepHolder = GetComponent<WeaponHolder>();
 	}
 
 	void FixedUpdate()
@@ -98,9 +99,11 @@ public class PlayerWalk
 
 		if( Input.GetAxis( "Fire1" ) > 0.0f )
 		{
+			wepHolder.TryAttack( cam.transform.eulerAngles.y );
+
 			var rot = transform.eulerAngles;
-			// rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
-			// rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
+			// // rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
+			// // rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
 			rot.y = cam.transform.eulerAngles.y;
 			transform.eulerAngles = rot;
 
@@ -172,4 +175,6 @@ public class PlayerWalk
 
 	[SerializeField] Timer knockbackDuration = new Timer( 0.5f );
 	Vector3 knockbackForce = Vector3.zero;
+
+	WeaponHolder wepHolder;
 }

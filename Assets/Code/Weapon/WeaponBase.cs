@@ -15,13 +15,14 @@ public abstract class WeaponBase
 	protected virtual void Update()
 	{
 		// todo enemy attack ai
-		if( refire.Update( Time.deltaTime ) &&
-			( team == 2 || Input.GetAxis( "Fire1" ) > 0.0f ) )
-		{
-			Fire();
-			animCtrl.SetFloat( "shot_spd",1.0f / refire.GetDuration() );
-			refire.Reset();
-		}
+		// if( refire.Update( Time.deltaTime ) &&
+		// 	( team == 2 || Input.GetAxis( "Fire1" ) > 0.0f ) )
+		// {
+		// 	Fire();
+		// 	animCtrl.SetFloat( "shot_spd",1.0f / refire.GetDuration() );
+		// 	refire.Reset();
+		// }
+		refire.Update( Time.deltaTime );
 	}
 
 	protected abstract void Fire();
@@ -29,6 +30,20 @@ public abstract class WeaponBase
 	public void LinkAnimator( Animator animCtrl )
 	{
 		this.animCtrl = animCtrl;
+	}
+
+	public bool TryPerformAttack()
+	{
+		bool done = refire.IsDone();
+
+		if( done )
+		{
+			Fire();
+			animCtrl.SetFloat( "shot_spd",1.0f / refire.GetDuration() );
+			refire.Reset();
+		}
+
+		return( done );
 	}
 
 	public virtual int GetPreferredHand()
