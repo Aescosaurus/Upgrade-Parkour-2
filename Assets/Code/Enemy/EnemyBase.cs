@@ -6,18 +6,22 @@ public class EnemyBase
 	:
 	MonoBehaviour
 {
-	void Start()
+	protected virtual void Start()
 	{
 		bulletPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBullet" );
 		lobPrefab = Resources.Load<GameObject>( "Prefabs/EnemyLob" );
 		aoePrefab = Resources.Load<GameObject>( "Prefabs/EnemyAOE" );
 		bopperPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBopper" );
 		player = FindObjectOfType<PlayerWalk>().gameObject;
+
+		partHand = GetComponent<ParticleSystem>();
 	}
 
 	public void Damage( float amount )
 	{
 		hp -= amount;
+
+		partHand.Emit( ( int )( ( amount + 0.5f ) * 15.0f ) );
 
 		if( hp < 0.0f ) Destroy( gameObject );
 	}
@@ -48,9 +52,12 @@ public class EnemyBase
 	}
 
 	[SerializeField] float hp = 10.0f;
+
 	GameObject bulletPrefab;
 	GameObject lobPrefab;
 	GameObject aoePrefab;
 	GameObject bopperPrefab;
 	protected GameObject player;
+
+	ParticleSystem partHand;
 }

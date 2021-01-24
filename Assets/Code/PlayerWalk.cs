@@ -104,14 +104,14 @@ public class PlayerWalk
 			rot.y = cam.transform.eulerAngles.y;
 			transform.eulerAngles = rot;
 
-			animCtrl.SetBool( "aim",true );
+			// animCtrl.SetBool( "aim",true );
 		}
-		else animCtrl.SetBool( "aim",false );
+		// else animCtrl.SetBool( "aim",false );
 
 		knockbackDuration.Update( Time.deltaTime );
-		if( Input.GetKey( KeyCode.Q ) )
+		if( Input.GetKeyDown( KeyCode.Q ) )
 		{
-			ApplyKnockback( -cam.transform.forward,12.0f );
+			ApplyKnockback( -cam.transform.forward,13.0f );
 		}
 	}
 

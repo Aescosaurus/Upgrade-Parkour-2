@@ -11,8 +11,13 @@ public class WeaponHolder
 		var bh = GetComponent<BipedHandler>();
 		if( heldWeapon != null && bh != null )
 		{
-			curWeapon = Instantiate( heldWeapon,bh.GetHand( 1 ).transform );
-			curWeapon.transform.Rotate( transform.right,90.0f );
+			curWeapon = Instantiate( heldWeapon );
+			var wb = curWeapon.GetComponent<WeaponBase>();
+			var handPref = wb.GetPreferredHand();
+			curWeapon.transform.parent = bh.GetHand( handPref ).transform;
+			curWeapon.transform.localPosition = Vector3.zero;
+			curWeapon.transform.Rotate( transform.right,90.0f * ( handPref == 1 ? 1 : -1 ) );
+			wb.LinkAnimator( GetComponent<Animator>() );
 		}
 	}
 

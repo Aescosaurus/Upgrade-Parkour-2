@@ -1,0 +1,44 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class WeaponBase
+	:
+	MonoBehaviour
+{
+	protected virtual void Start()
+	{
+		// animCtrl = FindObjectOfType<PlayerWalk>().GetComponent<Animator>();
+		if( animCtrl.GetComponent<EnemyBase>() != null ) team = 2;
+	}
+
+	protected virtual void Update()
+	{
+		// todo enemy attack ai
+		if( refire.Update( Time.deltaTime ) &&
+			( team == 2 || Input.GetAxis( "Fire1" ) > 0.0f ) )
+		{
+			Fire();
+			animCtrl.SetFloat( "shot_spd",1.0f / refire.GetDuration() );
+			refire.Reset();
+		}
+	}
+
+	protected abstract void Fire();
+
+	public void LinkAnimator( Animator animCtrl )
+	{
+		this.animCtrl = animCtrl;
+	}
+
+	public virtual int GetPreferredHand()
+	{
+		return( 1 );
+	}
+
+	protected Animator animCtrl;
+
+	[SerializeField] protected Timer refire = new Timer( 0.5f );
+
+	protected int team = 1; // 1 = player 2 = enemy
+}

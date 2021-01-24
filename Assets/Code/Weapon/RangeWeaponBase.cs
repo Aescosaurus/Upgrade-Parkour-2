@@ -20,6 +20,18 @@ public abstract class RangeWeaponBase
 		bulletMask = ~LayerMask.GetMask( "EnemyBullet" );
 	}
 
+	protected override void Fire()
+	{
+		animCtrl.SetBool( "aim",true );
+
+		// check raycast and draw trail
+		var rrt = CheckRayHit( shotDist );
+		var trailLoc = rrt.hit.point;
+		if( trailLoc == Vector3.zero ) trailLoc = rrt.ray.GetPoint( shotDist );
+		SpawnTrail( trailLoc );
+		rrt.hit.transform?.GetComponent<EnemyBase>()?.Damage( 1.0f );
+	}
+
 	// todo raycast from cam
 	protected RayReturnType CheckRayHit( float dist )
 	{
@@ -46,7 +58,14 @@ public abstract class RangeWeaponBase
 		Destroy( bullet,1.0f );
 	}
 
+	public override int GetPreferredHand()
+	{
+		return( 2 );
+	}
+
 	Camera cam;
 	GameObject bulletPrefab;
 	LayerMask bulletMask;
+
+	[SerializeField] float shotDist = 10.0f;
 }
