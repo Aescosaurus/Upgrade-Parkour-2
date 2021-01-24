@@ -15,6 +15,7 @@ public abstract class RangeWeaponBase
 	protected override void Start()
 	{
 		base.Start();
+
 		cam = Camera.main;
 		bulletPrefab = Resources.Load<GameObject>( "Prefabs/Bullet" );
 		bulletMask = ~LayerMask.GetMask( "EnemyBullet" );

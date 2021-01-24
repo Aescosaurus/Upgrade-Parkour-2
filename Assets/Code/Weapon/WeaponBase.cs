@@ -9,7 +9,7 @@ public abstract class WeaponBase
 	protected virtual void Start()
 	{
 		// animCtrl = FindObjectOfType<PlayerWalk>().GetComponent<Animator>();
-		if( animCtrl.GetComponent<EnemyBase>() != null ) team = 2;
+		team = animCtrl.GetComponent<EnemyBase>() != null ? 2 : 1;
 	}
 
 	protected virtual void Update()
@@ -55,5 +55,5 @@ public abstract class WeaponBase
 
 	[SerializeField] protected Timer refire = new Timer( 0.5f );
 
-	protected int team = 1; // 1 = player 2 = enemy
+	protected int team = -1; // 1 = player 2 = enemy
 }

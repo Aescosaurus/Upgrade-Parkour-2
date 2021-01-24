@@ -13,6 +13,7 @@ public class MeleeWeaponBase
 
 		hurtArea = GetComponent<Collider>();
 		Assert.IsTrue( hurtArea.isTrigger );
+		hurtArea.enabled = false;
 	}
 
 	protected override void Update()
@@ -21,7 +22,7 @@ public class MeleeWeaponBase
 
 		if( refire.IsDone() )
 		{
-			hurtArea.enabled = false;
+			// hurtArea.enabled = false;
 			animCtrl.SetBool( "swing",false );
 		}
 	}
@@ -32,25 +33,28 @@ public class MeleeWeaponBase
 		// StartCoroutine( HandleAttack( refire.GetDuration() ) );
 
 		animCtrl.SetBool( "swing",true );
-		hurtArea.enabled = true;
+		// hurtArea.enabled = true;
+		damagedEnemies.Clear();
 	}
 
-	IEnumerator HandleAttack( float s )
-	{
-		animCtrl.SetBool( "swing",true );
-		hurtArea.enabled = true;
-		yield return( new WaitForSeconds( s ) );
-		hurtArea.enabled = false;
-		animCtrl.SetBool( "swing",false );
-	}
+	// IEnumerator HandleAttack( float s )
+	// {
+	// 	animCtrl.SetBool( "swing",true );
+	// 	hurtArea.enabled = true;
+	// 	yield return( new WaitForSeconds( s ) );
+	// 	hurtArea.enabled = false;
+	// 	animCtrl.SetBool( "swing",false );
+	// }
 
 	void OnTriggerEnter( Collider coll )
 	{
 		var enemyScr = coll.GetComponent<EnemyBase>();
 		var playerScr = coll.GetComponent<PlayerWalk>();
-		if( team == 1 && enemyScr != null )
+		if( team == 1 && enemyScr != null &&
+			!damagedEnemies.Contains( enemyScr ) )
 		{
 			enemyScr.Damage( damage );
+			damagedEnemies.Add( enemyScr );
 		}
 		else if( playerScr != null )
 		{
@@ -58,7 +62,14 @@ public class MeleeWeaponBase
 		}
 	}
 
+	public void ToggleHurtArea( bool on )
+	{
+		hurtArea.enabled = on;
+	}
+
 	Collider hurtArea;
 
 	[SerializeField] float damage = 1.0f;
+
+	List<EnemyBase> damagedEnemies = new List<EnemyBase>();
 }
