@@ -13,7 +13,7 @@ public class WeaponHolder
 		{
 			curWeapon = Instantiate( heldWeapon );
 			curWB = curWeapon.GetComponent<WeaponBase>();
-			meleeWB = curWeapon.GetComponent<MeleeWeaponBase>();
+			// meleeWB = curWeapon.GetComponent<MeleeWeaponBase>();
 
 			var handPref = curWB.GetPreferredHand();
 			curWeapon.transform.parent = bh.GetHand( handPref ).transform;
@@ -42,10 +42,20 @@ public class WeaponHolder
 		SetRot();
 	}
 
-	// int cuz anim events cant handle bool?
-	public void TryToggleMeleeHurtArea( int on )
+	public void CancelAttack()
 	{
-		meleeWB?.ToggleHurtArea( on > 0 );
+		curWB.CancelAttack();
+	}
+
+	// int cuz anim events cant handle bool?
+	// public void TryToggleMeleeHurtArea( int on )
+	// {
+	// 	meleeWB?.ToggleHurtArea( on > 0 );
+	// }
+
+	public void ToggleAttacking( int on )
+	{
+		curWB.ToggleAttacking( on == 1 );
 	}
 
 	void SetRot()
@@ -66,7 +76,7 @@ public class WeaponHolder
 
 	GameObject curWeapon = null;
 	WeaponBase curWB = null;
-	MeleeWeaponBase meleeWB = null;
+	// MeleeWeaponBase meleeWB = null;
 
 	float storedRot = 0.0f;
 }

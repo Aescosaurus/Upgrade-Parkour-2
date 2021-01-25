@@ -21,6 +21,16 @@ public abstract class RangeWeaponBase
 		bulletMask = ~LayerMask.GetMask( "EnemyBullet" );
 	}
 
+	protected override void Update()
+	{
+		base.Update();
+
+		if( refire.IsDone() )
+		{
+			// animCtrl.SetBool( "aim",false );
+		}
+	}
+
 	protected override void Fire()
 	{
 		animCtrl.SetBool( "aim",true );
@@ -57,6 +67,20 @@ public abstract class RangeWeaponBase
 		lr.SetPosition( 1,hitLoc );
 
 		Destroy( bullet,1.0f );
+	}
+
+	// public override void ToggleAttacking( bool on )
+	// {
+	// 	base.ToggleAttacking( on );
+	// 
+	// 	animCtrl.SetBool( "aim",on );
+	// }
+
+	public override void CancelAttack()
+	{
+		base.CancelAttack();
+
+		animCtrl.SetBool( "aim",false );
 	}
 
 	public override int GetPreferredHand()

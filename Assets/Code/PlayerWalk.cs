@@ -101,15 +101,16 @@ public class PlayerWalk
 		{
 			wepHolder.TryAttack( cam.transform.eulerAngles.y );
 
-			var rot = transform.eulerAngles;
-			// // rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
-			// // rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
-			rot.y = cam.transform.eulerAngles.y;
-			transform.eulerAngles = rot;
+			// var rot = transform.eulerAngles;
+			// // // rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
+			// // // rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
+			// rot.y = cam.transform.eulerAngles.y;
+			// transform.eulerAngles = rot;
 
 			// animCtrl.SetBool( "aim",true );
 		}
 		// else animCtrl.SetBool( "aim",false );
+		else wepHolder.CancelAttack();
 		wepHolder.SetTargetDir( cam.transform.eulerAngles.y );
 
 		knockbackDuration.Update( Time.deltaTime );

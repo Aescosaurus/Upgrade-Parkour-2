@@ -38,12 +38,22 @@ public abstract class WeaponBase
 
 		if( done )
 		{
-			Fire();
 			animCtrl.SetFloat( "shot_spd",1.0f / refire.GetDuration() );
+			Fire();
 			refire.Reset();
 		}
 
 		return( done );
+	}
+
+	public virtual void ToggleAttacking( bool on )
+	{
+		attacking = on;
+	}
+
+	public virtual void CancelAttack()
+	{
+		attacking = false;
 	}
 
 	public virtual int GetPreferredHand()

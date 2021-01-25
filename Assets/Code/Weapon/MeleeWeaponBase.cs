@@ -70,6 +70,13 @@ public class MeleeWeaponBase
 		// attacking = on;
 	}
 
+	public override void ToggleAttacking( bool on )
+	{
+		base.ToggleAttacking( on );
+
+		hurtArea.enabled = on;
+	}
+
 	Collider hurtArea;
 
 	[SerializeField] float damage = 1.0f;

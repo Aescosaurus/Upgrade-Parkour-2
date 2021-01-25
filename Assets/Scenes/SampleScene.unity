@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1a6bebb298aef48ba9f9f89cc90281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heldWeapon: {fileID: 4729774944849275708, guid: db3a682df86abd54aa564560fe4f259f,
+  heldWeapon: {fileID: 8191641289092310425, guid: 28fb18e41a16b6e40875e47a573e01e2,
     type: 3}
 --- !u!114 &471840935
 MonoBehaviour:
@@ -2195,7 +2195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1691807945
 MonoBehaviour:
   m_ObjectHideFlags: 0
