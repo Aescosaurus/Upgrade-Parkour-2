@@ -33,13 +33,11 @@ public class WeaponPickup
 			if( Input.GetAxis( "Interact" ) > 0.0f )
 			{
 				player.GetComponent<WeaponHolder>().ReplaceWeapon( pickupPrefab );
-				Destroy( gameObject );
+				// Destroy( gameObject );
 			}
 		}
 		else pickupText.SetActive( false );
 	}
-
-	// make sure to dupe prefab again for pickup
 
 	[SerializeField] float pickupDist = 4.0f;
 	[SerializeField] GameObject pickupPrefab = null;
