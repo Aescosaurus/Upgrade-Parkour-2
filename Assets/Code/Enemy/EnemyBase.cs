@@ -30,7 +30,7 @@ public class EnemyBase
 
 		partHand.Emit( ( int )( ( amount + 0.5f ) * 15.0f ) );
 
-		if( hp < 0.0f ) Destroy( gameObject );
+		if( hp <= 0.0f ) Destroy( gameObject );
 	}
 	
 	protected void Fire( Vector3 dir )

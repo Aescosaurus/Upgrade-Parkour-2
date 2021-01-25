@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4c857a3455e5747ac762d1b462afca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupDist: 5
+  pickupDist: 3
   pickupPrefab: {fileID: 0}
 --- !u!1 &5657434020967746760
 GameObject:

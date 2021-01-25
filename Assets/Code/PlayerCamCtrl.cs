@@ -13,6 +13,7 @@ public class PlayerCamCtrl
 		distToPlayer = ( minDistToPlayer + maxDistToPlayer ) / 2.0f;
 
 		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 
 	void Update()
@@ -20,11 +21,13 @@ public class PlayerCamCtrl
 		if( Input.GetKeyDown( KeyCode.Escape ) )
 		{
 			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 			escape = true;
 		}
 		if( Input.GetMouseButtonDown( 0 ) )
 		{
 			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
 			escape = false;
 		}
 
