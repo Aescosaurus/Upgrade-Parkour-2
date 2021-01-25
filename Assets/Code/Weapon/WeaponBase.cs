@@ -9,7 +9,9 @@ public abstract class WeaponBase
 	protected virtual void Start()
 	{
 		// animCtrl = FindObjectOfType<PlayerWalk>().GetComponent<Animator>();
-		team = animCtrl.GetComponent<EnemyBase>() != null ? 2 : 1;
+		team = animCtrl?.GetComponent<EnemyBase>() != null ? 2 : 1;
+
+		refire.Update( refire.GetDuration() );
 	}
 
 	protected virtual void Update()

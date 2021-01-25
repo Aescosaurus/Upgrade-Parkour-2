@@ -8,18 +8,10 @@ public class WeaponHolder
 {
 	void Start()
 	{
-		var bh = GetComponent<BipedHandler>();
+		bh = GetComponent<BipedHandler>();
 		if( heldWeapon != null && bh != null )
 		{
-			curWeapon = Instantiate( heldWeapon );
-			curWB = curWeapon.GetComponent<WeaponBase>();
-			// meleeWB = curWeapon.GetComponent<MeleeWeaponBase>();
-
-			var handPref = curWB.GetPreferredHand();
-			curWeapon.transform.parent = bh.GetHand( handPref ).transform;
-			curWeapon.transform.localPosition = Vector3.zero;
-			curWeapon.transform.Rotate( transform.right,90.0f * ( handPref == 1 ? 1 : -1 ) );
-			curWB.LinkAnimator( GetComponent<Animator>() );
+			InitNewWeapon( heldWeapon );
 		}
 	}
 
@@ -72,11 +64,32 @@ public class WeaponHolder
 		storedRot = angle;
 	}
 
+	public void ReplaceWeapon( GameObject replacement )
+	{
+		// todo put old wep in inv or smth
+		Destroy( curWB.gameObject );
+		InitNewWeapon( replacement );
+	}
+
+	void InitNewWeapon( GameObject prefab )
+	{
+		var curWeapon = Instantiate( prefab );
+		curWB = curWeapon.GetComponent<WeaponBase>();
+		// meleeWB = curWeapon.GetComponent<MeleeWeaponBase>();
+
+		var handPref = curWB.GetPreferredHand();
+		// curWeapon.transform.parent = bh.GetHand( handPref ).transform;
+		curWeapon.transform.SetParent( bh.GetHand( handPref ).transform,false );
+		curWeapon.transform.Rotate( Vector3.right,90.0f * ( handPref == 1 ? 1 : -1 ) );
+		curWB.LinkAnimator( GetComponent<Animator>() );
+	}
+
 	[SerializeField] GameObject heldWeapon = null;
 
-	GameObject curWeapon = null;
+	// GameObject curWeapon = null;
 	WeaponBase curWB = null;
 	// MeleeWeaponBase meleeWB = null;
+	BipedHandler bh;
 
 	float storedRot = 0.0f;
 }
