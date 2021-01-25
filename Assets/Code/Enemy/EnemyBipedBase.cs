@@ -14,8 +14,10 @@ public class EnemyBipedBase
 		charCtrl = GetComponent<CharacterController>();
 	}
 
-	protected virtual void Update()
+	protected override void Update()
 	{
+		base.Update();
+
 		yVel -= gravAcc * Time.deltaTime;
 		charCtrl.Move( transform.up * yVel );
 
@@ -37,6 +39,12 @@ public class EnemyBipedBase
 	protected void StopMoving()
 	{
 		animCtrl.SetBool( "walk",false );
+	}
+
+	protected void Look( Vector3 dir )
+	{
+		dir.y = 0.0f;
+		transform.forward = dir;
 	}
 
 	Animator animCtrl;

@@ -19,6 +19,8 @@ public class ZombieAI
 		else
 		{
 			StopMoving();
+			Look( dir );
+			Attack();
 		}
 	}
 

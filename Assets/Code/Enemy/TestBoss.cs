@@ -6,8 +6,10 @@ public class TestBoss
 	:
 	BossBase
 {
-	void Update()
+	protected override void Update()
 	{
+		base.Update();
+
 		if( shotTimer.Update( Time.deltaTime ) )
 		{
 			shotTimer.Reset();

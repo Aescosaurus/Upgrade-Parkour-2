@@ -110,6 +110,7 @@ public class PlayerWalk
 			// animCtrl.SetBool( "aim",true );
 		}
 		// else animCtrl.SetBool( "aim",false );
+		wepHolder.SetTargetDir( cam.transform.eulerAngles.y );
 
 		knockbackDuration.Update( Time.deltaTime );
 		if( Input.GetKeyDown( KeyCode.Q ) )

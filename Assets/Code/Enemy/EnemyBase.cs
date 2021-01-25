@@ -15,6 +15,13 @@ public class EnemyBase
 		player = FindObjectOfType<PlayerWalk>().gameObject;
 
 		partHand = GetComponent<ParticleSystem>();
+
+		wepHolder = GetComponent<WeaponHolder>();
+	}
+
+	protected virtual void Update()
+	{
+		wepHolder.SetTargetDir( transform.eulerAngles.y );
 	}
 
 	public void Damage( float amount )
@@ -51,6 +58,11 @@ public class EnemyBase
 		bullet.GetComponent<EnemyBulletBase>().Fire( new Vector3( dir.x,0.0f,dir.z ) );
 	}
 
+	protected void Attack()
+	{
+		wepHolder.TryAttack( transform.eulerAngles.y );
+	}
+
 	[SerializeField] float hp = 10.0f;
 
 	GameObject bulletPrefab;
@@ -60,4 +72,6 @@ public class EnemyBase
 	protected GameObject player;
 
 	ParticleSystem partHand;
+
+	WeaponHolder wepHolder;
 }

@@ -57,6 +57,11 @@ public class WeaponHolder
 		transform.eulerAngles = rot;
 	}
 
+	public void SetTargetDir( float angle )
+	{
+		storedRot = angle;
+	}
+
 	[SerializeField] GameObject heldWeapon = null;
 
 	GameObject curWeapon = null;

@@ -24,6 +24,7 @@ public class MeleeWeaponBase
 		{
 			// hurtArea.enabled = false;
 			animCtrl.SetBool( "swing",false );
+			attacking = false;
 		}
 	}
 
@@ -66,7 +67,7 @@ public class MeleeWeaponBase
 	public void ToggleHurtArea( bool on )
 	{
 		hurtArea.enabled = on;
-		attacking = on;
+		// attacking = on;
 	}
 
 	Collider hurtArea;
