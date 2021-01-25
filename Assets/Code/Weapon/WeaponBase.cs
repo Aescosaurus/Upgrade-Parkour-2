@@ -51,9 +51,16 @@ public abstract class WeaponBase
 		return( 1 );
 	}
 
+	public bool IsAttacking()
+	{
+		return( attacking );
+	}
+
 	protected Animator animCtrl;
 
 	[SerializeField] protected Timer refire = new Timer( 0.5f );
 
 	protected int team = -1; // 1 = player 2 = enemy
+
+	protected bool attacking = false;
 }

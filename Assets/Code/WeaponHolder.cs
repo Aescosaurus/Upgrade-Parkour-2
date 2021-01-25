@@ -23,16 +23,23 @@ public class WeaponHolder
 		}
 	}
 
+	void Update()
+	{
+		if( curWB.IsAttacking() )
+		{
+			SetRot();
+		}
+	}
+
 	public void TryAttack( float aimDir )
 	{
-		if( curWB != null && curWB.TryPerformAttack() )
+		if( curWB != null )
 		{
-			var rot = transform.eulerAngles;
-			// rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
-			// rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
-			rot.y = aimDir;
-			transform.eulerAngles = rot;
+			curWB.TryPerformAttack();
 		}
+
+		storedRot = aimDir;
+		SetRot();
 	}
 
 	// int cuz anim events cant handle bool?
@@ -41,9 +48,20 @@ public class WeaponHolder
 		meleeWB?.ToggleHurtArea( on > 0 );
 	}
 
+	void SetRot()
+	{
+		var rot = transform.eulerAngles;
+		// rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
+		// rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
+		rot.y = storedRot;
+		transform.eulerAngles = rot;
+	}
+
 	[SerializeField] GameObject heldWeapon = null;
 
 	GameObject curWeapon = null;
 	WeaponBase curWB = null;
 	MeleeWeaponBase meleeWB = null;
+
+	float storedRot = 0.0f;
 }

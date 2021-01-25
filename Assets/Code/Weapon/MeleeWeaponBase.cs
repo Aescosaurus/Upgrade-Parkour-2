@@ -35,6 +35,7 @@ public class MeleeWeaponBase
 		animCtrl.SetBool( "swing",true );
 		// hurtArea.enabled = true;
 		damagedEnemies.Clear();
+		attacking = true;
 	}
 
 	// IEnumerator HandleAttack( float s )
@@ -65,6 +66,7 @@ public class MeleeWeaponBase
 	public void ToggleHurtArea( bool on )
 	{
 		hurtArea.enabled = on;
+		attacking = on;
 	}
 
 	Collider hurtArea;
