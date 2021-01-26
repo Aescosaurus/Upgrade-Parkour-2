@@ -14,7 +14,8 @@ public class EnemyBase
 		bopperPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBopper" );
 		player = FindObjectOfType<PlayerWalk>().gameObject;
 
-		partHand = GetComponent<ParticleSystem>();
+		// partHand = GetComponent<ParticleSystem>();
+		partHand = FindObjectOfType<ParticleHandler>();
 
 		wepHolder = GetComponent<WeaponHolder>();
 	}
@@ -28,7 +29,8 @@ public class EnemyBase
 	{
 		hp -= amount;
 
-		partHand.Emit( ( int )( ( amount + 0.5f ) * 15.0f ) );
+		// partHand.Emit( ( int )( ( amount + 0.5f ) * 15.0f ) );
+		partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),ParticleHandler.ParticleType.Ouch );
 
 		if( hp <= 0.0f ) Destroy( gameObject );
 	}
@@ -71,7 +73,8 @@ public class EnemyBase
 	GameObject bopperPrefab;
 	protected GameObject player;
 
-	ParticleSystem partHand;
+	// ParticleSystem partHand;
+	ParticleHandler partHand;
 
 	WeaponHolder wepHolder;
 }
