@@ -18,6 +18,8 @@ public class EnemyBase
 		partHand = FindObjectOfType<ParticleHandler>();
 
 		wepHolder = GetComponent<WeaponHolder>();
+
+		partHand.SpawnParticles( transform.position,20,ParticleHandler.ParticleType.Smoke );
 	}
 
 	protected virtual void Update()

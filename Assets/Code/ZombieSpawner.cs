@@ -19,8 +19,8 @@ public class ZombieSpawner
 
 			if( spawnPrefab != null )
 			{
-				var curEnemy = Instantiate( spawnPrefab );
-				curEnemy.transform.position = spawnLoc.transform.position;
+				var curEnemy = Instantiate( spawnPrefab,spawnLoc.transform.position,Quaternion.identity );
+				// curEnemy.transform.position = spawnLoc.transform.position;
 			}
 		}
 	}

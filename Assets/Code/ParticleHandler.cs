@@ -9,6 +9,7 @@ public class ParticleHandler
 	public enum ParticleType
 	{
 		Ouch,
+		Smoke,
 		Count
 	}
 
@@ -18,6 +19,7 @@ public class ParticleHandler
 
 		// particlePrefabs[( int )ParticleType.Ouch] = Resources.Load<GameObject>( "Prefabs/Particle/OuchPart" );
 		LoadParticle( ParticleType.Ouch,"OuchPart" );
+		LoadParticle( ParticleType.Smoke,"SmokePart" );
 	}
 
 	public void SpawnParticles( Vector3 loc,int amount,ParticleType type )
@@ -27,7 +29,7 @@ public class ParticleHandler
 
 		var partSys = curPartObj.GetComponent<ParticleSystem>();
 		partSys.Emit( amount );
-		// Destroy( curPartObj,partSys.main.duration );
+		Destroy( curPartObj,partSys.main.duration );
 	}
 
 	void LoadParticle( ParticleType type,string path )
