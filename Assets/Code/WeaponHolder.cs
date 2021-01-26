@@ -6,7 +6,7 @@ public class WeaponHolder
 	:
 	MonoBehaviour
 {
-	void Start()
+	void Awake()
 	{
 		bh = GetComponent<BipedHandler>();
 		if( heldWeapon != null && bh != null )

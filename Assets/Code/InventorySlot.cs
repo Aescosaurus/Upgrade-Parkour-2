@@ -11,7 +11,7 @@ public class InventorySlot
 	IEndDragHandler,
 	IDragHandler
 {
-	void Start()
+	void Awake()
 	{
 		itemPos = transform.Find( "ItemPos" );
 
@@ -19,10 +19,18 @@ public class InventorySlot
 
 		rect = GetComponent<RectTransform>();
 		img = GetComponent<Image>();
+
+		ToggleActivation( false );
+	}
+
+	void Start()
+	{
+		hotbar = FindObjectOfType<HotbarHandler>();
 	}
 
 	public void AddItem( GameObject prefab )
 	{
+		heldPrefab = prefab;
 		heldItem = Instantiate( prefab.transform.GetChild( 0 ).gameObject,itemPos );
 
 		heldItem.transform.localPosition = new Vector3( -16.6f,-16.7f,-0.8f );
@@ -77,21 +85,56 @@ public class InventorySlot
 		}
 	}
 
+	// more like swap item
 	void TransferItem( InventorySlot receiver )
 	{
-		// receiver.AddItem( itemPos.gameObject );
 		heldItem.transform.SetParent( receiver.itemPos,false );
-		receiver.heldItem = heldItem;
-		heldItem = null;
-		// Destroy( heldItem );
+		receiver.heldItem?.transform.SetParent( itemPos,false );
+
+		var tempHeldItem = heldItem;
+		heldItem = receiver.heldItem;
+		receiver.heldItem = tempHeldItem;
+		// heldItem = null;
+
+		var tempHeldPrefab = heldPrefab;
+		heldPrefab = receiver.heldPrefab;
+		receiver.heldPrefab = tempHeldPrefab;
+		// heldPrefab = null;
+
+		hotbar.RefreshSlot();
+	}
+
+	public void ToggleActivation( bool on )
+	{
+		var c = img.color;
+		c.a = on ? 1.0f : defaultAlpha;
+		img.color = c;
+	}
+
+	// return true if success in setting item, false if already full
+	public bool TrySetItem( GameObject prefab )
+	{
+		if( heldItem != null ) return( false );
+
+		AddItem( prefab );
+
+		return( true );
+	}
+
+	public GameObject GetPrefab()
+	{
+		return( heldPrefab );
 	}
 
 	Transform itemPos;
 	GameObject heldItem = null;
+	GameObject heldPrefab;
 
 	RectTransform rect;
 
 	[SerializeField] float itemScaleFactor = 50.0f;
+	[Range( 0.0f,1.0f )]
+	[SerializeField] float defaultAlpha = 0.5f;
 
 	int uiLayer;
 
@@ -99,4 +142,6 @@ public class InventorySlot
 	Vector3 home;
 
 	Image img;
+
+	HotbarHandler hotbar;
 }

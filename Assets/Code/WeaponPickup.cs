@@ -32,7 +32,8 @@ public class WeaponPickup
 
 			if( Input.GetAxis( "Interact" ) > 0.0f )
 			{
-				player.GetComponent<WeaponHolder>().ReplaceWeapon( pickupPrefab );
+				// player.GetComponent<WeaponHolder>().ReplaceWeapon( pickupPrefab );
+				player.GetComponent<PlayerInventory>().AddItem( pickupPrefab );
 				// Destroy( gameObject );
 			}
 		}

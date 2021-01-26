@@ -33,7 +33,7 @@ public class PlayerCamCtrl
 			escape = false;
 		}
 
-		if( !escape )
+		if( !escape && !playerInv.IsOpen() )
 		{
 			var aim = new Vector2( Input.GetAxis( "Mouse X" ),
 				Input.GetAxis( "Mouse Y" ) );
