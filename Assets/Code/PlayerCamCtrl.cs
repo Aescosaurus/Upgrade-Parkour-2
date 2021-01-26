@@ -66,7 +66,7 @@ public class PlayerCamCtrl
 	float distToPlayer;
 
 	[SerializeField] float rotationSpeed = 100.0f;
-	[SerializeField] float scrollSpeed = 50.0f;
+	// [SerializeField] float scrollSpeed = 50.0f;
 
 	[SerializeField] float verticalCutoff = 10.0f;
 	const float maxAimMove = 90.0f - 1.0f;

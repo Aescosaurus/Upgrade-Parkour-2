@@ -9,6 +9,7 @@ public class WeaponHolder
 	void Awake()
 	{
 		bh = GetComponent<BipedHandler>();
+		animCtrl = GetComponent<Animator>();
 		if( heldWeapon != null && bh != null )
 		{
 			InitNewWeapon( heldWeapon );
@@ -66,9 +67,11 @@ public class WeaponHolder
 
 	public void ReplaceWeapon( GameObject replacement )
 	{
-		// todo put old wep in inv or smth
+		curWB.CancelAttack();
 		Destroy( curWB.gameObject );
 		InitNewWeapon( replacement );
+		animCtrl.SetBool( "aim",false );
+		animCtrl.SetBool( "swing",false );
 	}
 
 	void InitNewWeapon( GameObject prefab )
@@ -81,7 +84,7 @@ public class WeaponHolder
 		// curWeapon.transform.parent = bh.GetHand( handPref ).transform;
 		curWeapon.transform.SetParent( bh.GetHand( handPref ).transform,false );
 		curWeapon.transform.Rotate( Vector3.right,90.0f * ( handPref == 1 ? 1 : -1 ) );
-		curWB.LinkAnimator( GetComponent<Animator>() );
+		curWB.LinkAnimator( animCtrl );
 	}
 
 	[SerializeField] GameObject heldWeapon = null;
@@ -90,6 +93,7 @@ public class WeaponHolder
 	WeaponBase curWB = null;
 	// MeleeWeaponBase meleeWB = null;
 	BipedHandler bh;
+	Animator animCtrl;
 
 	float storedRot = 0.0f;
 }
