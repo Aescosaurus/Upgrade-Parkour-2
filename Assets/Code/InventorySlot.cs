@@ -87,7 +87,7 @@ public class InventorySlot
 	}
 
 	// more like swap item
-	void TransferItem( InventorySlot receiver )
+	public void TransferItem( InventorySlot receiver )
 	{
 		heldItem.transform.SetParent( receiver.itemPos,false );
 		receiver.heldItem?.transform.SetParent( itemPos,false );

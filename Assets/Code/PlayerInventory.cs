@@ -16,6 +16,8 @@ public class PlayerInventory
 			slots.Add( invPanel.transform.GetChild( i ).GetComponent<InventorySlot>() );
 		}
 
+		hotbar = GetComponent<HotbarHandler>();
+
 		// var swordPrefab = Resources.Load<GameObject>( "Prefabs/BasicSword" );
 		// slots[0].AddItem( swordPrefab );
 
@@ -38,19 +40,26 @@ public class PlayerInventory
 		Cursor.lockState = on ? CursorLockMode.None : CursorLockMode.Locked;
 	}
 
+	// true if success false if full
 	public bool AddItem( GameObject prefab )
 	{
 		bool full = true;
-		foreach( var slot in slots )
+
+		if( hotbar.TryAddItem( prefab ) ) full = false;
+
+		if( full )
 		{
-			if( slot.TrySetItem( prefab ) )
+			foreach( var slot in slots )
 			{
-				full = false;
-				break;
+				if( slot.TrySetItem( prefab ) )
+				{
+					full = false;
+					break;
+				}
 			}
 		}
 
-		return( full ); // todo return false if full
+		return( !full );
 	}
 
 	public bool IsOpen()
@@ -62,6 +71,8 @@ public class PlayerInventory
 	GameObject invSlotPrefab;
 
 	List<InventorySlot> slots = new List<InventorySlot>();
+
+	HotbarHandler hotbar;
 
 	bool open = false;
 }

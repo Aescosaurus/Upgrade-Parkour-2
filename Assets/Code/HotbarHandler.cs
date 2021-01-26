@@ -62,6 +62,23 @@ public class HotbarHandler
 		SwapSlot( curSlot );
 	}
 
+	// true if success false if full
+	public bool TryAddItem( GameObject prefab )
+	{
+		bool full = true;
+		foreach( var slot in invSlots )
+		{
+			if( slot.TrySetItem( prefab ) )
+			{
+				full = false;
+				RefreshSlot();
+				break;
+			}
+		}
+
+		return( !full );
+	}
+
 	List<InventorySlot> invSlots = new List<InventorySlot>();
 
 	int curSlot = 0;
