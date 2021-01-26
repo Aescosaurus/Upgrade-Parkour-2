@@ -14,6 +14,8 @@ public class PlayerCamCtrl
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
+
+		playerInv = FindObjectOfType<PlayerInventory>();
 	}
 
 	void Update()
@@ -24,7 +26,7 @@ public class PlayerCamCtrl
 			Cursor.visible = true;
 			escape = true;
 		}
-		if( Input.GetMouseButtonDown( 0 ) )
+		if( Input.GetMouseButtonDown( 0 ) && !playerInv.IsOpen() )
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
@@ -72,4 +74,6 @@ public class PlayerCamCtrl
 	GameObject player;
 
 	bool escape = false;
+
+	PlayerInventory playerInv;
 }

@@ -20,6 +20,11 @@ public class PlayerInventory
 		slots[0].AddItem( swordPrefab );
 	}
 
+	public bool IsOpen()
+	{
+		return( true );
+	}
+
 	GameObject invPanel;
 	GameObject invSlotPrefab;
 

@@ -14,6 +14,7 @@ public class PlayerWalk
 		coll = GetComponent<Collider>();
 		charCtrl = GetComponent<CharacterController>();
 		wepHolder = GetComponent<WeaponHolder>();
+		playerInv = GetComponent<PlayerInventory>();
 	}
 
 	void FixedUpdate()
@@ -99,7 +100,10 @@ public class PlayerWalk
 
 		if( Input.GetAxis( "Fire1" ) > 0.0f )
 		{
-			wepHolder.TryAttack( cam.transform.eulerAngles.y );
+			if( !playerInv.IsOpen() )
+			{
+				wepHolder.TryAttack( cam.transform.eulerAngles.y );
+			}
 
 			// var rot = transform.eulerAngles;
 			// // // rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
@@ -179,4 +183,6 @@ public class PlayerWalk
 	Vector3 knockbackForce = Vector3.zero;
 
 	WeaponHolder wepHolder;
+
+	PlayerInventory playerInv;
 }

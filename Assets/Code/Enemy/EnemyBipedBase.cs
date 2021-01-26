@@ -44,7 +44,10 @@ public class EnemyBipedBase
 	protected void Look( Vector3 dir )
 	{
 		dir.y = 0.0f;
-		transform.forward = dir;
+		if( dir.sqrMagnitude > 0.0f )
+		{
+			transform.forward = dir;
+		}
 	}
 
 	Animator animCtrl;
