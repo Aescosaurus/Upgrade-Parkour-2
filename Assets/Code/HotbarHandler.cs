@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class HotbarHandler
 	:
@@ -32,14 +33,21 @@ public class HotbarHandler
 			}
 		}
 
-		if( Input.mouseScrollDelta.x != 0.0f )
+		// print( Input.GetAxis( "Mouse ScrollWheel" ) + " " + Input.mouseScrollDelta.x );
+		var scrollAmount = Input.GetAxis( "Mouse ScrollWheel" );
+		if( scrollAmount != 0.0f )
 		{
-			SwapSlot( curSlot + ( int )Input.mouseScrollDelta.x );
+			var nextSlot = curSlot - ( int )Mathf.Sign( scrollAmount );
+			if( nextSlot < 0 ) nextSlot += invSlots.Count;
+			if( nextSlot >= invSlots.Count ) nextSlot -= invSlots.Count;
+			SwapSlot( nextSlot );
 		}
 	}
 
 	void SwapSlot( int slot )
 	{
+		Assert.IsTrue( slot >= 0 && slot < invSlots.Count );
+
 		invSlots[curSlot].ToggleActivation( false );
 		invSlots[slot].ToggleActivation( true );
 		curSlot = slot;

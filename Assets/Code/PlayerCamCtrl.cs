@@ -48,11 +48,11 @@ public class PlayerCamCtrl
 			tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.deltaTime;
 			transform.eulerAngles = tempAng;
 
-			distToPlayer -= Input.GetAxis( "Mouse ScrollWheel" ) *
-				scrollSpeed * Time.deltaTime;
+			// distToPlayer -= Input.GetAxis( "Mouse ScrollWheel" ) *
+			// 	scrollSpeed * Time.deltaTime;
 
-			distToPlayer = Mathf.Max( minDistToPlayer,distToPlayer );
-			distToPlayer = Mathf.Min( maxDistToPlayer,distToPlayer );
+			// distToPlayer = Mathf.Max( minDistToPlayer,distToPlayer );
+			// distToPlayer = Mathf.Min( maxDistToPlayer,distToPlayer );
 		}
 
 		transform.position = player.transform.position +

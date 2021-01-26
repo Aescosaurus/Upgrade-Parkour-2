@@ -34,7 +34,7 @@ public class WeaponPickup
 			{
 				// player.GetComponent<WeaponHolder>().ReplaceWeapon( pickupPrefab );
 				player.GetComponent<PlayerInventory>().AddItem( pickupPrefab );
-				// Destroy( gameObject );
+				Destroy( gameObject );
 			}
 		}
 		else pickupText.SetActive( false );

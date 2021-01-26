@@ -47,7 +47,7 @@ public class InventorySlot
 	{
 		if( heldItem != null )
 		{
-			home = rect.position;
+			home = rect.localPosition;
 			dragOffset = eventData.pointerCurrentRaycast.worldPosition - transform.position;
 			img.raycastTarget = false;
 		}
@@ -70,7 +70,8 @@ public class InventorySlot
 			}
 			// else
 			{
-				transform.position = home;
+				// transform.position = home;
+				rect.localPosition = home;
 			}
 
 			img.raycastTarget = true;

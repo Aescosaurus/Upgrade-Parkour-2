@@ -16,8 +16,8 @@ public class PlayerInventory
 			slots.Add( invPanel.transform.GetChild( i ).GetComponent<InventorySlot>() );
 		}
 
-		var swordPrefab = Resources.Load<GameObject>( "Prefabs/BasicSword" );
-		slots[0].AddItem( swordPrefab );
+		// var swordPrefab = Resources.Load<GameObject>( "Prefabs/BasicSword" );
+		// slots[0].AddItem( swordPrefab );
 
 		ToggleOpen( false );
 	}
