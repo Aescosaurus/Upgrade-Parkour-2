@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class ParticleHandler
 	:
@@ -8,6 +9,7 @@ public class ParticleHandler
 {
 	public enum ParticleType
 	{
+		None,
 		Ouch,
 		Smoke,
 		Count
@@ -24,12 +26,17 @@ public class ParticleHandler
 
 	public void SpawnParticles( Vector3 loc,int amount,ParticleType type )
 	{
-		var curPartObj = Instantiate( particlePrefabs[( int )type],loc,Quaternion.identity );
-		// curPartObj.transform.position = loc;
+		Assert.IsTrue( type != ParticleType.Count );
 
-		var partSys = curPartObj.GetComponent<ParticleSystem>();
-		partSys.Emit( amount );
-		Destroy( curPartObj,partSys.main.duration );
+		if( type != ParticleType.None )
+		{
+			var curPartObj = Instantiate( particlePrefabs[( int )type],loc,Quaternion.identity );
+			// curPartObj.transform.position = loc;
+
+			var partSys = curPartObj.GetComponent<ParticleSystem>();
+			partSys.Emit( amount );
+			Destroy( curPartObj,partSys.main.duration );
+		}
 	}
 
 	void LoadParticle( ParticleType type,string path )

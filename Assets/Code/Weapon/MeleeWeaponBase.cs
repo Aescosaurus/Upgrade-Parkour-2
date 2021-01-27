@@ -50,7 +50,7 @@ public class MeleeWeaponBase
 
 	void OnTriggerEnter( Collider coll )
 	{
-		var enemyScr = coll.GetComponent<EnemyBase>();
+		var enemyScr = coll.GetComponent<Damageable>();
 		var playerScr = coll.GetComponent<PlayerWalk>();
 		if( team == 1 && enemyScr != null &&
 			!damagedEnemies.Contains( enemyScr ) )
@@ -81,5 +81,5 @@ public class MeleeWeaponBase
 
 	[SerializeField] float damage = 1.0f;
 
-	List<EnemyBase> damagedEnemies = new List<EnemyBase>();
+	List<Damageable> damagedEnemies = new List<Damageable>();
 }

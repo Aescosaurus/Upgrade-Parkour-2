@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyBase
 	:
-	MonoBehaviour
+	Damageable
 {
-	protected virtual void Start()
+	protected override void Start()
 	{
+		base.Start();
+
 		bulletPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBullet" );
 		lobPrefab = Resources.Load<GameObject>( "Prefabs/EnemyLob" );
 		aoePrefab = Resources.Load<GameObject>( "Prefabs/EnemyAOE" );
@@ -15,27 +17,27 @@ public class EnemyBase
 		player = FindObjectOfType<PlayerWalk>().gameObject;
 
 		// partHand = GetComponent<ParticleSystem>();
-		partHand = FindObjectOfType<ParticleHandler>();
+		// partHand = FindObjectOfType<ParticleHandler>();
 
 		wepHolder = GetComponent<WeaponHolder>();
 
 		partHand.SpawnParticles( transform.position,20,ParticleHandler.ParticleType.Smoke );
 	}
 
-	protected virtual void Update()
+	protected override void Update()
 	{
+		base.Update();
+
 		wepHolder.SetTargetDir( transform.eulerAngles.y );
 	}
 
-	public void Damage( float amount )
-	{
-		hp -= amount;
-
-		// partHand.Emit( ( int )( ( amount + 0.5f ) * 15.0f ) );
-		partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),ParticleHandler.ParticleType.Ouch );
-
-		if( hp <= 0.0f ) Destroy( gameObject );
-	}
+	// public override void Damage( float amount )
+	// {
+	// 	base.Damage( amount );
+	// 
+	// 	// partHand.Emit( ( int )( ( amount + 0.5f ) * 15.0f ) );
+	// 	partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),ParticleHandler.ParticleType.Ouch );
+	// }
 	
 	protected void Fire( Vector3 dir )
 	{
@@ -67,7 +69,7 @@ public class EnemyBase
 		wepHolder.TryAttack( transform.eulerAngles.y );
 	}
 
-	[SerializeField] float hp = 10.0f;
+	// [SerializeField] float hp = 10.0f;
 
 	GameObject bulletPrefab;
 	GameObject lobPrefab;
@@ -76,7 +78,7 @@ public class EnemyBase
 	protected GameObject player;
 
 	// ParticleSystem partHand;
-	ParticleHandler partHand;
+	// ParticleHandler partHand;
 
 	WeaponHolder wepHolder;
 }

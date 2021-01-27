@@ -40,7 +40,8 @@ public abstract class RangeWeaponBase
 		var trailLoc = rrt.hit.point;
 		if( trailLoc == Vector3.zero ) trailLoc = rrt.ray.GetPoint( shotDist );
 		SpawnTrail( trailLoc );
-		rrt.hit.transform?.GetComponent<EnemyBase>()?.Damage( 1.0f );
+		// rrt.hit.transform?.GetComponent<EnemyBase>()?.Damage( 1.0f );
+		rrt.hit.transform?.GetComponent<Damageable>()?.Damage( 1.0f );
 	}
 
 	// todo raycast from cam
