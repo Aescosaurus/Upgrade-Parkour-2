@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 332182254}
   - component: {fileID: 332182253}
   - component: {fileID: 332182252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,13 +1104,13 @@ GameObject:
   - component: {fileID: 361595269}
   - component: {fileID: 361595268}
   - component: {fileID: 361595267}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &361595267
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2197,7 +2197,7 @@ GameObject:
   - component: {fileID: 588557397}
   - component: {fileID: 588557396}
   - component: {fileID: 588557395}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3396,7 +3396,7 @@ GameObject:
   - component: {fileID: 954910456}
   - component: {fileID: 954910455}
   - component: {fileID: 954910454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3864,7 +3864,7 @@ GameObject:
   - component: {fileID: 999842225}
   - component: {fileID: 999842224}
   - component: {fileID: 999842223}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6345,6 +6345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  def: 0
   hitFX: 0
   oofFX: 0
   shirkScale: {x: 0.5, y: 1.5, z: 0.5}
@@ -6851,7 +6852,7 @@ GameObject:
   - component: {fileID: 1907894072}
   - component: {fileID: 1907894071}
   - component: {fileID: 1907894070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

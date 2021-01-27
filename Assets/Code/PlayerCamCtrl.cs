@@ -16,6 +16,8 @@ public class PlayerCamCtrl
 		Cursor.visible = false;
 
 		playerInv = FindObjectOfType<PlayerInventory>();
+
+		worldMask = LayerMask.GetMask( "World" );
 	}
 
 	void Update()
@@ -53,11 +55,20 @@ public class PlayerCamCtrl
 
 			// distToPlayer = Mathf.Max( minDistToPlayer,distToPlayer );
 			// distToPlayer = Mathf.Min( maxDistToPlayer,distToPlayer );
-		}
 
-		transform.position = player.transform.position +
-			transform.right * offset.x + transform.up * offset.y + transform.forward * offset.z;
-		transform.position -= transform.forward * distToPlayer;
+			transform.position = player.transform.position +
+				transform.right * offset.x +
+				transform.up * offset.y +
+				transform.forward * offset.z;
+			transform.position -= transform.forward * distToPlayer;
+
+			var ray = new Ray( player.transform.position,transform.position - player.transform.position );
+			RaycastHit hit;
+			if( Physics.Raycast( ray,out hit,distToPlayer,worldMask ) )
+			{
+				transform.position = hit.point;
+			}
+		}
 	}
 
 	[SerializeField] float minDistToPlayer = 4.0f;
@@ -76,4 +87,6 @@ public class PlayerCamCtrl
 	bool escape = false;
 
 	PlayerInventory playerInv;
+
+	LayerMask worldMask;
 }
