@@ -27,7 +27,8 @@ public class WeaponPickup
 			pickupText.SetActive( true );
 
 			var rot = pickupText.transform.eulerAngles;
-			rot.y = Mathf.Atan2( diff.x,diff.z ) * Mathf.Rad2Deg + 180.0f;
+			var camDiff = cam.transform.position - transform.position;
+			rot.y = Mathf.Atan2( camDiff.x,camDiff.z ) * Mathf.Rad2Deg + 180.0f;
 			pickupText.transform.eulerAngles = rot;
 
 			if( Input.GetAxis( "Interact" ) > 0.0f )
