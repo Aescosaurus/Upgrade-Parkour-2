@@ -32,21 +32,26 @@ public class Damageable
 
 	public virtual void Damage( float amount )
 	{
-		hp -= amount;
+		amount -= def;
 		shirkTimer.Reset();
+		if( amount > 0.0f )
+		{
+			hp -= amount;
 
-		if( hp <= 0.0f )
-		{
-			partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),oofFX );
-			Destroy( gameObject );
-		}
-		else
-		{
-			partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),hitFX );
+			if( hp <= 0.0f )
+			{
+				partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),oofFX );
+				Destroy( gameObject );
+			}
+			else
+			{
+				partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),hitFX );
+			}
 		}
 	}
 
 	[SerializeField] float hp = 1.0f;
+	[SerializeField] float def = 0.0f;
 	[SerializeField] ParticleHandler.ParticleType hitFX = ParticleHandler.ParticleType.None;
 	[SerializeField] ParticleHandler.ParticleType oofFX = ParticleHandler.ParticleType.None;
 	[SerializeField] Vector3 shirkScale = new Vector3( 0.5f,1.5f,0.5f );

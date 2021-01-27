@@ -15,7 +15,7 @@ public class ParticleHandler
 		Count
 	}
 
-	void Start()
+	void Awake()
 	{
 		for( int i = 0; i < ( int )ParticleType.Count; ++i ) particlePrefabs.Add( null );
 
