@@ -116,9 +116,33 @@ public class DungeonGenerator
 		Assert.IsTrue( inst >= 0 );
 		var curCorridor = Instantiate( corridorPrefabs[inst],transform );
 		curCorridor.transform.position += new Vector3( x,0,y ) * corridorSize;
-		curCorridor.transform.position += Vector3.left * dungeonSize / 2 + Vector3.forward * dungeonSize / 2;
-		// curCorridor.transform.Rotate( Vector3.up,rot );
-		curCorridor.transform.eulerAngles = new Vector3( 0.0f,rot,0.0f );
+		// curCorridor.transform.position += Vector3.left * dungeonSize / 2 + Vector3.forward * dungeonSize / 2;
+		curCorridor.transform.Rotate( Vector3.up,rot );
+		PopulateCorridor( curCorridor,x != 0 || y != 0 );
+	}
+
+	void PopulateCorridor( GameObject corridor,bool spawnEnemies = true )
+	{
+		var possibleSpawnAreas = corridor.GetComponentsInChildren<BoxCollider>();
+		var spawnAreas = new List<BoxCollider>();
+		foreach( var area in possibleSpawnAreas )
+		{
+			if( area.isTrigger ) spawnAreas.Add( area );
+		}
+
+		if( spawnEnemies )
+		{
+			var nEnemies = nRoomEnemies.Rand();
+
+			for( int i = 0; i < nEnemies; ++i )
+			{
+				var enemy = Instantiate( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count - 1 )] );
+				enemy.transform.position = BoxPointSelector.GetRandPointWithinBox(
+					spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
+			}
+		}
+
+		foreach( var area in spawnAreas ) Destroy( area );
 	}
 
 	bool CheckRoom( int x,int y )
@@ -135,4 +159,7 @@ public class DungeonGenerator
 	List<bool> layout;
 
 	[SerializeField] float corridorSize = 10.0f;
+	[SerializeField] RangeI nRoomEnemies = new RangeI( 0,4 );
+
+	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 }

@@ -6,8 +6,4 @@ public class DungeonCorridor
 	:
 	MonoBehaviour
 {
-	[SerializeField] bool connectsUp = false;
-	[SerializeField] bool connectsDown = false;
-	[SerializeField] bool connectsLeft = false;
-	[SerializeField] bool connectsRight = false;
 }

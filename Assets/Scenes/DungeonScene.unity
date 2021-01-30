@@ -152,6 +152,11 @@ MonoBehaviour:
   dungeonSize: 20
   roomPercent: 0.6
   corridorSize: 27.97028
+  nRoomEnemies:
+    min: 0
+    max: 4
+  enemyPrefabs:
+  - {fileID: 1078883488311203826, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
 --- !u!4 &265085816
 Transform:
   m_ObjectHideFlags: 0
@@ -1783,7 +1788,7 @@ PrefabInstance:
     - target: {fileID: 7396601246676947074, guid: 1e497bbab6e9c8b4ea7dea464d147b1e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7396601246676947075, guid: 1e497bbab6e9c8b4ea7dea464d147b1e,
         type: 3}
@@ -1839,6 +1844,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396601246676947073, guid: 1e497bbab6e9c8b4ea7dea464d147b1e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396601246676947076, guid: 1e497bbab6e9c8b4ea7dea464d147b1e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396601246676947082, guid: 1e497bbab6e9c8b4ea7dea464d147b1e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396601246676947083, guid: 1e497bbab6e9c8b4ea7dea464d147b1e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e497bbab6e9c8b4ea7dea464d147b1e, type: 3}
