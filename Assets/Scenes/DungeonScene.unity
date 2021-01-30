@@ -157,6 +157,7 @@ MonoBehaviour:
     max: 4
   enemyPrefabs:
   - {fileID: 1078883488311203826, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
+  wallChance: 0.6
 --- !u!4 &265085816
 Transform:
   m_ObjectHideFlags: 0

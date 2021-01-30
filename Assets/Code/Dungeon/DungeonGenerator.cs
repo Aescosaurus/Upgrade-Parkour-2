@@ -16,6 +16,8 @@ public class DungeonGenerator
 		corridorPrefabs.Add( Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonT" ) );
 		corridorPrefabs.Add( Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonX" ) );
 
+		wallPrefab = Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonGateWall" );
+
 		layout = GenerateLayout( dungeonSize,dungeonSize,( int )( ( float )dungeonSize * roomPercent ) );
 
 		for( int y = 0; y < dungeonSize; ++y )
@@ -143,6 +145,12 @@ public class DungeonGenerator
 		}
 
 		foreach( var area in spawnAreas ) Destroy( area );
+
+		var walls = corridor.transform.Find( "WallLocs" );
+		for( int i = 0; i < walls.childCount; ++i )
+		{
+			if( Random.Range( 0.0f,1.0f ) < wallChance ) Instantiate( wallPrefab,walls.GetChild( i ) );
+		}
 	}
 
 	bool CheckRoom( int x,int y )
@@ -162,4 +170,7 @@ public class DungeonGenerator
 	[SerializeField] RangeI nRoomEnemies = new RangeI( 0,4 );
 
 	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
+	GameObject wallPrefab;
+
+	[SerializeField] float wallChance = 0.6f;
 }
