@@ -29,6 +29,8 @@ public class EnemyBase
 		base.Update();
 
 		wepHolder.SetTargetDir( transform.eulerAngles.y );
+
+		if( IsWithinActivateRange() ) activated = true;
 	}
 
 	// public override void Damage( float amount )
@@ -69,6 +71,12 @@ public class EnemyBase
 		wepHolder.TryAttack( transform.eulerAngles.y );
 	}
 
+	protected bool IsWithinActivateRange()
+	{
+		var dist = player.transform.position - transform.position;
+		return( dist.sqrMagnitude < Mathf.Pow( activationRange,2 ) );
+	}
+
 	// [SerializeField] float hp = 10.0f;
 
 	GameObject bulletPrefab;
@@ -81,4 +89,7 @@ public class EnemyBase
 	// ParticleHandler partHand;
 
 	WeaponHolder wepHolder;
+
+	[SerializeField] float activationRange = 15.0f;
+	protected bool activated = false;
 }

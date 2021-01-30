@@ -124,6 +124,7 @@ MonoBehaviour:
   hitFX: 1
   oofFX: 1
   shirkScale: {x: 0.7, y: 1.2, z: 0.7}
+  activationRange: 12
   moveSpeed: 5.5
   rotSpeed: 2.4
   gravAcc: 0.3

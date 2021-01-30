@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refire:
-    duration: 1
+    duration: 0.7
   damage: 2
 --- !u!1001 &4729774944841124331
 PrefabInstance:

@@ -10,17 +10,20 @@ public class ZombieAI
 	{
 		base.Update();
 
-		var dir = player.transform.position - transform.position;
-		if( dir.sqrMagnitude > stopDist * stopDist )
+		if( activated )
 		{
-			dir.y = 0.0f;
-			Move( dir );
-		}
-		else
-		{
-			StopMoving();
-			Look( dir );
-			Attack();
+			var dir = player.transform.position - transform.position;
+			if( dir.sqrMagnitude > stopDist * stopDist )
+			{
+				dir.y = 0.0f;
+				Move( dir );
+			}
+			else
+			{
+				StopMoving();
+				Look( dir );
+				Attack();
+			}
 		}
 	}
 
