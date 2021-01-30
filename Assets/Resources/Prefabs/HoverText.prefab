@@ -105,4 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597327e4e2a3dd24595f1f832938b995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawDist: 20
+  drawDist: 14

@@ -77,6 +77,13 @@ public class EnemyBase
 		return( dist.sqrMagnitude < Mathf.Pow( activationRange,2 ) );
 	}
 
+	public override void Damage( float amount )
+	{
+		base.Damage( amount );
+
+		activated = true;
+	}
+
 	// [SerializeField] float hp = 10.0f;
 
 	GameObject bulletPrefab;
