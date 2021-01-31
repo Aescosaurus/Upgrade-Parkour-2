@@ -14,6 +14,8 @@ public class EnemyBase
 		lobPrefab = Resources.Load<GameObject>( "Prefabs/EnemyLob" );
 		aoePrefab = Resources.Load<GameObject>( "Prefabs/EnemyAOE" );
 		bopperPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBopper" );
+		shardPrefab = Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" );
+
 		player = FindObjectOfType<PlayerWalk>().gameObject;
 
 		// partHand = GetComponent<ParticleSystem>();
@@ -82,6 +84,15 @@ public class EnemyBase
 		base.Damage( amount );
 
 		activated = true;
+
+		if( hp <= 0.0f ) SpawnShard();
+	}
+
+	void SpawnShard()
+	{
+		var shard = Instantiate( shardPrefab );
+		shard.transform.position = transform.position;
+		shard.GetComponent<MonsterShard>().RandomToss();
 	}
 
 	// [SerializeField] float hp = 10.0f;
@@ -91,6 +102,7 @@ public class EnemyBase
 	GameObject aoePrefab;
 	GameObject bopperPrefab;
 	protected GameObject player;
+	GameObject shardPrefab;
 
 	// ParticleSystem partHand;
 	// ParticleHandler partHand;

@@ -40,8 +40,15 @@ public class InventorySlot
 		var meshRend = heldItem.transform.GetComponentInChildren<MeshRenderer>();
 		meshRend.gameObject.layer = uiLayer;
 		meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
+		// print( heldPrefab );
 	}
 
+	public void RemoveItem()
+	{
+		heldPrefab = null;
+		Destroy( heldItem );
+	}
 
 	public void OnBeginDrag( PointerEventData eventData )
 	{
@@ -129,7 +136,7 @@ public class InventorySlot
 
 	Transform itemPos;
 	GameObject heldItem = null;
-	GameObject heldPrefab;
+	[SerializeField] GameObject heldPrefab = null;
 
 	RectTransform rect;
 

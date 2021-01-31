@@ -16,7 +16,6 @@ public abstract class RangeWeaponBase
 	{
 		base.Start();
 
-		cam = Camera.main;
 		bulletPrefab = Resources.Load<GameObject>( "Prefabs/Bullet" );
 		bulletMask = ~LayerMask.GetMask( "EnemyBullet" );
 	}
@@ -89,7 +88,6 @@ public abstract class RangeWeaponBase
 		return( 2 );
 	}
 
-	Camera cam;
 	GameObject bulletPrefab;
 	LayerMask bulletMask;
 

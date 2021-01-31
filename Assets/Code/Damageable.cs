@@ -50,7 +50,7 @@ public class Damageable
 		}
 	}
 
-	[SerializeField] float hp = 1.0f;
+	[SerializeField] protected float hp = 1.0f;
 	[SerializeField] float def = 0.0f;
 	[SerializeField] ParticleHandler.ParticleType hitFX = ParticleHandler.ParticleType.None;
 	[SerializeField] ParticleHandler.ParticleType oofFX = ParticleHandler.ParticleType.None;

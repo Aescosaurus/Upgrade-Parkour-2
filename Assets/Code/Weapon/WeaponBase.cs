@@ -8,6 +8,8 @@ public abstract class WeaponBase
 {
 	protected virtual void Start()
 	{
+		cam = Camera.main;
+
 		// animCtrl = FindObjectOfType<PlayerWalk>().GetComponent<Animator>();
 		team = animCtrl?.GetComponent<EnemyBase>() != null ? 2 : 1;
 
@@ -58,6 +60,11 @@ public abstract class WeaponBase
 		attacking = false;
 	}
 
+	public void SetHotbar( HotbarHandler hotbar )
+	{
+		this.hotbar = hotbar;
+	}
+
 	public virtual int GetPreferredHand()
 	{
 		return( 1 );
@@ -75,4 +82,7 @@ public abstract class WeaponBase
 	protected int team = -1; // 1 = player 2 = enemy
 
 	protected bool attacking = false;
+
+	protected HotbarHandler hotbar = null;
+	protected Camera cam;
 }

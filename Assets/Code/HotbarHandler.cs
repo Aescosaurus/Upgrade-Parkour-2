@@ -18,12 +18,15 @@ public class HotbarHandler
 
 		wepHolder = GetComponent<WeaponHolder>();
 		fistPrefab = Resources.Load<GameObject>( "Prefabs/Fist" );
+		throwingWeaponPrefab = Resources.Load<GameObject>( "Prefabs/ThrowingWeapon" );
 
 		SwapSlot( 0 );
 	}
 
 	void Update()
 	{
+		// print( GetCurHeldPrefab() );
+
 		for( int i = 0; i < invSlots.Count; ++i )
 		{
 			if( Input.GetKeyDown( KeyCode.Alpha1 + i ) )
@@ -54,6 +57,10 @@ public class HotbarHandler
 
 		var wepPrefab = invSlots[curSlot].GetPrefab();
 		if( wepPrefab == null ) wepPrefab = fistPrefab;
+		else if( wepPrefab.GetComponent<WeaponBase>() == null )
+		{
+			wepPrefab = throwingWeaponPrefab;
+		}
 		wepHolder.ReplaceWeapon( wepPrefab );
 	}
 
@@ -79,10 +86,23 @@ public class HotbarHandler
 		return( !full );
 	}
 
+	public void ConsumeHeldItem()
+	{
+		// todo support for removing only one of stack
+		invSlots[curSlot].RemoveItem();
+		RefreshSlot();
+	}
+
+	public GameObject GetCurHeldPrefab()
+	{
+		return( invSlots[curSlot].GetPrefab() );
+	}
+
 	List<InventorySlot> invSlots = new List<InventorySlot>();
 
 	int curSlot = 0;
 
 	WeaponHolder wepHolder;
 	GameObject fistPrefab;
+	GameObject throwingWeaponPrefab;
 }

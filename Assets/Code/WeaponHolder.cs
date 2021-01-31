@@ -14,6 +14,8 @@ public class WeaponHolder
 		{
 			InitNewWeapon( heldWeapon );
 		}
+
+		hotbar = GetComponent<HotbarHandler>();
 	}
 
 	void Update()
@@ -78,6 +80,7 @@ public class WeaponHolder
 	{
 		var curWeapon = Instantiate( prefab );
 		curWB = curWeapon.GetComponent<WeaponBase>();
+		curWB.SetHotbar( hotbar );
 		// meleeWB = curWeapon.GetComponent<MeleeWeaponBase>();
 
 		var handPref = curWB.GetPreferredHand();
@@ -96,4 +99,6 @@ public class WeaponHolder
 	Animator animCtrl;
 
 	float storedRot = 0.0f;
+
+	HotbarHandler hotbar;
 }
