@@ -7,21 +7,29 @@ public class ThrowableWeapon
     :
     WeaponBase
 {
-	// protected override void Update()
-	// {
-	// 	base.Update();
-	// 
-	// 	print( refire.GetPercent() );
-	// }
+
+	protected override void Start()
+	{
+		base.Start();
+
+		throwObj = hotbar.GetCurHeldPrefab();
+		Assert.IsNotNull( throwObj );
+		Instantiate( throwObj.transform.GetChild( 0 ),transform );
+	}
+	protected override void Update()
+	{
+		base.Update();
+
+		if( refire.IsDone() )
+		{
+			animCtrl.SetBool( "throw",false );
+		}
+	}
 
 	protected override void Fire()
 	{
-		// animCtrl.SetBool( "swing",true );
-		// damagedEnemies.Clear();
-		// attacking = true;
+		animCtrl.SetBool( "throw",true );
 
-		var throwObj = hotbar.GetCurHeldPrefab();
-		Assert.IsNotNull( throwObj );
 		var toThrow = Instantiate( throwObj );
 		toThrow.transform.position = hotbar.transform.position + cam.transform.forward + Vector3.up * 1.5f;
 		toThrow.GetComponent<Rigidbody>().AddForce( cam.transform.forward * throwForce,ForceMode.Impulse );
@@ -34,4 +42,6 @@ public class ThrowableWeapon
 	}
 
 	[SerializeField] float throwForce = 10.0f;
+
+	GameObject throwObj;
 }

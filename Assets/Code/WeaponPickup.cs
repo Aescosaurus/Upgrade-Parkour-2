@@ -31,7 +31,7 @@ public class WeaponPickup
 			rot.y = Mathf.Atan2( camDiff.x,camDiff.z ) * Mathf.Rad2Deg + 180.0f;
 			pickupText.transform.eulerAngles = rot;
 
-			if( Input.GetAxis( "Interact" ) > 0.0f )
+			if( SpiffyInput.CheckAxis( "Interact" ) )
 			{
 				// player.GetComponent<WeaponHolder>().ReplaceWeapon( pickupPrefab );
 				player.GetComponent<PlayerInventory>().AddItem( pickupPrefab );

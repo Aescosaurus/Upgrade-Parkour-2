@@ -20,11 +20,7 @@ public class PlayerInventory
 
 		// var swordPrefab = Resources.Load<GameObject>( "Prefabs/BasicSword" );
 		// slots[0].AddItem( swordPrefab );
-		slots[0].AddItem( Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" ) );
-		slots[0].AddItem( Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" ) );
-		slots[0].AddItem( Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" ) );
-		slots[0].AddItem( Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" ) );
-		slots[0].AddItem( Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" ) );
+		// slots[0].AddItem( Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" ) );
 
 		ToggleOpen( false );
 	}
