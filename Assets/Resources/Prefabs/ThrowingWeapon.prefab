@@ -58,5 +58,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refire:
-    duration: 0.5
+    duration: 1
   throwForce: 15

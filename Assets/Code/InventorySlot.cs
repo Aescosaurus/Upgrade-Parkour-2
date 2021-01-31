@@ -21,6 +21,9 @@ public class InventorySlot
 		img = GetComponent<Image>();
 
 		ToggleActivation( false );
+
+		counterText = GetComponentInChildren<Text>();
+		UpdateCounter();
 	}
 
 	void Start()
@@ -30,24 +33,37 @@ public class InventorySlot
 
 	public void AddItem( GameObject prefab )
 	{
-		heldPrefab = prefab;
-		heldItem = Instantiate( prefab.transform.GetChild( 0 ).gameObject,itemPos );
+		++nItems;
 
-		heldItem.transform.localPosition = new Vector3( -16.6f,-16.7f,-0.8f );
-		heldItem.transform.localScale *= itemScaleFactor;
-		heldItem.transform.localEulerAngles = new Vector3( 39.2f,70.5f,-12.6f );
+		if( heldPrefab == null )
+		{
+			heldPrefab = prefab;
+			heldItem = Instantiate( prefab.transform.GetChild( 0 ).gameObject,itemPos );
 
-		var meshRend = heldItem.transform.GetComponentInChildren<MeshRenderer>();
-		meshRend.gameObject.layer = uiLayer;
-		meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+			heldItem.transform.localPosition = new Vector3( -16.6f,-16.7f,-0.8f );
+			heldItem.transform.localScale *= itemScaleFactor;
+			heldItem.transform.localEulerAngles = new Vector3( 39.2f,70.5f,-12.6f );
 
-		// print( heldPrefab );
+			var meshRend = heldItem.transform.GetComponentInChildren<MeshRenderer>();
+			meshRend.gameObject.layer = uiLayer;
+			meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+		}
+		else
+		{
+			UpdateCounter();
+		}
 	}
 
 	public void RemoveItem()
 	{
-		heldPrefab = null;
-		Destroy( heldItem );
+		--nItems;
+		UpdateCounter();
+
+		if( nItems <= 0 )
+		{
+			heldPrefab = null;
+			Destroy( heldItem );
+		}
 	}
 
 	public void OnBeginDrag( PointerEventData eventData )
@@ -109,6 +125,12 @@ public class InventorySlot
 		receiver.heldPrefab = tempHeldPrefab;
 		// heldPrefab = null;
 
+		var tempNItems = nItems;
+		nItems = receiver.nItems;
+		receiver.nItems = tempNItems;
+		UpdateCounter();
+		receiver.UpdateCounter();
+
 		hotbar.RefreshSlot();
 	}
 
@@ -122,16 +144,29 @@ public class InventorySlot
 	// return true if success in setting item, false if already full
 	public bool TrySetItem( GameObject prefab )
 	{
-		if( heldItem != null ) return( false );
+		// if( heldItem != null ) print( prefab.name + " " + heldPrefab.name );
+		// weps are not stackable
+		if( heldItem != null && ( prefab.name != heldPrefab.name || heldItem.GetComponent<WeaponBase>() != null ) ) return( false );
 
 		AddItem( prefab );
 
 		return( true );
 	}
 
+	void UpdateCounter()
+	{
+		counterText.text = "";
+		if( nItems > 1 ) counterText.text = nItems.ToString();
+	}
+
 	public GameObject GetPrefab()
 	{
 		return( heldPrefab );
+	}
+
+	public int CountItems()
+	{
+		return( nItems );
 	}
 
 	Transform itemPos;
@@ -152,4 +187,7 @@ public class InventorySlot
 	Image img;
 
 	HotbarHandler hotbar;
+
+	Text counterText;
+	int nItems = 0;
 }

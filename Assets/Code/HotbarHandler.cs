@@ -90,7 +90,7 @@ public class HotbarHandler
 	{
 		// todo support for removing only one of stack
 		invSlots[curSlot].RemoveItem();
-		RefreshSlot();
+		if( invSlots[curSlot].CountItems() < 1 ) RefreshSlot();
 	}
 
 	public GameObject GetCurHeldPrefab()
