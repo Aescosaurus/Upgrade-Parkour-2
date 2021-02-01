@@ -40,11 +40,12 @@ public class PlayerCamCtrl
 			var aim = new Vector2( Input.GetAxis( "Mouse X" ),
 				Input.GetAxis( "Mouse Y" ) );
 
+			aim.y = aim.y * rotationSpeed * Time.deltaTime;
 			if( aim.y > maxAimMove ) aim.y = maxAimMove;
 			if( aim.y < -maxAimMove ) aim.y = -maxAimMove;
 
 			var tempAng = transform.eulerAngles;
-			tempAng.x = tempAng.x - aim.y * rotationSpeed * Time.deltaTime;
+			tempAng.x = tempAng.x - aim.y;
 			if( tempAng.x > 90.0f - verticalCutoff && tempAng.x < 180.0f ) tempAng.x = 90.0f - verticalCutoff;
 			if( tempAng.x < 270.0f + verticalCutoff && tempAng.x > 180.0f ) tempAng.x = 270.0f + verticalCutoff;
 			tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.deltaTime;
