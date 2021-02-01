@@ -909,7 +909,7 @@ Transform:
   m_LocalScale: {x: 103.821495, y: 1, z: 136.24513}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &366613297
 PrefabInstance:
@@ -1553,7 +1553,7 @@ Transform:
   m_LocalScale: {x: 10.669743, y: 5.1086774, z: 3.926}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 52
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &705507994 stripped
 Light:
@@ -2416,7 +2416,7 @@ Transform:
   m_LocalScale: {x: 2.580144, y: 2.774625, z: 2.1322892}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 53
+  m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1158004859
 GameObject:
@@ -2508,8 +2508,77 @@ Transform:
   m_LocalScale: {x: 8.918834, y: 1.354, z: 10.077427}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1172793019
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3277290963808212834, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_Name
+      value: WorldPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 42.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142048217639134553, guid: bf5c712d517ad54428ca6dc53c7208d8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf5c712d517ad54428ca6dc53c7208d8, type: 3}
 --- !u!1 &1190343817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,7 +2669,7 @@ Transform:
   m_LocalScale: {x: 1.2945, y: 2.7107081, z: 10.077427}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1199816119
 PrefabInstance:
@@ -3007,7 +3076,7 @@ Transform:
   m_Children:
   - {fileID: 173773159}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1571094422
 MonoBehaviour:
@@ -3124,11 +3193,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HoverText
       objectReference: {fileID: 0}
-    - target: {fileID: 7335189851546644914, guid: 38b02e78eff61de4cae5eef51c49a31f,
-        type: 3}
-      propertyPath: m_Text
-      value: Scroll to select weapon
-      objectReference: {fileID: 0}
     - target: {fileID: 495443951317487289, guid: 38b02e78eff61de4cae5eef51c49a31f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3183,6 +3247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335189851546644914, guid: 38b02e78eff61de4cae5eef51c49a31f,
+        type: 3}
+      propertyPath: m_Text
+      value: Scroll to select weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38b02e78eff61de4cae5eef51c49a31f, type: 3}
@@ -3345,7 +3414,7 @@ Transform:
   m_LocalScale: {x: 3.534281, y: 5.083411, z: 2.9208097}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 54
+  m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1640857989
 PrefabInstance:
@@ -3428,15 +3497,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialText
       objectReference: {fileID: 0}
-    - target: {fileID: 7335189851546644914, guid: 38b02e78eff61de4cae5eef51c49a31f,
-        type: 3}
-      propertyPath: m_Text
-      value: 'E to pick up weapon
-
-        Left mouse to attack
-
-        Destroy the gates!'
-      objectReference: {fileID: 0}
     - target: {fileID: 495443951317487289, guid: 38b02e78eff61de4cae5eef51c49a31f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3492,6 +3552,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7335189851546644914, guid: 38b02e78eff61de4cae5eef51c49a31f,
+        type: 3}
+      propertyPath: m_Text
+      value: 'E to pick up weapon
+
+        Left mouse to attack
+
+        Destroy the gates!'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38b02e78eff61de4cae5eef51c49a31f, type: 3}
 --- !u!1001 &1746661035
@@ -3505,15 +3574,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HoverText (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335189851546644914, guid: 38b02e78eff61de4cae5eef51c49a31f,
-        type: 3}
-      propertyPath: m_Text
-      value: 'WASD to move
-
-        Space to jump
-
-        Mouse to look'
       objectReference: {fileID: 0}
     - target: {fileID: 495443951317487289, guid: 38b02e78eff61de4cae5eef51c49a31f,
         type: 3}
@@ -3569,6 +3629,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335189851546644914, guid: 38b02e78eff61de4cae5eef51c49a31f,
+        type: 3}
+      propertyPath: m_Text
+      value: 'WASD to move
+
+        Space to jump
+
+        Mouse to look'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38b02e78eff61de4cae5eef51c49a31f, type: 3}
@@ -3800,7 +3869,7 @@ Transform:
   m_LocalScale: {x: 4.7798133, y: 3.271484, z: 3.9501457}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 55
+  m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2021236337
 PrefabInstance:
