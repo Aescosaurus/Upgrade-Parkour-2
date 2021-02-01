@@ -86,6 +86,21 @@ public class HotbarHandler
 		return( !full );
 	}
 
+	// Try to increase item stack, return false if same item not in hotbar.
+	public bool TryStackItem( GameObject prefab )
+	{
+		foreach( var slot in invSlots )
+		{
+			if( slot.GetPrefab() == prefab )
+			{
+				slot.AddItem( prefab );
+				return( true );
+			}
+		}
+
+		return( false );
+	}
+
 	public void ConsumeHeldItem()
 	{
 		// todo support for removing only one of stack

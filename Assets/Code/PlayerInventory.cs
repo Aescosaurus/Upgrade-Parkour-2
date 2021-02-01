@@ -46,7 +46,13 @@ public class PlayerInventory
 	{
 		bool full = true;
 
-		if( hotbar.TryAddItem( prefab ) ) full = false;
+		// try stacking item in hotbar, then inventory, before creating new stack
+		if( hotbar.TryStackItem( prefab ) || TryStackItem( prefab ) )
+		{
+			full = false;
+		}
+
+		if( full && hotbar.TryAddItem( prefab ) ) full = false;
 
 		if( full )
 		{
@@ -61,6 +67,20 @@ public class PlayerInventory
 		}
 
 		return( !full );
+	}
+
+	bool TryStackItem( GameObject prefab )
+	{
+		foreach( var slot in slots )
+		{
+			if( slot.GetPrefab() == prefab )
+			{
+				slot.TrySetItem( prefab );
+				return( true );
+			}
+		}
+
+		return( false );
 	}
 
 	public bool IsOpen()
