@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8a3b107b565da43b7bab968ada383d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabSrc: Prefabs/MonsterShardSmall
   jumpForce: 400
   flyDev: 0.2
 --- !u!114 &607883364609018654
@@ -90,8 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d3ee732beb5574c9a053a8acb6207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: Prefabs/MonsterShardSmall
-  pickupDist: 4
+  interactDist: 4
+  heightOffset: 1
+  itemPrefab: {fileID: -1807266038630835863}
 --- !u!1001 &2422484263430377985
 PrefabInstance:
   m_ObjectHideFlags: 0

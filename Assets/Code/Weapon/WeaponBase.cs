@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class WeaponBase
 	:
-	MonoBehaviour
+	LoadableItem
 {
 	protected virtual void Start()
 	{

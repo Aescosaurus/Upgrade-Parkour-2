@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 
 public class InventorySlot
 	:
@@ -31,20 +32,25 @@ public class InventorySlot
 		hotbar = FindObjectOfType<HotbarHandler>();
 	}
 
-	public void AddItem( GameObject prefab )
+	public void AddItem( LoadableItem item )
 	{
 		++nItems;
 
-		if( heldPrefab == null )
+		if( this.item == null )
 		{
-			heldPrefab = prefab;
-			heldItem = Instantiate( prefab.transform.GetChild( 0 ).gameObject,itemPos );
+			// heldPrefab = prefab;
+			// heldItem = Instantiate( prefab.transform.GetChild( 0 ).gameObject,itemPos );
 
-			heldItem.transform.localPosition = new Vector3( -16.6f,-16.7f,-0.8f );
-			heldItem.transform.localScale *= itemScaleFactor;
-			heldItem.transform.localEulerAngles = new Vector3( 39.2f,70.5f,-12.6f );
+			// this.item = item;
+			this.item = GetComponent<LoadableItem>();
+			this.item.Copy( item );
+			heldModel = Instantiate( item.GetPrefab().transform.GetChild( 0 ).gameObject,itemPos );
 
-			var meshRend = heldItem.transform.GetComponentInChildren<MeshRenderer>();
+			heldModel.transform.localPosition = new Vector3( -16.6f,-16.7f,-0.8f );
+			heldModel.transform.localScale *= itemScaleFactor;
+			heldModel.transform.localEulerAngles = new Vector3( 39.2f,70.5f,-12.6f );
+
+			var meshRend = heldModel.transform.GetComponentInChildren<MeshRenderer>();
 			meshRend.gameObject.layer = uiLayer;
 			meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 		}
@@ -61,14 +67,17 @@ public class InventorySlot
 
 		if( nItems <= 0 )
 		{
-			heldPrefab = null;
-			Destroy( heldItem );
+			// heldPrefab = null;
+			// Destroy( heldItem );
+			item = null;
+			Destroy( heldModel );
+			heldModel = null;
 		}
 	}
 
 	public void OnBeginDrag( PointerEventData eventData )
 	{
-		if( heldItem != null )
+		if( item != null )
 		{
 			home = rect.localPosition;
 			dragOffset = eventData.pointerCurrentRaycast.worldPosition - transform.position;
@@ -78,7 +87,7 @@ public class InventorySlot
 
 	public void OnEndDrag( PointerEventData eventData )
 	{
-		if( heldItem != null )
+		if( item != null )
 		{
 			// eventData.pointerEnter
 			RectTransform otherItem = eventData.pointerEnter?.GetComponent<RectTransform>();
@@ -103,7 +112,7 @@ public class InventorySlot
 
 	public void OnDrag( PointerEventData eventData )
 	{
-		if( heldItem != null )
+		if( item != null )
 		{
 			transform.position = eventData.pointerCurrentRaycast.worldPosition - dragOffset;
 		}
@@ -112,18 +121,21 @@ public class InventorySlot
 	// more like swap item
 	public void TransferItem( InventorySlot receiver )
 	{
-		heldItem.transform.SetParent( receiver.itemPos,false );
-		receiver.heldItem?.transform.SetParent( itemPos,false );
+		heldModel.transform.SetParent( receiver.itemPos,false );
+		receiver.heldModel?.transform.SetParent( itemPos,false );
 
-		var tempHeldItem = heldItem;
-		heldItem = receiver.heldItem;
-		receiver.heldItem = tempHeldItem;
+		var tempHeldModel = heldModel;
+		heldModel = receiver.heldModel;
+		receiver.heldModel = tempHeldModel;
 		// heldItem = null;
 
-		var tempHeldPrefab = heldPrefab;
-		heldPrefab = receiver.heldPrefab;
-		receiver.heldPrefab = tempHeldPrefab;
+		// var tempHeldPrefab = heldPrefab;
+		// heldPrefab = receiver.heldPrefab;
+		// receiver.heldPrefab = tempHeldPrefab;
 		// heldPrefab = null;
+		var tempItem = item;
+		item = receiver.item;
+		receiver.item = tempItem;
 
 		var tempNItems = nItems;
 		nItems = receiver.nItems;
@@ -142,15 +154,39 @@ public class InventorySlot
 	}
 
 	// return true if success in setting item, false if already full
-	public bool TrySetItem( GameObject prefab )
+	public bool TrySetItem( LoadableItem item )
 	{
+		Assert.IsTrue( item != null );
+		bool canSwap = true;
 		// if( heldItem != null ) print( prefab.name + " " + heldPrefab.name );
+
 		// weps are not stackable
-		if( heldItem != null && ( prefab.name != heldPrefab.name || heldItem.GetComponent<WeaponBase>() != null ) ) return( false );
+		// if( this.item != null &&
+		// 	( !item.CheckEqual( this.item ) ||
+		// 	( item.GetPrefab().GetComponent<WeaponBase>() != null ||
+		// 	this.item.GetPrefab().GetComponent<WeaponBase>() != null ) ) )
+		// {
+		// 	return( false );
+		// }
+		if( this.item != null )
+		{
+			// return( !item.CheckEqual( this.item ) ||
+			// 	item.GetPrefab().GetComponent<WeaponBase>() != null ||
+			// 	this.item.GetPrefab().GetComponent<WeaponBase>() != null );
+			if( !item.CheckEqual( this.item ) ||
+				item.GetPrefab().GetComponent<WeaponBase>() != null ||
+				this.item.GetPrefab().GetComponent<WeaponBase>() != null )
+			{
+				canSwap = false;
+			}
+		}
 
-		AddItem( prefab );
+		// print( item.GetPrefab().GetComponent<WeaponBase>() );
+		// print( this.item );
 
-		return( true );
+		if( canSwap ) AddItem( item );
+
+		return( canSwap );
 	}
 
 	void UpdateCounter()
@@ -161,7 +197,12 @@ public class InventorySlot
 
 	public GameObject GetPrefab()
 	{
-		return( heldPrefab );
+		return( item?.GetPrefab() );
+	}
+
+	public LoadableItem GetItem()
+	{
+		return( item );
 	}
 
 	public int CountItems()
@@ -170,8 +211,10 @@ public class InventorySlot
 	}
 
 	Transform itemPos;
-	GameObject heldItem = null;
-	[SerializeField] GameObject heldPrefab = null;
+	// GameObject heldItem = null;
+	// [SerializeField] GameObject heldPrefab = null;
+	[SerializeField] LoadableItem item = null;
+	GameObject heldModel = null;
 
 	RectTransform rect;
 

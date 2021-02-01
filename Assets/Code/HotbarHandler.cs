@@ -55,13 +55,13 @@ public class HotbarHandler
 		invSlots[slot].ToggleActivation( true );
 		curSlot = slot;
 
-		var wepPrefab = invSlots[curSlot].GetPrefab();
-		if( wepPrefab == null ) wepPrefab = fistPrefab;
-		else if( wepPrefab.GetComponent<WeaponBase>() == null )
+		var itemPrefab = invSlots[curSlot].GetPrefab();
+		if( itemPrefab == null ) itemPrefab = fistPrefab;
+		else if( itemPrefab.GetComponent<WeaponBase>() == null )
 		{
-			wepPrefab = throwingWeaponPrefab;
+			itemPrefab = throwingWeaponPrefab;
 		}
-		wepHolder.ReplaceWeapon( wepPrefab );
+		wepHolder.ReplaceWeapon( itemPrefab );
 	}
 
 	public void RefreshSlot()
@@ -70,12 +70,12 @@ public class HotbarHandler
 	}
 
 	// true if success false if full
-	public bool TryAddItem( GameObject prefab )
+	public bool TryAddItem( LoadableItem item )
 	{
 		bool full = true;
 		foreach( var slot in invSlots )
 		{
-			if( slot.TrySetItem( prefab ) )
+			if( slot.TrySetItem( item ) )
 			{
 				full = false;
 				RefreshSlot();
@@ -87,13 +87,15 @@ public class HotbarHandler
 	}
 
 	// Try to increase item stack, return false if same item not in hotbar.
-	public bool TryStackItem( GameObject prefab )
+	public bool TryStackItem( LoadableItem item )
 	{
 		foreach( var slot in invSlots )
 		{
-			if( slot.GetPrefab() == prefab )
+			// if( slot.GetItem() == item )
+			if( slot.TrySetItem( item ) )
 			{
-				slot.AddItem( prefab );
+				// slot.AddItem( item );
+				RefreshSlot();
 				return( true );
 			}
 		}

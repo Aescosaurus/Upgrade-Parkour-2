@@ -42,23 +42,23 @@ public class PlayerInventory
 	}
 
 	// true if success false if full
-	public bool AddItem( GameObject prefab )
+	public bool AddItem( LoadableItem item )
 	{
 		bool full = true;
 
 		// try stacking item in hotbar, then inventory, before creating new stack
-		if( hotbar.TryStackItem( prefab ) || TryStackItem( prefab ) )
+		if( hotbar.TryStackItem( item ) || TryStackItem( item ) )
 		{
 			full = false;
 		}
 
-		if( full && hotbar.TryAddItem( prefab ) ) full = false;
+		if( full && hotbar.TryAddItem( item ) ) full = false;
 
 		if( full )
 		{
 			foreach( var slot in slots )
 			{
-				if( slot.TrySetItem( prefab ) )
+				if( slot.TrySetItem( item ) )
 				{
 					full = false;
 					break;
@@ -69,13 +69,14 @@ public class PlayerInventory
 		return( !full );
 	}
 
-	bool TryStackItem( GameObject prefab )
+	bool TryStackItem( LoadableItem item )
 	{
 		foreach( var slot in slots )
 		{
-			if( slot.GetPrefab() == prefab )
+			// if( slot.GetItem() == item )
+			if( slot.TrySetItem( item ) )
 			{
-				slot.TrySetItem( prefab );
+				// slot.TrySetItem( item );
 				return( true );
 			}
 		}

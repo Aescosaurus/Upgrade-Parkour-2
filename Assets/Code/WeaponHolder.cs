@@ -83,6 +83,9 @@ public class WeaponHolder
 		curWB.SetHotbar( hotbar );
 		// meleeWB = curWeapon.GetComponent<MeleeWeaponBase>();
 
+		var interactive = curWeapon.GetComponent<InteractiveBase>();
+		if( interactive != null ) interactive.enabled = false;
+
 		var handPref = curWB.GetPreferredHand();
 		// curWeapon.transform.parent = bh.GetHand( handPref ).transform;
 		curWeapon.transform.SetParent( bh.GetHand( handPref ).transform,false );

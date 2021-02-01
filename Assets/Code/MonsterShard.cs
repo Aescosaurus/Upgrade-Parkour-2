@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterShard
 	:
-	MonoBehaviour
+	LoadableItem
 {
 	public void RandomToss()
 	{
@@ -20,6 +20,4 @@ public class MonsterShard
 
 	[SerializeField] float jumpForce = 10.0f;
 	[SerializeField] float flyDev = 0.2f;
-
-	
 }

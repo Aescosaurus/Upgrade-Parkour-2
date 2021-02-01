@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8191641289092310424}
   - component: {fileID: 8191641289092310427}
+  - component: {fileID: -2246478178887067418}
   m_Layer: 0
   m_Name: BasicBow
   m_TagString: Untagged
@@ -44,9 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51fcd8a0acf99f4ab392fb4d53ec3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabSrc: Prefabs/BasicBow
   refire:
     duration: 0.5
   shotDist: 35
+--- !u!114 &-2246478178887067418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191641289092310425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d3ee732beb5574c9a053a8acb6207f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactDist: 4
+  heightOffset: 1
 --- !u!1001 &4426874266792639796
 PrefabInstance:
   m_ObjectHideFlags: 0

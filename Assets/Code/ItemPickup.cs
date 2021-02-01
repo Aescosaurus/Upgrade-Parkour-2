@@ -47,18 +47,21 @@ public class ItemPickup
 	{
 		base.Start();
 
-		prefab = Resources.Load<GameObject>( prefabSrc );
-		Assert.IsNotNull( prefab );
+		// prefab = Resources.Load<GameObject>( prefabSrc );
+		// Assert.IsNotNull( prefab );
+		// itemPrefab.Init();
+		itemPrefab = GetComponent<LoadableItem>();
 	}
 
 	protected override void Interact()
 	{
-		player.GetComponent<PlayerInventory>().AddItem( prefab );
+		player.GetComponent<PlayerInventory>().AddItem( itemPrefab );
 		Destroy( gameObject );
 	}
 
-	[SerializeField] string prefabSrc = "";
-	GameObject prefab = null;
+	// [SerializeField] string prefabSrc = "";
+	// GameObject prefab = null;
+	/*[SerializeField] */LoadableItem itemPrefab;
 	// [SerializeField] float pickupDist = 4.0f;
 	// 
 	// GameObject pickup;
