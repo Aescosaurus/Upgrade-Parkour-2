@@ -21,12 +21,6 @@ public class LoadableItem
 		return( prefabSrc == other.prefabSrc );
 	}
 
-	public GameObject GetPrefab()
-	{
-		TryLoadPrefab();
-		return( prefab );
-	}
-
 	void TryLoadPrefab()
 	{
 		if( prefab == null ) prefab = Resources.Load<GameObject>( prefabSrc );
@@ -37,6 +31,30 @@ public class LoadableItem
 	{
 		prefabSrc = other.prefabSrc;
 		TryLoadPrefab();
+	}
+
+	// swaps this's data with other
+	public void Swap( LoadableItem other )
+	{
+		var tempPrefSrc = prefabSrc;
+		prefabSrc = other.prefabSrc;
+		other.prefabSrc = tempPrefSrc;
+
+		var tempPrefab = prefab;
+		prefab = other.prefab;
+		other.prefab = tempPrefab;
+	}
+
+	public void Clear()
+	{
+		prefabSrc = "";
+		prefab = null;
+	}
+
+	public GameObject GetPrefab()
+	{
+		TryLoadPrefab();
+		return ( prefab );
 	}
 
 	public string GetSrc()

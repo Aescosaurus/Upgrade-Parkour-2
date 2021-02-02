@@ -23,6 +23,8 @@ public class InventorySlot
 
 		ToggleActivation( false );
 
+		item = GetComponent<LoadableItem>();
+
 		counterText = GetComponentInChildren<Text>();
 		UpdateCounter();
 	}
@@ -50,13 +52,15 @@ public class InventorySlot
 	{
 		++nItems;
 
-		if( this.item == null )
+		Assert.IsTrue( this.item != null );
+
+		if( this.item.GetPrefab() == null )
 		{
 			// heldPrefab = prefab;
 			// heldItem = Instantiate( prefab.transform.GetChild( 0 ).gameObject,itemPos );
 
 			// this.item = item;
-			this.item = GetComponent<LoadableItem>();
+			// this.item = GetComponent<LoadableItem>();
 			this.item.Copy( item );
 			heldModel = Instantiate( item.GetPrefab().transform.GetChild( 0 ).gameObject,itemPos );
 
@@ -83,7 +87,9 @@ public class InventorySlot
 		{
 			// heldPrefab = null;
 			// Destroy( heldItem );
-			item = null;
+
+			// item = null;
+			item.Clear();
 			Destroy( heldModel );
 			heldModel = null;
 		}
@@ -91,7 +97,7 @@ public class InventorySlot
 
 	public void OnBeginDrag( PointerEventData eventData )
 	{
-		if( item != null )
+		if( item.GetPrefab() != null )
 		{
 			home = rect.localPosition;
 			dragOffset = eventData.pointerCurrentRaycast.worldPosition - transform.position;
@@ -101,7 +107,7 @@ public class InventorySlot
 
 	public void OnEndDrag( PointerEventData eventData )
 	{
-		if( item != null )
+		if( item.GetPrefab() != null )
 		{
 			// eventData.pointerEnter
 			RectTransform otherItem = eventData.pointerEnter?.GetComponent<RectTransform>();
@@ -126,7 +132,7 @@ public class InventorySlot
 
 	public void OnDrag( PointerEventData eventData )
 	{
-		if( item != null )
+		if( item.GetPrefab() != null )
 		{
 			transform.position = eventData.pointerCurrentRaycast.worldPosition - dragOffset;
 		}
@@ -147,9 +153,11 @@ public class InventorySlot
 		// heldPrefab = receiver.heldPrefab;
 		// receiver.heldPrefab = tempHeldPrefab;
 		// heldPrefab = null;
-		var tempItem = item;
-		item = receiver.item;
-		receiver.item = tempItem;
+
+		// var tempItem = item;
+		// item = receiver.item;
+		// receiver.item = tempItem;
+		item.Swap( receiver.item );
 
 		var tempNItems = nItems;
 		nItems = receiver.nItems;
@@ -182,7 +190,7 @@ public class InventorySlot
 		// {
 		// 	return( false );
 		// }
-		if( this.item != null )
+		if( this.item.GetPrefab() != null )
 		{
 			// return( !item.CheckEqual( this.item ) ||
 			// 	item.GetPrefab().GetComponent<WeaponBase>() != null ||
