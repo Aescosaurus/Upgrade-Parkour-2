@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using System.IO;
 using UnityEngine.UI;
+using System;
 
 public class StorageBase
 	:
@@ -34,7 +35,34 @@ public class StorageBase
 			var line = lines[i];
 			if( line.Length > 0 )
 			{
-				slots[i].AddItem( Resources.Load<GameObject>( line ).GetComponent<LoadableItem>() );
+				int stackSize = 1;
+
+				if( char.IsNumber( line[0] ) )
+				{
+					string counter = "";
+					for( int j = 0; j < line.Length; ++j )
+					{
+						if( line[j] == ' ' )
+						{
+							try
+							{
+								stackSize = int.Parse( counter );
+							}
+							catch( Exception ) {}
+							finally
+							{
+								line = line.Substring( j + 1 );
+							}
+						}
+						else counter += line[j];
+					}
+				}
+
+				var loadItem = Resources.Load<GameObject>( line ).GetComponent<LoadableItem>();
+				for( int j = 0; j < stackSize; ++j )
+				{
+					slots[i].AddItem( loadItem );
+				}
 			}
 		}
 
@@ -53,7 +81,8 @@ public class StorageBase
 			if( slot.GetItem() != null )
 			{
 				line = slot.GetItem().GetSrc();
-				// print( line );
+
+				if( slot.CountItems() > 1 ) line = slot.CountItems().ToString() + ' ' + line;
 			}
 			writer.WriteLine( line );
 		}
