@@ -39,6 +39,11 @@ public class LoadableItem
 		TryLoadPrefab();
 	}
 
+	public string GetSrc()
+	{
+		return( prefabSrc );
+	}
+
 	[SerializeField] string prefabSrc = "";
 	GameObject prefab = null;
 }

@@ -32,6 +32,20 @@ public class InventorySlot
 		hotbar = FindObjectOfType<HotbarHandler>();
 	}
 
+	// void OnDestroy()
+	// {
+	// 	string idStr = "";
+	// 	foreach( var c in gameObject.name )
+	// 	{
+	// 		if( char.IsNumber( c ) ) idStr += c;
+	// 	}
+	// 	int id = ( idStr.Length > 0 ? int.Parse( idStr ) : 0 );
+	// 	
+	// 	var storage = transform.parent.name;
+	// 	
+	// 	print( storage + " " + id );
+	// }
+
 	public void AddItem( LoadableItem item )
 	{
 		++nItems;

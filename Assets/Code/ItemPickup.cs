@@ -55,7 +55,7 @@ public class ItemPickup
 
 	protected override void Interact()
 	{
-		player.GetComponent<PlayerInventory>().AddItem( itemPrefab );
+		player.GetComponent<PlayerInventory>().GetInv().AddItem( itemPrefab );
 		Destroy( gameObject );
 	}
 

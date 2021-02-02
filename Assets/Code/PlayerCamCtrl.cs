@@ -15,7 +15,7 @@ public class PlayerCamCtrl
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 
-		playerInv = FindObjectOfType<PlayerInventory>();
+		playerInv = FindObjectOfType<InventoryHandler>();
 
 		worldMask = LayerMask.GetMask( "World" );
 	}
@@ -87,7 +87,7 @@ public class PlayerCamCtrl
 
 	bool escape = false;
 
-	PlayerInventory playerInv;
+	InventoryHandler playerInv;
 
 	LayerMask worldMask;
 }

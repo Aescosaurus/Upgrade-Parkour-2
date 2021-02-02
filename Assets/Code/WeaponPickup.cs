@@ -53,7 +53,7 @@ public class WeaponPickup
 
 	protected override void Interact()
 	{
-		player.GetComponent<PlayerInventory>().AddItem( pickupPrefab );
+		player.GetComponent<PlayerInventory>().GetInv().AddItem( pickupPrefab );
 		Destroy( gameObject );
 	}
 
