@@ -7,7 +7,6 @@ public class ThrowableWeapon
     :
     WeaponBase
 {
-
 	protected override void Start()
 	{
 		base.Start();

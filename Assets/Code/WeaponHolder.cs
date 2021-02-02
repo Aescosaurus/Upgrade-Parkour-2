@@ -15,7 +15,7 @@ public class WeaponHolder
 			InitNewWeapon( heldWeapon );
 		}
 
-		hotbar = GetComponent<HotbarHandler>();
+		hotbar = FindObjectOfType<HotbarHandler>();
 	}
 
 	void Update()

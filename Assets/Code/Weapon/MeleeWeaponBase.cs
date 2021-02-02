@@ -50,18 +50,23 @@ public class MeleeWeaponBase
 
 	void OnTriggerEnter( Collider coll )
 	{
-		var enemyScr = coll.GetComponent<Damageable>();
-		var playerScr = coll.GetComponent<PlayerWalk>();
-		if( team == 1 && enemyScr != null &&
-			!damagedEnemies.Contains( enemyScr ) )
+		var damageScr = coll.GetComponent<Damageable>();
+		if( damageScr != null && team != damageScr.GetTeam() &&
+			!damagedEnemies.Contains( damageScr ) )
 		{
-			enemyScr.Damage( damage );
-			damagedEnemies.Add( enemyScr );
+			damageScr.Damage( damage );
 		}
-		else if( playerScr != null )
-		{
-			// damage player
-		}
+		// if( team == 1 && damageScr != null &&
+		// 	!damagedEnemies.Contains( damageScr ) )
+		// {
+		// 	damageScr.Damage( damage );
+		// 	damagedEnemies.Add( damageScr );
+		// }
+		// else if( team == 2 && damageScr != null )
+		// {
+		// 	// invincible player for now
+		// 	damageScr.Damage( damage );
+		// }
 	}
 
 	public void ToggleHurtArea( bool on )

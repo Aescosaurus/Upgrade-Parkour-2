@@ -50,6 +50,12 @@ public class Damageable
 		}
 	}
 
+	public int GetTeam()
+	{
+		return( team );
+	}
+
+	[SerializeField] int team = 2;
 	[SerializeField] protected float hp = 1.0f;
 	[SerializeField] float def = 0.0f;
 	[SerializeField] ParticleHandler.ParticleType hitFX = ParticleHandler.ParticleType.None;
