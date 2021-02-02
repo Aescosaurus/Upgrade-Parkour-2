@@ -30,7 +30,7 @@ public class ThrowableWeapon
 		animCtrl.SetBool( "throw",true );
 
 		var toThrow = Instantiate( throwObj );
-		toThrow.transform.position = hotbar.transform.position + hotbar.transform.forward + Vector3.up * 1.5f;
+		toThrow.transform.position = animCtrl.transform.position + cam.transform.forward + Vector3.up * 1.3f;
 		toThrow.GetComponent<Rigidbody>().AddForce( cam.transform.forward * throwForce,ForceMode.Impulse );
 		hotbar.ConsumeHeldItem();
 	}
