@@ -74,6 +74,7 @@ public class WeaponHolder
 		InitNewWeapon( replacement );
 		animCtrl.SetBool( "aim",false );
 		animCtrl.SetBool( "swing",false );
+		animCtrl.SetBool( "throw",false );
 	}
 
 	void InitNewWeapon( GameObject prefab )

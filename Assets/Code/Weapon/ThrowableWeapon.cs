@@ -30,7 +30,7 @@ public class ThrowableWeapon
 		animCtrl.SetBool( "throw",true );
 
 		var toThrow = Instantiate( throwObj );
-		toThrow.transform.position = hotbar.transform.position + cam.transform.forward + Vector3.up * 1.5f;
+		toThrow.transform.position = hotbar.transform.position + hotbar.transform.forward + Vector3.up * 1.5f;
 		toThrow.GetComponent<Rigidbody>().AddForce( cam.transform.forward * throwForce,ForceMode.Impulse );
 		hotbar.ConsumeHeldItem();
 	}
@@ -38,6 +38,13 @@ public class ThrowableWeapon
 	public void ToggleHurtArea( bool on )
 	{
 
+	}
+
+	public override void ToggleAttacking( bool on )
+	{
+		base.ToggleAttacking( on );
+		
+		animCtrl.SetBool( "throw",on );
 	}
 
 	[SerializeField] float throwForce = 10.0f;

@@ -51,10 +51,12 @@ public class MeleeWeaponBase
 	void OnTriggerEnter( Collider coll )
 	{
 		var damageScr = coll.GetComponent<Damageable>();
-		if( damageScr != null && team != damageScr.GetTeam() &&
+		if( damageScr != null && 
+			team >= 0 && damageScr.GetTeam() >= 0 && team != damageScr.GetTeam() &&
 			!damagedEnemies.Contains( damageScr ) )
 		{
 			damageScr.Damage( damage );
+			damagedEnemies.Add( damageScr );
 		}
 		// if( team == 1 && damageScr != null &&
 		// 	!damagedEnemies.Contains( damageScr ) )
