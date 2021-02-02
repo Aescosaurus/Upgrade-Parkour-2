@@ -85,7 +85,7 @@ public class EnemyBase
 
 		activated = true;
 
-		if( hp <= 0.0f ) SpawnShard();
+		if( hp <= 0.0f && !spawnedShard ) SpawnShard();
 	}
 
 	void SpawnShard()
@@ -93,6 +93,7 @@ public class EnemyBase
 		var shard = Instantiate( shardPrefab );
 		shard.transform.position = transform.position;
 		shard.GetComponent<MonsterShard>().RandomToss();
+		spawnedShard = true;
 	}
 
 	// [SerializeField] float hp = 10.0f;
@@ -111,4 +112,6 @@ public class EnemyBase
 
 	[SerializeField] float activationRange = 15.0f;
 	protected bool activated = false;
+
+	bool spawnedShard = false;
 }
