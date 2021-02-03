@@ -17,6 +17,8 @@ public class EnemyBase
 		shardPrefab = Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" );
 
 		player = FindObjectOfType<PlayerWalk>().gameObject;
+		body = GetComponent<Rigidbody>();
+		animCtrl = GetComponent<Animator>();
 
 		// partHand = GetComponent<ParticleSystem>();
 		// partHand = FindObjectOfType<ParticleHandler>();
@@ -42,7 +44,31 @@ public class EnemyBase
 	// 	// partHand.Emit( ( int )( ( amount + 0.5f ) * 15.0f ) );
 	// 	partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),ParticleHandler.ParticleType.Ouch );
 	// }
-	
+
+	protected virtual void Move( Vector3 dir )
+	{
+		var rot = transform.eulerAngles;
+		rot.y = Mathf.Atan2( dir.x,dir.z ) * Mathf.Rad2Deg;
+		rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
+		transform.eulerAngles = rot;
+
+		body.velocity = dir.normalized * moveSpeed;
+	}
+
+	protected virtual void StopMoving()
+	{
+		body.velocity = Vector3.zero;
+	}
+
+	protected void Look( Vector3 dir )
+	{
+		dir.y = 0.0f;
+		if( dir.sqrMagnitude > 0.0f )
+		{
+			transform.forward = dir;
+		}
+	}
+
 	protected void Fire( Vector3 dir )
 	{
 		var bullet = Instantiate( bulletPrefab );
@@ -102,8 +128,11 @@ public class EnemyBase
 	GameObject lobPrefab;
 	GameObject aoePrefab;
 	GameObject bopperPrefab;
-	protected GameObject player;
 	GameObject shardPrefab;
+
+	protected GameObject player;
+	protected Rigidbody body;
+	protected Animator animCtrl;
 
 	// ParticleSystem partHand;
 	// ParticleHandler partHand;
@@ -112,6 +141,9 @@ public class EnemyBase
 
 	[SerializeField] float activationRange = 15.0f;
 	protected bool activated = false;
+
+	[SerializeField] float moveSpeed = 1.0f;
+	[SerializeField] float rotSpeed = 2.4f;
 
 	bool spawnedShard = false;
 }

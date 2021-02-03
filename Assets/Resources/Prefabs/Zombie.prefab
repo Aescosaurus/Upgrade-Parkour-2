@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1078883488311203830}
   - component: {fileID: 1078883488311203828}
   - component: {fileID: 1078883488311203825}
-  - component: {fileID: 1078883488311203818}
   - component: {fileID: 1078883488311203829}
   - component: {fileID: 1078883488311203824}
   - component: {fileID: 1078883488311203827}
@@ -51,7 +50,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -89,24 +88,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &1078883488311203818
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078883488311203826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.94
-  m_Radius: 0.9
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!114 &1078883488311203829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,15 +100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96570e75a91480e4db742c3232817b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 2
   hp: 5
   def: 0
   hitFX: 1
   oofFX: 1
   shirkScale: {x: 0.7, y: 1.2, z: 0.7}
   activationRange: 12
-  moveSpeed: 5.5
+  moveSpeed: 5
   rotSpeed: 2.4
-  gravAcc: 0.3
   stopDist: 2.5
 --- !u!114 &1078883488311203824
 MonoBehaviour:
