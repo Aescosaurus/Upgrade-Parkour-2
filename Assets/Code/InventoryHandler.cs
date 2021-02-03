@@ -58,32 +58,18 @@ public class InventoryHandler
 
 		if( full )
 		{
-			foreach( var slot in slots )
-			{
-				if( slot.TrySetItem( item ) )
-				{
-					full = false;
-					break;
-				}
-			}
+			// foreach( var slot in slots )
+			// {
+			// 	if( slot.TrySetItem( item ) )
+			// 	{
+			// 		full = false;
+			// 		break;
+			// 	}
+			// }
+			full = TryAddItem( item );
 		}
 
 		return( !full );
-	}
-
-	bool TryStackItem( LoadableItem item )
-	{
-		foreach( var slot in slots )
-		{
-			// if( slot.GetItem() == item )
-			if( slot.TrySetItem( item ) )
-			{
-				// slot.TrySetItem( item );
-				return( true );
-			}
-		}
-
-		return( false );
 	}
 
 	// GameObject invPanel;

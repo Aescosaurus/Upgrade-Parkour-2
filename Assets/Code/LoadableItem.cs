@@ -15,8 +15,8 @@ public class LoadableItem
 
 	public bool CheckEqual( LoadableItem other )
 	{
-		Assert.IsTrue( prefabSrc.Length > 0 );
-		Assert.IsTrue( other.prefabSrc.Length > 0 );
+		// Assert.IsTrue( prefabSrc.Length > 0 );
+		// Assert.IsTrue( other.prefabSrc.Length > 0 );
 		// print( prefabSrc + " " + other.prefabSrc );
 		return( prefabSrc == other.prefabSrc );
 	}

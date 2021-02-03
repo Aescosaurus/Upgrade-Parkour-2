@@ -110,6 +110,64 @@ public class StorageBase
 		Cursor.lockState = on ? CursorLockMode.None : CursorLockMode.Locked;
 	}
 
+	// true if success false if full
+	public virtual bool TryAddItem( LoadableItem item )
+	{
+		foreach( var slot in slots )
+		{
+			if( slot.TrySetItem( item ) )
+			{
+				return( true );
+			}
+		}
+
+		return( false );
+	}
+
+	// true if success in stacking false if no stackable items available (including empty slots)
+	public virtual bool TryStackItem( LoadableItem item )
+	{
+		var exists = CheckExisting( item );
+
+		if( exists )
+		{
+			foreach( var slot in slots )
+			{
+				if( slot.GetItem().CheckEqual( item ) )
+				{
+					// print( slot.GetItem().GetSrc() + "    " + item.GetSrc() );
+					slot.TrySetItem( item );
+				}
+			}
+		}
+
+		return ( exists );
+		// foreach( var slot in slots )
+		// {
+		// 	// if( slot.GetItem() == item )
+		// 	if( slot.TrySetItem( item ) )
+		// 	{
+		// 		// slot.TrySetItem( item );
+		// 		return( true );
+		// 	}
+		// }
+		// 
+		// return( false );
+	}
+
+	public bool CheckExisting( LoadableItem checkItem )
+	{
+		foreach( var slot in slots )
+		{
+			if( slot.GetItem().CheckEqual( checkItem ) )
+			{
+				return( true );
+			}
+		}
+
+		return( false );
+	}
+
 	public bool IsOpen()
 	{
 		return ( open );

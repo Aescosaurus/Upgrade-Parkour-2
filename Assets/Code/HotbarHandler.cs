@@ -79,37 +79,53 @@ public class HotbarHandler
 	}
 
 	// true if success false if full
-	public bool TryAddItem( LoadableItem item )
+	// public bool TryAddItem( LoadableItem item )
+	// {
+	// 	bool full = true;
+	// 	foreach( var slot in slots )
+	// 	{
+	// 		if( slot.TrySetItem( item ) )
+	// 		{
+	// 			full = false;
+	// 			RefreshSlot();
+	// 			break;
+	// 		}
+	// 	}
+	// 
+	// 	return( !full );
+	// }
+	public override bool TryAddItem( LoadableItem item )
 	{
-		bool full = true;
-		foreach( var slot in slots )
-		{
-			if( slot.TrySetItem( item ) )
-			{
-				full = false;
-				RefreshSlot();
-				break;
-			}
-		}
+		bool added = base.TryAddItem( item );
 
-		return( !full );
+		if( added ) RefreshSlot();
+
+		return( added );
 	}
 
 	// Try to increase item stack, return false if same item not in hotbar.
-	public bool TryStackItem( LoadableItem item )
+	// public bool TryStackItem( LoadableItem item )
+	// {
+	// 	foreach( var slot in slots )
+	// 	{
+	// 		// if( slot.GetItem() == item )
+	// 		if( slot.TrySetItem( item ) )
+	// 		{
+	// 			// slot.AddItem( item );
+	// 			RefreshSlot();
+	// 			return( true );
+	// 		}
+	// 	}
+	// 
+	// 	return( false );
+	// }
+	public override bool TryStackItem( LoadableItem item )
 	{
-		foreach( var slot in slots )
-		{
-			// if( slot.GetItem() == item )
-			if( slot.TrySetItem( item ) )
-			{
-				// slot.AddItem( item );
-				RefreshSlot();
-				return( true );
-			}
-		}
+		bool stacked = base.TryStackItem( item );
 
-		return( false );
+		if( stacked ) RefreshSlot();
+
+		return( stacked );
 	}
 
 	public void ConsumeHeldItem()
