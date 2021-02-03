@@ -14,7 +14,7 @@ public class PlayerWalk
 		coll = GetComponent<Collider>();
 		charCtrl = GetComponent<CharacterController>();
 		wepHolder = GetComponent<WeaponHolder>();
-		playerInv = GetComponent<PlayerInventory>().GetInv();
+		playerInv = FindObjectOfType<InventoryHandler>();
 	}
 
 	void FixedUpdate()
