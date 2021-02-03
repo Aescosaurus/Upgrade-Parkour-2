@@ -127,21 +127,19 @@ public class StorageBase
 	// true if success in stacking false if no stackable items available (including empty slots)
 	public virtual bool TryStackItem( LoadableItem item )
 	{
-		var exists = CheckExisting( item );
-
-		if( exists )
+		if( CheckExisting( item ) )
 		{
 			foreach( var slot in slots )
 			{
 				if( slot.GetItem().CheckEqual( item ) )
 				{
 					// print( slot.GetItem().GetSrc() + "    " + item.GetSrc() );
-					slot.TrySetItem( item );
+					return( slot.TrySetItem( item ) );
 				}
 			}
 		}
 
-		return ( exists );
+		return( false );
 		// foreach( var slot in slots )
 		// {
 		// 	// if( slot.GetItem() == item )
