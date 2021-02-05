@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 72.6, y: -51}
-  m_SizeDelta: {x: 55.38, y: 31.95}
+  m_AnchoredPosition: {x: 72.6, y: -54.313}
+  m_SizeDelta: {x: 55.4, y: 38.575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7246455581605464415
 CanvasRenderer:
@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3017804151263686522}
   - component: {fileID: 766109231743543916}
   - component: {fileID: 7250697840444423515}
+  - component: {fileID: 6064844570052298370}
   m_Layer: 5
   m_Name: ShardExchange
   m_TagString: Untagged
@@ -161,6 +162,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6064844570052298370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132642246171400030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cce3076d137644429d9f067e025e3c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2494948779552988006
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +293,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1270925263184074961}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6064844570052298370}
+        m_MethodName: TryExchange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &2881142129638068596
@@ -475,8 +499,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -82.5, y: -51}
-  m_SizeDelta: {x: 55.38, y: 31.95}
+  m_AnchoredPosition: {x: -82.5, y: -54.3}
+  m_SizeDelta: {x: 55.4, y: 38.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &57829768710054477
 CanvasRenderer:
@@ -609,7 +633,7 @@ PrefabInstance:
     - target: {fileID: 6800467045544134650, guid: 6ec499d5d753a5b44ae188411cca6a27,
         type: 3}
       propertyPath: m_Name
-      value: InventorySlot (1)
+      value: CoinSpot
       objectReference: {fileID: 0}
     - target: {fileID: 6800467045544134651, guid: 6ec499d5d753a5b44ae188411cca6a27,
         type: 3}
@@ -734,7 +758,7 @@ PrefabInstance:
     - target: {fileID: 6800467045544134650, guid: 6ec499d5d753a5b44ae188411cca6a27,
         type: 3}
       propertyPath: m_Name
-      value: InventorySlot
+      value: ShardSpot
       objectReference: {fileID: 0}
     - target: {fileID: 6800467045544134651, guid: 6ec499d5d753a5b44ae188411cca6a27,
         type: 3}

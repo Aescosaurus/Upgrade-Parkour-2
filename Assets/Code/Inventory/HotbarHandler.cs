@@ -50,7 +50,7 @@ public class HotbarHandler
 	}
 
 	// u can never escape the hotbar muahaha
-	protected override void ToggleOpen( bool on )
+	public override void ToggleOpen( bool on )
 	{
 		open = true;
 		gameObject.SetActive( true );

@@ -67,6 +67,7 @@ public class StorageBase
 		}
 
 		panelBG = GetComponent<Image>();
+		miscPanel = GameObject.Find( "MiscPanel" );
 
 		ToggleOpen( false );
 	}
@@ -97,7 +98,7 @@ public class StorageBase
 		}
 	}
 
-	protected virtual void ToggleOpen( bool on )
+	public virtual void ToggleOpen( bool on )
 	{
 		open = on;
 		// gameObject.SetActive( on );
@@ -108,6 +109,9 @@ public class StorageBase
 		}
 		Cursor.visible = on;
 		Cursor.lockState = on ? CursorLockMode.None : CursorLockMode.Locked;
+
+		miscPanel.GetComponentInChildren<VendorUIBase>()?.CloseUI();
+		if( miscPanel.transform.childCount > 0 ) Destroy( miscPanel.transform.GetChild( 0 ).gameObject );
 	}
 
 	// true if success false if full
@@ -177,6 +181,7 @@ public class StorageBase
 	// protected GameObject storagePanel;
 
 	Image panelBG;
+	GameObject miscPanel;
 
 	protected bool open = false;
 

@@ -16,7 +16,7 @@ public abstract class InteractiveBase
 		pickupText.text = "[E]";
 	}
 
-	void Update()
+	protected virtual void Update()
 	{
 		var diff = player.transform.position - transform.position;
 		if( diff.sqrMagnitude < interactDist * interactDist )

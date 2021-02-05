@@ -23,21 +23,7 @@ public class NPCDialog
 	{
 		if( ++curLine > lines.Count - 1 )
 		{
-			if( repeat )
-			{
-				curLine = talkBeforeInteract ? 0 : -1;
-				if( talkBeforeInteract )
-				{
-					curLine = 0;
-					RefreshLine();
-				}
-				else
-				{
-					curLine = -1;
-					SetText( "[E]" );
-				}
-			}
-			else SetText( "" );
+			EndDialog();
 		}
 		else RefreshLine();
 	}
@@ -47,8 +33,27 @@ public class NPCDialog
 		SetText( lines[curLine] + ( curLine >= lines.Count - 1 ? "" : " ..." ) );
 	}
 
+	protected virtual void EndDialog()
+	{
+		if( repeat )
+		{
+			curLine = talkBeforeInteract ? 0 : -1;
+			if( talkBeforeInteract )
+			{
+				curLine = 0;
+				RefreshLine();
+			}
+			else
+			{
+				curLine = -1;
+				SetText( "[E]" );
+			}
+		}
+		else SetText( "" );
+	}
+
 	[SerializeField] bool talkBeforeInteract = false;
 	[SerializeField] bool repeat = true;
-	[SerializeField] List<string> lines = new List<string>();
-	int curLine = -1;
+	[SerializeField] protected List<string> lines = new List<string>();
+	protected int curLine = -1;
 }

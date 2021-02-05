@@ -52,6 +52,7 @@ public class InventorySlot
 	{
 		++nItems;
 
+		Assert.IsTrue( item != null );
 		Assert.IsTrue( this.item != null );
 
 		if( this.item.GetPrefab() == null )

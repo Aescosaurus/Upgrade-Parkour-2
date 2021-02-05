@@ -29,7 +29,7 @@ public class InventoryHandler
 
 	void Update()
 	{
-		if( Input.GetKeyDown( KeyCode.Tab ) )
+		if( SpiffyInput.CheckAxis( "Inventory" ) )
 		{
 			ToggleOpen( !open );
 		}

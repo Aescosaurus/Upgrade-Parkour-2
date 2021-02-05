@@ -735,7 +735,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1963017118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b103ca158b4cd8647b94e7a4b88a10db, type: 3}
+  m_Script: {fileID: 11500000, guid: 4edadfbcbff22a64286d4470b05c8f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactDist: 4
@@ -744,10 +744,9 @@ MonoBehaviour:
   repeat: 1
   lines:
   - hi
-  - test
-  - 1
-  - 2
-  - 3
+  - ill give u coins for monster shards
+  uiPrefab: {fileID: 1132642246171400030, guid: 3e064ac56124326428d5168533211d01,
+    type: 3}
 --- !u!4 &1963017120
 Transform:
   m_ObjectHideFlags: 0
