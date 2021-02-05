@@ -23,15 +23,28 @@ public class NPCDialog
 	{
 		if( ++curLine > lines.Count - 1 )
 		{
-			SetText( "" );
-			if( repeat ) curLine = -1;
+			if( repeat )
+			{
+				curLine = talkBeforeInteract ? 0 : -1;
+				if( talkBeforeInteract )
+				{
+					curLine = 0;
+					RefreshLine();
+				}
+				else
+				{
+					curLine = -1;
+					SetText( "[E]" );
+				}
+			}
+			else SetText( "" );
 		}
 		else RefreshLine();
 	}
 
 	void RefreshLine()
 	{
-		SetText( lines[curLine] );
+		SetText( lines[curLine] + ( curLine >= lines.Count - 1 ? "" : " ..." ) );
 	}
 
 	[SerializeField] bool talkBeforeInteract = false;
