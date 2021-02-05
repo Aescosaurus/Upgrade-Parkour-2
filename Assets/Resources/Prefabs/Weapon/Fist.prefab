@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceedb29001c9d84aad7a5ffa71ca7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: Prefabs/Fist
+  prefabSrc: 
   refire:
     duration: 0.7
   damage: 1
