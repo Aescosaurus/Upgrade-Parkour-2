@@ -29,6 +29,8 @@ public class ShardExchange
 
 	public override void CloseUI()
 	{
+		base.CloseUI();
+
 		DropItems( shardSpot );
 		DropItems( coinSpot );
 	}

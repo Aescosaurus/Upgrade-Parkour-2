@@ -58,6 +58,7 @@ public class NPCVendor
 	public void CloseUI()
 	{
 		open = false;
+		SetText( "[E]" );
 	}
 
 	protected override void EndDialog()

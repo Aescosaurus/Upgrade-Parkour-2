@@ -19,7 +19,7 @@ public class ParticleHandler
 	{
 		for( int i = 0; i < ( int )ParticleType.Count; ++i ) particlePrefabs.Add( null );
 
-		// particlePrefabs[( int )ParticleType.Ouch] = Resources.Load<GameObject>( "Prefabs/Particle/OuchPart" );
+		// particlePrefabs[( int )ParticleType.Ouch] = ResLoader.Load( "Prefabs/Particle/OuchPart" );
 		LoadParticle( ParticleType.Ouch,"OuchPart" );
 		LoadParticle( ParticleType.Smoke,"SmokePart" );
 	}
@@ -41,7 +41,7 @@ public class ParticleHandler
 
 	void LoadParticle( ParticleType type,string path )
 	{
-		particlePrefabs[( int )type] = Resources.Load<GameObject>( "Prefabs/Particle/" + path );
+		particlePrefabs[( int )type] = ResLoader.Load( "Prefabs/Particle/" + path );
 	}
 
 	List<GameObject> particlePrefabs = new List<GameObject>();

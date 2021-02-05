@@ -110,8 +110,11 @@ public class StorageBase
 		Cursor.visible = on;
 		Cursor.lockState = on ? CursorLockMode.None : CursorLockMode.Locked;
 
-		miscPanel.GetComponentInChildren<VendorUIBase>()?.CloseUI();
-		if( miscPanel.transform.childCount > 0 ) Destroy( miscPanel.transform.GetChild( 0 ).gameObject );
+		if( !on )
+		{
+			miscPanel.GetComponentInChildren<VendorUIBase>()?.CloseUI();
+			if( miscPanel.transform.childCount > 0 ) Destroy( miscPanel.transform.GetChild( 0 ).gameObject );
+		}
 	}
 
 	// true if success false if full

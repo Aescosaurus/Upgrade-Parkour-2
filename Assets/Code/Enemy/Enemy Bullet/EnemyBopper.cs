@@ -8,7 +8,7 @@ public class EnemyBopper
 {
 	void Start()
 	{
-		bopPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBop" );
+		bopPrefab = ResLoader.Load( "Prefabs/EnemyBop" );
 	}
 
 	void Update()

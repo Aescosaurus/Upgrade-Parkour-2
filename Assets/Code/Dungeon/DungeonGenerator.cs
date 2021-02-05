@@ -10,13 +10,13 @@ public class DungeonGenerator
 {
 	void Start()
 	{
-		corridorPrefabs.Add( Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonDeadEnd" ) );
-		corridorPrefabs.Add( Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonI" ) );
-		corridorPrefabs.Add( Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonL" ) );
-		corridorPrefabs.Add( Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonT" ) );
-		corridorPrefabs.Add( Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonX" ) );
+		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonDeadEnd" ) );
+		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonI" ) );
+		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonL" ) );
+		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonT" ) );
+		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonX" ) );
 
-		wallPrefab = Resources.Load<GameObject>( "Prefabs/Dungeon/DungeonGateWall" );
+		wallPrefab = ResLoader.Load( "Prefabs/Dungeon/DungeonGateWall" );
 
 		layout = GenerateLayout( dungeonSize,dungeonSize,( int )( ( float )dungeonSize * roomPercent ) );
 

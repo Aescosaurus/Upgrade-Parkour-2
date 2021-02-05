@@ -16,7 +16,7 @@ public abstract class RangeWeaponBase
 	{
 		base.Start();
 
-		bulletPrefab = Resources.Load<GameObject>( "Prefabs/Bullet" );
+		bulletPrefab = ResLoader.Load( "Prefabs/Bullet" );
 		bulletMask = ~LayerMask.GetMask( "EnemyBullet" );
 	}
 
