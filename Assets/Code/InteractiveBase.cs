@@ -11,8 +11,9 @@ public abstract class InteractiveBase
 		player = GameObject.Find( "Player" );
 		// cam = Camera.main;
 
-		pickupText = Instantiate( Resources.Load<GameObject>( "Prefabs/HoverText" ) );
-		pickupText.GetComponentInChildren<TextMesh>().text = "[E]";
+		pickupText = Instantiate( Resources.Load<GameObject>( "Prefabs/HoverText" ) )
+			.GetComponentInChildren<TextMesh>();
+		pickupText.text = "[E]";
 	}
 
 	void Update()
@@ -20,12 +21,12 @@ public abstract class InteractiveBase
 		var diff = player.transform.position - transform.position;
 		if( diff.sqrMagnitude < interactDist * interactDist )
 		{
-			pickupText.SetActive( true );
+			pickupText.gameObject.SetActive( true );
 			pickupText.transform.position = transform.position + Vector3.up * heightOffset;
 
 			if( SpiffyInput.CheckAxis( "Interact" ) ) Interact();
 		}
-		else pickupText.SetActive( false );
+		else pickupText.gameObject.SetActive( false );
 	}
 
 	protected abstract void Interact();
@@ -35,11 +36,16 @@ public abstract class InteractiveBase
 		Destroy( pickupText );
 	}
 
+	protected void SetText( string text )
+	{
+		pickupText.text = text;
+	}
+
 	[SerializeField] float interactDist = 4.0f;
 	[SerializeField] float heightOffset = 1.0f;
 
 	protected GameObject player;
 	// Camera cam;
 
-	GameObject pickupText;
+	TextMesh pickupText;
 }
