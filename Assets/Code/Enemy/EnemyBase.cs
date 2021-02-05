@@ -14,7 +14,7 @@ public class EnemyBase
 		lobPrefab = Resources.Load<GameObject>( "Prefabs/EnemyLob" );
 		aoePrefab = Resources.Load<GameObject>( "Prefabs/EnemyAOE" );
 		bopperPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBopper" );
-		shardPrefab = Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" );
+		shardPrefab = Resources.Load<GameObject>( "Prefabs/Enemy/MonsterShardSmall" );
 
 		player = FindObjectOfType<PlayerWalk>().gameObject;
 		body = GetComponent<Rigidbody>();

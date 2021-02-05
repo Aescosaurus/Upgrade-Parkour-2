@@ -19,8 +19,8 @@ public class HotbarHandler
 		// }
 
 		wepHolder = GameObject.Find( "Player" ).GetComponent<WeaponHolder>();
-		fistPrefab = Resources.Load<GameObject>( "Prefabs/Fist" );
-		throwingWeaponPrefab = Resources.Load<GameObject>( "Prefabs/ThrowingWeapon" );
+		fistPrefab = Resources.Load<GameObject>( "Prefabs/Weapon/Fist" );
+		throwingWeaponPrefab = Resources.Load<GameObject>( "Prefabs/Weapon/ThrowingWeapon" );
 
 		SwapSlot( 0 );
 	}
