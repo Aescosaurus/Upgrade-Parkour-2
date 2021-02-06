@@ -32,9 +32,11 @@ public class EnemyBase
 	{
 		base.Update();
 
-		wepHolder.SetTargetDir( transform.eulerAngles.y );
+		wepHolder?.SetTargetDir( transform.eulerAngles.y );
 
 		if( IsWithinActivateRange() ) activated = true;
+
+		body.velocity += Vector3.down * gravAcc * Time.deltaTime;
 	}
 
 	// public override void Damage( float amount )
@@ -52,12 +54,18 @@ public class EnemyBase
 		rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
 		transform.eulerAngles = rot;
 
-		body.velocity = dir.normalized * moveSpeed;
+		// body.velocity = dir.normalized * moveSpeed;
+		SetVel( dir.normalized * moveSpeed );
+
+		animCtrl.SetBool( "walking",true );
 	}
 
 	protected virtual void StopMoving()
 	{
-		body.velocity = Vector3.zero;
+		// body.velocity = Vector3.zero;
+		SetVel( Vector3.zero );
+
+		animCtrl.SetBool( "walking",false );
 	}
 
 	protected void Look( Vector3 dir )
@@ -122,6 +130,19 @@ public class EnemyBase
 		spawnedShard = true;
 	}
 
+	void SetVel( Vector3 newVel )
+	{
+		newVel.y = body.velocity.y;
+		body.velocity = newVel;
+	}
+
+	protected virtual void OnCollisionEnter( Collision coll )
+	{
+		var vel = body.velocity;
+		vel.y = 0.0f;
+		body.velocity = vel;
+	}
+
 	// [SerializeField] float hp = 10.0f;
 
 	GameObject bulletPrefab;
@@ -144,6 +165,7 @@ public class EnemyBase
 
 	[SerializeField] float moveSpeed = 1.0f;
 	[SerializeField] float rotSpeed = 2.4f;
+	const float gravAcc = 15.0f;
 
 	bool spawnedShard = false;
 }
