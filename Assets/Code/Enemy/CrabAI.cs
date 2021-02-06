@@ -43,7 +43,7 @@ public class CrabAI
 					{
 						lunging = true;
 						lungeTimer.Reset();
-						animCtrl.SetBool( "walking",false );
+						animCtrl.SetBool( "walk",false );
 						animCtrl.SetBool( "lunging",true );
 					}
 				}
@@ -75,14 +75,17 @@ public class CrabAI
 	{
 		base.OnCollisionEnter( coll );
 
-		if( lunging )
+		if( animCtrl != null )
 		{
-			strafeDir = Random.Range( -1,2 );
-			hitbox.enabled = false;
-		}
+			if( lunging )
+			{
+				strafeDir = Random.Range( -1,2 );
+				hitbox.enabled = false;
+			}
 
-		lunging = false;
-		animCtrl.SetBool( "lunging",false );
+			lunging = false;
+			animCtrl.SetBool( "lunging",false );
+		}
 	}
 
 	void OnTriggerEnter( Collider coll )
@@ -94,7 +97,7 @@ public class CrabAI
 	[SerializeField] float strafeDist = 5.0f;
 	[SerializeField] float fleeDist = 3.0f;
 	int strafeDir = 0;
-	Timer lungeTimer = new Timer( 2.0f );
+	[SerializeField] Timer lungeTimer = new Timer( 2.0f );
 	bool lunging = false;
 	[SerializeField] float lungePower = 5.0f;
 	[SerializeField] float lungeUpBias = 0.2f;

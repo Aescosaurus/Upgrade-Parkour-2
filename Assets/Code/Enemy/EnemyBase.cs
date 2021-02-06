@@ -57,7 +57,7 @@ public class EnemyBase
 		// body.velocity = dir.normalized * moveSpeed;
 		SetVel( dir.normalized * moveSpeed );
 
-		animCtrl.SetBool( "walking",true );
+		animCtrl.SetBool( "walk",true );
 	}
 
 	protected virtual void StopMoving()
@@ -65,7 +65,7 @@ public class EnemyBase
 		// body.velocity = Vector3.zero;
 		SetVel( Vector3.zero );
 
-		animCtrl.SetBool( "walking",false );
+		animCtrl.SetBool( "walk",false );
 	}
 
 	protected void Look( Vector3 dir )
@@ -138,9 +138,12 @@ public class EnemyBase
 
 	protected virtual void OnCollisionEnter( Collision coll )
 	{
-		var vel = body.velocity;
-		vel.y = 0.0f;
-		body.velocity = vel;
+		if( body != null )
+		{
+			var vel = body.velocity;
+			vel.y = 0.0f;
+			body.velocity = vel;
+		}
 	}
 
 	// [SerializeField] float hp = 10.0f;
