@@ -34,7 +34,17 @@ public class EnemyBase
 
 		wepHolder?.SetTargetDir( transform.eulerAngles.y );
 
-		if( IsWithinActivateRange() ) activated = true;
+		if( IsWithinActivateRange( player ) )
+		{
+			if( !activated )
+			{
+				Activate();
+				foreach( var enemy in FindObjectsOfType<EnemyBase>() )
+				{
+					if( IsWithinActivateRange( enemy.gameObject ) ) enemy.Activate();
+				}
+			}
+		}
 
 		body.velocity += Vector3.down * gravAcc * Time.deltaTime;
 	}
@@ -107,10 +117,15 @@ public class EnemyBase
 		wepHolder.TryAttack( transform.eulerAngles.y );
 	}
 
-	protected bool IsWithinActivateRange()
+	protected bool IsWithinActivateRange( GameObject target )
 	{
-		var dist = player.transform.position - transform.position;
+		var dist = target.transform.position - transform.position;
 		return( dist.sqrMagnitude < Mathf.Pow( activationRange,2 ) );
+	}
+
+	void Activate()
+	{
+		activated = true;
 	}
 
 	public override void Damage( float amount )
