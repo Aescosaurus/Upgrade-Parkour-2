@@ -153,12 +153,12 @@ MonoBehaviour:
   roomPercent: 0.6
   corridorSize: 27.97028
   nRoomEnemies:
-    min: 0
-    max: 4
+    min: 3
+    max: 7
   enemyPrefabs:
   - {fileID: 1078883488311203826, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
   - {fileID: 3089165843163223701, guid: 0aaa5298110c7484d98abc2e7d1431c9, type: 3}
-  wallChance: 0.6
+  wallChance: 0.4
 --- !u!4 &265085816
 Transform:
   m_ObjectHideFlags: 0

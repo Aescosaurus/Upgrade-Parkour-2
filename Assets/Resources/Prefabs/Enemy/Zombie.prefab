@@ -109,8 +109,7 @@ MonoBehaviour:
   activationRange: 12
   moveSpeed: 5
   rotSpeed: 2.4
-  gravAcc: 1
-  stopDist: 2.5
+  stopDist: 2
 --- !u!114 &1078883488311203824
 MonoBehaviour:
   m_ObjectHideFlags: 0

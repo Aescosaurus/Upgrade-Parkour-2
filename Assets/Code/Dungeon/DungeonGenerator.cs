@@ -141,6 +141,8 @@ public class DungeonGenerator
 				var enemy = Instantiate( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )] );
 				enemy.transform.position = BoxPointSelector.GetRandPointWithinBox(
 					spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
+				// print( enemy.transform.position );
+				// Assert.IsTrue( false );
 			}
 		}
 
