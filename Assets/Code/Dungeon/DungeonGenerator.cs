@@ -10,6 +10,9 @@ public class DungeonGenerator
 {
 	void Start()
 	{
+		hubPortalPrefab = ResLoader.Load( "Prefabs/HubPortal" );
+		stairsPrefab = ResLoader.Load( "Prefabs/StairsPortal" );
+
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonDeadEnd" ) );
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonI" ) );
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonL" ) );
@@ -18,13 +21,15 @@ public class DungeonGenerator
 
 		wallPrefab = ResLoader.Load( "Prefabs/Dungeon/DungeonGateWall" );
 
-		layout = GenerateLayout( dungeonSize,dungeonSize,( int )( ( float )dungeonSize * roomPercent ) );
+		var curRoomCount = ( int )( ( float )dungeonSize * roomPercent );
+		int curNRoom = 0;
+		layout = GenerateLayout( dungeonSize,dungeonSize,curRoomCount );
 
 		for( int y = 0; y < dungeonSize; ++y )
 		{
 			for( int x = 0; x < dungeonSize; ++x )
 			{
-				if( CheckRoom( x,y ) ) GenCorridor( x,y );
+				if( CheckRoom( x,y ) ) GenCorridor( x,y,++curNRoom >= curRoomCount );
 			}
 		}
 	}
@@ -58,7 +63,7 @@ public class DungeonGenerator
 		return( layout );
 	}
 
-	void GenCorridor( int x,int y )
+	void GenCorridor( int x,int y,bool spawnExit )
 	{
 		var dirs = new List<bool>();
 		dirs.Add( CheckRoom( x,y - 1 ) );
@@ -120,10 +125,10 @@ public class DungeonGenerator
 		curCorridor.transform.position += new Vector3( x,0,y ) * corridorSize;
 		// curCorridor.transform.position += Vector3.left * dungeonSize / 2 + Vector3.forward * dungeonSize / 2;
 		curCorridor.transform.Rotate( Vector3.up,rot );
-		PopulateCorridor( curCorridor,x != 0 || y != 0 );
+		PopulateCorridor( curCorridor,x != 0 || y != 0,spawnExit );
 	}
 
-	void PopulateCorridor( GameObject corridor,bool spawnEnemies = true )
+	void PopulateCorridor( GameObject corridor,bool spawnEnemies = true,bool spawnExit = false )
 	{
 		var possibleSpawnAreas = corridor.GetComponentsInChildren<BoxCollider>();
 		var spawnAreas = new List<BoxCollider>();
@@ -132,7 +137,22 @@ public class DungeonGenerator
 			if( area.isTrigger ) spawnAreas.Add( area );
 		}
 
-		if( spawnEnemies )
+		if( spawnExit )
+		{
+			var hubPortal = Instantiate( hubPortalPrefab );
+			hubPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
+					spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
+			var pos = hubPortal.transform.position;
+			pos.y = 0.2f;
+			hubPortal.transform.position = pos;
+			var stairsPortal = Instantiate( stairsPrefab );
+			stairsPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
+					spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
+			pos = stairsPortal.transform.position;
+			pos.y = 0.2f;
+			stairsPortal.transform.position = pos;
+		}
+		else if( spawnEnemies )
 		{
 			var nEnemies = nRoomEnemies.Rand();
 
@@ -151,7 +171,7 @@ public class DungeonGenerator
 		var walls = corridor.transform.Find( "WallLocs" );
 		for( int i = 0; i < walls.childCount; ++i )
 		{
-			if( Random.Range( 0.0f,1.0f ) < wallChance || !spawnEnemies ) Instantiate( wallPrefab,walls.GetChild( i ) );
+			if( Random.Range( 0.0f,1.0f ) < wallChance || !spawnEnemies || spawnExit ) Instantiate( wallPrefab,walls.GetChild( i ) );
 		}
 	}
 
@@ -160,6 +180,9 @@ public class DungeonGenerator
 		if( x < 0 || x >= dungeonSize || y < 0 || y >= dungeonSize ) return( false );
 		return( layout[y * dungeonSize + x] );
 	}
+
+	GameObject hubPortalPrefab;
+	GameObject stairsPrefab;
 
 	List<GameObject> corridorPrefabs = new List<GameObject>();
 
