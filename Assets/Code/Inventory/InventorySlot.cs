@@ -48,9 +48,9 @@ public class InventorySlot
 	// 	print( storage + " " + id );
 	// }
 
-	public void AddItem( LoadableItem item )
+	public void AddItem( LoadableItem item,int quantity = 1 )
 	{
-		++nItems;
+		nItems += quantity;
 
 		Assert.IsTrue( item != null );
 		Assert.IsTrue( this.item != null );
@@ -73,15 +73,15 @@ public class InventorySlot
 			meshRend.gameObject.layer = uiLayer;
 			meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 		}
-		else
+		// else
 		{
 			UpdateCounter();
 		}
 	}
 
-	public void RemoveItem()
+	public void RemoveItem( int amount = 1 )
 	{
-		--nItems;
+		nItems -= amount;
 		UpdateCounter();
 
 		if( nItems <= 0 )
@@ -142,29 +142,37 @@ public class InventorySlot
 	// more like swap item
 	public void TransferItem( InventorySlot receiver )
 	{
-		heldModel.transform.SetParent( receiver.itemPos,false );
-		receiver.heldModel?.transform.SetParent( itemPos,false );
+		if( GetItem().CheckEqual( receiver.GetItem() ) )
+		{
+			receiver.AddItem( GetItem(),CountItems() );
+			RemoveItem( CountItems() );
+		}
+		else
+		{
+			heldModel.transform.SetParent( receiver.itemPos,false );
+			receiver.heldModel?.transform.SetParent( itemPos,false );
 
-		var tempHeldModel = heldModel;
-		heldModel = receiver.heldModel;
-		receiver.heldModel = tempHeldModel;
-		// heldItem = null;
+			var tempHeldModel = heldModel;
+			heldModel = receiver.heldModel;
+			receiver.heldModel = tempHeldModel;
+			// heldItem = null;
 
-		// var tempHeldPrefab = heldPrefab;
-		// heldPrefab = receiver.heldPrefab;
-		// receiver.heldPrefab = tempHeldPrefab;
-		// heldPrefab = null;
+			// var tempHeldPrefab = heldPrefab;
+			// heldPrefab = receiver.heldPrefab;
+			// receiver.heldPrefab = tempHeldPrefab;
+			// heldPrefab = null;
 
-		// var tempItem = item;
-		// item = receiver.item;
-		// receiver.item = tempItem;
-		item.Swap( receiver.item );
+			// var tempItem = item;
+			// item = receiver.item;
+			// receiver.item = tempItem;
+			item.Swap( receiver.item );
 
-		var tempNItems = nItems;
-		nItems = receiver.nItems;
-		receiver.nItems = tempNItems;
-		UpdateCounter();
-		receiver.UpdateCounter();
+			var tempNItems = nItems;
+			nItems = receiver.nItems;
+			receiver.nItems = tempNItems;
+			UpdateCounter();
+			receiver.UpdateCounter();
+		}
 
 		hotbar.RefreshSlot();
 	}

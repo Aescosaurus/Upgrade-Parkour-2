@@ -18,12 +18,13 @@ public class ShardExchange
 	{
 		if( shardSpot.GetPrefab()?.GetComponent<MonsterShard>() != null )
 		{
-			// pls do this w/o loop in future
-			for( int i = 0; i < shardSpot.CountItems(); ++i )
-			{
-				coinSpot.AddItem( coinPrefab );
-				shardSpot.RemoveItem();
-			}
+			// for( int i = 0; i < shardSpot.CountItems(); ++i )
+			// {
+			// 	coinSpot.AddItem( coinPrefab );
+			// 	shardSpot.RemoveItem();
+			// }
+			coinSpot.AddItem( coinPrefab,shardSpot.CountItems() );
+			shardSpot.RemoveItem( shardSpot.CountItems() );
 		}
 	}
 
