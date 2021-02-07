@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSrc: Prefabs/Weapon/BasicBow
+  invName: Basic Bow
+  invDesc: A standard wooden bow.
   refire:
     duration: 0.5
   shotDist: 35

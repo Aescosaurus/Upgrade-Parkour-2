@@ -10,7 +10,9 @@ public class InventorySlot
 	MonoBehaviour,
 	IBeginDragHandler,
 	IEndDragHandler,
-	IDragHandler
+	IDragHandler,
+	IPointerEnterHandler,
+	IPointerExitHandler
 {
 	void Awake()
 	{
@@ -32,6 +34,7 @@ public class InventorySlot
 	void Start()
 	{
 		hotbar = FindObjectOfType<HotbarHandler>();
+		infoPanel = GameObject.Find( "InfoPanel" ).GetComponent<InfoPanel>();
 	}
 
 	// void OnDestroy()
@@ -137,6 +140,16 @@ public class InventorySlot
 		{
 			transform.position = eventData.pointerCurrentRaycast.worldPosition - dragOffset;
 		}
+	}
+
+	public void OnPointerEnter( PointerEventData eventData )
+	{
+		if( item.GetPrefab() != null ) infoPanel.OpenPanel( item.GetInvName(),item.GetInvDesc() );
+	}
+
+	public void OnPointerExit( PointerEventData eventData )
+	{
+		infoPanel.ClosePanel();
 	}
 
 	// more like swap item
@@ -248,6 +261,7 @@ public class InventorySlot
 	GameObject heldModel = null;
 
 	RectTransform rect;
+	InfoPanel infoPanel;
 
 	[SerializeField] float itemScaleFactor = 50.0f;
 	[Range( 0.0f,1.0f )]

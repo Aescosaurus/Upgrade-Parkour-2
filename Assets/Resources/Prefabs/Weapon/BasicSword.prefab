@@ -60,6 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSrc: Prefabs/Weapon/BasicSword
+  invName: Basic Sword
+  invDesc: A standard steel sword.
   refire:
     duration: 0.7
   damage: 2

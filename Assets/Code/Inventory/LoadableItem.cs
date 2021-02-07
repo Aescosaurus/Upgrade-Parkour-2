@@ -11,6 +11,9 @@ public class LoadableItem
 	void Start()
 	{
 		TryLoadPrefab();
+
+		// Assert.IsTrue( invName.Length > 0 );
+		// Assert.IsTrue( invDesc.Length > 0 );
 	}
 
 	public bool CheckEqual( LoadableItem other )
@@ -31,6 +34,9 @@ public class LoadableItem
 	{
 		prefabSrc = other.prefabSrc;
 		TryLoadPrefab();
+
+		invName = other.invName;
+		invDesc = other.invDesc;
 	}
 
 	// swaps this's data with other
@@ -62,6 +68,18 @@ public class LoadableItem
 		return( prefabSrc );
 	}
 
+	public string GetInvName()
+	{
+		return( invName );
+	}
+
+	public string GetInvDesc()
+	{
+		return( invDesc );
+	}
+
 	[SerializeField] string prefabSrc = "";
 	GameObject prefab = null;
+	[SerializeField] string invName = "";
+	[SerializeField] string invDesc = "";
 }

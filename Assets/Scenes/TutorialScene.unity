@@ -2517,11 +2517,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8781065736717969046, guid: bf5c712d517ad54428ca6dc53c7208d8,
-        type: 3}
-      propertyPath: worldTarget
-      value: DungeonScene
-      objectReference: {fileID: 0}
     - target: {fileID: 3277290963808212834, guid: bf5c712d517ad54428ca6dc53c7208d8,
         type: 3}
       propertyPath: m_Name
@@ -3171,12 +3166,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c93998e463195f429a81504c0c98483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 2
   hp: 100
   def: 0
   hitFX: 0
   oofFX: 0
   shirkScale: {x: 0.5, y: 1.5, z: 0.5}
   activationRange: 5
+  moveSpeed: 1
+  rotSpeed: 2.4
   shotTimer:
     duration: 0.8
   predictFactor: 7

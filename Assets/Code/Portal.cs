@@ -7,6 +7,13 @@ public class Portal
 	:
 	InteractiveBase
 {
+	protected override void Start()
+	{
+		base.Start();
+
+		SetText( "[E] " + displayText );
+	}
+
 	protected override void Interact()
 	{
 		// todo check player stats before allowing entry
@@ -14,4 +21,5 @@ public class Portal
 	}
 
 	[SerializeField] string worldTarget = "";
+	[SerializeField] string displayText = "";
 }

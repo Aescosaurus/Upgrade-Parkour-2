@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSrc: Prefabs/Coin
+  invName: Coin
+  invDesc: Currency.  Use this to buy things.
 --- !u!114 &4678061344214941853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,11 +74,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
-    - target: {fileID: -5337834761627095867, guid: 90656e01c13af55418be5bb8abac3478,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     - target: {fileID: -4216859302048453862, guid: 90656e01c13af55418be5bb8abac3478,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -152,6 +149,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -5337834761627095867, guid: 90656e01c13af55418be5bb8abac3478,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90656e01c13af55418be5bb8abac3478, type: 3}
 --- !u!4 &5544350733590705494 stripped

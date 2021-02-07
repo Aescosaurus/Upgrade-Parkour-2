@@ -151,7 +151,7 @@ public class DungeonGenerator
 		var walls = corridor.transform.Find( "WallLocs" );
 		for( int i = 0; i < walls.childCount; ++i )
 		{
-			if( Random.Range( 0.0f,1.0f ) < wallChance ) Instantiate( wallPrefab,walls.GetChild( i ) );
+			if( Random.Range( 0.0f,1.0f ) < wallChance || !spawnEnemies ) Instantiate( wallPrefab,walls.GetChild( i ) );
 		}
 	}
 
