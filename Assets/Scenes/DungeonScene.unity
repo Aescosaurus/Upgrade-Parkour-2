@@ -164,6 +164,7 @@ MonoBehaviour:
     max: 7
   decorations:
   - {fileID: 6775729821227834114, guid: 92ca5985f63aa0541a58ee973b3cc3a0, type: 3}
+  - {fileID: 2297016526745571759, guid: 918c05b8c3537594ea18ec46c96e7adf, type: 3}
 --- !u!4 &265085816
 Transform:
   m_ObjectHideFlags: 0
@@ -408,6 +409,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Directional Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052833860729377680, guid: ea49274c0addfbb46a705e6866877ada,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052833860729377680, guid: ea49274c0addfbb46a705e6866877ada,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 4052833860729377681, guid: ea49274c0addfbb46a705e6866877ada,
         type: 3}
