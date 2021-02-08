@@ -19,7 +19,7 @@ public class DungeonGenerator
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonT" ) );
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonX" ) );
 
-		wallPrefab = ResLoader.Load( "Prefabs/Dungeon/DungeonGateWall" );
+		wallPrefab = ResLoader.Load( "Prefabs/Dungeon/DungeonGate2" );
 
 		var curRoomCount = ( int )( ( float )dungeonSize * roomPercent );
 		int curNRoom = 0;
@@ -147,7 +147,7 @@ public class DungeonGenerator
 			hubPortal.transform.position = pos;
 			var stairsPortal = Instantiate( stairsPrefab );
 			stairsPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
-					spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
+					spawnAreas[Random.Range( 0,spawnAreas.Count )] );
 			pos = stairsPortal.transform.position;
 			pos.y = 0.2f;
 			stairsPortal.transform.position = pos;
@@ -160,10 +160,19 @@ public class DungeonGenerator
 			{
 				var enemy = Instantiate( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )] );
 				enemy.transform.position = BoxPointSelector.GetRandPointWithinBox(
-					spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
+					spawnAreas[Random.Range( 0,spawnAreas.Count )] );
 				// print( enemy.transform.position );
 				// Assert.IsTrue( false );
 			}
+		}
+
+		int curRoomDecoCount = nDecorations.Rand();
+		for( int i = 0; i < curRoomDecoCount; ++i )
+		{
+			var curDeco = Instantiate( decorations[Random.Range( 0,decorations.Count )] );
+			curDeco.transform.position = BoxPointSelector.GetRandPointWithinBox(
+				spawnAreas[Random.Range( 0,spawnAreas.Count )] );
+			curDeco.transform.position += Vector3.down * curDeco.transform.position.y;
 		}
 
 		foreach( var area in spawnAreas ) Destroy( area );
@@ -198,4 +207,7 @@ public class DungeonGenerator
 	GameObject wallPrefab;
 
 	[SerializeField] float wallChance = 0.6f;
+	[SerializeField] RangeI nDecorations = new RangeI( 3,5 );
+
+	[SerializeField] List<GameObject> decorations = new List<GameObject>();
 }
