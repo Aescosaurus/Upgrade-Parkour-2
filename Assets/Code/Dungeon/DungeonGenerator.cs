@@ -122,7 +122,10 @@ public class DungeonGenerator
 
 		Assert.IsTrue( inst >= 0 );
 		var curCorridor = Instantiate( corridorPrefabs[inst],transform );
-		curCorridor.transform.position += new Vector3( x,0,y ) * corridorSize;
+		curCorridor.transform.position += new Vector3( x,0,y ) * corridorSize + new Vector3(
+				Random.Range( -0.0001f,0.0001f ),
+				Random.Range( -0.0001f,0.0001f ),
+				Random.Range( -0.0001f,0.0001f ) );
 		// curCorridor.transform.position += Vector3.left * dungeonSize / 2 + Vector3.forward * dungeonSize / 2;
 		curCorridor.transform.Rotate( Vector3.up,rot );
 		PopulateCorridor( curCorridor,x != 0 || y != 0,spawnExit );
