@@ -70,7 +70,14 @@ public class InventorySlot
 
 			heldModel.transform.localPosition = new Vector3( -16.6f,-16.7f,-0.8f );
 			heldModel.transform.localScale *= itemScaleFactor;
+
 			heldModel.transform.localEulerAngles = new Vector3( 39.2f,70.5f,-12.6f );
+			if( this.item.GetPrefab().GetComponent<WeaponBase>() == null )
+			{
+				heldModel.transform.localPosition += Vector3.right * ( -2.6f + 16.6f );
+				heldModel.transform.localPosition += Vector3.up * ( -0.6f + 16.6f );
+				heldModel.transform.localEulerAngles += Vector3.forward * ( -58.0f - 12.6f );
+			}
 
 			var meshRend = heldModel.transform.GetComponentInChildren<MeshRenderer>();
 			meshRend.gameObject.layer = uiLayer;

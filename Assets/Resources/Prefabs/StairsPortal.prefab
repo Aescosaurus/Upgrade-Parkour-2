@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3142048217639134553}
+  - component: {fileID: 7199773136647353225}
   - component: {fileID: -8781065736717969046}
   m_Layer: 0
   m_Name: StairsPortal
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7199773136647353225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277290963808212834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5411849, y: 0.69763917, z: 0.54564285}
+  m_Center: {x: -0.006041845, y: 0.41610226, z: -0.0016297897}
 --- !u!114 &-8781065736717969046
 MonoBehaviour:
   m_ObjectHideFlags: 0

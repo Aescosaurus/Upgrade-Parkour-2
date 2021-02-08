@@ -59,10 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  hp: 5
+  hp: 4
   def: 0
-  hitFX: 1
-  oofFX: 2
+  hitFX: 0
+  oofFX: 1
   shirkScale: {x: 0.8, y: 1.2, z: 0.8}
 --- !u!1001 &472010988609750323
 PrefabInstance:

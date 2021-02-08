@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078883488311203831}
   - component: {fileID: 1078883488311203830}
-  - component: {fileID: 1078883488311203828}
+  - component: {fileID: 648765111629095920}
   - component: {fileID: 1078883488311203825}
   - component: {fileID: 1078883488311203829}
   - component: {fileID: 1078883488311203824}
@@ -55,8 +55,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!136 &1078883488311203828
-CapsuleCollider:
+--- !u!65 &648765111629095920
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -65,10 +65,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.0193543
-  m_Direction: 1
-  m_Center: {x: -0, y: 0.37967718, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.80726326, y: 1.8670552, z: 0.6652688}
+  m_Center: {x: 0.0195719, y: 0.4335276, z: 0.010572493}
 --- !u!95 &1078883488311203825
 Animator:
   serializedVersion: 3
@@ -109,6 +108,8 @@ MonoBehaviour:
   activationRange: 12
   moveSpeed: 5
   rotSpeed: 2.4
+  itemDropPrefab: {fileID: 485940830281168018, guid: 3d2553d4d4d5ea84b9986c9f77b9379a,
+    type: 3}
   stopDist: 2
 --- !u!114 &1078883488311203824
 MonoBehaviour:

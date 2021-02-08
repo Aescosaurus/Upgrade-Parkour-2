@@ -133,6 +133,12 @@ public class DungeonGenerator
 
 	void PopulateCorridor( GameObject corridor,bool spawnEnemies = true,bool spawnExit = false )
 	{
+		var walls = corridor.transform.Find( "WallLocs" );
+		for( int i = 0; i < walls.childCount; ++i )
+		{
+			if( Random.Range( 0.0f,1.0f ) < wallChance || !spawnEnemies || spawnExit ) Instantiate( wallPrefab,walls.GetChild( i ) );
+		}
+
 		var possibleSpawnAreas = corridor.GetComponentsInChildren<BoxCollider>();
 		var spawnAreas = new List<BoxCollider>();
 		foreach( var area in possibleSpawnAreas )
@@ -142,18 +148,20 @@ public class DungeonGenerator
 
 		if( spawnExit )
 		{
-			var hubPortal = Instantiate( hubPortalPrefab );
-			hubPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
-					spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
-			var pos = hubPortal.transform.position;
-			pos.y = 0.2f;
-			hubPortal.transform.position = pos;
-			var stairsPortal = Instantiate( stairsPrefab );
-			stairsPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
-					spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-			pos = stairsPortal.transform.position;
-			pos.y = 0.2f;
-			stairsPortal.transform.position = pos;
+			// var hubPortal = Instantiate( hubPortalPrefab );
+			// hubPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
+			// 		spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
+			// var pos = hubPortal.transform.position;
+			// pos.y = 0.2f;
+			// hubPortal.transform.position = pos;
+			// var stairsPortal = Instantiate( stairsPrefab );
+			// stairsPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
+			// 		spawnAreas[Random.Range( 0,spawnAreas.Count )] );
+			// pos = stairsPortal.transform.position;
+			// pos.y = 0.2f;
+			// stairsPortal.transform.position = pos;
+			TrySpawnPrefab( hubPortalPrefab,spawnAreas,false );
+			TrySpawnPrefab( stairsPrefab,spawnAreas,false );
 		}
 		else if( spawnEnemies )
 		{
@@ -161,30 +169,55 @@ public class DungeonGenerator
 
 			for( int i = 0; i < nEnemies; ++i )
 			{
-				var enemy = Instantiate( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )] );
-				enemy.transform.position = BoxPointSelector.GetRandPointWithinBox(
-					spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-				// print( enemy.transform.position );
-				// Assert.IsTrue( false );
+				// var enemy = Instantiate( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )] );
+				// enemy.transform.position = BoxPointSelector.GetRandPointWithinBox(
+				// 	spawnAreas[Random.Range( 0,spawnAreas.Count )] );
+				TrySpawnPrefab( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )],spawnAreas,true );
 			}
 		}
 
 		int curRoomDecoCount = nDecorations.Rand();
 		for( int i = 0; i < curRoomDecoCount; ++i )
 		{
-			var curDeco = Instantiate( decorations[Random.Range( 0,decorations.Count )] );
-			curDeco.transform.position = BoxPointSelector.GetRandPointWithinBox(
-				spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-			curDeco.transform.position += Vector3.down * curDeco.transform.position.y;
+			// var curDeco = Instantiate( decorations[Random.Range( 0,decorations.Count )] );
+			// curDeco.transform.position = BoxPointSelector.GetRandPointWithinBox(
+			// 	spawnAreas[Random.Range( 0,spawnAreas.Count )] );
+			// curDeco.transform.position += Vector3.down * curDeco.transform.position.y;
+			TrySpawnPrefab( decorations[Random.Range( 0,decorations.Count )],spawnAreas,false );
 		}
 
 		foreach( var area in spawnAreas ) Destroy( area );
+	}
 
-		var walls = corridor.transform.Find( "WallLocs" );
-		for( int i = 0; i < walls.childCount; ++i )
-		{
-			if( Random.Range( 0.0f,1.0f ) < wallChance || !spawnEnemies || spawnExit ) Instantiate( wallPrefab,walls.GetChild( i ) );
-		}
+	void TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,bool randY = true )
+	{
+		// var obj = Instantiate( prefab );
+		// var coll = obj.GetComponent<BoxCollider>();
+		// var bounds = coll.bounds.extents / 2.0f;
+		// bounds.x *= obj.transform.localScale.x;
+		// bounds.y *= obj.transform.localScale.y;
+		// bounds.z *= obj.transform.localScale.z;
+		// bool spawned = false;
+		// for( int i = 0; i < 500; ++i )
+		// {
+		// 	var randPos = BoxPointSelector.GetRandPointWithinBox(
+		// 		spawnAreas[Random.Range( 0,spawnAreas.Count )] );
+		// 
+		// 	if( !Physics.CheckBox( randPos + coll.bounds.center,bounds,
+		// 		Quaternion.identity,~0,QueryTriggerInteraction.Ignore ) )
+		// 	{
+		// 		obj.transform.position = randPos;
+		// 		if( !randY ) obj.transform.position += Vector3.down * obj.transform.position.y;
+		// 		spawned = true;
+		// 		break;
+		// 	}
+		// }
+		// 
+		// if( !spawned ) Destroy( obj );
+		var obj = Instantiate( prefab );
+		obj.transform.position = BoxPointSelector.GetRandPointWithinBox(
+			spawnAreas[Random.Range( 0,spawnAreas.Count )] );
+		if( !randY ) obj.transform.position += Vector3.down * obj.transform.position.y;
 	}
 
 	bool CheckRoom( int x,int y )

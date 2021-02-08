@@ -49,12 +49,32 @@ public class LoadableItem
 		var tempPrefab = prefab;
 		prefab = other.prefab;
 		other.prefab = tempPrefab;
+
+		var tempName = invName;
+		invName = other.invName;
+		other.invName = tempName;
+
+		var tempDesc = invDesc;
+		invDesc = other.invDesc;
+		other.invDesc = tempDesc;
 	}
 
 	public void Clear()
 	{
 		prefabSrc = "";
 		prefab = null;
+	}
+
+	public void RandomToss()
+	{
+		var body = GetComponent<Rigidbody>();
+
+		var randMove = Vector3.up;
+		randMove.x += Random.Range( -1.0f,1.0f ) * flyDev;
+		randMove.y += Random.Range( -1.0f,1.0f ) * flyDev;
+		randMove.z += Random.Range( -1.0f,1.0f ) * flyDev;
+
+		body.AddForceAtPosition( randMove * jumpForce,transform.position + Vector3.down );
 	}
 
 	public GameObject GetPrefab()
@@ -82,4 +102,7 @@ public class LoadableItem
 	GameObject prefab = null;
 	[SerializeField] string invName = "";
 	[SerializeField] string invDesc = "";
+
+	[SerializeField] float jumpForce = 400.0f;
+	[SerializeField] float flyDev = 0.2f;
 }

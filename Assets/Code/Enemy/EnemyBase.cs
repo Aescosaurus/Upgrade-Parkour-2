@@ -141,7 +141,15 @@ public class EnemyBase
 	{
 		var shard = Instantiate( shardPrefab );
 		shard.transform.position = transform.position;
-		shard.GetComponent<MonsterShard>().RandomToss();
+		shard.GetComponent<LoadableItem>().RandomToss();
+
+		if( itemDropPrefab != null )
+		{
+			var item = Instantiate( itemDropPrefab );
+			item.transform.position = transform.position;
+			item.GetComponent<LoadableItem>().RandomToss();
+		}
+
 		spawnedShard = true;
 	}
 
@@ -186,4 +194,6 @@ public class EnemyBase
 	const float gravAcc = 15.0f;
 
 	bool spawnedShard = false;
+
+	[SerializeField] GameObject itemDropPrefab = null;
 }

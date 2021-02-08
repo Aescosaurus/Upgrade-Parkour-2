@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3142048217639134553}
   - component: {fileID: -8781065736717969046}
+  - component: {fileID: 6388706152894964702}
   m_Layer: 0
   m_Name: WorldPortal
   m_TagString: Untagged
@@ -48,6 +49,19 @@ MonoBehaviour:
   heightOffset: 3
   worldTarget: DungeonScene
   displayText: Enter Dungeon
+--- !u!65 &6388706152894964702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277290963808212834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5411849, y: 0.69763917, z: 0.54564285}
+  m_Center: {x: -0.006041845, y: 0.41610226, z: -0.0016297897}
 --- !u!1001 &6651696702094357811
 PrefabInstance:
   m_ObjectHideFlags: 0
