@@ -160,8 +160,9 @@ MonoBehaviour:
   - {fileID: 3089165843163223701, guid: 0aaa5298110c7484d98abc2e7d1431c9, type: 3}
   wallChance: 0.4
   nDecorations:
-    min: 3
-    max: 7
+    min: 5
+    max: 10
+  decoSpacing: 1.8
   decorations:
   - {fileID: 6775729821227834114, guid: 92ca5985f63aa0541a58ee973b3cc3a0, type: 3}
   - {fileID: 2297016526745571759, guid: 918c05b8c3537594ea18ec46c96e7adf, type: 3}

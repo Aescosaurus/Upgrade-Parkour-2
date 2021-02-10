@@ -146,84 +146,79 @@ public class DungeonGenerator
 			if( area.isTrigger ) spawnAreas.Add( area );
 		}
 
+		var prevSpawned = new List<GameObject>();
+
 		if( spawnExit )
 		{
-			// var hubPortal = Instantiate( hubPortalPrefab );
-			// hubPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
-			// 		spawnAreas[Random.Range( 0,spawnAreas.Count - 1 )] );
-			// var pos = hubPortal.transform.position;
-			// pos.y = 0.2f;
-			// hubPortal.transform.position = pos;
-			// var stairsPortal = Instantiate( stairsPrefab );
-			// stairsPortal.transform.position = BoxPointSelector.GetRandPointWithinBox(
-			// 		spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-			// pos = stairsPortal.transform.position;
-			// pos.y = 0.2f;
-			// stairsPortal.transform.position = pos;
-			TrySpawnPrefab( hubPortalPrefab,spawnAreas,false );
-			TrySpawnPrefab( stairsPrefab,spawnAreas,false );
+			prevSpawned.Add( TrySpawnPrefab( hubPortalPrefab,spawnAreas,prevSpawned ) );
+			prevSpawned.Add( TrySpawnPrefab( stairsPrefab,spawnAreas,prevSpawned ) );
 		}
 		else if( spawnEnemies )
 		{
 			var nEnemies = nRoomEnemies.Rand();
-
 			for( int i = 0; i < nEnemies; ++i )
 			{
-				// var enemy = Instantiate( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )] );
-				// enemy.transform.position = BoxPointSelector.GetRandPointWithinBox(
-				// 	spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-				TrySpawnPrefab( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )],spawnAreas,true );
+				prevSpawned.Add( TrySpawnPrefab( SelectEnemyPrefab(),spawnAreas,prevSpawned ) );
 			}
 		}
 
-		int curRoomDecoCount = nDecorations.Rand();
-		for( int i = 0; i < curRoomDecoCount; ++i )
+		int roomDecoCount = nDecorations.Rand();
+		for( int i = 0; i < roomDecoCount; ++i )
 		{
-			// var curDeco = Instantiate( decorations[Random.Range( 0,decorations.Count )] );
-			// curDeco.transform.position = BoxPointSelector.GetRandPointWithinBox(
-			// 	spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-			// curDeco.transform.position += Vector3.down * curDeco.transform.position.y;
-			TrySpawnPrefab( decorations[Random.Range( 0,decorations.Count )],spawnAreas,false );
+			prevSpawned.Add( TrySpawnPrefab( decorations[Random.Range( 0,decorations.Count )],spawnAreas,prevSpawned ) );
 		}
-
+		
 		foreach( var area in spawnAreas ) Destroy( area );
 	}
 
-	void TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,bool randY = true )
+	// void TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,bool randY = true )
+	// {
+	// 	var obj = Instantiate( prefab );
+	// 	obj.transform.position = BoxPointSelector.GetRandPointWithinBox(
+	// 		spawnAreas[Random.Range( 0,spawnAreas.Count )] );
+	// 	if( !randY ) obj.transform.position += Vector3.down * obj.transform.position.y;
+	// }
+	GameObject TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,List<GameObject> prevSpawned )
 	{
-		// var obj = Instantiate( prefab );
-		// var coll = obj.GetComponent<BoxCollider>();
-		// var bounds = coll.bounds.extents / 2.0f;
-		// bounds.x *= obj.transform.localScale.x;
-		// bounds.y *= obj.transform.localScale.y;
-		// bounds.z *= obj.transform.localScale.z;
-		// bool spawned = false;
-		// for( int i = 0; i < 500; ++i )
-		// {
-		// 	var randPos = BoxPointSelector.GetRandPointWithinBox(
-		// 		spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-		// 
-		// 	if( !Physics.CheckBox( randPos + coll.bounds.center,bounds,
-		// 		Quaternion.identity,~0,QueryTriggerInteraction.Ignore ) )
-		// 	{
-		// 		obj.transform.position = randPos;
-		// 		if( !randY ) obj.transform.position += Vector3.down * obj.transform.position.y;
-		// 		spawned = true;
-		// 		break;
-		// 	}
-		// }
-		// 
-		// if( !spawned ) Destroy( obj );
 		var obj = Instantiate( prefab );
-		obj.transform.position = BoxPointSelector.GetRandPointWithinBox(
-			spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-		if( !randY ) obj.transform.position += Vector3.down * obj.transform.position.y;
+		do
+		{
+			obj.transform.position = BoxPointSelector.GetRandPointWithinBox(
+				spawnAreas[Random.Range( 0,spawnAreas.Count )],spawnSpacing );
+			obj.transform.position += Vector3.down * obj.transform.position.y;
+		}
+		while( CheckOverlapping( obj,prevSpawned ) );
+		
+		return( obj );
+	}
+
+	// Return true if there is overlapping within prevSpawned.
+	bool CheckOverlapping( GameObject curObj,List<GameObject> prevSpawned )
+	{
+		foreach( var obj in prevSpawned )
+		{
+			if( obj != null )
+			{
+				var diff = curObj.transform.position - obj.transform.position;
+				if( diff.sqrMagnitude < spawnSpacing * spawnSpacing )
+				{
+					return ( true );
+				}
+			}
+		}
+
+		return( false );
 	}
 
 	bool CheckRoom( int x,int y )
 	{
 		if( x < 0 || x >= dungeonSize || y < 0 || y >= dungeonSize ) return( false );
 		return( layout[y * dungeonSize + x] );
+	}
+
+	GameObject SelectEnemyPrefab()
+	{
+		return( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )] );
 	}
 
 	GameObject hubPortalPrefab;
@@ -245,5 +240,6 @@ public class DungeonGenerator
 	[SerializeField] float wallChance = 0.6f;
 	[SerializeField] RangeI nDecorations = new RangeI( 3,5 );
 
+	[SerializeField] float spawnSpacing = 1.8f;
 	[SerializeField] List<GameObject> decorations = new List<GameObject>();
 }
