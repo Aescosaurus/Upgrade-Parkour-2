@@ -181,13 +181,14 @@ public class DungeonGenerator
 	GameObject TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,List<GameObject> prevSpawned )
 	{
 		var obj = Instantiate( prefab );
+		int tries = 50;
 		do
 		{
 			obj.transform.position = BoxPointSelector.GetRandPointWithinBox(
 				spawnAreas[Random.Range( 0,spawnAreas.Count )],spawnSpacing );
 			obj.transform.position += Vector3.down * obj.transform.position.y;
 		}
-		while( CheckOverlapping( obj,prevSpawned ) );
+		while( CheckOverlapping( obj,prevSpawned ) && --tries > 0 );
 		
 		return( obj );
 	}

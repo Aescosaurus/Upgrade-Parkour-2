@@ -58,11 +58,12 @@ public class StorageBase
 					}
 				}
 
-				var loadItem = Resources.Load<GameObject>( line ).GetComponent<LoadableItem>();
-				for( int j = 0; j < stackSize; ++j )
-				{
-					slots[i].AddItem( loadItem );
-				}
+				var loadItem = Resources.Load<GameObject>( line )?.GetComponent<LoadableItem>();
+				if( loadItem != null ) slots[i].AddItem( loadItem,stackSize );
+				// for( int j = 0; j < stackSize; ++j )
+				// {
+				// 	slots[i].AddItem( loadItem );
+				// }
 			}
 		}
 
