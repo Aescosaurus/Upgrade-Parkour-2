@@ -162,11 +162,13 @@ MonoBehaviour:
   nDecorations:
     min: 5
     max: 10
-  decoSpacing: 1.8
+  spawnSpacing: 1.8
   decorations:
   - {fileID: 6775729821227834114, guid: 92ca5985f63aa0541a58ee973b3cc3a0, type: 3}
   - {fileID: 2297016526745571759, guid: 918c05b8c3537594ea18ec46c96e7adf, type: 3}
   - {fileID: 662158642780700654, guid: ed556b0d9bff3024091100f921c7bf01, type: 3}
+  - {fileID: 2976186735114767764, guid: 6be85cf1c58fc15408322ebbfebd90f5, type: 3}
+  - {fileID: 8203672923977965127, guid: 9047ff9255ecc20408332e228031da47, type: 3}
 --- !u!4 &265085816
 Transform:
   m_ObjectHideFlags: 0
