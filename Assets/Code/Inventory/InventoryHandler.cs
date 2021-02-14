@@ -72,6 +72,16 @@ public class InventoryHandler
 		return( !full );
 	}
 
+	public override bool TryConsumeItem( LoadableItem item,int quantity = 1 )
+	{
+		bool consumed = false;
+
+		consumed = hotbar.TryConsumeItem( item,quantity );
+		if( !consumed ) base.TryConsumeItem( item,quantity );
+
+		return( consumed );
+	}
+
 	// GameObject invPanel;
 	// GameObject invSlotPrefab;
 

@@ -161,6 +161,23 @@ public class StorageBase
 		// return( false );
 	}
 
+	// Return true if quantity exists of item and was consumed.
+	public virtual bool TryConsumeItem( LoadableItem item,int quantity = 1 )
+	{
+		bool consumable = false;
+		foreach( var slot in slots )
+		{
+			if( slot.GetItem().CheckEqual( item ) && slot.CountItems() >= quantity )
+			{
+				consumable = true;
+				slot.RemoveItem( quantity );
+				break;
+			}
+		}
+
+		return( consumable );
+	}
+
 	public bool CheckExisting( LoadableItem checkItem )
 	{
 		foreach( var slot in slots )

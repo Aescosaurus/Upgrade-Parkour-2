@@ -54,6 +54,9 @@ MonoBehaviour:
     duration: 3
   projectilePrefab: {fileID: 3716605428022485691, guid: 3cbe648558289cf4ea1b7020734863cb,
     type: 3}
+  ammoItem: {fileID: -8025537777289129997, guid: 3cbe648558289cf4ea1b7020734863cb,
+    type: 3}
+  ammoUsage: 1
   shotSpeed: 20
   damage: 1
 --- !u!114 &-2246478178887067418

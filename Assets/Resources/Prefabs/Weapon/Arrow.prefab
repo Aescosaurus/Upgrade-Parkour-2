@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2987928675023861139}
   - component: {fileID: 5337118519115006997}
   - component: {fileID: 5918951970789006037}
+  - component: {fileID: -8025537777289129997}
+  - component: {fileID: -6863404685622762409}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -58,7 +60,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716605428022485691}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.10276806, y: 0.10726321, z: 0.5942191}
@@ -75,6 +77,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6059dde9f66ac5439a0251104a70e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8025537777289129997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716605428022485691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0555b586c57c232418253e37a9d4b791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSrc: Prefabs/Weapon/Arrow
+  invName: Arrow
+  invDesc: An arrow used by various bows.
+  jumpForce: 400
+  flyDev: 0.2
+--- !u!114 &-6863404685622762409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716605428022485691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d3ee732beb5574c9a053a8acb6207f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactDist: 4
+  heightOffset: 1
 --- !u!1001 &4817119918356359884
 PrefabInstance:
   m_ObjectHideFlags: 0

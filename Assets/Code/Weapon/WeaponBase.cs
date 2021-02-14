@@ -31,7 +31,7 @@ public abstract class WeaponBase
 
 	protected abstract void Fire();
 
-	public void LinkAnimator( Animator animCtrl )
+	public virtual void LinkAnimator( Animator animCtrl )
 	{
 		this.animCtrl = animCtrl;
 	}
