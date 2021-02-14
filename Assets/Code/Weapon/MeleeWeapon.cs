@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class MeleeWeaponBase
+public class MeleeWeapon
 	:
 	WeaponBase
 {

@@ -2742,7 +2742,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickupPrefab
       value: 
-      objectReference: {fileID: 8191641289092310427, guid: 28fb18e41a16b6e40875e47a573e01e2,
+      objectReference: {fileID: -3259079474493620973, guid: 28fb18e41a16b6e40875e47a573e01e2,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36c0fe199d6c5b741968290c0f866204, type: 3}
@@ -2817,7 +2817,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickupPrefab
       value: 
-      objectReference: {fileID: -1612604790715810411, guid: db3a682df86abd54aa564560fe4f259f,
+      objectReference: {fileID: 9145189852848037866, guid: db3a682df86abd54aa564560fe4f259f,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36c0fe199d6c5b741968290c0f866204, type: 3}
@@ -3175,6 +3175,7 @@ MonoBehaviour:
   activationRange: 5
   moveSpeed: 1
   rotSpeed: 2.4
+  itemDropPrefab: {fileID: 0}
   shotTimer:
     duration: 0.8
   predictFactor: 7
@@ -5882,6 +5883,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812476791439417102, guid: 6eebddb192011cb40b1224eb32d2561d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 98.100006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eebddb192011cb40b1224eb32d2561d, type: 3}

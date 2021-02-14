@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 409589128292150075}
   - component: {fileID: 1432936725834951200}
-  - component: {fileID: 409589128292150068}
+  - component: {fileID: 2719448735761962952}
   m_Layer: 0
   m_Name: Fist
   m_TagString: Untagged
@@ -45,7 +45,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6394331, y: 1.4200544, z: 1.7917138}
   m_Center: {x: 0.21971655, y: 0.110027194, z: 0.71585685}
---- !u!114 &409589128292150068
+--- !u!114 &2719448735761962952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,10 +54,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 409589128292150074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ceedb29001c9d84aad7a5ffa71ca7d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f1ae73bbb6a9a94ab653367b90f3335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: 
+  prefabSrc: Prefabs/Weapon/Fist
+  invName: 
+  invDesc: 
+  jumpForce: 400
+  flyDev: 0.2
   refire:
-    duration: 0.7
-  damage: 1
+    duration: 0.5
+  damage: 0.5

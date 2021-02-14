@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8191641289092310424}
-  - component: {fileID: 8191641289092310427}
+  - component: {fileID: -3259079474493620973}
   - component: {fileID: -2246478178887067418}
   m_Layer: 0
   m_Name: BasicBow
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8191641289092310427
+--- !u!114 &-3259079474493620973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8191641289092310425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51fcd8a0acf99f4ab392fb4d53ec3d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 64d169be8eb5f03498d729cef01a577f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSrc: Prefabs/Weapon/BasicBow
   invName: Basic Bow
   invDesc: A standard wooden bow.
+  jumpForce: 400
+  flyDev: 0.2
   refire:
-    duration: 0.5
-  shotDist: 35
+    duration: 1
+  projectilePrefab: {fileID: 3716605428022485691, guid: 3cbe648558289cf4ea1b7020734863cb,
+    type: 3}
+  shotSpeed: 50
+  damage: 1
 --- !u!114 &-2246478178887067418
 MonoBehaviour:
   m_ObjectHideFlags: 0

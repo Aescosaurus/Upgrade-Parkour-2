@@ -28,13 +28,13 @@ public class WeaponHolder
 
 	public void TryAttack( float aimDir )
 	{
+		storedRot = aimDir;
+		SetRot();
+
 		if( curWB != null )
 		{
 			curWB.TryPerformAttack();
 		}
-
-		storedRot = aimDir;
-		SetRot();
 	}
 
 	public void CancelAttack()
