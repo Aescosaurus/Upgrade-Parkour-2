@@ -10,85 +10,94 @@ public class StorageBase
 	:
 	MonoBehaviour
 {
+	void Awake()
+	{
+		for( int i = 0; i < transform.childCount; ++i )
+		{
+			slots.Add( transform.GetChild( i ).GetComponent<InventorySlot>() );
+		}
+	}
+
 	protected virtual void Start()
 	{
 		// Assert.IsTrue( storagePanelSrc.Length > 0 );
 		// 
 		// storagePanel = GameObject.Find( storagePanelSrc );
 
-		savePath = Application.persistentDataPath + '/' + gameObject.name + ".txt";
-
-		EnsureFileExists();
-		var lines = new List<string>();
-		var reader = new StreamReader( savePath );
-		while( !reader.EndOfStream ) lines.Add( reader.ReadLine() );
-		reader.Close();
-
-		for( int i = 0; i < transform.childCount; ++i )
+		if( writeSaveFile )
 		{
-			slots.Add( transform.GetChild( i ).GetComponent<InventorySlot>() );
-		}
+			savePath = Application.persistentDataPath + '/' + gameObject.name + ".txt";
 
-		Assert.IsTrue( lines.Count <= slots.Count );
-		for( int i = 0; i < lines.Count; ++i )
-		{
-			var line = lines[i];
-			if( line.Length > 0 )
+			EnsureFileExists();
+			var lines = new List<string>();
+			var reader = new StreamReader( savePath );
+			while( !reader.EndOfStream ) lines.Add( reader.ReadLine() );
+			reader.Close();
+
+			Assert.IsTrue( lines.Count <= slots.Count );
+			for( int i = 0; i < lines.Count; ++i )
 			{
-				int stackSize = 1;
-
-				if( char.IsNumber( line[0] ) )
+				var line = lines[i];
+				if( line.Length > 0 )
 				{
-					string counter = "";
-					for( int j = 0; j < line.Length; ++j )
-					{
-						if( line[j] == ' ' )
-						{
-							try
-							{
-								stackSize = int.Parse( counter );
-							}
-							catch( Exception ) {}
-							finally
-							{
-								line = line.Substring( j + 1 );
-							}
-						}
-						else counter += line[j];
-					}
-				}
+					int stackSize = 1;
 
-				var loadItem = Resources.Load<GameObject>( line )?.GetComponent<LoadableItem>();
-				if( loadItem != null ) slots[i].AddItem( loadItem,stackSize );
-				// for( int j = 0; j < stackSize; ++j )
-				// {
-				// 	slots[i].AddItem( loadItem );
-				// }
+					if( char.IsNumber( line[0] ) )
+					{
+						string counter = "";
+						for( int j = 0; j < line.Length; ++j )
+						{
+							if( line[j] == ' ' )
+							{
+								try
+								{
+									stackSize = int.Parse( counter );
+								}
+								catch( Exception ) { }
+								finally
+								{
+									line = line.Substring( j + 1 );
+								}
+							}
+							else counter += line[j];
+						}
+					}
+
+					var loadItem = Resources.Load<GameObject>( line )?.GetComponent<LoadableItem>();
+					if( loadItem != null ) slots[i].AddItem( loadItem,stackSize );
+					// for( int j = 0; j < stackSize; ++j )
+					// {
+					// 	slots[i].AddItem( loadItem );
+					// }
+				}
 			}
 		}
 
 		panelBG = GetComponent<Image>();
 		miscPanel = GameObject.Find( "MiscPanel" );
 
-		ToggleOpen( false );
+		if( startClosed ) ToggleOpen( false );
 	}
 
 	void OnDestroy()
 	{
-		var writer = new StreamWriter( savePath );
-
-		foreach( var slot in slots )
+		if( writeSaveFile )
 		{
-			string line = "";
-			if( slot.GetItem() != null )
-			{
-				line = slot.GetItem().GetSrc();
+			var writer = new StreamWriter( savePath );
 
-				if( slot.CountItems() > 1 ) line = slot.CountItems().ToString() + ' ' + line;
+			foreach( var slot in slots )
+			{
+				string line = "";
+				if( slot.GetItem() != null )
+				{
+					line = slot.GetItem().GetSrc();
+
+					if( slot.CountItems() > 1 ) line = slot.CountItems().ToString() + ' ' + line;
+				}
+				writer.WriteLine( line );
 			}
-			writer.WriteLine( line );
+			writer.Close();
 		}
-		writer.Close();
 	}
 
 	void EnsureFileExists()
@@ -141,7 +150,7 @@ public class StorageBase
 			{
 				if( slot.GetItem().CheckEqual( item ) )
 				{
-					// print( slot.GetItem().GetSrc() + "    " + item.GetSrc() );
+					// print( slot.GetItem().GetSrc() + "	" + item.GetSrc() );
 					return( slot.TrySetItem( item ) );
 				}
 			}
@@ -196,6 +205,11 @@ public class StorageBase
 		return ( open );
 	}
 
+	public int CountSlots()
+	{
+		return( slots.Count );
+	}
+
 	string savePath;
 
 	// [SerializeField] string storagePanelSrc = "";
@@ -207,4 +221,7 @@ public class StorageBase
 	protected bool open = false;
 
 	protected List<InventorySlot> slots = new List<InventorySlot>();
+
+	[SerializeField] bool writeSaveFile = true;
+	[SerializeField] bool startClosed = true;
 }

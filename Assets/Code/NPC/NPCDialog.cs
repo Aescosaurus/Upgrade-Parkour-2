@@ -10,9 +10,9 @@ public class NPCDialog
 	{
 		base.Start();
 
-		if( lines.Count < 1 ) lines.Add( "" );
+		// if( lines.Count < 1 ) lines.Add( "" );
 
-		if( talkBeforeInteract )
+		if( talkBeforeInteract && lines.Count > 0 )
 		{
 			++curLine;
 			RefreshLine();
@@ -35,7 +35,8 @@ public class NPCDialog
 
 	protected virtual void EndDialog()
 	{
-		if( repeat )
+		if( lines.Count < 1 ) SetText( "[E]" );
+		else if( repeat )
 		{
 			curLine = talkBeforeInteract ? 0 : -1;
 			if( talkBeforeInteract )

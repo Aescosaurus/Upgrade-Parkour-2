@@ -77,7 +77,7 @@ public class InventoryHandler
 		bool consumed = false;
 
 		consumed = hotbar.TryConsumeItem( item,quantity );
-		if( !consumed ) base.TryConsumeItem( item,quantity );
+		if( !consumed ) consumed = base.TryConsumeItem( item,quantity );
 
 		return( consumed );
 	}

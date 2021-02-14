@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShardExchange
-    :
-    VendorUIBase
+	:
+	VendorUIBase
 {
-    void Start()
+	void Start()
 	{
 		shardSpot = transform.Find( "ShardSpot" ).GetComponent<InventorySlot>();
 		coinSpot = transform.Find( "CoinSpot" ).GetComponent<InventorySlot>();
@@ -14,7 +14,7 @@ public class ShardExchange
 		coinPrefab = Resources.Load<GameObject>( "Prefabs/Coin" ).GetComponent<LoadableItem>();
 	}
 
-    public void TryExchange()
+	public void TryExchange()
 	{
 		if( shardSpot.GetPrefab()?.GetComponent<MonsterShard>() != null )
 		{

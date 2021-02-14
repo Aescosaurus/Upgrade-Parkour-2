@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class ThrowableWeapon
-    :
-    WeaponBase
+	:
+	WeaponBase
 {
 	protected override void Start()
 	{

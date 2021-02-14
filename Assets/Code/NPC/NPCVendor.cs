@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class NPCVendor
-    :
-    NPCDialog
+	:
+	NPCDialog
 {
 	protected override void Start()
 	{
@@ -37,7 +37,7 @@ public class NPCVendor
 		// }
 	}
 
-	void OpenUI()
+	protected virtual void OpenUI()
 	{
 		invHand.ToggleOpen( true );
 
@@ -70,7 +70,7 @@ public class NPCVendor
 	}
 
 	[SerializeField] GameObject uiPrefab = null;
-	GameObject curUI = null;
+	protected GameObject curUI = null;
 
 	InventoryHandler invHand;
 	GameObject miscPanel;
