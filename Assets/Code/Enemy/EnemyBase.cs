@@ -39,10 +39,7 @@ public class EnemyBase
 			if( !activated )
 			{
 				Activate();
-				foreach( var enemy in FindObjectsOfType<EnemyBase>() )
-				{
-					if( IsWithinActivateRange( enemy.gameObject ) ) enemy.Activate();
-				}
+				ActivateNearby();
 			}
 		}
 
@@ -128,11 +125,23 @@ public class EnemyBase
 		activated = true;
 	}
 
+	void ActivateNearby()
+	{
+		foreach( var enemy in FindObjectsOfType<EnemyBase>() )
+		{
+			if( IsWithinActivateRange( enemy.gameObject ) ) enemy.Activate();
+		}
+	}
+
 	public override void Damage( float amount )
 	{
 		base.Damage( amount );
 
-		activated = true;
+		if( !activated )
+		{
+			Activate();
+			ActivateNearby();
+		}
 
 		if( hp <= 0.0f && !spawnedShard ) SpawnShard();
 	}

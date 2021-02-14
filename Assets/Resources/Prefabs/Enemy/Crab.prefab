@@ -157,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8858352, y: 1.0281348, z: 0.9111577}
-  m_Center: {x: 0.008093834, y: 0.39212918, z: 0.029653266}
+  m_Size: {x: 0.8858352, y: 1.4006741, z: 0.9111577}
+  m_Center: {x: 0.008093834, y: 0.5783988, z: 0.029653251}
 --- !u!95 &3089165843163223696
 Animator:
   serializedVersion: 3
@@ -199,6 +199,7 @@ MonoBehaviour:
   activationRange: 15
   moveSpeed: 2.7
   rotSpeed: 2.4
+  itemDropPrefab: {fileID: 0}
   strafeDist: 9
   fleeDist: 5
   lungeTimer:
@@ -441,8 +442,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.183466, z: 1.0356894}
-  m_Center: {x: 0, y: 0.37316084, z: 0.0052740574}
+  m_Size: {x: 1, y: 1.5952246, z: 1.0356894}
+  m_Center: {x: 0, y: 0.57904017, z: 0.0052740574}
 --- !u!1001 &3089165842985225533
 PrefabInstance:
   m_ObjectHideFlags: 0

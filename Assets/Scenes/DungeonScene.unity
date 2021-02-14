@@ -158,6 +158,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 1078883488311203826, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
   - {fileID: 3089165843163223701, guid: 0aaa5298110c7484d98abc2e7d1431c9, type: 3}
+  - {fileID: 1078883488311203826, guid: f3d3472e09bdb09429af02b09078a01a, type: 3}
   wallChance: 0.4
   nDecorations:
     min: 5

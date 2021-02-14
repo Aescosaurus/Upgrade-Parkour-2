@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -3259079474493620973}
   - component: {fileID: -2246478178887067418}
   m_Layer: 0
-  m_Name: BasicBow
+  m_Name: RangerBow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,16 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d169be8eb5f03498d729cef01a577f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: Prefabs/Weapon/BasicBow
-  invName: Basic Bow
-  invDesc: A standard wooden bow.
+  prefabSrc: Prefabs/Weapon/RangerBow
+  invName: Ranger Bow
+  invDesc: The ranger enemy's bow.
   jumpForce: 400
   flyDev: 0.2
   refire:
-    duration: 1
+    duration: 3
   projectilePrefab: {fileID: 3716605428022485691, guid: 3cbe648558289cf4ea1b7020734863cb,
     type: 3}
-  shotSpeed: 35
+  shotSpeed: 20
   damage: 1
 --- !u!114 &-2246478178887067418
 MonoBehaviour:
