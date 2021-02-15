@@ -75,8 +75,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.196636, y: 1, z: 0.73881483}
-  m_Center: {x: 3.7254877, y: 0, z: -5.148244}
+  m_Size: {x: 18.196636, y: 1, z: 1.1984491}
+  m_Center: {x: 3.7254877, y: 0, z: -4.114796}
 --- !u!65 &6232604546005624333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88,8 +88,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.512186, y: 1, z: 0.7592778}
-  m_Center: {x: 9.567712, y: 0, z: 5.281501}
+  m_Size: {x: 8.423797, y: 1, z: 1.014965}
+  m_Center: {x: 8.611906, y: 0, z: 4.294615}
 --- !u!65 &4803579818280055312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101,8 +101,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.60321856, y: 1, z: 18.762297}
-  m_Center: {x: -5.347518, y: 0, z: 3.4603739}
+  m_Size: {x: 1.0840397, y: 1, z: 18.762297}
+  m_Center: {x: -4.257381, y: 0, z: 3.4603739}
 --- !u!65 &4015204628087755610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7257619, y: 1, z: 7.835907}
-  m_Center: {x: 5.3606834, y: 0, z: 8.923569}
+  m_Size: {x: 0.8539133, y: 1, z: 7.835907}
+  m_Center: {x: 4.386515, y: 0, z: 8.923569}
 --- !u!1 &5396512022846791909
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,8 +191,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.957088, y: 1, z: 9.979442}
-  m_Center: {x: 4.3452606, y: 0, z: -0.18819189}
+  m_Size: {x: 15.558742, y: 1, z: 6.8790345}
+  m_Center: {x: 5.044434, y: 0, z: 0.19067264}
 --- !u!65 &8183723182828028599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -204,8 +204,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.54606, y: 1, z: 8.587545}
-  m_Center: {x: 0.30460024, y: 0, z: 9.047479}
+  m_Size: {x: 6.0994124, y: 1, z: 8.587545}
+  m_Center: {x: 0.19156575, y: 0, z: 9.047479}
 --- !u!1 &5826166402956279497
 GameObject:
   m_ObjectHideFlags: 0

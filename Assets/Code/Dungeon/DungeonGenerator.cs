@@ -192,6 +192,8 @@ public class DungeonGenerator
 			obj.transform.position += Vector3.down * obj.transform.position.y;
 		}
 		while( CheckOverlapping( obj,prevSpawned ) && --tries > 0 );
+
+		obj.transform.Rotate( Vector3.up,Random.Range( 0.0f,360.0f ) );
 		
 		return( obj );
 	}
