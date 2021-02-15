@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSrc: Prefabs/Weapon/Arrow
   invName: Arrow
-  invDesc: An arrow used by various bows.
+  invDesc: Necessary ammo when using bows.
   jumpForce: 400
   flyDev: 0.2
 --- !u!114 &-6863404685622762409

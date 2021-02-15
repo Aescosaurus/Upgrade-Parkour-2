@@ -46,6 +46,24 @@ public class TreasureChest
 		curUI.GetComponent<TreasureChestUI>().SetItems( items,quantities );
 	}
 
+	public override void CloseUI()
+	{
+		base.CloseUI();
+
+		var slots = curUI.GetComponent<TreasureChestUI>().GetInvSlots();
+		for( int i = 0; i < slots.Count; ++i )
+		{
+			// if( slots[i].CountItems() > 0 )
+			{
+				// if( items[i] == null ) items[i] = dropPool[0].item;
+
+				// items[i].Copy( slots[i].GetItem() );
+				items[i] = slots[i].GetPrefab()?.GetComponent<LoadableItem>();
+				quantities[i] = slots[i].CountItems();
+			}
+		}
+	}
+
 	List<LoadableItem> items = new List<LoadableItem>();
 	List<int> quantities = new List<int>();
 

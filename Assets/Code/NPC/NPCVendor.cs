@@ -55,7 +55,7 @@ public class NPCVendor
 	// 	// open = false;
 	// 	SetText( "[E]" );
 	// }
-	public void CloseUI()
+	public virtual void CloseUI()
 	{
 		open = false;
 		SetText( "[E]" );

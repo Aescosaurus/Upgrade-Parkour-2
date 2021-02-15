@@ -210,6 +210,11 @@ public class StorageBase
 		return( slots.Count );
 	}
 
+	public List<InventorySlot> GetInvSlots()
+	{
+		return( slots );
+	}
+
 	string savePath;
 
 	// [SerializeField] string storagePanelSrc = "";

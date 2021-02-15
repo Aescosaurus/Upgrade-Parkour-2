@@ -16,7 +16,7 @@ public class TreasureChestUI
 		{
 			var curItem = srcItems[i];
 			var curAmount = quantities[i];
-			if( curItem != null && curAmount > 0 )
+			if( curAmount > 0 )
 			{
 				// TryAddItem( curItem );
 				// for( int j = 0; j < curAmount - 1; ++j )

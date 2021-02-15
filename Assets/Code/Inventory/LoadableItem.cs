@@ -80,7 +80,7 @@ public class LoadableItem
 	public GameObject GetPrefab()
 	{
 		TryLoadPrefab();
-		return ( prefab );
+		return( prefab );
 	}
 
 	public string GetSrc()
