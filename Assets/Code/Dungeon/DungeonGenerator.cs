@@ -139,36 +139,39 @@ public class DungeonGenerator
 			if( Random.Range( 0.0f,1.0f ) < wallChance || !spawnEnemies || spawnExit ) Instantiate( wallPrefab,walls.GetChild( i ) );
 		}
 
-		var possibleSpawnAreas = corridor.GetComponentsInChildren<BoxCollider>();
-		var spawnAreas = new List<BoxCollider>();
-		foreach( var area in possibleSpawnAreas )
-		{
-			if( area.isTrigger ) spawnAreas.Add( area );
-		}
+		// var possibleSpawnAreas = corridor.GetComponentsInChildren<BoxCollider>();
+		// var spawnAreas = new List<BoxCollider>();
+		// foreach( var area in possibleSpawnAreas )
+		// {
+		// 	if( area.isTrigger ) spawnAreas.Add( area );
+		// }
+		var enemySpawnAreas = corridor.transform.Find( "EnemySpawnArea" ).GetComponents<BoxCollider>().ToList();
+		var decoSpawnAreas = corridor.transform.Find( "DecoSpawnArea" ).GetComponents<BoxCollider>().ToList();
 
 		var prevSpawned = new List<GameObject>();
 
 		if( spawnExit )
 		{
-			prevSpawned.Add( TrySpawnPrefab( hubPortalPrefab,spawnAreas,prevSpawned ) );
-			prevSpawned.Add( TrySpawnPrefab( stairsPrefab,spawnAreas,prevSpawned ) );
+			prevSpawned.Add( TrySpawnPrefab( hubPortalPrefab,enemySpawnAreas,prevSpawned ) );
+			prevSpawned.Add( TrySpawnPrefab( stairsPrefab,enemySpawnAreas,prevSpawned ) );
 		}
 		else if( spawnEnemies )
 		{
 			var nEnemies = nRoomEnemies.Rand();
 			for( int i = 0; i < nEnemies; ++i )
 			{
-				prevSpawned.Add( TrySpawnPrefab( SelectEnemyPrefab(),spawnAreas,prevSpawned ) );
+				prevSpawned.Add( TrySpawnPrefab( SelectEnemyPrefab(),enemySpawnAreas,prevSpawned ) );
 			}
 		}
 
 		int roomDecoCount = nDecorations.Rand();
 		for( int i = 0; i < roomDecoCount; ++i )
 		{
-			prevSpawned.Add( TrySpawnPrefab( decorations[Random.Range( 0,decorations.Count )],spawnAreas,prevSpawned ) );
+			prevSpawned.Add( TrySpawnPrefab( decorations[Random.Range( 0,decorations.Count )],decoSpawnAreas,prevSpawned ) );
 		}
 		
-		foreach( var area in spawnAreas ) Destroy( area );
+		foreach( var area in enemySpawnAreas ) Destroy( area );
+		foreach( var area in decoSpawnAreas ) Destroy( area );
 	}
 
 	// void TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,bool randY = true )
