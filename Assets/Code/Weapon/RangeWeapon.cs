@@ -12,17 +12,18 @@ public class RangeWeapon
 		{
 			animCtrl.SetBool( "aim",true );
 
-			var proj = Instantiate( projectilePrefab );
-			proj.GetComponent<Collider>().isTrigger = true;
-			proj.transform.position = animCtrl.transform.position + Vector3.up * 1.3f + animCtrl.transform.forward;
-			proj.transform.forward = animCtrl.transform.forward + Vector3.up * 0.2f;
-			proj.GetComponent<Rigidbody>().AddForce( animCtrl.transform.forward * shotSpeed,ForceMode.Impulse );
-
-			var projScr = proj.GetComponent<Projectile>();
-			projScr.SetDamage( damage );
-
-			Destroy( proj.GetComponent<LoadableItem>() );
-			Destroy( proj.GetComponent<ItemPickup>() );
+			// var proj = Instantiate( projectilePrefab );
+			// proj.GetComponent<Collider>().isTrigger = true;
+			// proj.transform.position = animCtrl.transform.position + Vector3.up * 1.3f + animCtrl.transform.forward;
+			// proj.transform.forward = animCtrl.transform.forward + Vector3.up * 0.2f;
+			// proj.GetComponent<Rigidbody>().AddForce( animCtrl.transform.forward * shotSpeed,ForceMode.Impulse );
+			// 
+			// var projScr = proj.GetComponent<Projectile>();
+			// projScr.SetDamage( damage );
+			// 
+			// Destroy( proj.GetComponent<LoadableItem>() );
+			// Destroy( proj.GetComponent<ItemPickup>() );
+			FireProjectile( projectilePrefab,shotSpeed,damage,0.2f );
 		}
 		else
 		{

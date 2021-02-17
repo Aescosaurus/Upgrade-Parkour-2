@@ -65,6 +65,22 @@ public abstract class WeaponBase
 		this.hotbar = hotbar;
 	}
 
+	protected void FireProjectile( GameObject projectile,float shotSpeed,float damage,float upAimBias = 0.0f )
+	{
+		var proj = Instantiate( projectile );
+		proj.GetComponent<Collider>().isTrigger = true;
+		proj.transform.position = animCtrl.transform.position + Vector3.up * 1.15f + animCtrl.transform.forward;
+		proj.transform.forward = cam.transform.forward + Vector3.up * upAimBias;
+		proj.GetComponent<Rigidbody>().AddForce( proj.transform.forward * shotSpeed,ForceMode.Impulse );
+
+		var projScr = proj.GetComponent<Projectile>();
+		projScr.SetDamage( damage );
+		projScr.SetTeam( team );
+
+		Destroy( proj.GetComponent<LoadableItem>() );
+		Destroy( proj.GetComponent<ItemPickup>() );
+	}
+
 	public virtual int GetPreferredHand()
 	{
 		return( 1 );
