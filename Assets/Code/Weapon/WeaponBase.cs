@@ -65,11 +65,11 @@ public abstract class WeaponBase
 		this.hotbar = hotbar;
 	}
 
-	protected void FireProjectile( GameObject projectile,float shotSpeed,float damage,float upAimBias = 0.0f )
+	protected void FireProjectile( GameObject projectile,float shotSpeed,float damage,float upAimBias = 0.1f )
 	{
 		var proj = Instantiate( projectile );
 		proj.GetComponent<Collider>().isTrigger = true;
-		proj.transform.position = animCtrl.transform.position + Vector3.up * 1.15f + animCtrl.transform.forward;
+		proj.transform.position = animCtrl.transform.position + Vector3.up * 1.2f + animCtrl.transform.forward;
 		proj.transform.forward = cam.transform.forward + Vector3.up * upAimBias;
 		proj.GetComponent<Rigidbody>().AddForce( proj.transform.forward * shotSpeed,ForceMode.Impulse );
 

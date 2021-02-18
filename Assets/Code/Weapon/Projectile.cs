@@ -6,6 +6,11 @@ public class Projectile
 	:
 	MonoBehaviour
 {
+	void Start()
+	{
+		Destroy( gameObject,lifetime );
+	}
+
 	void OnTriggerEnter( Collider coll )
 	{
 		var damageTarget = coll.GetComponent<Damageable>();
@@ -31,4 +36,6 @@ public class Projectile
 
 	float damage = 0.0f;
 	int team = -1;
+
+	[SerializeField] float lifetime = 10.0f;
 }

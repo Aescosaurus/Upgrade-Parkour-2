@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8214016878332542317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4689513, y: 1.1243436, z: 4.3167825}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5544350733590705494}
@@ -79,6 +79,8 @@ MonoBehaviour:
   prefabSrc: Prefabs/Coin
   invName: Coin
   invDesc: Currency.  Use this to buy things.
+  jumpForce: 400
+  flyDev: 0.2
 --- !u!114 &4678061344214941853
 MonoBehaviour:
   m_ObjectHideFlags: 0

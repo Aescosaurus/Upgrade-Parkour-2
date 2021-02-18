@@ -53,7 +53,7 @@ MonoBehaviour:
   refire:
     duration: 1
   shotSpeed: 30
-  damage: 1
+  damage: 2
 --- !u!114 &2529357858781853021
 MonoBehaviour:
   m_ObjectHideFlags: 0

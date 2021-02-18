@@ -51,6 +51,8 @@ public class ItemPickup
 		// Assert.IsNotNull( prefab );
 		// itemPrefab.Init();
 		itemPrefab = GetComponent<LoadableItem>();
+
+		gameObject.layer = LayerMask.NameToLayer( "ItemPickup" );
 	}
 
 	protected override void Interact()
