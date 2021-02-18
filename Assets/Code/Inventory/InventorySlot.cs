@@ -12,7 +12,8 @@ public class InventorySlot
 	IEndDragHandler,
 	IDragHandler,
 	IPointerEnterHandler,
-	IPointerExitHandler
+	IPointerExitHandler,
+	IPointerClickHandler
 {
 	void Awake()
 	{
@@ -157,6 +158,11 @@ public class InventorySlot
 	public void OnPointerExit( PointerEventData eventData )
 	{
 		infoPanel.ClosePanel();
+	}
+
+	public void OnPointerClick( PointerEventData eventData )
+	{
+
 	}
 
 	// more like swap item
