@@ -25,9 +25,12 @@ public class InfoPanel
 
 	public void ClosePanel()
 	{
-		img.enabled = false;
-		title.text = "";
-		desc.text = "";
+		if( img != null )
+		{
+			img.enabled = false;
+			title.text = "";
+			desc.text = "";
+		}
 	}
 
 	Image img;

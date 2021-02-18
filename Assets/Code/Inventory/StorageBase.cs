@@ -16,6 +16,8 @@ public class StorageBase
 		{
 			slots.Add( transform.GetChild( i ).GetComponent<InventorySlot>() );
 		}
+
+		infoPanel = GameObject.Find( "InfoPanel" ).GetComponent<InfoPanel>();
 	}
 
 	protected virtual void Start()
@@ -124,6 +126,8 @@ public class StorageBase
 		{
 			miscPanel.GetComponentInChildren<VendorUIBase>()?.CloseUI();
 			if( miscPanel.transform.childCount > 0 ) Destroy( miscPanel.transform.GetChild( 0 ).gameObject );
+
+			infoPanel.ClosePanel();
 		}
 	}
 
@@ -222,6 +226,7 @@ public class StorageBase
 
 	Image panelBG;
 	GameObject miscPanel;
+	InfoPanel infoPanel;
 
 	protected bool open = false;
 

@@ -8,10 +8,10 @@ public abstract class WeaponBase
 {
 	protected virtual void Start()
 	{
-		cam = Camera.main;
-
 		// animCtrl = FindObjectOfType<PlayerWalk>().GetComponent<Animator>();
 		team = animCtrl?.GetComponent<EnemyBase>() != null ? 2 : 1;
+
+		cam = ( team == 1 ? Camera.main.transform : animCtrl.transform );
 
 		refire.Update( refire.GetDuration() );
 	}
@@ -65,13 +65,14 @@ public abstract class WeaponBase
 		this.hotbar = hotbar;
 	}
 
-	protected void FireProjectile( GameObject projectile,float shotSpeed,float damage,float upAimBias = 0.1f )
+	protected GameObject FireProjectile( GameObject projectile,float shotSpeed,float damage,float upAimBias = 0.1f )
 	{
 		var proj = Instantiate( projectile );
 		proj.GetComponent<Collider>().isTrigger = true;
 		proj.transform.position = animCtrl.transform.position + Vector3.up * 1.2f + animCtrl.transform.forward;
 		proj.transform.forward = cam.transform.forward + Vector3.up * upAimBias;
 		proj.GetComponent<Rigidbody>().AddForce( proj.transform.forward * shotSpeed,ForceMode.Impulse );
+		proj.layer = LayerMask.NameToLayer( team == 1 ? "Default" : "EnemyBullet" );
 
 		var projScr = proj.GetComponent<Projectile>();
 		projScr.SetDamage( damage );
@@ -79,6 +80,8 @@ public abstract class WeaponBase
 
 		Destroy( proj.GetComponent<LoadableItem>() );
 		Destroy( proj.GetComponent<ItemPickup>() );
+
+		return( proj );
 	}
 
 	public virtual int GetPreferredHand()
@@ -100,5 +103,5 @@ public abstract class WeaponBase
 	protected bool attacking = false;
 
 	protected HotbarHandler hotbar = null;
-	protected Camera cam;
+	protected Transform cam;
 }

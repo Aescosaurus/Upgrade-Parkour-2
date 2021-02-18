@@ -80,6 +80,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlameSword
       objectReference: {fileID: 0}
+    - target: {fileID: -7354278275009377036, guid: 37238ca30f8c2144a9216e31b9da6e92,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7354278275009377036, guid: 37238ca30f8c2144a9216e31b9da6e92,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7354278275009377036, guid: 37238ca30f8c2144a9216e31b9da6e92,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7354278275009377036, guid: 37238ca30f8c2144a9216e31b9da6e92,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: -4575413214079457268, guid: 37238ca30f8c2144a9216e31b9da6e92,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

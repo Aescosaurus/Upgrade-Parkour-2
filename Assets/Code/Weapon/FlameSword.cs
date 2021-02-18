@@ -29,7 +29,7 @@ public class FlameSword
 	{
 		base.ToggleAttacking( on );
 
-		FireProjectile( projectilePrefab,shotSpeed,damage );
+		if( on ) FireProjectile( projectilePrefab,shotSpeed,damage );
 	}
 
 	GameObject projectilePrefab;

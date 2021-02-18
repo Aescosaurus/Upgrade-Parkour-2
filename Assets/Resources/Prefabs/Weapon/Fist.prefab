@@ -64,4 +64,4 @@ MonoBehaviour:
   flyDev: 0.2
   refire:
     duration: 0.5
-  damage: 0.5
+  damage: 0.1

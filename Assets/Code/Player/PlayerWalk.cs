@@ -113,8 +113,8 @@ public class PlayerWalk
 
 			// animCtrl.SetBool( "aim",true );
 		}
-		// else animCtrl.SetBool( "aim",false );
 		else wepHolder.CancelAttack();
+
 		wepHolder.SetTargetDir( cam.transform.eulerAngles.y );
 
 		knockbackDuration.Update( Time.deltaTime );

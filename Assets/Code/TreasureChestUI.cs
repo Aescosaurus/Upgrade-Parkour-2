@@ -23,6 +23,7 @@ public class TreasureChestUI
 				// {
 				// 	TryStackItem( curItem );
 				// }
+				if( curItem is WeaponBase ) curAmount = 1;
 				AddInSlot( curItem,curAmount,i );
 			}
 		}

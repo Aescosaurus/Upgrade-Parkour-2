@@ -90,6 +90,14 @@ MonoBehaviour:
     amount:
       min: 1
       max: 7
+  - item: {fileID: 7538276465475165082, guid: 06cb7e08d8785a4419628b245894b4ee, type: 3}
+    amount:
+      min: 1
+      max: 1
+  - item: {fileID: 7538276465475165082, guid: 7e148bb66385e8c479330754f67d5650, type: 3}
+    amount:
+      min: 1
+      max: 1
 --- !u!1001 &1977331960655122482
 PrefabInstance:
   m_ObjectHideFlags: 0

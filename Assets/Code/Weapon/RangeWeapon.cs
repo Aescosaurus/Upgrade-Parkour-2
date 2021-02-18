@@ -8,27 +8,7 @@ public class RangeWeapon
 {
 	protected override void Fire()
 	{
-		if( CanFire() )
-		{
-			animCtrl.SetBool( "aim",true );
-
-			// var proj = Instantiate( projectilePrefab );
-			// proj.GetComponent<Collider>().isTrigger = true;
-			// proj.transform.position = animCtrl.transform.position + Vector3.up * 1.3f + animCtrl.transform.forward;
-			// proj.transform.forward = animCtrl.transform.forward + Vector3.up * 0.2f;
-			// proj.GetComponent<Rigidbody>().AddForce( animCtrl.transform.forward * shotSpeed,ForceMode.Impulse );
-			// 
-			// var projScr = proj.GetComponent<Projectile>();
-			// projScr.SetDamage( damage );
-			// 
-			// Destroy( proj.GetComponent<LoadableItem>() );
-			// Destroy( proj.GetComponent<ItemPickup>() );
-			FireProjectile( projectilePrefab,shotSpeed,damage,0.2f );
-		}
-		else
-		{
-			animCtrl.SetBool( "aim",false );
-		}
+		animCtrl.SetBool( "aim",CanFire() );
 	}
 
 	public override void CancelAttack()
@@ -48,6 +28,13 @@ public class RangeWeapon
 		base.LinkAnimator( animCtrl );
 
 		invHand = animCtrl.GetComponent<PlayerInventory>()?.GetInv();
+	}
+
+	public override void ToggleAttacking( bool on )
+	{
+		base.ToggleAttacking( on );
+		
+		if( on ) FireProjectile( projectilePrefab,shotSpeed,damage,0.2f );
 	}
 
 	bool CanFire()
