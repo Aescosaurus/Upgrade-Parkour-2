@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSrc: Prefabs/Weapon/Dagger
   invName: Dagger
-  invDesc: Um actually, it's called a *short sword* >.<
+  invDesc: Um actually, I prefer to be called a *short sword* >.<
   jumpForce: 400
   flyDev: 0.2
   refire:

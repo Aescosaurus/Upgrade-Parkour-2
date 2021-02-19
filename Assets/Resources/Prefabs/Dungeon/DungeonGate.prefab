@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43adcc11aa68a164c99d3d15946ad546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 3
   hp: 5
   def: 1
   hitFX: 2
@@ -75,11 +76,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGate
       objectReference: {fileID: 0}
-    - target: {fileID: -6076077693946603670, guid: 39bbbe0a0844a104fb0248602f02a5eb,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     - target: {fileID: -4216859302048453862, guid: 39bbbe0a0844a104fb0248602f02a5eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -135,6 +131,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6076077693946603670, guid: 39bbbe0a0844a104fb0248602f02a5eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39bbbe0a0844a104fb0248602f02a5eb, type: 3}
 --- !u!4 &8228615575591560517 stripped
