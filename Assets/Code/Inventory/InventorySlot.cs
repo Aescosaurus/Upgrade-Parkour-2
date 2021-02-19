@@ -54,6 +54,7 @@ public class InventorySlot
 
 	public void AddItem( LoadableItem item,int quantity = 1 )
 	{
+		Assert.IsTrue( nItems + quantity <= maxStackSize );
 		nItems += quantity;
 
 		Assert.IsTrue( item != null );
@@ -168,10 +169,22 @@ public class InventorySlot
 	// more like swap item
 	public void TransferItem( InventorySlot receiver )
 	{
-		if( GetItem().CheckEqual( receiver.GetItem() ) )
+		if( GetItem().CheckEqual( receiver.GetItem() ) &&
+			GetItem().GetPrefab().GetComponent<WeaponBase>() == null )
 		{
-			receiver.AddItem( GetItem(),CountItems() );
-			RemoveItem( CountItems() );
+			if( nItems + receiver.nItems < maxStackSize )
+			{
+				receiver.AddItem( GetItem(),CountItems() );
+				RemoveItem( CountItems() );
+			}
+			else
+			{
+				var leftover = nItems + receiver.nItems - maxStackSize;
+				receiver.nItems = maxStackSize;
+				nItems = leftover;
+				UpdateCounter();
+				receiver.UpdateCounter();
+			}
 		}
 		else
 		{
@@ -231,6 +244,7 @@ public class InventorySlot
 			// 	item.GetPrefab().GetComponent<WeaponBase>() != null ||
 			// 	this.item.GetPrefab().GetComponent<WeaponBase>() != null );
 			if( !item.CheckEqual( this.item ) ||
+				nItems >= maxStackSize ||
 				item.GetPrefab().GetComponent<WeaponBase>() != null ||
 				this.item.GetPrefab().GetComponent<WeaponBase>() != null )
 			{
@@ -291,4 +305,6 @@ public class InventorySlot
 
 	Text counterText;
 	int nItems = 0;
+
+	const int maxStackSize = 20;
 }
