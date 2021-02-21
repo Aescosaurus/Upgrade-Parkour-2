@@ -52,9 +52,9 @@ MonoBehaviour:
   flyDev: 0.2
   refire:
     duration: 1
-  projectilePrefab: {fileID: 3716605428022485691, guid: 3cbe648558289cf4ea1b7020734863cb,
+  projectilePrefab: {fileID: 3716605428022485691, guid: 283cf7e42243dbe41b5dcfb1bbf61b40,
     type: 3}
-  ammoItem: {fileID: -8025537777289129997, guid: 3cbe648558289cf4ea1b7020734863cb,
+  ammoItem: {fileID: -8025537777289129997, guid: 283cf7e42243dbe41b5dcfb1bbf61b40,
     type: 3}
   ammoUsage: 1
   shotSpeed: 35
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
+  interactTolerance: 0.8
 --- !u!1001 &4426874266792639796
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -77,6 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 2
+  interactTolerance: 0.8
   talkBeforeInteract: 0
   repeat: 1
   lines: []
@@ -86,7 +87,7 @@ MonoBehaviour:
     min: 1
     max: 7
   dropPool:
-  - item: {fileID: -8025537777289129997, guid: 3cbe648558289cf4ea1b7020734863cb, type: 3}
+  - item: {fileID: -8025537777289129997, guid: 283cf7e42243dbe41b5dcfb1bbf61b40, type: 3}
     amount:
       min: 1
       max: 7

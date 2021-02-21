@@ -9,6 +9,7 @@ public class PlayerCamCtrl
 	void Start()
 	{
 		player = GameObject.Find( "Player" );
+		cam = Camera.main;
 
 		distToPlayer = ( minDistToPlayer + maxDistToPlayer ) / 2.0f;
 
@@ -68,7 +69,7 @@ public class PlayerCamCtrl
 		RaycastHit hit;
 		if( Physics.Raycast( ray,out hit,distToPlayer,worldMask ) )
 		{
-			transform.position = hit.point;
+			transform.position = hit.point + hit.normal * cam.nearClipPlane * 1.5f;
 		}
 	}
 
@@ -84,6 +85,7 @@ public class PlayerCamCtrl
 	const float maxAimMove = 90.0f - 1.0f;
 
 	GameObject player;
+	Camera cam;
 
 	bool escape = false;
 

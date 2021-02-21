@@ -50,7 +50,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &5337118519115006997
 BoxCollider:
@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6059dde9f66ac5439a0251104a70e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 10
 --- !u!114 &-8025537777289129997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0555b586c57c232418253e37a9d4b791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: Prefabs/Weapon/Arrow
+  prefabSrc: Prefabs/Weapon/Projectile/Arrow
   invName: Arrow
   invDesc: Necessary ammo when using bows.
   jumpForce: 400
@@ -108,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
+  interactTolerance: 0.8
 --- !u!1001 &4817119918356359884
 PrefabInstance:
   m_ObjectHideFlags: 0

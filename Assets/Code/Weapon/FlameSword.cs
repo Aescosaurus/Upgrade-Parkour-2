@@ -10,7 +10,7 @@ public class FlameSword
 	{
 		base.Start();
 
-		projectilePrefab = ResLoader.Load( "Prefabs/Weapon/FlameHurt" );
+		projectilePrefab = ResLoader.Load( "Prefabs/Weapon/Projectile/FlameHurt" );
 	}
 
 	protected override void Fire()

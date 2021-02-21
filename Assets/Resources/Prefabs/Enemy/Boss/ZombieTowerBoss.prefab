@@ -491,11 +491,13 @@ MonoBehaviour:
   itemDropPrefab: {fileID: 2422484263320434424, guid: 866fb4a993cef77418fe270e3f45bf95,
     type: 3}
   fireballDist: 10
-  fireballRotSpeed: 30
   fireballRefire:
-    duration: 0.2
+    duration: 0.1
   fireballDuration:
     duration: 3
+  fireballPrefab: {fileID: 3716605428022485691, guid: 42f9e4f3e886d614c94e036d66a408f7,
+    type: 3}
+  fireballSpeed: 4
 --- !u!1 &5713654726605143469
 GameObject:
   m_ObjectHideFlags: 0
