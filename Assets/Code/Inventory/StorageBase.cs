@@ -152,7 +152,8 @@ public class StorageBase
 		{
 			foreach( var slot in slots )
 			{
-				if( slot.GetItem().CheckEqual( item ) )
+				// if( slot.GetItem().CheckEqual( item ) )
+				if( slot.CanStack( item ) )
 				{
 					// print( slot.GetItem().GetSrc() + "	" + item.GetSrc() );
 					return( slot.TrySetItem( item ) );

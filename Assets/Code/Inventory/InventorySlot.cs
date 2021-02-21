@@ -230,27 +230,17 @@ public class InventorySlot
 		bool canSwap = true;
 		// if( heldItem != null ) print( prefab.name + " " + heldPrefab.name );
 
-		// weps are not stackable
-		// if( this.item != null &&
-		// 	( !item.CheckEqual( this.item ) ||
-		// 	( item.GetPrefab().GetComponent<WeaponBase>() != null ||
-		// 	this.item.GetPrefab().GetComponent<WeaponBase>() != null ) ) )
+		// if( this.item.GetPrefab() != null )
 		// {
-		// 	return( false );
+		// 	if( !item.CheckEqual( this.item ) ||
+		// 		nItems >= maxStackSize ||
+		// 		item.GetPrefab().GetComponent<WeaponBase>() != null ||
+		// 		this.item.GetPrefab().GetComponent<WeaponBase>() != null )
+		// 	{
+		// 		canSwap = false;
+		// 	}
 		// }
-		if( this.item.GetPrefab() != null )
-		{
-			// return( !item.CheckEqual( this.item ) ||
-			// 	item.GetPrefab().GetComponent<WeaponBase>() != null ||
-			// 	this.item.GetPrefab().GetComponent<WeaponBase>() != null );
-			if( !item.CheckEqual( this.item ) ||
-				nItems >= maxStackSize ||
-				item.GetPrefab().GetComponent<WeaponBase>() != null ||
-				this.item.GetPrefab().GetComponent<WeaponBase>() != null )
-			{
-				canSwap = false;
-			}
-		}
+		if( !CanStack( item ) ) canSwap = false;
 
 		// print( item.GetPrefab().GetComponent<WeaponBase>() );
 		// print( this.item );
@@ -279,6 +269,15 @@ public class InventorySlot
 	public int CountItems()
 	{
 		return( nItems );
+	}
+
+	public bool CanStack( LoadableItem item )
+	{
+		return( this.item != null &&
+			item.CheckEqual( this.item ) &&
+			nItems < maxStackSize &&
+			item.GetPrefab().GetComponent<WeaponBase>() == null &&
+			this.item.GetPrefab().GetComponent<WeaponBase>() == null );
 	}
 
 	Transform itemPos;
