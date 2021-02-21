@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8a3b107b565da43b7bab968ada383d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: Prefabs/Enemy/MonsterShardSmall
+  prefabSrc: Prefabs/Item/MonsterShardSmall
   invName: Monster Shard
   invDesc: A monster's life essence.  Trade these in for coins in the hub!
   jumpForce: 400
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
+  interactTolerance: 0.8
 --- !u!1001 &2422484263430377985
 PrefabInstance:
   m_ObjectHideFlags: 0

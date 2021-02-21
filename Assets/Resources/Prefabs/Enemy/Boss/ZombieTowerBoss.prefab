@@ -488,7 +488,9 @@ MonoBehaviour:
   activationRange: 15
   moveSpeed: 6
   rotSpeed: 2.4
-  itemDropPrefab: {fileID: 0}
+  itemDropPrefab: {fileID: 2422484263320434424, guid: 866fb4a993cef77418fe270e3f45bf95,
+    type: 3}
+  fireballDist: 10
 --- !u!1 &5713654726605143469
 GameObject:
   m_ObjectHideFlags: 0
