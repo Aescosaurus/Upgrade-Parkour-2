@@ -23,10 +23,11 @@ public class VendorUIBase
 
 	protected void DropItems( InventorySlot slot )
 	{
-		for( int i = 0; i < slot.CountItems(); ++i )
+		var nDrops = slot.CountItems();
+		for( int i = 0; i < nDrops; ++i )
 		{
 			var item = Instantiate( slot.GetPrefab() );
-			item.transform.position = vendor.transform.position + vendor.transform.forward;
+			item.transform.position = vendor.transform.position + vendor.transform.forward + Vector3.up * 0.3f * i;
 			slot.RemoveItem();
 		}
 	}

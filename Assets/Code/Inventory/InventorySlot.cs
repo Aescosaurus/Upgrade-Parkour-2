@@ -242,6 +242,8 @@ public class InventorySlot
 		// }
 		if( !CanStack( item ) ) canSwap = false;
 
+		if( this.item.GetPrefab() == null ) canSwap = true;
+
 		// print( item.GetPrefab().GetComponent<WeaponBase>() );
 		// print( this.item );
 

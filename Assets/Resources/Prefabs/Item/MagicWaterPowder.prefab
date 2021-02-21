@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8015806882887630458}
   - component: {fileID: -7487623965454783777}
+  - component: {fileID: -3842554747693876368}
   m_Layer: 0
   m_Name: MagicWaterPowder
   m_TagString: Untagged
@@ -49,6 +50,20 @@ MonoBehaviour:
   invDesc: Powder infused with water magic.
   jumpForce: 400
   flyDev: 0.2
+--- !u!114 &-3842554747693876368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561465436244689837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d3ee732beb5574c9a053a8acb6207f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactDist: 4
+  heightOffset: 1
 --- !u!1001 &6902679920189346757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,11 +76,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicWaterPowder
       objectReference: {fileID: 0}
-    - target: {fileID: -6090181585700430901, guid: 2da16532537797248a7f64baeac98423,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -121,6 +131,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6090181585700430901, guid: 2da16532537797248a7f64baeac98423,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2da16532537797248a7f64baeac98423, type: 3}
 --- !u!4 &1923470378399840479 stripped

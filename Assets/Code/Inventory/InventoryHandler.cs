@@ -54,7 +54,10 @@ public class InventoryHandler
 			full = false;
 		}
 
-		if( full && hotbar.TryAddItem( item ) ) full = false;
+		if( full && hotbar.TryAddItem( item ) )
+		{
+			full = false;
+		}
 
 		if( full )
 		{
