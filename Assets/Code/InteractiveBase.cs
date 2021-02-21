@@ -9,7 +9,7 @@ public abstract class InteractiveBase
 	protected virtual void Start()
 	{
 		player = GameObject.Find( "Player" );
-		// cam = Camera.main;
+		cam = Camera.main;
 
 		pickupText = Instantiate( Resources.Load<GameObject>( "Prefabs/HoverText" ) )
 			.GetComponentInChildren<TextMesh>();
@@ -19,7 +19,8 @@ public abstract class InteractiveBase
 	protected virtual void Update()
 	{
 		var diff = player.transform.position - transform.position;
-		if( diff.sqrMagnitude < interactDist * interactDist )
+		if( diff.sqrMagnitude < interactDist * interactDist && Vector3.Dot( -diff.normalized,
+			( cam.gameObject.transform.forward + Vector3.up * 0.2f ).normalized ) > interactTolerance )
 		{
 			pickupText.gameObject.SetActive( true );
 			pickupText.transform.position = transform.position + Vector3.up * heightOffset;
@@ -43,9 +44,10 @@ public abstract class InteractiveBase
 
 	[SerializeField] float interactDist = 4.0f;
 	[SerializeField] float heightOffset = 1.0f;
+	[SerializeField] float interactTolerance = 0.8f;
 
 	protected GameObject player;
-	// Camera cam;
+	Camera cam;
 
 	TextMesh pickupText;
 }
