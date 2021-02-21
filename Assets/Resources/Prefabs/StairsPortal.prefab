@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3142048217639134553}
   - component: {fileID: 7199773136647353225}
-  - component: {fileID: -8781065736717969046}
+  - component: {fileID: -1028087440036697515}
   m_Layer: 0
   m_Name: StairsPortal
   m_TagString: Untagged
@@ -46,7 +46,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5411849, y: 0.69763917, z: 0.54564285}
   m_Center: {x: -0.006041845, y: 0.41610226, z: -0.0016297897}
---- !u!114 &-8781065736717969046
+--- !u!114 &-1028087440036697515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,12 +55,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3277290963808212834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02fe91d9cb94424f9e2504b06d9def5, type: 3}
+  m_Script: {fileID: 11500000, guid: cfa85623649c7704cb7f56911c9585b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 3
-  worldTarget: DungeonScene
+  worldTarget: Dungeon Scene
   displayText: Proceed to next floor
 --- !u!1001 &6651696702094357811
 PrefabInstance:

@@ -17,6 +17,8 @@ public class Portal
 	protected override void Interact()
 	{
 		// todo check player stats before allowing entry
+		PlayerPrefs.SetInt( "curfloor",0 );
+
 		SceneManager.LoadScene( worldTarget );
 	}
 

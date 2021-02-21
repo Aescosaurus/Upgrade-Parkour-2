@@ -18,18 +18,26 @@ public class DungeonGenerator
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonL" ) );
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonT" ) );
 		corridorPrefabs.Add( ResLoader.Load( "Prefabs/Dungeon/DungeonX" ) );
+		bossRoomPrefab = ResLoader.Load( "Prefabs/Dungeon/DungeonBossRoom" );
 
 		wallPrefab = ResLoader.Load( "Prefabs/Dungeon/DungeonGate2" );
 
-		var curRoomCount = ( int )( ( float )dungeonSize * roomPercent );
-		int curNRoom = 0;
-		layout = GenerateLayout( dungeonSize,dungeonSize,curRoomCount );
-
-		for( int y = 0; y < dungeonSize; ++y )
+		if( PlayerPrefs.GetInt( "curfloor",0 ) >= bossFloor )
 		{
-			for( int x = 0; x < dungeonSize; ++x )
+			Instantiate( bossRoomPrefab,transform );
+		}
+		else
+		{
+			var curRoomCount = ( int )( ( float )dungeonSize * roomPercent );
+			int curNRoom = 0;
+			layout = GenerateLayout( dungeonSize,dungeonSize,curRoomCount );
+
+			for( int y = 0; y < dungeonSize; ++y )
 			{
-				if( CheckRoom( x,y ) ) GenCorridor( x,y,++curNRoom >= curRoomCount );
+				for( int x = 0; x < dungeonSize; ++x )
+				{
+					if( CheckRoom( x,y ) ) GenCorridor( x,y,++curNRoom >= curRoomCount );
+				}
 			}
 		}
 	}
@@ -231,9 +239,12 @@ public class DungeonGenerator
 	GameObject stairsPrefab;
 
 	List<GameObject> corridorPrefabs = new List<GameObject>();
+	GameObject bossRoomPrefab;
 
 	[SerializeField] int dungeonSize = 10;
 	[SerializeField] float roomPercent = 0.5f;
+
+	[SerializeField] int bossFloor = 5;
 
 	List<bool> layout;
 

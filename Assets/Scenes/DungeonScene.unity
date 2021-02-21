@@ -151,10 +151,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonSize: 20
   roomPercent: 0.6
+  bossFloor: 2
   corridorSize: 27.97028
   nRoomEnemies:
     min: 3
-    max: 7
+    max: 6
   enemyPrefabs:
   - {fileID: 1078883488311203826, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
   - {fileID: 3089165843163223701, guid: 0aaa5298110c7484d98abc2e7d1431c9, type: 3}
@@ -162,7 +163,7 @@ MonoBehaviour:
   wallChance: 0.4
   nDecorations:
     min: 5
-    max: 10
+    max: 8
   spawnSpacing: 1.8
   decorations:
   - {fileID: 6775729821227834114, guid: 92ca5985f63aa0541a58ee973b3cc3a0, type: 3}
