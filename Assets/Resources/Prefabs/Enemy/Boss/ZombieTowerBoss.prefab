@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2174448900815409975}
   m_Layer: 0
-  m_Name: Zombie1
+  m_Name: Segment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,6 +491,11 @@ MonoBehaviour:
   itemDropPrefab: {fileID: 2422484263320434424, guid: 866fb4a993cef77418fe270e3f45bf95,
     type: 3}
   fireballDist: 10
+  fireballRotSpeed: 30
+  fireballRefire:
+    duration: 0.2
+  fireballDuration:
+    duration: 3
 --- !u!1 &5713654726605143469
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5713654727209743847}
   m_Layer: 0
-  m_Name: Zombie3
+  m_Name: Segment3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,7 +946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5713654727612164964}
   m_Layer: 0
-  m_Name: Zombie2
+  m_Name: Segment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5713654728105397738}
   m_Layer: 0
-  m_Name: Zombie4
+  m_Name: Segment4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,7 +1234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5713654728189592173}
   m_Layer: 0
-  m_Name: Zombie5
+  m_Name: Segment5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

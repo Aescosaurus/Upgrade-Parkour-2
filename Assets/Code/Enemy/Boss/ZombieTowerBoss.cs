@@ -21,7 +21,7 @@ public class ZombieTowerBoss
 					{
 						StopMoving();
 						phase = 1;
-						
+						animCtrl.SetBool( "spin",true );
 					}
 				}
 				break;
