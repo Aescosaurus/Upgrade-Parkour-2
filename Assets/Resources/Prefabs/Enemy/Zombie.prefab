@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1078883488311203829}
   - component: {fileID: 1078883488311203824}
   - component: {fileID: 1078883488311203827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883488339899474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883488572978316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883489281379193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883489841980058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883489903086435}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883490058410958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,6 +337,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZombieArm
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b11cedfa83373ea4ab1d9b3dd901ce8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381813989372057972, guid: b11cedfa83373ea4ab1d9b3dd901ce8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b11cedfa83373ea4ab1d9b3dd901ce8e,
         type: 3}
@@ -423,6 +433,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieArm
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b11cedfa83373ea4ab1d9b3dd901ce8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381813989372057972, guid: b11cedfa83373ea4ab1d9b3dd901ce8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b11cedfa83373ea4ab1d9b3dd901ce8e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -502,6 +522,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZombieHead
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ce9fe0eb072181f4da6710f3f1066863,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498646614881304983, guid: ce9fe0eb072181f4da6710f3f1066863,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ce9fe0eb072181f4da6710f3f1066863,
         type: 3}
@@ -583,6 +613,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieLeg
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c046be70646465f4da9ffe28ecba5e7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247812801173271431, guid: c046be70646465f4da9ffe28ecba5e7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c046be70646465f4da9ffe28ecba5e7f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -663,6 +703,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieLeg
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c046be70646465f4da9ffe28ecba5e7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247812801173271431, guid: c046be70646465f4da9ffe28ecba5e7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c046be70646465f4da9ffe28ecba5e7f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -742,6 +792,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZombieBody
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 45ab14de0d031644ba3b811fbe3370db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5956995297372047772, guid: 45ab14de0d031644ba3b811fbe3370db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 45ab14de0d031644ba3b811fbe3370db,
         type: 3}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4748940380111933160}
   - component: {fileID: 1078883488311203824}
   - component: {fileID: 1078883488311203827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883488339899474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883488572978316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883489281379193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883489841980058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883489903086435}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078883490058410958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,6 +334,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangerHead
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7272d2a4758fc044b97853c9fd61329d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847339871907385899, guid: 7272d2a4758fc044b97853c9fd61329d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7272d2a4758fc044b97853c9fd61329d,
         type: 3}
@@ -414,6 +424,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangerArm
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d62328705fd3d0540b0df665de3e1b23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -455221445927862882, guid: d62328705fd3d0540b0df665de3e1b23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d62328705fd3d0540b0df665de3e1b23,
         type: 3}
@@ -500,6 +520,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangerArm
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d62328705fd3d0540b0df665de3e1b23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -455221445927862882, guid: d62328705fd3d0540b0df665de3e1b23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d62328705fd3d0540b0df665de3e1b23,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -579,6 +609,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangerBody
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 84804095914ad3749a8f069e763ab8fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6540066562104601378, guid: 84804095914ad3749a8f069e763ab8fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 84804095914ad3749a8f069e763ab8fd,
         type: 3}

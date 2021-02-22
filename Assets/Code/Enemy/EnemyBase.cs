@@ -14,7 +14,7 @@ public class EnemyBase
 		// lobPrefab = Resources.Load<GameObject>( "Prefabs/EnemyLob" );
 		// aoePrefab = Resources.Load<GameObject>( "Prefabs/EnemyAOE" );
 		// bopperPrefab = Resources.Load<GameObject>( "Prefabs/EnemyBopper" );
-		shardPrefab = Resources.Load<GameObject>( "Prefabs/Enemy/MonsterShardSmall" );
+		shardPrefab = Resources.Load<GameObject>( "Prefabs/Item/MonsterShardSmall" );
 
 		player = FindObjectOfType<PlayerWalk>().gameObject;
 		body = GetComponent<Rigidbody>();
@@ -40,7 +40,7 @@ public class EnemyBase
 		{
 			if( !activated )
 			{
-				Activate();
+				ActivateSelf();
 				ActivateNearby();
 			}
 		}
@@ -139,7 +139,7 @@ public class EnemyBase
 		return( dist.sqrMagnitude < Mathf.Pow( activationRange,2 ) );
 	}
 
-	void Activate()
+	public void ActivateSelf()
 	{
 		activated = true;
 	}
@@ -148,7 +148,7 @@ public class EnemyBase
 	{
 		foreach( var enemy in FindObjectsOfType<EnemyBase>() )
 		{
-			if( IsWithinActivateRange( enemy.gameObject ) ) enemy.Activate();
+			if( IsWithinActivateRange( enemy.gameObject ) ) enemy.ActivateSelf();
 		}
 	}
 
@@ -158,7 +158,7 @@ public class EnemyBase
 
 		if( !activated )
 		{
-			Activate();
+			ActivateSelf();
 			ActivateNearby();
 		}
 
@@ -195,6 +195,12 @@ public class EnemyBase
 			vel.y = 0.0f;
 			body.velocity = vel;
 		}
+	}
+
+	public void DisableDrops()
+	{
+		// TODO: Loot table object to do this more intelligently.
+		spawnedShard = true;
 	}
 
 	// [SerializeField] float hp = 10.0f;
