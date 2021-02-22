@@ -56,9 +56,9 @@ public class ZombieTowerBoss
 						// float ang = Random.Range( 0.0f,360.0f );
 						// var dir = new Vector3( Mathf.Cos( ang ),Mathf.Sin( ang ),0.0f ) * fireballSpeed;
 						var targetPos = player.transform.position + new Vector3(
-							Random.Range( -1.0f,1.0f ),
-							Random.Range( -1.0f,1.0f ),
-							Random.Range( -1.0f,1.0f ) );
+							Random.Range( -1.0f,1.0f ) * fireballSpread.x,
+							Random.Range( -1.0f,1.0f ) * fireballSpread.y,
+							Random.Range( -1.0f,1.0f ) * fireballSpread.z );
 						var dir = targetPos - pos;
 
 						FireProjectile( fireballPrefab,pos,dir * fireballSpeed );
@@ -128,6 +128,7 @@ public class ZombieTowerBoss
 	[SerializeField] Timer fireballDuration = new Timer( 3.0f );
 	[SerializeField] GameObject fireballPrefab = null;
 	[SerializeField] float fireballSpeed = 10.0f;
+	[SerializeField] Vector3 fireballSpread = Vector3.one;
 
 	[Header( "Spawning Phase" )]
 	[SerializeField] Timer spawnDuration = new Timer( 3.0f );

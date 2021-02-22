@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  hp: 1
+  hp: 50
   def: 0
   hitFX: 1
   oofFX: 2
@@ -497,7 +497,8 @@ MonoBehaviour:
     duration: 5
   fireballPrefab: {fileID: 3716605428022485691, guid: 42f9e4f3e886d614c94e036d66a408f7,
     type: 3}
-  fireballSpeed: 2.6
+  fireballSpeed: 1.6
+  fireballSpread: {x: 6, y: 0.7, z: 6}
   spawnDuration:
     duration: 3
   spawnRefire:
