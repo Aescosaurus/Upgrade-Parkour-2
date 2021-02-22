@@ -11,6 +11,7 @@ public class ZombieTowerBoss
 		base.Start();
 
 		boxColl = GetComponent<BoxCollider>();
+		exitPortal = ResLoader.Load( "Prefabs/HubPortal" );
 	}
 
 	protected override void Update()
@@ -61,7 +62,7 @@ public class ZombieTowerBoss
 							Random.Range( -1.0f,1.0f ) * fireballSpread.z );
 						var dir = targetPos - pos;
 
-						FireProjectile( fireballPrefab,pos,dir * fireballSpeed );
+						FireProjectile( fireballPrefab,pos,dir.normalized * fireballSpeed );
 					}
 				}
 				break;
@@ -118,9 +119,18 @@ public class ZombieTowerBoss
 		}
 	}
 
+	protected override void Oof()
+	{
+		base.Oof();
+
+		var portal = Instantiate( exitPortal );
+		portal.transform.position = transform.position + Vector3.up * 0.2f;
+	}
+
 	int phase = 0;
 
 	BoxCollider boxColl;
+	GameObject exitPortal;
 
 	[Header( "Fireball Phase" )]
 	[SerializeField] float fireballDist = 10.0f;
@@ -133,7 +143,7 @@ public class ZombieTowerBoss
 	[Header( "Spawning Phase" )]
 	[SerializeField] Timer spawnDuration = new Timer( 3.0f );
 	[SerializeField] Timer spawnRefire = new Timer( 0.5f );
-	[SerializeField] GameObject minionPrefab;
+	[SerializeField] GameObject minionPrefab = null;
 	[SerializeField] float minionSpawnHorizontal = 5.0f;
 	[SerializeField] float minionSpawnJump = 5.0f;
 	EnemyBase prevMinion = null;

@@ -161,8 +161,13 @@ public class EnemyBase
 			ActivateSelf();
 			ActivateNearby();
 		}
+	}
 
-		if( hp <= 0.0f && !spawnedShard ) SpawnShard();
+	protected override void Oof()
+	{
+		base.Oof();
+
+		if( !spawnedShard ) SpawnShard();
 	}
 
 	void SpawnShard()

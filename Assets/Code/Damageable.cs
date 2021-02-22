@@ -38,16 +38,19 @@ public class Damageable
 		{
 			hp -= amount;
 
+			var curFX = hitFX;
 			if( hp <= 0.0f )
 			{
-				partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),oofFX );
-				Destroy( gameObject );
+				curFX = oofFX;
+				Oof();
 			}
-			else
-			{
-				partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),hitFX );
-			}
+			partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),curFX );
 		}
+	}
+
+	protected virtual void Oof()
+	{
+		Destroy( gameObject );
 	}
 
 	public int GetTeam()
