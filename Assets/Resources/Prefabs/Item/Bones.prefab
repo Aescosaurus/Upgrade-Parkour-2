@@ -76,9 +76,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0555b586c57c232418253e37a9d4b791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: Prefabs/Dungeon/Bones
+  prefabSrc: Prefabs/Item/Bones
   invName: Pile o' Bones
   invDesc: Some bones used for crafting.
+  jumpForce: 400
+  flyDev: 0.2
 --- !u!114 &6529798872650651661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
+  interactTolerance: 0.8
 --- !u!1001 &7687660616410546684
 PrefabInstance:
   m_ObjectHideFlags: 0

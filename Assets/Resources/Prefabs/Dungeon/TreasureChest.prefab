@@ -82,6 +82,7 @@ MonoBehaviour:
   repeat: 1
   lines: []
   uiPrefab: {fileID: 137782518661715030, guid: 5109c630621dc9f4fa7fcb2229657c95, type: 3}
+  animSpeed: 1
   nSlots: 30
   nItems:
     min: 1
@@ -111,6 +112,10 @@ MonoBehaviour:
     amount:
       min: 1
       max: 7
+  - item: {fileID: 7017109229037668341, guid: 6da2bd793f1d4144fb4ea29e07f38019, type: 3}
+    amount:
+      min: 1
+      max: 1
 --- !u!1001 &1977331960655122482
 PrefabInstance:
   m_ObjectHideFlags: 0

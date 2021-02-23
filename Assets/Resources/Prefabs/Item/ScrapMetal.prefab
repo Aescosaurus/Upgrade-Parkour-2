@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &561465436244689837
+--- !u!1 &6638439630281368331
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8015806882887630458}
-  - component: {fileID: -4934331175375014088}
-  - component: {fileID: 5996626130045735535}
-  - component: {fileID: -7487623965454783777}
-  - component: {fileID: -3842554747693876368}
+  - component: {fileID: 1047090154643433813}
+  - component: {fileID: 8796887312345597115}
+  - component: {fileID: 5577626223337882753}
+  - component: {fileID: 7017109229037668341}
+  - component: {fileID: -495761154283255417}
   m_Layer: 0
-  m_Name: MagicWaterPowder
+  m_Name: ScrapMetal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8015806882887630458
+--- !u!4 &1047090154643433813
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561465436244689837}
+  m_GameObject: {fileID: 6638439630281368331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1923470378399840479}
+  - {fileID: 1629791537241604143}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &-4934331175375014088
+--- !u!54 &8796887312345597115
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561465436244689837}
+  m_GameObject: {fileID: 6638439630281368331}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -51,43 +51,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5996626130045735535
+--- !u!65 &5577626223337882753
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561465436244689837}
+  m_GameObject: {fileID: 6638439630281368331}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.50024533, y: 0.18752706, z: 0.4388347}
-  m_Center: {x: 0.008827269, y: 0.10633725, z: -0.050926074}
---- !u!114 &-7487623965454783777
+  m_Size: {x: 0.7780998, y: 0.2726642, z: 0.79328823}
+  m_Center: {x: -0.017916143, y: 0.14890581, z: -0.001478672}
+--- !u!114 &7017109229037668341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561465436244689837}
+  m_GameObject: {fileID: 6638439630281368331}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0555b586c57c232418253e37a9d4b791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSrc: Prefabs/Item/MagicWaterPowder
-  invName: Magic Water Powder
-  invDesc: Powder infused with water magic.
+  prefabSrc: Prefabs/Item/ScrapMetal
+  invName: Scrap Metal
+  invDesc: Leftover bits from old weapons.
   jumpForce: 400
   flyDev: 0.2
---- !u!114 &-3842554747693876368
+--- !u!114 &-495761154283255417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561465436244689837}
+  m_GameObject: {fileID: 6638439630281368331}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7d3ee732beb5574c9a053a8acb6207f, type: 3}
@@ -96,83 +96,83 @@ MonoBehaviour:
   interactDist: 4
   heightOffset: 1
   interactTolerance: 0.8
---- !u!1001 &6902679920189346757
+--- !u!1001 &6045125968159370037
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8015806882887630458}
+    m_TransformParent: {fileID: 1047090154643433813}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -927199367670048503, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_Name
-      value: MagicWaterPowder
+      value: ScrapMetal
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6090181585700430901, guid: 2da16532537797248a7f64baeac98423,
+    - target: {fileID: -2363172811084027508, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2da16532537797248a7f64baeac98423, type: 3}
---- !u!4 &1923470378399840479 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 283dd4ed19a0bf04e9c529e5afb18a69, type: 3}
+--- !u!4 &1629791537241604143 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2da16532537797248a7f64baeac98423,
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 283dd4ed19a0bf04e9c529e5afb18a69,
     type: 3}
-  m_PrefabInstance: {fileID: 6902679920189346757}
+  m_PrefabInstance: {fileID: 6045125968159370037}
   m_PrefabAsset: {fileID: 0}

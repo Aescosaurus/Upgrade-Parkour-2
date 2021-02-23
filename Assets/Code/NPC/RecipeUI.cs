@@ -24,14 +24,15 @@ public class RecipeUI
 			if( ingredients[i] != null )
 			{
 				transform.Find( "Ingredient" + ( i + 1 ).ToString() + "Text" )
-					.GetComponent<Text>().text = ingredients[i].GetInvName();
+					.GetComponent<Text>().text = ingredients[i].GetInvName() +
+					" x " + ingredientQuantities[i].ToString();
 			}
 			else
 			{
 				ingredientSpots[i].gameObject.SetActive( false );
 			}
 		}
-		if( result != null ) transform.Find( "ResultText" ).GetComponent<Text>().text = result.GetInvName();
+		if( result != null ) transform.Find( "ResultText" ).GetComponent<Text>().text = result.GetInvName() + " x " + resultQuantity;
 	}
 
 	public void TryExchange()
@@ -60,7 +61,8 @@ public class RecipeUI
 	bool CheckSpotMatch( LoadableItem desired,InventorySlot slot,int quantity )
 	{
 		if( desired == null || slot == null ) return( true );
-		else return( desired.GetSrc() == slot.GetItem().GetSrc() && slot.CountItems() >= quantity );
+		else return( ( desired.GetSrc() == slot.GetItem().GetSrc() && slot.CountItems() >= quantity ) ||
+				( desired.GetComponent<WeaponBase>() != null && slot.GetPrefab().GetComponent<WeaponBase>() != null ) );
 	}
 
 	public List<InventorySlot> GetAllItemSlots()

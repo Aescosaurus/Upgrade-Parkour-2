@@ -13,6 +13,7 @@ public class OreHarvest
 		dropSpot = transform.Find( "DropSpot" );
 
 		harvestRate.Update( harvestRate.GetDuration() );
+		nDrops = dropCount.Rand();
 	}
 
 	protected override void Update()
@@ -20,7 +21,6 @@ public class OreHarvest
 		base.Update();
 
 		harvestRate.Update( Time.deltaTime );
-		nDrops = dropCount.Rand();
 	}
 
 	protected override void Interact()

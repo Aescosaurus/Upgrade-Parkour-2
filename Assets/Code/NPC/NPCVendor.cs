@@ -15,6 +15,9 @@ public class NPCVendor
 
 		invHand = FindObjectOfType<InventoryHandler>();
 		miscPanel = GameObject.Find( "MiscPanel" );
+
+		var animCtrl = GetComponent<Animator>();
+		if( animCtrl != null ) animCtrl.speed = animSpeed;
 	}
 
 	protected override void Update()
@@ -71,6 +74,8 @@ public class NPCVendor
 
 	[SerializeField] GameObject uiPrefab = null;
 	protected GameObject curUI = null;
+
+	[SerializeField] float animSpeed = 1.0f;
 
 	InventoryHandler invHand;
 	GameObject miscPanel;
