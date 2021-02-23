@@ -113,7 +113,7 @@ public class InventorySlot
 		if( item.GetPrefab() != null )
 		{
 			home = rect.localPosition;
-			dragOffset = eventData.pointerCurrentRaycast.worldPosition - transform.position;
+			// dragOffset = eventData.pointerCurrentRaycast.worldPosition - transform.position;
 			img.raycastTarget = false;
 		}
 	}

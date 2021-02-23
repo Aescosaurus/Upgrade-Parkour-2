@@ -37,6 +37,8 @@ public class TreasureChest
 			items[randSlot] = drop.item;
 			quantities[randSlot] = drop.amount.Rand();
 		}
+
+		partHand = FindObjectOfType<ParticleHandler>();
 	}
 
 	protected override void OpenUI()
@@ -62,7 +64,13 @@ public class TreasureChest
 				quantities[i] = slots[i].CountItems();
 			}
 		}
+
+		partHand.SpawnParticles( transform.position,15,ParticleHandler.ParticleType.Smoke );
+
+		Destroy( gameObject );
 	}
+
+	ParticleHandler partHand;
 
 	List<LoadableItem> items = new List<LoadableItem>();
 	List<int> quantities = new List<int>();
