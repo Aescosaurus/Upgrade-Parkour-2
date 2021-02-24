@@ -9,7 +9,7 @@ public abstract class InteractiveBase
 	protected virtual void Start()
 	{
 		player = GameObject.Find( "Player" );
-		cam = Camera.main;
+		// cam = Camera.main;
 
 		pickupText = Instantiate( Resources.Load<GameObject>( "Prefabs/HoverText" ) )
 			.GetComponentInChildren<TextMesh>();
@@ -51,10 +51,10 @@ public abstract class InteractiveBase
 
 	[SerializeField] float interactDist = 4.0f;
 	[SerializeField] float heightOffset = 1.0f;
-	[SerializeField] float interactTolerance = 0.8f;
+	// [SerializeField] float interactTolerance = 0.8f;
 
 	protected GameObject player;
-	Camera cam;
+	// Camera cam;
 
 	TextMesh pickupText;
 	bool looking = false;

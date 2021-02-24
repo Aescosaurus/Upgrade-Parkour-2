@@ -449,7 +449,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 2.5
-  interactTolerance: 0.8
   talkBeforeInteract: 0
   repeat: 1
   lines:
@@ -1459,7 +1458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 2.5
-  interactTolerance: 0.8
   talkBeforeInteract: 0
   repeat: 1
   lines:

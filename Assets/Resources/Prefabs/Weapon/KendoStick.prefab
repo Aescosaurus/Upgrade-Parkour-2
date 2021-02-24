@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSrc: Prefabs/Weapon/KendoStick
   invName: Kendo Stick
-  invDesc: I bet it would hurt if you hit someone with this.
+  invDesc: Some say keeping one of these in your inventory is good luck.
   jumpForce: 400
   flyDev: 0.2
   refire:
@@ -81,7 +81,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
-  interactTolerance: 0.8
 --- !u!1001 &5245237170329102621
 PrefabInstance:
   m_ObjectHideFlags: 0

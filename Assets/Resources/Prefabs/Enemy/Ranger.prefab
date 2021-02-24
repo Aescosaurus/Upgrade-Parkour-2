@@ -109,7 +109,12 @@ MonoBehaviour:
   moveSpeed: 3
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}
+  minMoveTimer:
+    duration: 2.6
   stopDist: 13
+  noscopeTimer:
+    duration: 0.4
+  noscopeJumpForce: 6
 --- !u!114 &1078883488311203824
 MonoBehaviour:
   m_ObjectHideFlags: 0
