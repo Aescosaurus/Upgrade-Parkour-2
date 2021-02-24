@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 3
-  hp: 3
+  maxHP: 3
   def: 0
   hitFX: 0
   oofFX: 2

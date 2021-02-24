@@ -11,6 +11,8 @@ public class Damageable
 		partHand = FindObjectOfType<ParticleHandler>();
 		shirkTimer.Update( shirkTimer.GetDuration() );
 		origScale = transform.localScale;
+
+		hp = maxHP;
 	}
 
 	protected virtual void Update()
@@ -58,8 +60,14 @@ public class Damageable
 		return( team );
 	}
 
+	public float GetHPPercent()
+	{
+		return( hp / maxHP );
+	}
+
 	[SerializeField] int team = 2;
-	[SerializeField] protected float hp = 1.0f;
+	[SerializeField] protected float maxHP = 1.0f;
+	protected float hp;
 	[SerializeField] float def = 0.0f;
 	[SerializeField] ParticleHandler.ParticleType hitFX = ParticleHandler.ParticleType.None;
 	[SerializeField] ParticleHandler.ParticleType oofFX = ParticleHandler.ParticleType.None;

@@ -51,14 +51,14 @@ MonoBehaviour:
   jumpForce: 400
   flyDev: 0.2
   refire:
-    duration: 1
+    duration: 2
   projectilePrefab: {fileID: 3716605428022485691, guid: 283cf7e42243dbe41b5dcfb1bbf61b40,
     type: 3}
   ammoItem: {fileID: -8025537777289129997, guid: 283cf7e42243dbe41b5dcfb1bbf61b40,
     type: 3}
   ammoUsage: 1
   shotSpeed: 35
-  damage: 1
+  damage: 0.7
 --- !u!114 &-2246478178887067418
 MonoBehaviour:
   m_ObjectHideFlags: 0

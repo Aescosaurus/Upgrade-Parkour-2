@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  hp: 5
+  maxHP: 5
   def: 0
   hitFX: 1
   oofFX: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1a6bebb298aef48ba9f9f89cc90281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heldWeapon: {fileID: 409589128292150074, guid: 7190d32c5f250db45961a8ae44e6eec9,
+  heldWeapon: {fileID: 409589128292150074, guid: 0d007335f67e1734cbd40ee48418c582,
     type: 3}
 --- !u!1 &1078883488339899485
 GameObject:

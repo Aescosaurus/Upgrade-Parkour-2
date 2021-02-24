@@ -1048,6 +1048,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203829, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: maxHP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203827, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: heldWeapon
+      value: 
+      objectReference: {fileID: 409589128292150074, guid: 7190d32c5f250db45961a8ae44e6eec9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
 --- !u!1001 &393531694
@@ -1630,12 +1641,6 @@ Light:
   m_CorrespondingSourceObject: {fileID: 4052833860729377680, guid: ea49274c0addfbb46a705e6866877ada,
     type: 3}
   m_PrefabInstance: {fileID: 4052833860025458954}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &770458348 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2168406733236045950, guid: 50f2588253bc51a49af51d72a5fc831c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2168406732763941522}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &829170691
 PrefabInstance:
@@ -2256,6 +2261,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203829, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: maxHP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203827, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: heldWeapon
+      value: 
+      objectReference: {fileID: 409589128292150074, guid: 7190d32c5f250db45961a8ae44e6eec9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
 --- !u!1001 &1065959819
@@ -2394,6 +2410,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203829, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: maxHP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203827, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: heldWeapon
+      value: 
+      objectReference: {fileID: 409589128292150074, guid: 7190d32c5f250db45961a8ae44e6eec9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
 --- !u!1 &1118568740
@@ -3242,6 +3269,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203829, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: maxHP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078883488311203827, guid: 064c2f55e7627594d903e61bf9dbfb30,
+        type: 3}
+      propertyPath: heldWeapon
+      value: 
+      objectReference: {fileID: 409589128292150074, guid: 7190d32c5f250db45961a8ae44e6eec9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
 --- !u!1 &1571094418
@@ -3307,7 +3345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  hp: 100
+  maxHP: 1
   def: 0
   hitFX: 0
   oofFX: 0
@@ -4899,11 +4937,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5319589823088533686, guid: 6eebddb192011cb40b1224eb32d2561d,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 770458348}
     - target: {fileID: 5319589821178214460, guid: 6eebddb192011cb40b1224eb32d2561d,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -6093,11 +6126,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2812476791439417102, guid: 6eebddb192011cb40b1224eb32d2561d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 98.100006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eebddb192011cb40b1224eb32d2561d, type: 3}

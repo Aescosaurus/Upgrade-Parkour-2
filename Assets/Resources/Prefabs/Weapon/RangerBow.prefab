@@ -58,7 +58,7 @@ MonoBehaviour:
     type: 3}
   ammoUsage: 1
   shotSpeed: 20
-  damage: 1
+  damage: 2
 --- !u!114 &-2246478178887067418
 MonoBehaviour:
   m_ObjectHideFlags: 0
