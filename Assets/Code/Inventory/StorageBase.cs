@@ -106,7 +106,8 @@ public class StorageBase
 	{
 		if( !File.Exists( savePath ) )
 		{
-			File.Create( savePath );
+			var file = File.Create( savePath );
+			file.Close();
 		}
 	}
 
