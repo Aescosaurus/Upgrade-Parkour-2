@@ -12,38 +12,47 @@ public class RangerAI
 
 		if( activated )
 		{
+			minMoveTimer.Update( Time.deltaTime );
 			var dir = player.transform.position - transform.position;
 			if( noscoping )
 			{
-				if( noscopeTimer.Update( Time.deltaTime ) )
+				if( noscopeTimer.IsDone() )
 				{
 					noscoping = false;
-					Look( dir );
+					// Look( dir );
 					Attack();
 					noscopeTimer.Reset();
+					minMoveTimer.Reset();
 				}
-				else
-				{
-					var ang = transform.eulerAngles;
-					ang.y = Mathf.Lerp( rotStart,rotStart + 360.0f,noscopeTimer.GetPercent() );
-					transform.eulerAngles = ang;
-				}
+
+				noscopeTimer.Update( Time.deltaTime );
+
+				var ang = transform.eulerAngles;
+				ang.y = Mathf.Lerp( rotStart,rotStart + 360.0f,noscopeTimer.GetPercent() );
+				transform.eulerAngles = ang;
+
+				if( noscopeTimer.IsDone() ) Look( dir );
 			}
 			else if( dir.sqrMagnitude > stopDist * stopDist )
 			{
 				dir.y = 0.0f;
 				Move( dir );
 			}
-			else if( minMoveTimer.Update( Time.deltaTime ) )
+			else
 			{
-				minMoveTimer.Reset();
-				StopMoving();
 				Look( dir );
-				rotStart = transform.eulerAngles.y;
-				noscoping = true;
-				body.AddForce( Vector3.up * noscopeJumpForce,ForceMode.Impulse );
-				noscopeTimer.Reset();
-				// Attack();
+				CancelAttack();
+				if( minMoveTimer.IsDone() )
+				{
+					minMoveTimer.Reset();
+					StopMoving();
+					Look( dir );
+					rotStart = transform.eulerAngles.y;
+					noscoping = true;
+					body.AddForce( Vector3.up * noscopeJumpForce,ForceMode.Impulse );
+					noscopeTimer.Reset();
+					// Attack();
+				}
 			}
 		}
 	}

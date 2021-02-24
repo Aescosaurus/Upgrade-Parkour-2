@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 7396601246676947077}
   - component: {fileID: 7396601246676947076}
   - component: {fileID: 1979007464246990840}
-  - component: {fileID: 7740711664482051420}
   - component: {fileID: 4097948153279981073}
   - component: {fileID: 4353980715733429559}
+  - component: {fileID: 5780086498093577080}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -156,24 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e64c525178012a42964ec0c3e8a8a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7740711664482051420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7396601246676947074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43adcc11aa68a164c99d3d15946ad546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team: 1
-  maxHP: 10
-  def: 0
-  hitFX: 1
-  oofFX: 2
-  shirkScale: {x: 1.1, y: 1, z: 1.1}
 --- !u!114 &4097948153279981073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +180,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f98bc90ae9a93d4e83a7c149b36092d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5780086498093577080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396601246676947074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88433f3a83b85694c869312561fcdd93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
+  maxHP: 10
+  def: 0
+  hitFX: 1
+  oofFX: 0
+  shirkScale: {x: 0.9, y: 1, z: 0.9}
 --- !u!1 &7396601247211960699
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,6 +133,11 @@ public class EnemyBase
 		wepHolder.TryAttack( transform.eulerAngles.y );
 	}
 
+	protected void CancelAttack()
+	{
+		wepHolder.CancelAttack();
+	}
+
 	protected bool IsWithinActivateRange( GameObject target )
 	{
 		var dist = target.transform.position - transform.position;
