@@ -20,10 +20,11 @@ public class TextRotator
 		mesh.enabled = draw;
 		if( draw )
 		{
-			var rot = transform.eulerAngles;
-			var diff = cam.transform.position - transform.position;
-			rot.y = Mathf.Atan2( diff.x,diff.z ) * Mathf.Rad2Deg + 180.0f;
-			transform.eulerAngles = rot;
+			// var rot = transform.eulerAngles;
+			// var diff = cam.transform.position - transform.position;
+			// rot.y = Mathf.Atan2( diff.x,diff.z ) * Mathf.Rad2Deg + 180.0f;
+			// transform.eulerAngles = rot;
+			transform.forward = cam.transform.forward;
 		}
 	}
 

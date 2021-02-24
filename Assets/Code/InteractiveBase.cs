@@ -19,8 +19,8 @@ public abstract class InteractiveBase
 	protected virtual void Update()
 	{
 		var diff = player.transform.position - transform.position;
-		if( diff.sqrMagnitude < interactDist * interactDist && Vector3.Dot( -diff.normalized,
-			( cam.gameObject.transform.forward + Vector3.up * 0.2f ).normalized ) > interactTolerance )
+		if( diff.sqrMagnitude < interactDist * interactDist && looking /*&& Vector3.Dot( -diff.normalized,
+			( cam.gameObject.transform.forward + Vector3.up * 0.2f ).normalized ) > interactTolerance*/ )
 		{
 			pickupText.gameObject.SetActive( true );
 			pickupText.transform.position = transform.position + Vector3.up * heightOffset;
@@ -28,6 +28,8 @@ public abstract class InteractiveBase
 			if( SpiffyInput.CheckAxis( "Interact" ) ) Interact();
 		}
 		else pickupText.gameObject.SetActive( false );
+
+		looking = false;
 	}
 
 	protected abstract void Interact();
@@ -42,6 +44,11 @@ public abstract class InteractiveBase
 		pickupText.text = text;
 	}
 
+	public void Look()
+	{
+		looking = true;
+	}
+
 	[SerializeField] float interactDist = 4.0f;
 	[SerializeField] float heightOffset = 1.0f;
 	[SerializeField] float interactTolerance = 0.8f;
@@ -50,4 +57,5 @@ public abstract class InteractiveBase
 	Camera cam;
 
 	TextMesh pickupText;
+	bool looking = false;
 }

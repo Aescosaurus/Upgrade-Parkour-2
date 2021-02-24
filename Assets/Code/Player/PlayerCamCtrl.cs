@@ -19,6 +19,7 @@ public class PlayerCamCtrl
 		playerInv = FindObjectOfType<InventoryHandler>();
 
 		worldMask = LayerMask.GetMask( "World" );
+		itemMask = ~LayerMask.GetMask( "Player" );
 	}
 
 	void Update()
@@ -65,11 +66,18 @@ public class PlayerCamCtrl
 			transform.forward * offset.z;
 		transform.position -= transform.forward * distToPlayer;
 
-		var ray = new Ray( player.transform.position,transform.position - player.transform.position );
-		RaycastHit hit;
-		if( Physics.Raycast( ray,out hit,distToPlayer,worldMask ) )
+		var clipRay = new Ray( player.transform.position,transform.position - player.transform.position );
+		RaycastHit clipHit;
+		if( Physics.Raycast( clipRay,out clipHit,distToPlayer,worldMask ) )
 		{
-			transform.position = hit.point + hit.normal * cam.nearClipPlane * 1.5f;
+			transform.position = clipHit.point + clipHit.normal * cam.nearClipPlane * 1.5f;
+		}
+
+		var interactRay = new Ray( transform.position + transform.forward * distToPlayer / 2.0f,transform.forward );
+		RaycastHit interactHit;
+		if( Physics.Raycast( interactRay,out interactHit,100.0f,itemMask ) )
+		{
+			interactHit.transform.GetComponent<InteractiveBase>()?.Look();
 		}
 	}
 
@@ -92,4 +100,5 @@ public class PlayerCamCtrl
 	InventoryHandler playerInv;
 
 	LayerMask worldMask;
+	LayerMask itemMask;
 }
