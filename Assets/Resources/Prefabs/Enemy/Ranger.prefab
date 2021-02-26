@@ -105,11 +105,12 @@ MonoBehaviour:
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.6, y: 1.2, z: 0.6}
+  ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
+  oofSound: {fileID: 8300000, guid: b234236b5cb955743ab2c866e971c2a5, type: 3}
   activationRange: 15
   moveSpeed: 3
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}
-  ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
   minMoveTimer:
     duration: 3
   stopDist: 13

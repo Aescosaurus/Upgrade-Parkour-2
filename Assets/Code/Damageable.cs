@@ -58,7 +58,10 @@ public class Damageable
 		if( !oofed )
 		{
 			oofed = true;
-			audSrc.PlayOneShot( oofSound );
+			// audSrc.PlayOneShot( oofSound );
+			var audLeftover = Instantiate( ResLoader.Load( "Prefabs/AudioLeftover" ) );
+			audLeftover.AddComponent<AudioSource>().PlayOneShot( oofSound );
+			Destroy( audLeftover,oofSound.length );
 
 			Destroy( gameObject );
 		}

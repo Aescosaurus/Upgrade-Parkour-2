@@ -65,6 +65,7 @@ MonoBehaviour:
   oofFX: 1
   shirkScale: {x: 0.8, y: 1.3, z: 0.8}
   ouchSound: {fileID: 8300000, guid: f0604e7ad72469a47bcf69f99004e895, type: 3}
+  oofSound: {fileID: 8300000, guid: 2bbf848a68af5cd479ad988a94efef35, type: 3}
 --- !u!1001 &3984382243647262303
 PrefabInstance:
   m_ObjectHideFlags: 0
