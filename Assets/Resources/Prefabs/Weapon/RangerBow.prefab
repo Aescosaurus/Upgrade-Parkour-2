@@ -52,6 +52,7 @@ MonoBehaviour:
   flyDev: 0.2
   refire:
     duration: 3
+  fireSound: {fileID: 8300000, guid: ce1f530c115c0354583ca294f3fda1c5, type: 3}
   projectilePrefab: {fileID: 3716605428022485691, guid: 283cf7e42243dbe41b5dcfb1bbf61b40,
     type: 3}
   ammoItem: {fileID: -8025537777289129997, guid: 283cf7e42243dbe41b5dcfb1bbf61b40,
@@ -73,7 +74,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
-  interactTolerance: 0.8
 --- !u!1001 &4426874266792639796
 PrefabInstance:
   m_ObjectHideFlags: 0

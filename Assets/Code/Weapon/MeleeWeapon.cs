@@ -82,6 +82,7 @@ public class MeleeWeapon
 		base.ToggleAttacking( on );
 
 		hurtArea.enabled = on;
+		if( on ) audSrc.PlayOneShot( fireSound );
 	}
 
 	Collider hurtArea;

@@ -66,6 +66,7 @@ MonoBehaviour:
   flyDev: 0.2
   refire:
     duration: 0.5
+  fireSound: {fileID: 8300000, guid: 3df7a49492cc6d849af4bb732533551b, type: 3}
   damage: 1
 --- !u!114 &-5974399983868034409
 MonoBehaviour:

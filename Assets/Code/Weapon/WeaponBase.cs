@@ -14,6 +14,8 @@ public abstract class WeaponBase
 		cam = ( team == 1 ? Camera.main.transform : animCtrl.transform );
 
 		refire.Update( refire.GetDuration() );
+
+		audSrc = gameObject.AddComponent<AudioSource>();
 	}
 
 	protected virtual void Update()
@@ -95,6 +97,7 @@ public abstract class WeaponBase
 	}
 
 	protected Animator animCtrl;
+	protected AudioSource audSrc;
 
 	[SerializeField] protected Timer refire = new Timer( 0.5f );
 
@@ -104,4 +107,6 @@ public abstract class WeaponBase
 
 	protected HotbarHandler hotbar = null;
 	protected Transform cam;
+
+	[SerializeField] protected AudioClip fireSound = null;
 }

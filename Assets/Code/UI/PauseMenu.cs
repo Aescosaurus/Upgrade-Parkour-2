@@ -11,6 +11,7 @@ public class PauseMenu
 	void Start()
 	{
 		img = GetComponent<Image>();
+		initAlpha = img.color.a;
 		CloseMenu();
 	}
 
@@ -37,7 +38,7 @@ public class PauseMenu
 		PauseMenu.open = open;
 
 		var c = img.color;
-		c.a = open ? 1.0f : 0.0f;
+		c.a = open ? initAlpha : 0.0f;
 		img.color = c;
 
 		var nButtons = transform.childCount;
@@ -57,4 +58,6 @@ public class PauseMenu
 
 	Image img;
 	static bool open = false;
+
+	float initAlpha;
 }

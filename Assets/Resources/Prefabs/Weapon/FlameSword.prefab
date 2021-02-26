@@ -52,6 +52,7 @@ MonoBehaviour:
   flyDev: 0.2
   refire:
     duration: 0.7
+  fireSound: {fileID: 8300000, guid: 24fa9b660b63f0e429864c49c90133b3, type: 3}
   shotSpeed: 30
   damage: 2
 --- !u!114 &2529357858781853021
@@ -68,7 +69,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
-  interactTolerance: 0.8
 --- !u!1001 &8217010368299354468
 PrefabInstance:
   m_ObjectHideFlags: 0

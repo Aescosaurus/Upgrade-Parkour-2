@@ -43,6 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5740a1e15062b904381f15b670a9ec6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabSrc: 
+  invName: 
+  invDesc: 
+  jumpForce: 400
+  flyDev: 0.2
   refire:
     duration: 1
+  fireSound: {fileID: 8300000, guid: 3df7a49492cc6d849af4bb732533551b, type: 3}
   throwForce: 15

@@ -33,8 +33,12 @@ public class RangeWeapon
 	public override void ToggleAttacking( bool on )
 	{
 		base.ToggleAttacking( on );
-		
-		if( on ) FireProjectile( projectilePrefab,shotSpeed,damage,0.2f );
+
+		if( on )
+		{
+			FireProjectile( projectilePrefab,shotSpeed,damage,0.2f );
+			audSrc.PlayOneShot( fireSound );
+		}
 	}
 
 	bool CanFire()
