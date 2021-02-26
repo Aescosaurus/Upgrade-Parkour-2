@@ -24,20 +24,20 @@ public class PlayerCamCtrl
 
 	void Update()
 	{
-		if( Input.GetKeyDown( KeyCode.Escape ) )
+		if( SpiffyInput.CheckAxis( "Menu" ) )
 		{
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 			escape = true;
 		}
-		if( Input.GetMouseButtonDown( 0 ) && !playerInv.IsOpen() )
+		if( SpiffyInput.CheckAxis( "Fire1" ) && !playerInv.IsOpen() && !PauseMenu.IsOpen() )
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 			escape = false;
 		}
 
-		if( !escape && !playerInv.IsOpen() )
+		if( !escape && !playerInv.IsOpen() && !PauseMenu.IsOpen() )
 		{
 			var aim = new Vector2( Input.GetAxis( "Mouse X" ),
 				Input.GetAxis( "Mouse Y" ) );

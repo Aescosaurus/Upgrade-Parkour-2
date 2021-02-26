@@ -6,8 +6,10 @@ public class SpiffyInput
 	:
 	MonoBehaviour
 {
-	public static bool CheckAxis( string axis )
+	public static bool CheckAxis( string axis,bool ignorePause = false )
 	{
+		if( !ignorePause && PauseMenu.IsOpen() ) return( false );
+
 		if( !canPress.ContainsKey( axis ) ) canPress.Add( axis,false );
 
 		bool pressing = Input.GetAxis( axis ) > 0.0f;

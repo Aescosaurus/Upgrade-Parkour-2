@@ -9,7 +9,6 @@ public class InventoryHandler
 {
 	protected override void Start()
 	{
-		base.Start();
 
 		// invPanel = GameObject.Find( "InventoryPanel" );
 
@@ -25,14 +24,16 @@ public class InventoryHandler
 		// slots[0].AddItem( Resources.Load<GameObject>( "Prefabs/MonsterShardSmall" ) );
 
 		// ToggleOpen( false );
+
+		invTutText = transform.parent.Find( "CloseInvText" ).GetComponent<Text>();
+
+		base.Start();
 	}
 
 	void Update()
 	{
-		if( SpiffyInput.CheckAxis( "Inventory" ) )
-		{
-			ToggleOpen( !open );
-		}
+		if( SpiffyInput.CheckAxis( "Inventory" ) ) ToggleOpen( !open );
+		if( SpiffyInput.CheckAxis( "Menu" ) ) ToggleOpen( false );
 	}
 
 	// void ToggleOpen( bool on )
@@ -42,6 +43,12 @@ public class InventoryHandler
 	// 	Cursor.visible = on;
 	// 	Cursor.lockState = on ? CursorLockMode.None : CursorLockMode.Locked;
 	// }
+	public override void ToggleOpen( bool on )
+	{
+		base.ToggleOpen( on );
+
+		invTutText.enabled = on;
+	}
 
 	// true if success false if full
 	public bool AddItem( LoadableItem item )
@@ -93,4 +100,5 @@ public class InventoryHandler
 	HotbarHandler hotbar;
 
 	// bool open = false;
+	Text invTutText;
 }
