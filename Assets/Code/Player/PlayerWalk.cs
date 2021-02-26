@@ -25,6 +25,7 @@ public class PlayerWalk
 			Input.GetAxis( "Vertical" )
 		);
 		move.Normalize();
+		if( PauseMenu.IsOpen() ) move.Set( 0.0f,0.0f,0.0f );
 		var ang = cam.transform.eulerAngles.y * Mathf.Deg2Rad - Mathf.PI / 2.0f;
 
 		var xMove = Mathf.Cos( ang ) * move.z + Mathf.Sin( ang + Mathf.PI ) * move.x;
@@ -51,7 +52,7 @@ public class PlayerWalk
 			yVel = 0.0f;
 		}
 
-		if( Input.GetAxis( "Jump" ) > 0.0f )
+		if( SpiffyInput.CheckFree( "Jump" ) )
 		{
 			if( !jumping && canJump )
 			{
@@ -98,7 +99,7 @@ public class PlayerWalk
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
 		animCtrl.SetBool( "jump",!canJump );
 
-		if( Input.GetAxis( "Fire1" ) > 0.0f )
+		if( SpiffyInput.CheckFree( "Fire1" ) )
 		{
 			if( !playerInv.IsOpen() )
 			{
@@ -118,10 +119,10 @@ public class PlayerWalk
 		wepHolder.SetTargetDir( cam.transform.eulerAngles.y );
 
 		knockbackDuration.Update( Time.deltaTime );
-		if( Input.GetKeyDown( KeyCode.Q ) )
-		{
-			ApplyKnockback( -cam.transform.forward,13.0f );
-		}
+		// if( Input.GetKeyDown( KeyCode.Q ) )
+		// {
+		// 	ApplyKnockback( -cam.transform.forward,13.0f );
+		// }
 	}
 
 	bool CanJump()

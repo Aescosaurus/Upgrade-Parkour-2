@@ -36,6 +36,8 @@ public class InventorySlot
 	{
 		hotbar = FindObjectOfType<HotbarHandler>();
 		infoPanel = GameObject.Find( "InfoPanel" ).GetComponent<InfoPanel>();
+		holder = transform.parent.GetComponent<StorageBase>();
+		invHand = FindObjectOfType<InventoryHandler>();
 	}
 
 	// void OnDestroy()
@@ -163,7 +165,42 @@ public class InventorySlot
 
 	public void OnPointerClick( PointerEventData eventData )
 	{
+		if( SpiffyInput.CheckFree( "StackItem" ) && item.GetPrefab() != null )
+		{
+			// if( holder != invHand )
+			// {
+			// 	invHand.TryStackItem( item );
+			// }
+			// else
+			// {
+			// 	hotbar.TryStackItem( item );
+			// }
+			// 
+			// RemoveItem( CountItems() );
 
+			// int leftover = ( holder == invHand
+			// 	? hotbar.TryStackItem( item,nItems )
+			// 	: invHand.TryStackItem( item,nItems ) );
+
+			int leftover = 0;
+			if( holder == hotbar )
+			{
+				leftover = invHand.TryStackItem( item,nItems );
+			}
+			else
+			{
+				if( hotbar.CheckExisting( item ) ) leftover = hotbar.TryStackItem( item,nItems );
+				else if( invHand.CheckExisting( item ) ) leftover = invHand.TryStackItem( item,nItems );
+				else
+				{
+					leftover = hotbar.TryStackItem( item,nItems );
+					if( leftover > 0 ) invHand.TryStackItem( item,nItems );
+				}
+			}
+
+			RemoveItem( nItems - leftover );
+			hotbar.RefreshSlot();
+		}
 	}
 
 	// more like swap item
@@ -224,7 +261,7 @@ public class InventorySlot
 	}
 
 	// return true if success in setting item, false if already full
-	public bool TrySetItem( LoadableItem item )
+	public bool TrySetItem( LoadableItem item,int quantity = 1 )
 	{
 		Assert.IsTrue( item != null );
 		bool canSwap = true;
@@ -240,14 +277,14 @@ public class InventorySlot
 		// 		canSwap = false;
 		// 	}
 		// }
-		if( !CanStack( item ) ) canSwap = false;
+		if( !CanStack( item,quantity ) ) canSwap = false;
 
 		if( this.item.GetPrefab() == null ) canSwap = true;
 
 		// print( item.GetPrefab().GetComponent<WeaponBase>() );
 		// print( this.item );
 
-		if( canSwap ) AddItem( item );
+		if( canSwap ) AddItem( item,quantity );
 
 		return( canSwap );
 	}
@@ -273,13 +310,19 @@ public class InventorySlot
 		return( nItems );
 	}
 
-	public bool CanStack( LoadableItem item )
+	public bool CanStack( LoadableItem item,int quantity = 1 )
 	{
 		return( this.item != null &&
 			item.CheckEqual( this.item ) &&
 			nItems < maxStackSize &&
 			item.GetPrefab().GetComponent<WeaponBase>() == null &&
-			this.item.GetPrefab().GetComponent<WeaponBase>() == null );
+			this.item.GetPrefab().GetComponent<WeaponBase>() == null &&
+			quantity + CountItems() <= maxStackSize );
+	}
+
+	public int GetMaxStackSize()
+	{
+		return( maxStackSize );
 	}
 
 	Transform itemPos;
@@ -302,6 +345,8 @@ public class InventorySlot
 
 	Image img;
 
+	StorageBase holder;
+	InventoryHandler invHand;
 	HotbarHandler hotbar;
 
 	Text counterText;

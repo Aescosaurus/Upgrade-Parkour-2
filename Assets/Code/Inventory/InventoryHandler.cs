@@ -56,10 +56,12 @@ public class InventoryHandler
 		bool full = true;
 
 		// try stacking item in hotbar, then inventory, before creating new stack
-		if( hotbar.TryStackItem( item ) || TryStackItem( item ) )
-		{
-			full = false;
-		}
+		// if( hotbar.TryStackItem( item ) < 1 || TryStackItem( item ) < 1 )
+		// {
+		// 	full = false;
+		// }
+		if( hotbar.CheckExisting( item ) && hotbar.TryStackItem( item ) < 1 ) full = false;
+		if( CheckExisting( item ) && TryStackItem( item ) < 1 ) full = false;
 
 		if( full && hotbar.TryAddItem( item ) )
 		{

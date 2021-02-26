@@ -146,34 +146,25 @@ public class StorageBase
 		return( false );
 	}
 
-	// true if success in stacking false if no stackable items available (including empty slots)
-	public virtual bool TryStackItem( LoadableItem item )
+	// Returns leftover items.
+	public virtual int TryStackItem( LoadableItem item,int quantity = 1 )
 	{
-		if( CheckExisting( item ) )
+		// if( CheckExisting( item ) )
 		{
 			foreach( var slot in slots )
 			{
-				// if( slot.GetItem().CheckEqual( item ) )
-				if( slot.CanStack( item ) )
+				int space = slot.GetMaxStackSize() - slot.CountItems();
+				var stackRemoveSize = Mathf.Min( quantity,space );
+				if( slot.CanStack( item,stackRemoveSize ) || slot.CountItems() < 1 )
 				{
-					// print( slot.GetItem().GetSrc() + "	" + item.GetSrc() );
-					return( slot.TrySetItem( item ) );
+					if( slot.TrySetItem( item,stackRemoveSize ) ) quantity -= stackRemoveSize;
+					// quantity -= space;
+					if( quantity < 1 ) break;
 				}
 			}
 		}
 
-		return( false );
-		// foreach( var slot in slots )
-		// {
-		// 	// if( slot.GetItem() == item )
-		// 	if( slot.TrySetItem( item ) )
-		// 	{
-		// 		// slot.TrySetItem( item );
-		// 		return( true );
-		// 	}
-		// }
-		// 
-		// return( false );
+		return( quantity );
 	}
 
 	// Return true if quantity exists of item and was consumed.
@@ -197,7 +188,8 @@ public class StorageBase
 	{
 		foreach( var slot in slots )
 		{
-			if( slot.GetItem().CheckEqual( checkItem ) )
+			if( slot.GetItem().CheckEqual( checkItem ) &&
+				slot.GetItem() != checkItem )
 			{
 				return( true );
 			}

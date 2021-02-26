@@ -30,5 +30,12 @@ public class SpiffyInput
 		}
 	}
 
+	// Lets you repeat keys but still checks pause menu open.
+	public static bool CheckFree( string axis,bool ignorePause = false )
+	{
+		if( !ignorePause && PauseMenu.IsOpen() ) return ( false );
+		else return( Input.GetAxis( axis ) > 0.0f );
+	}
+
 	static Dictionary<string,bool> canPress = new Dictionary<string,bool>();
 }

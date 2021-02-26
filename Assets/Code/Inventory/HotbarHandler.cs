@@ -119,13 +119,13 @@ public class HotbarHandler
 	// 
 	// 	return( false );
 	// }
-	public override bool TryStackItem( LoadableItem item )
+	public override int TryStackItem( LoadableItem item,int quantity = 1 )
 	{
-		bool stacked = base.TryStackItem( item );
+		int leftover = base.TryStackItem( item,quantity );
 
-		if( stacked ) RefreshSlot();
+		if( leftover != quantity ) RefreshSlot();
 
-		return( stacked );
+		return( leftover );
 	}
 
 	public void ConsumeHeldItem()
