@@ -59,11 +59,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 3
-  hp: 3
+  maxHP: 1
   def: 0
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.9, y: 1.2, z: 0.9}
+  ouchSound: {fileID: 8300000, guid: f0604e7ad72469a47bcf69f99004e895, type: 3}
 --- !u!1001 &6556226012992657154
 PrefabInstance:
   m_ObjectHideFlags: 0

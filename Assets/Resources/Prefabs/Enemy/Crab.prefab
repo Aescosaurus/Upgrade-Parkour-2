@@ -200,6 +200,7 @@ MonoBehaviour:
   moveSpeed: 2.7
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}
+  ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
   strafeDist: 9
   fleeDist: 5
   lungeTimer:
@@ -207,6 +208,7 @@ MonoBehaviour:
   lungePower: 16
   lungeUpBias: 0.3
   lungeDamage: 1
+  jumpSound: {fileID: 8300000, guid: 93917ad9655599941a516c8802b14803, type: 3}
 --- !u!1 &3089165843293272854
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class Damageable
 		origScale = transform.localScale;
 
 		hp = maxHP;
+
+		audSrc = gameObject.AddComponent<AudioSource>();
 	}
 
 	protected virtual void Update()
@@ -38,6 +40,7 @@ public class Damageable
 		shirkTimer.Reset();
 		if( amount > 0.0f )
 		{
+			audSrc.PlayOneShot( ouchSound );
 			hp -= amount;
 
 			var curFX = hitFX;
@@ -52,7 +55,13 @@ public class Damageable
 
 	protected virtual void Oof()
 	{
-		Destroy( gameObject );
+		if( !oofed )
+		{
+			oofed = true;
+			audSrc.PlayOneShot( oofSound );
+
+			Destroy( gameObject );
+		}
 	}
 
 	public int GetTeam()
@@ -77,4 +86,9 @@ public class Damageable
 
 	Timer shirkTimer = new Timer( 0.3f );
 	Vector3 origScale;
+	bool oofed = false;
+
+	protected AudioSource audSrc;
+	[SerializeField] AudioClip ouchSound = null;
+	[SerializeField] AudioClip oofSound = null;
 }

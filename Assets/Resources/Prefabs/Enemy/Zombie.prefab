@@ -110,6 +110,7 @@ MonoBehaviour:
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 485940830281168018, guid: 3d2553d4d4d5ea84b9986c9f77b9379a,
     type: 3}
+  ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
   stopDist: 2
 --- !u!114 &1078883488311203824
 MonoBehaviour:

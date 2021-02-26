@@ -52,6 +52,7 @@ public class RangerAI
 					body.AddForce( Vector3.up * noscopeJumpForce,ForceMode.Impulse );
 					noscopeTimer.Reset();
 					// Attack();
+					audSrc.PlayOneShot( jumpSound );
 				}
 			}
 		}
@@ -63,4 +64,6 @@ public class RangerAI
 	[SerializeField] float noscopeJumpForce = 3.0f;
 	bool noscoping = false;
 	float rotStart = 0.0f;
+
+	[SerializeField] AudioClip jumpSound = null;
 }

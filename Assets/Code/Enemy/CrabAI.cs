@@ -69,6 +69,8 @@ public class CrabAI
 		body.AddForce( ( ( player.transform.position - transform.position ).normalized + Vector3.up * lungeUpBias ) * lungePower,
 			ForceMode.Impulse );
 		hitbox.enabled = true;
+
+		audSrc.PlayOneShot( jumpSound );
 	}
 
 	protected override void OnCollisionEnter( Collision coll )
@@ -103,4 +105,6 @@ public class CrabAI
 	[SerializeField] float lungeUpBias = 0.2f;
 	BoxCollider hitbox;
 	[SerializeField] float lungeDamage = 2.0f;
+
+	[SerializeField] AudioClip jumpSound = null;
 }
