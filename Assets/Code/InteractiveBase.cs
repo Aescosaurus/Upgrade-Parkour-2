@@ -14,6 +14,8 @@ public abstract class InteractiveBase
 		pickupText = Instantiate( Resources.Load<GameObject>( "Prefabs/HoverText" ) )
 			.GetComponentInChildren<TextMesh>();
 		pickupText.text = "[E]";
+
+		audSrc = gameObject.AddComponent<AudioSource>();
 	}
 
 	protected virtual void Update()
@@ -25,7 +27,11 @@ public abstract class InteractiveBase
 			pickupText.gameObject.SetActive( true );
 			pickupText.transform.position = transform.position + Vector3.up * heightOffset;
 
-			if( SpiffyInput.CheckAxis( "Interact" ) ) Interact();
+			if( SpiffyInput.CheckAxis( "Interact" ) )
+			{
+				Interact();
+				audSrc.PlayOneShot( interactSound );
+			}
 		}
 		else pickupText.gameObject.SetActive( false );
 
@@ -58,4 +64,7 @@ public abstract class InteractiveBase
 
 	TextMesh pickupText;
 	bool looking = false;
+
+	AudioSource audSrc;
+	[SerializeField] AudioClip interactSound = null;
 }
