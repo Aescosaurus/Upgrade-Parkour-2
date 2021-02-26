@@ -480,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 2.5
+  interactSound: {fileID: 0}
   talkBeforeInteract: 0
   repeat: 1
   lines:
@@ -1542,6 +1543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 2.5
+  interactSound: {fileID: 0}
   talkBeforeInteract: 0
   repeat: 1
   lines:
@@ -2062,6 +2064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 2.5
+  interactSound: {fileID: 0}
   talkBeforeInteract: 0
   repeat: 1
   lines:
@@ -3971,6 +3974,31 @@ PrefabInstance:
     - target: {fileID: 1707680635151364653, guid: 6eebddb192011cb40b1224eb32d2561d,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383126207194427962, guid: 6eebddb192011cb40b1224eb32d2561d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383126207194427962, guid: 6eebddb192011cb40b1224eb32d2561d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301323889171698172, guid: 6eebddb192011cb40b1224eb32d2561d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301323889171698172, guid: 6eebddb192011cb40b1224eb32d2561d,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301323889171698172, guid: 6eebddb192011cb40b1224eb32d2561d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

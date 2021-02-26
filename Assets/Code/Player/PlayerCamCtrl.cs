@@ -20,6 +20,8 @@ public class PlayerCamCtrl
 
 		worldMask = LayerMask.GetMask( "World" );
 		itemMask = ~LayerMask.GetMask( "Player" );
+
+		sensitivity = PlayerPrefs.GetFloat( "sens",1.0f );
 	}
 
 	void Update()
@@ -42,7 +44,8 @@ public class PlayerCamCtrl
 			var aim = new Vector2( Input.GetAxis( "Mouse X" ),
 				Input.GetAxis( "Mouse Y" ) );
 
-			aim.y = aim.y * rotationSpeed * Time.deltaTime;
+			// aim.y = aim.y * rotationSpeed * sensitivity * Time.deltaTime;
+			aim = aim * rotationSpeed * sensitivity * Time.deltaTime;
 			if( aim.y > maxAimMove ) aim.y = maxAimMove;
 			if( aim.y < -maxAimMove ) aim.y = -maxAimMove;
 
@@ -50,7 +53,7 @@ public class PlayerCamCtrl
 			tempAng.x = tempAng.x - aim.y;
 			if( tempAng.x > 90.0f - verticalCutoff && tempAng.x < 180.0f ) tempAng.x = 90.0f - verticalCutoff;
 			if( tempAng.x < 270.0f + verticalCutoff && tempAng.x > 180.0f ) tempAng.x = 270.0f + verticalCutoff;
-			tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.deltaTime;
+			tempAng.y = tempAng.y + aim.x/* * rotationSpeed * Time.deltaTime*/;
 			transform.eulerAngles = tempAng;
 
 			// distToPlayer -= Input.GetAxis( "Mouse ScrollWheel" ) *
@@ -81,6 +84,11 @@ public class PlayerCamCtrl
 		}
 	}
 
+	public static void SetSensitivity( float sens )
+	{
+		sensitivity = sens;
+	}
+
 	[SerializeField] float minDistToPlayer = 4.0f;
 	[SerializeField] float maxDistToPlayer = 6.0f;
 	[SerializeField] Vector3 offset = Vector3.zero;
@@ -101,4 +109,6 @@ public class PlayerCamCtrl
 
 	LayerMask worldMask;
 	LayerMask itemMask;
+
+	static float sensitivity = 1.0f;
 }
