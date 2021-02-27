@@ -26,7 +26,7 @@ public class LoadableItem
 
 	void TryLoadPrefab()
 	{
-		if( prefab == null ) prefab = Resources.Load<GameObject>( prefabSrc );
+		if( prefab == null ) prefab = ResLoader.Load( prefabSrc );
 	}
 
 	// copy other's data into this

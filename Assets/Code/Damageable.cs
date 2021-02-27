@@ -67,6 +67,14 @@ public class Damageable
 		}
 	}
 
+	public void Heal( float amount )
+	{
+		hp += amount;
+		if( hp > maxHP ) hp = maxHP;
+
+		partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),hitFX );
+	}
+
 	public int GetTeam()
 	{
 		return( team );

@@ -65,7 +65,7 @@ public class StorageBase
 						}
 					}
 
-					var loadItem = Resources.Load<GameObject>( line )?.GetComponent<LoadableItem>();
+					var loadItem = ResLoader.Load( line )?.GetComponent<LoadableItem>();
 					if( loadItem != null ) slots[i].AddItem( loadItem,stackSize );
 					// for( int j = 0; j < stackSize; ++j )
 					// {

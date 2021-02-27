@@ -11,7 +11,7 @@ public abstract class InteractiveBase
 		player = GameObject.Find( "Player" );
 		// cam = Camera.main;
 
-		pickupText = Instantiate( Resources.Load<GameObject>( "Prefabs/HoverText" ) )
+		pickupText = Instantiate( ResLoader.Load( "Prefabs/HoverText" ) )
 			.GetComponentInChildren<TextMesh>();
 		pickupText.text = "[E]";
 

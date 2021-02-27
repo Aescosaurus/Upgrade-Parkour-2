@@ -8,8 +8,8 @@ public class HealthPotion
 {
 	protected override void Drink()
 	{
-		// restore hp
-		// particles
-		// sfx
+		animCtrl.GetComponent<Damageable>().Heal( healAmount );
 	}
+
+	[SerializeField] float healAmount = 7.0f;
 }

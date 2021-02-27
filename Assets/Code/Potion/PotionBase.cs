@@ -18,6 +18,7 @@ public abstract class PotionBase
 		if( on )
 		{
 			Drink();
+			// potion drinking sfx
 			hotbar.ConsumeHeldItem();
 		}
 	}

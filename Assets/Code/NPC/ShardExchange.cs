@@ -11,7 +11,7 @@ public class ShardExchange
 		shardSpot = transform.Find( "ShardSpot" ).GetComponent<InventorySlot>();
 		coinSpot = transform.Find( "CoinSpot" ).GetComponent<InventorySlot>();
 
-		coinPrefab = Resources.Load<GameObject>( "Prefabs/Coin" ).GetComponent<LoadableItem>();
+		coinPrefab = ResLoader.Load( "Prefabs/Coin" ).GetComponent<LoadableItem>();
 	}
 
 	public void TryExchange()
