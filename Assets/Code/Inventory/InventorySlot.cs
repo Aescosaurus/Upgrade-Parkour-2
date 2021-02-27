@@ -57,6 +57,7 @@ public class InventorySlot
 	public void AddItem( LoadableItem item,int quantity = 1 )
 	{
 		Assert.IsTrue( nItems + quantity <= maxStackSize );
+		Assert.IsTrue( quantity > 0 );
 		nItems += quantity;
 
 		Assert.IsTrue( item != null );
@@ -182,19 +183,20 @@ public class InventorySlot
 			// 	? hotbar.TryStackItem( item,nItems )
 			// 	: invHand.TryStackItem( item,nItems ) );
 
-			int leftover = 0;
+			int leftover = nItems;
 			if( holder == hotbar )
 			{
-				leftover = invHand.TryStackItem( item,nItems );
+				leftover = invHand.TryStackExisting( item,leftover );
+				if( leftover > 0 ) leftover = invHand.TryStackItem( item,leftover );
 			}
 			else
 			{
-				if( hotbar.CheckExisting( item ) ) leftover = hotbar.TryStackItem( item,nItems );
-				else if( invHand.CheckExisting( item ) ) leftover = invHand.TryStackItem( item,nItems );
-				else
+				if( hotbar.CheckExisting( item ) ) leftover = hotbar.TryStackExisting( item,leftover );
+				/*else */if( invHand.CheckExisting( item ) ) leftover = invHand.TryStackExisting( item,leftover );
+				// else
 				{
-					leftover = hotbar.TryStackItem( item,nItems );
-					if( leftover > 0 ) invHand.TryStackItem( item,nItems );
+					leftover = hotbar.TryStackItem( item,leftover );
+					if( leftover > 0 ) invHand.TryStackItem( item,leftover );
 				}
 			}
 

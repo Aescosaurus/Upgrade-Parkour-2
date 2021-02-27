@@ -150,6 +150,7 @@ public class StorageBase
 	public virtual int TryStackItem( LoadableItem item,int quantity = 1 )
 	{
 		// if( CheckExisting( item ) )
+		if( quantity > 0 )
 		{
 			foreach( var slot in slots )
 			{
@@ -161,6 +162,22 @@ public class StorageBase
 					// quantity -= space;
 					if( quantity < 1 ) break;
 				}
+			}
+		}
+
+		return( quantity );
+	}
+
+	public int TryStackExisting( LoadableItem item,int quantity = 1 )
+	{
+		foreach( var slot in slots )
+		{
+			int space = slot.GetMaxStackSize() - slot.CountItems();
+			var stackRemoveSize = Mathf.Min( quantity,space );
+			if( slot.CanStack( item,stackRemoveSize )/* || slot.CountItems() < 1*/ )
+			{
+				if( slot.TrySetItem( item,stackRemoveSize ) ) quantity -= stackRemoveSize;
+				if( quantity < 1 ) break;
 			}
 		}
 

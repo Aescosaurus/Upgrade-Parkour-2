@@ -60,8 +60,14 @@ public class InventoryHandler
 		// {
 		// 	full = false;
 		// }
-		if( hotbar.CheckExisting( item ) && hotbar.TryStackItem( item ) < 1 ) full = false;
-		if( CheckExisting( item ) && TryStackItem( item ) < 1 ) full = false;
+		if( hotbar.CheckExisting( item ) && hotbar.TryStackExisting( item ) < 1 ) full = false;
+		else if( CheckExisting( item ) && TryStackExisting( item ) < 1 ) full = false;
+
+		if( full )
+		{
+			if( hotbar.CheckExisting( item ) && hotbar.TryStackItem( item ) < 1 ) full = false;
+			else if( CheckExisting( item ) && TryStackItem( item ) < 1 ) full = false;
+		}
 
 		if( full && hotbar.TryAddItem( item ) )
 		{
