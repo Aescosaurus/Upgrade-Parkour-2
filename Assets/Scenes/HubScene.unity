@@ -1547,8 +1547,8 @@ MonoBehaviour:
   talkBeforeInteract: 0
   repeat: 1
   lines:
-  - hi
-  - ill give u coins for monster shards
+  - heey
+  - lets make some pots yo
   uiPrefab: {fileID: 3158789220255995321, guid: 4fc26be9422f8aa47bf4b431030ff917,
     type: 3}
   animSpeed: 1

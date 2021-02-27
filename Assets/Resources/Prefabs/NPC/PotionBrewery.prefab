@@ -240,12 +240,12 @@ PrefabInstance:
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: ingredients.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: ingredientQuantities.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
@@ -261,13 +261,13 @@ PrefabInstance:
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: ingredientQuantities.Array.data[0]
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: result
       value: 
-      objectReference: {fileID: 8725406240870868775, guid: fda30c87764c05e4dbe18ccc5c53d38a,
+      objectReference: {fileID: 1122705181447015051, guid: fda30c87764c05e4dbe18ccc5c53d38a,
         type: 3}
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
@@ -278,17 +278,17 @@ PrefabInstance:
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: ingredientQuantities.Array.data[1]
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: ingredientQuantities.Array.data[2]
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: ingredientQuantities.Array.data[3]
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
@@ -320,6 +320,18 @@ PrefabInstance:
       propertyPath: ingredientQuantities.Array.data[9]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
+        type: 3}
+      propertyPath: ingredients.Array.data[2]
+      value: 
+      objectReference: {fileID: -7518342594674100456, guid: e7010b1b68fa27240b199d342ca70bc6,
+        type: 3}
+    - target: {fileID: 8057031364565086329, guid: ee49487d5820ab146a1501561bd0b0f1,
+        type: 3}
+      propertyPath: ingredients.Array.data[3]
+      value: 
+      objectReference: {fileID: 3780726392569894077, guid: 3d2553d4d4d5ea84b9986c9f77b9379a,
+        type: 3}
     - target: {fileID: 8986107018494419475, guid: ee49487d5820ab146a1501561bd0b0f1,
         type: 3}
       propertyPath: m_AnchorMin.y

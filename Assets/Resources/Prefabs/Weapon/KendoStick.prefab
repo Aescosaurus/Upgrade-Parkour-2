@@ -65,9 +65,9 @@ MonoBehaviour:
   jumpForce: 400
   flyDev: 0.2
   refire:
-    duration: 0.5
+    duration: 0.7
   fireSound: {fileID: 8300000, guid: 3df7a49492cc6d849af4bb732533551b, type: 3}
-  damage: 1
+  damage: 1.2
 --- !u!114 &-5974399983868034409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
+  interactSound: {fileID: 0}
 --- !u!1001 &5245237170329102621
 PrefabInstance:
   m_ObjectHideFlags: 0

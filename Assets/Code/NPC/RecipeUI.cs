@@ -62,7 +62,10 @@ public class RecipeUI
 	{
 		if( desired == null || slot == null ) return( true );
 		else return( ( desired.GetSrc() == slot.GetItem().GetSrc() && slot.CountItems() >= quantity ) ||
-				( desired.GetComponent<WeaponBase>() != null && slot.GetPrefab().GetComponent<WeaponBase>() != null ) );
+				( desired.GetComponent<WeaponBase>() != null &&
+				slot.GetPrefab().GetComponent<WeaponBase>() != null &&
+				desired.GetComponent<PotionBase>() != null &&
+				slot.GetPrefab().GetComponent<PotionBase>() != null ) );
 	}
 
 	public List<InventorySlot> GetAllItemSlots()
