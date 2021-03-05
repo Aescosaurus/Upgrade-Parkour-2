@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5198679803629724791}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: End2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7336065929629668403}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: End1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4483071942147198083}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: End4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3916104591029835096}
   - component: {fileID: 2427697475989482154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CavernRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4606156149039716722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: End3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,6 +181,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CavernRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 020911dc6d6cc3d44973ecf5a4ff6413,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4122522715429665733, guid: 020911dc6d6cc3d44973ecf5a4ff6413,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 020911dc6d6cc3d44973ecf5a4ff6413,
         type: 3}

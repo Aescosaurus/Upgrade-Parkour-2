@@ -1297,6 +1297,21 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4052833860729377680, guid: ea49274c0addfbb46a705e6866877ada,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 5.16e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052833860729377680, guid: ea49274c0addfbb46a705e6866877ada,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052833860729377680, guid: ea49274c0addfbb46a705e6866877ada,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.1274317e-33
+      objectReference: {fileID: 0}
     - target: {fileID: 4052833860729377681, guid: ea49274c0addfbb46a705e6866877ada,
         type: 3}
       propertyPath: m_LocalPosition.x

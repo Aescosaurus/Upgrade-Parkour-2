@@ -43,6 +43,21 @@ public class CavernRoom
 			doorMap.Add( 3,rightExits );
 		}
 
+		if( spawnConnections == null )
+		{
+			spawnConnections = new Dictionary<int,List<int>>();
+
+			int curConn = 0;
+			spawnConnections.Add( curConn++,new List<int>(){ 11,9 } );
+			spawnConnections.Add( curConn++,new List<int>(){ 11,8,10 } );
+			spawnConnections.Add( curConn++,new List<int>(){ 10,7 } );
+			spawnConnections.Add( curConn++,new List<int>(){ 8,6,3,5 } );
+			spawnConnections.Add( curConn++,new List<int>(){ 7,5,2 } );
+			spawnConnections.Add( curConn++,new List<int>(){ 4,1 } );
+			spawnConnections.Add( curConn++,new List<int>(){ 1,3,0 } );
+			spawnConnections.Add( curConn++,new List<int>(){ 0,2 } );
+		}
+
 		var exitDir = 1;
 		while( exitDir == 1 ) exitDir = Random.Range( 0,3 + 1 );
 
@@ -76,4 +91,5 @@ public class CavernRoom
 	// walls have a chance of breaking anyway
 
 	static Dictionary<int,List<List<int>>> doorMap = null;
+	static Dictionary<int,List<int>> spawnConnections = null;
 }
