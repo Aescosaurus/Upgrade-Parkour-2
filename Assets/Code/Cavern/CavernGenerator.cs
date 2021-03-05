@@ -43,6 +43,7 @@ public class CavernGenerator
 		room.transform.rotation = tunnel.transform.rotation;
 		var roomScr = room.GetComponent<CavernRoom>();
 		var exitDoor = roomScr.Generate( allowBranches );
+		StartCoroutine( PopulateRoom( tunnel.GetComponent<CavernRoom>() ) );
 		StartCoroutine( PopulateRoom( roomScr ) );
 
 		if( exitDoor != null )
@@ -50,6 +51,7 @@ public class CavernGenerator
 			var t2 = Instantiate( tunnelPrefab,transform );
 			t2.transform.position = exitDoor.transform.position;
 			t2.transform.rotation = exitDoor.transform.rotation;
+			StartCoroutine( PopulateRoom( t2.GetComponent<CavernRoom>() ) );
 			// t2.transform.Rotate( Vector3.up,180.0f );
 			var endPiece = Instantiate( endPrefab,transform );
 			endPiece.transform.position = t2.transform.Find( "End" ).position;

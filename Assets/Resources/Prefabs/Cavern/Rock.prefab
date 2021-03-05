@@ -155,7 +155,7 @@ MonoBehaviour:
   def: 0
   hitFX: 4
   oofFX: 3
-  shirkScale: {x: 0.5, y: 1.5, z: 0.5}
+  shirkScale: {x: 0.8, y: 1.2, z: 0.8}
   ouchSound: {fileID: 8300000, guid: 545afd5a3f1aeda4da71428eb972af71, type: 3}
   oofSound: {fileID: 8300000, guid: 2bbf848a68af5cd479ad988a94efef35, type: 3}
 --- !u!1001 &7892921188916183599

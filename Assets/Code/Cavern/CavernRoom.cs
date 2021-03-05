@@ -98,15 +98,19 @@ public class CavernRoom
 		for( int i = 0; i < spawnAreas.childCount; ++i )
 		{
 			bool canSpawn = false;
-			foreach( int decoWall in decoConns[i] )
+
+			if( !ignoreWalls )
 			{
-				foreach( int openWall in doorMap[exitDir][exitChoice] )
+				foreach( int decoWall in decoConns[i] )
 				{
-					if( decoWall == openWall ) canSpawn = true;
+					foreach( int openWall in doorMap[exitDir][exitChoice] )
+					{
+						if( decoWall == openWall ) canSpawn = true;
+					}
 				}
 			}
 
-			if( canSpawn ) possibleSpawnAreas.Add( spawnAreas.GetChild( i ) );
+			if( canSpawn || ignoreWalls ) possibleSpawnAreas.Add( spawnAreas.GetChild( i ) );
 		}
 
 		foreach( var area in possibleSpawnAreas )
@@ -131,18 +135,20 @@ public class CavernRoom
 			spawnedObj.transform.Rotate( Vector3.up,Random.Range( 0.0f,360.0f ) );
 		}
 
-		// int nChildren = spawnAreas.childCount;
-		// for( int i = 0; i < nChildren; ++i )
-		// {
-		// 	var boxes = spawnAreas.GetChild( i ).GetComponentsInChildren<BoxCollider>();
-		// 	foreach( var box in boxes ) Destroy( box );
-		// }
+		int nChildren = spawnAreas.childCount;
+		for( int i = 0; i < nChildren; ++i )
+		{
+			var boxes = spawnAreas.GetChild( i ).GetComponentsInChildren<BoxCollider>();
+			foreach( var box in boxes ) Destroy( box );
+		}
 	}
 
 	// walls have a chance of breaking anyway
 
 	int exitDir = 1;
 	int exitChoice = 0;
+
+	[SerializeField] bool ignoreWalls = false;
 
 	static Dictionary<int,List<List<int>>> doorMap = null;
 	static Dictionary<int,List<int>> decoConns = null;
