@@ -135,7 +135,13 @@ public class DungeonGenerator
 				Random.Range( -0.0001f,0.0001f ),
 				Random.Range( -0.0001f,0.0001f ) );
 		curCorridor.transform.Rotate( Vector3.up,rot );
-		PopulateCorridor( curCorridor,x != 0 || y != 0,spawnExit );
+		StartCoroutine( LatePopulate( curCorridor,x != 0 || y != 0,spawnExit ) );
+	}
+
+	IEnumerator LatePopulate( GameObject corridor,bool spawnEnemies = true,bool spawnExit = false )
+	{
+		yield return( new WaitForEndOfFrame() );
+		PopulateCorridor( corridor,spawnEnemies,spawnExit );
 	}
 
 	void PopulateCorridor( GameObject corridor,bool spawnEnemies = true,bool spawnExit = false )
