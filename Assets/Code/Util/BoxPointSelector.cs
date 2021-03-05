@@ -14,8 +14,11 @@ public class BoxPointSelector
 		point.z = Random.Range( bounds.min.z + padding,bounds.max.z - padding );
 		// point = ( bounds.min + bounds.max ) / 2.0f;
 		// Debug.Log( bounds.min + " - " + bounds.max );
-		point = boxColl.transform.rotation * point;
 
-		return( point + boxColl.transform.position );
+		// point = boxColl.transform.rotation * point;
+
+		// Debug.Log( point );
+
+		return( point/* + boxColl.transform.position*/ );
 	}
 }

@@ -366,6 +366,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5efd3cc29fd724bbfeb046ef047c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decoSpawnChance: 0.2
+  decoPrefabs:
+  - {fileID: 8014251505093977096, guid: dae0e52991f34df459eda52cd3f5ce7a, type: 3}
+  - {fileID: 7892921189925389154, guid: 8a80b7992f52e364bb521663d2507e2c, type: 3}
+  - {fileID: 1987208556377570140, guid: 4b0a70c3089d84245aa544e1a9d65aa7, type: 3}
+  enemyPrefabs:
+  - {fileID: 3089165843163223701, guid: 0aaa5298110c7484d98abc2e7d1431c9, type: 3}
 --- !u!4 &428351002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2785106830404473671, guid: 48006ffc765e8a141a0ae9beb02fa190,

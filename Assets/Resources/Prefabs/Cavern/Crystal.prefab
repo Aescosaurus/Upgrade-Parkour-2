@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8014251505093977206}
   - component: {fileID: 8014251505093977207}
+  - component: {fileID: 6997528128122504566}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -137,6 +138,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5361645, y: 0.6426468, z: 0.60843086}
   m_Center: {x: -0.045755744, y: 0.34939003, z: -0.016217232}
+--- !u!114 &6997528128122504566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014251505093977096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43adcc11aa68a164c99d3d15946ad546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 2
+  maxHP: 4
+  def: 0
+  hitFX: 4
+  oofFX: 3
+  shirkScale: {x: 0.5, y: 1.5, z: 0.5}
+  ouchSound: {fileID: 8300000, guid: 545afd5a3f1aeda4da71428eb972af71, type: 3}
+  oofSound: {fileID: 8300000, guid: 2bbf848a68af5cd479ad988a94efef35, type: 3}
 --- !u!1001 &8014251504219347510
 PrefabInstance:
   m_ObjectHideFlags: 0

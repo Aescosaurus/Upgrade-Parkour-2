@@ -12,6 +12,8 @@ public class ParticleHandler
 		None,
 		Ouch,
 		Smoke,
+		Crystal,
+		Spark,
 		Count
 	}
 
@@ -22,6 +24,8 @@ public class ParticleHandler
 		// particlePrefabs[( int )ParticleType.Ouch] = ResLoader.Load( "Prefabs/Particle/OuchPart" );
 		LoadParticle( ParticleType.Ouch,"OuchPart" );
 		LoadParticle( ParticleType.Smoke,"SmokePart" );
+		LoadParticle( ParticleType.Crystal,"CrystalPart" );
+		LoadParticle( ParticleType.Spark,"SparkPart" );
 	}
 
 	public void SpawnParticles( Vector3 loc,int amount,ParticleType type )

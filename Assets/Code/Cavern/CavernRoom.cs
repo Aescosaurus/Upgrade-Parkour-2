@@ -34,7 +34,7 @@ public class CavernRoom
 			var rightExits = new List<List<int>>();
 			rightExits.Add( new List<int>{ 11,9 } );
 			rightExits.Add( new List<int>{ 8,6 } );
-			rightExits.Add( new List<int>{ 8,3,1 } );
+			rightExits.Add( new List<int>{ 8,3,1,4 } );
 			rightExits.Add( new List<int>{ 10,7,2,0,1,4 } );
 			rightExits.Add( new List<int>{ 10,7,2,0,3,6 } );
 
@@ -43,22 +43,23 @@ public class CavernRoom
 			doorMap.Add( 3,rightExits );
 		}
 
-		if( spawnConnections == null )
+		if( decoConns == null )
 		{
-			spawnConnections = new Dictionary<int,List<int>>();
+			decoConns = new Dictionary<int,List<int>>();
 
 			int curConn = 0;
-			spawnConnections.Add( curConn++,new List<int>(){ 11,9 } );
-			spawnConnections.Add( curConn++,new List<int>(){ 11,8,10 } );
-			spawnConnections.Add( curConn++,new List<int>(){ 10,7 } );
-			spawnConnections.Add( curConn++,new List<int>(){ 8,6,3,5 } );
-			spawnConnections.Add( curConn++,new List<int>(){ 7,5,2 } );
-			spawnConnections.Add( curConn++,new List<int>(){ 4,1 } );
-			spawnConnections.Add( curConn++,new List<int>(){ 1,3,0 } );
-			spawnConnections.Add( curConn++,new List<int>(){ 0,2 } );
+			decoConns.Add( curConn++,new List<int>(){ 2,0 } );
+			decoConns.Add( curConn++,new List<int>(){ 0,3,1 } );
+			decoConns.Add( curConn++,new List<int>(){ 1,4 } );
+			decoConns.Add( curConn++,new List<int>(){ 2,5,7 } );
+			decoConns.Add( curConn++,new List<int>(){ 3,5,8,6 } );
+			decoConns.Add( curConn++,new List<int>(){ 4,6,9 } );
+			decoConns.Add( curConn++,new List<int>(){ 7,10 } );
+			decoConns.Add( curConn++,new List<int>(){ 10,8,11 } );
+			decoConns.Add( curConn++,new List<int>(){ 11,9 } );
 		}
 
-		var exitDir = 1;
+		// var exitDir = 1;
 		while( exitDir == 1 ) exitDir = Random.Range( 0,3 + 1 );
 
 		if( doorMap.ContainsKey( exitDir ) )
@@ -67,7 +68,7 @@ public class CavernRoom
 			var walls = transform.Find( "Walls" );
 			for( var i = 0; i < walls.childCount; ++i ) children.Add( walls.GetChild( i ) );
 
-			var exitChoice = Random.Range( 0,doorMap[exitDir].Count );
+			exitChoice = Random.Range( 0,doorMap[exitDir].Count );
 			// print( exitDir + " " + exitChoice + " " + doorMap[exitDir].Count );
 			foreach( var wall in doorMap[exitDir][exitChoice] )
 			{
@@ -88,8 +89,61 @@ public class CavernRoom
 		return( exitDoor );
 	}
 
+	public void PopulateRoom( List<GameObject> decoPrefabs,float decoSpawnChance,
+		List<GameObject> enemyPrefabs )
+	{
+		var possibleSpawnAreas = new List<Transform>();
+
+		Transform spawnAreas = transform.Find( "SpawnAreas" );
+		for( int i = 0; i < spawnAreas.childCount; ++i )
+		{
+			bool canSpawn = false;
+			foreach( int decoWall in decoConns[i] )
+			{
+				foreach( int openWall in doorMap[exitDir][exitChoice] )
+				{
+					if( decoWall == openWall ) canSpawn = true;
+				}
+			}
+
+			if( canSpawn ) possibleSpawnAreas.Add( spawnAreas.GetChild( i ) );
+		}
+
+		foreach( var area in possibleSpawnAreas )
+		{
+			var boxes = area.GetComponentsInChildren<BoxCollider>();
+			var chosenBox = boxes[Random.Range( 0,boxes.Length - 1 )];
+			var spawnLoc = BoxPointSelector.GetRandPointWithinBox(
+				chosenBox,1.6f );
+
+			GameObject spawnedObj = null;
+
+			if( Random.Range( 0.0f,1.0f ) < decoSpawnChance )
+			{
+				spawnedObj = Instantiate( decoPrefabs[Random.Range( 0,decoPrefabs.Count )] );
+				spawnLoc.y = area.position.y;
+			}
+			else
+			{
+				spawnedObj = Instantiate( enemyPrefabs[Random.Range( 0,enemyPrefabs.Count )] );
+			}
+			spawnedObj.transform.position = spawnLoc;
+			spawnedObj.transform.Rotate( Vector3.up,Random.Range( 0.0f,360.0f ) );
+		}
+
+		// int nChildren = spawnAreas.childCount;
+		// for( int i = 0; i < nChildren; ++i )
+		// {
+		// 	var boxes = spawnAreas.GetChild( i ).GetComponentsInChildren<BoxCollider>();
+		// 	foreach( var box in boxes ) Destroy( box );
+		// }
+	}
+
 	// walls have a chance of breaking anyway
 
+	int exitDir = 1;
+	int exitChoice = 0;
+
 	static Dictionary<int,List<List<int>>> doorMap = null;
-	static Dictionary<int,List<int>> spawnConnections = null;
+	static Dictionary<int,List<int>> decoConns = null;
 }

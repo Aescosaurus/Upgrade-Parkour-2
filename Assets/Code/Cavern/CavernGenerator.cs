@@ -41,7 +41,9 @@ public class CavernGenerator
 		var room = Instantiate( roomPrefab,transform );
 		room.transform.position = tunnel.transform.Find( "End" ).position;
 		room.transform.rotation = tunnel.transform.rotation;
-		var exitDoor = room.GetComponent<CavernRoom>().Generate( allowBranches );
+		var roomScr = room.GetComponent<CavernRoom>();
+		var exitDoor = roomScr.Generate( allowBranches );
+		StartCoroutine( PopulateRoom( roomScr ) );
 
 		if( exitDoor != null )
 		{
@@ -72,7 +74,17 @@ public class CavernGenerator
 		else return( ( lval == 0 || lval == 1 ) && ( rval == 0 || rval == 1 ) );
 	}
 
+	IEnumerator PopulateRoom( CavernRoom roomScr )
+	{
+		yield return( new WaitForEndOfFrame() );
+		roomScr.PopulateRoom( decoPrefabs,decoSpawnChance,enemyPrefabs );
+	}
+
 	GameObject tunnelPrefab;
 	GameObject roomPrefab;
 	GameObject endPrefab;
+
+	[SerializeField] float decoSpawnChance = 0.2f;
+	[SerializeField] List<GameObject> decoPrefabs = new List<GameObject>();
+	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 }

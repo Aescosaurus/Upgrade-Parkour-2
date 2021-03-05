@@ -134,7 +134,6 @@ public class DungeonGenerator
 				Random.Range( -0.0001f,0.0001f ),
 				Random.Range( -0.0001f,0.0001f ),
 				Random.Range( -0.0001f,0.0001f ) );
-		// curCorridor.transform.position += Vector3.left * dungeonSize / 2 + Vector3.forward * dungeonSize / 2;
 		curCorridor.transform.Rotate( Vector3.up,rot );
 		PopulateCorridor( curCorridor,x != 0 || y != 0,spawnExit );
 	}
@@ -147,12 +146,6 @@ public class DungeonGenerator
 			if( Random.Range( 0.0f,1.0f ) < wallChance || !spawnEnemies || spawnExit ) Instantiate( wallPrefab,walls.GetChild( i ) );
 		}
 
-		// var possibleSpawnAreas = corridor.GetComponentsInChildren<BoxCollider>();
-		// var spawnAreas = new List<BoxCollider>();
-		// foreach( var area in possibleSpawnAreas )
-		// {
-		// 	if( area.isTrigger ) spawnAreas.Add( area );
-		// }
 		var enemySpawnAreas = corridor.transform.Find( "EnemySpawnArea" ).GetComponents<BoxCollider>().ToList();
 		var decoSpawnAreas = corridor.transform.Find( "DecoSpawnArea" ).GetComponents<BoxCollider>().ToList();
 
@@ -182,13 +175,6 @@ public class DungeonGenerator
 		foreach( var area in decoSpawnAreas ) Destroy( area );
 	}
 
-	// void TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,bool randY = true )
-	// {
-	// 	var obj = Instantiate( prefab );
-	// 	obj.transform.position = BoxPointSelector.GetRandPointWithinBox(
-	// 		spawnAreas[Random.Range( 0,spawnAreas.Count )] );
-	// 	if( !randY ) obj.transform.position += Vector3.down * obj.transform.position.y;
-	// }
 	GameObject TrySpawnPrefab( GameObject prefab,List<BoxCollider> spawnAreas,List<GameObject> prevSpawned )
 	{
 		var obj = Instantiate( prefab );
