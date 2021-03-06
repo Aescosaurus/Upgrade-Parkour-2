@@ -140,11 +140,21 @@ public class EnemyBase
 
 	protected bool IsWithinActivateRange( GameObject target )
 	{
-		var dist = target.transform.position - transform.position;
-		return( dist.sqrMagnitude < Mathf.Pow( activationRange,2 ) );
+		return( IsWithinRangeOf( target,activationRange ) );
 	}
 
-	public void ActivateSelf()
+	protected bool IsWithinRangeOf( GameObject target,float range )
+	{
+		var dist = target.transform.position - transform.position;
+		return ( dist.sqrMagnitude < Mathf.Pow( range,2 ) );
+	}
+
+	public virtual void ActivateSelf()
+	{
+		activated = true;
+	}
+
+	void ActivateOther()
 	{
 		activated = true;
 	}
@@ -153,7 +163,7 @@ public class EnemyBase
 	{
 		foreach( var enemy in FindObjectsOfType<EnemyBase>() )
 		{
-			if( IsWithinActivateRange( enemy.gameObject ) ) enemy.ActivateSelf();
+			if( IsWithinActivateRange( enemy.gameObject ) ) enemy.ActivateOther();
 		}
 	}
 
@@ -213,6 +223,10 @@ public class EnemyBase
 		spawnedShard = true;
 	}
 
+	public virtual void WopEnd()
+	{
+	}
+
 	// [SerializeField] float hp = 10.0f;
 
 	// [SerializeField] GameObject bulletPrefab = null;
@@ -235,7 +249,7 @@ public class EnemyBase
 	[SerializeField] float activationRange = 15.0f;
 	protected bool activated = false;
 
-	[SerializeField] float moveSpeed = 1.0f;
+	[SerializeField] protected float moveSpeed = 1.0f;
 	[SerializeField] float rotSpeed = 2.4f;
 	const float gravAcc = 15.0f;
 

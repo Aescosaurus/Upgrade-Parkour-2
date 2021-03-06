@@ -92,8 +92,15 @@ public class CrabAI
 
 	void OnTriggerEnter( Collider coll )
 	{
-		var damageable = coll.GetComponent<Damageable>();
-		if( damageable != null && damageable.GetTeam() == 1 ) damageable.Damage( lungeDamage );
+		if( !appliedDamage )
+		{
+			var damageable = coll.GetComponent<DamageablePlayer>();
+			if( damageable != null )
+			{
+				damageable.Damage( lungeDamage );
+				appliedDamage = true;
+			}
+		}
 	}
 
 	[SerializeField] float strafeDist = 5.0f;
@@ -105,6 +112,7 @@ public class CrabAI
 	[SerializeField] float lungeUpBias = 0.2f;
 	BoxCollider hitbox;
 	[SerializeField] float lungeDamage = 2.0f;
+	bool appliedDamage = false;
 
 	[SerializeField] AudioClip jumpSound = null;
 }

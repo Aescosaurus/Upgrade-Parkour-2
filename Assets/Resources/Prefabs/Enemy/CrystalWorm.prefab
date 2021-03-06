@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4206754103375541547}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8329510235089184050}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8961901635908624592}
-  m_Layer: 13
+  - component: {fileID: 1947412349812402040}
+  m_Layer: 10
   m_Name: Segment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +95,19 @@ Transform:
   m_Father: {fileID: 8686662756570054686}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1947412349812402040
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496144627325476685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.53433955, y: 2.462437, z: 0.5292777}
+  m_Center: {x: -0.00094020367, y: 1.2843765, z: -0.03153473}
 --- !u!1 &978854353545544255
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3338315372008077009}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 239208033065124049}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Segment4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4764742097655558652}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7769977750841421022}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 544855140045700009}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8686662756570054686}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Segment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 411343289275732716}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3530013117046524114}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Segment3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2591910475534360254}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9179467159620298462}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6196809045528386259}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4335362680269906670}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5771337463383687947}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 254795687421174253}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7148828522192549651}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5607797061044466077}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5910591280804913306}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5038974832619340286}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +688,8 @@ GameObject:
   - component: {fileID: 5713654726521914178}
   - component: {fileID: 5713654726521914179}
   - component: {fileID: 5713654726521914181}
-  m_Layer: 13
+  - component: {fileID: 5017548928378014384}
+  m_Layer: 10
   m_Name: CrystalWorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,8 +738,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 3.5335026, z: 1.4}
-  m_Center: {x: 0, y: 1.736196, z: 0}
+  m_Size: {x: 0.81586516, y: 3.3906283, z: 0.7847008}
+  m_Center: {x: 0.00468491, y: 1.7335169, z: -0.0031473339}
 --- !u!95 &5713654726521914181
 Animator:
   serializedVersion: 3
@@ -744,6 +759,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5017548928378014384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5713654726521914177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0e3ffbacbd6754abb52c0c8178f2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 2
+  maxHP: 3
+  def: 0
+  hitFX: 3
+  oofFX: 1
+  shirkScale: {x: 0.8, y: 1.2, z: 0.8}
+  ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
+  oofSound: {fileID: 8300000, guid: b234236b5cb955743ab2c866e971c2a5, type: 3}
+  activationRange: 6
+  moveSpeed: 3.6
+  rotSpeed: 3.4
+  itemDropPrefab: {fileID: 0}
+  moveRefire:
+    duration: 1.4
+  moveChill:
+    duration: 0.6
+  warningDuration:
+    duration: 1.5
+  chaseAnimSpeedup: 2
+  chaseSpeed: 7
+  attackRange: 3
+  hitbox: {fileID: 1947412349812402040}
+  wopDamage: 1
 --- !u!1 &5713654728176698356
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5713654728176698359}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2361267007893937158}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976227035808419417}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2572700871070282174}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +929,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8351759641309916690}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +963,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087499906042639559}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,7 +994,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2307704674794280195}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +1024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2219779246230796405}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +1055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7826648957960551055}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1085,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8403872358231516397}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,7 +1115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2014864711424781715}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1095,7 +1145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1728628169289539059}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1125,7 +1175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2902364708134083775}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1156,7 +1206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1353916852107178188}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4584183711991760970}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Segment5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1221,6 +1271,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WormSegment
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6471987776534938690, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36612a45e5adb7747bfd020109acbf6d,
         type: 3}
@@ -1302,11 +1362,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1362,6 +1427,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &7334652427592710984 stripped
@@ -1382,11 +1452,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1447,6 +1522,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &8187033092213515778 stripped
@@ -1466,6 +1546,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WormSegment
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6471987776534938690, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36612a45e5adb7747bfd020109acbf6d,
         type: 3}
@@ -1547,11 +1637,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1612,6 +1707,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &8907578339451297167 stripped
@@ -1632,11 +1732,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1697,6 +1802,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &553267690469638447 stripped
@@ -1716,6 +1826,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WormSegment
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6471987776534938690, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36612a45e5adb7747bfd020109acbf6d,
         type: 3}
@@ -1797,11 +1917,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormHead
       objectReference: {fileID: 0}
-    - target: {fileID: -7388253625486952215, guid: 4cbb11cffd8a6db4ca28a4aae0409356,
+    - target: {fileID: -927199367670048503, guid: 4cbb11cffd8a6db4ca28a4aae0409356,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2218264141695520501, guid: 4cbb11cffd8a6db4ca28a4aae0409356,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4cbb11cffd8a6db4ca28a4aae0409356,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1857,6 +1982,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7388253625486952215, guid: 4cbb11cffd8a6db4ca28a4aae0409356,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cbb11cffd8a6db4ca28a4aae0409356, type: 3}
 --- !u!4 &998021522240024303 stripped
@@ -1877,11 +2007,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1937,6 +2072,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &1511832491100159883 stripped
@@ -1957,11 +2097,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2017,6 +2162,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &2093719504645808312 stripped
@@ -2037,11 +2187,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2102,6 +2257,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &2263792120920397347 stripped
@@ -2122,11 +2282,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormSpike
       objectReference: {fileID: 0}
-    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+    - target: {fileID: -927199367670048503, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5280137138600140964, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b91d3ab39a38e640961063b406897a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2182,6 +2347,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5879552603763843296, guid: 8b91d3ab39a38e640961063b406897a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b91d3ab39a38e640961063b406897a6, type: 3}
 --- !u!4 &2356662073591865266 stripped
@@ -2201,6 +2371,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WormSegment
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6471987776534938690, guid: 36612a45e5adb7747bfd020109acbf6d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36612a45e5adb7747bfd020109acbf6d,
         type: 3}

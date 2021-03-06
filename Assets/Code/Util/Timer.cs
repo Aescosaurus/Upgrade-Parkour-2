@@ -14,7 +14,7 @@ public class Timer
 	{
 		if( curTime <= duration ) curTime += dt;
 
-		return ( IsDone() );
+		return( IsDone() );
 	}
 
 	public void Reset()
@@ -22,9 +22,14 @@ public class Timer
 		curTime = 0.0f;
 	}
 
+	public void SetDuration( float dur )
+	{
+		duration = dur;
+	}
+
 	public bool IsDone()
 	{
-		return ( curTime >= duration );
+		return( curTime >= duration );
 	}
 
 	public float GetPercent()
