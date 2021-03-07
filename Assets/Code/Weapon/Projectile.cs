@@ -18,7 +18,10 @@ public class Projectile
 		if( damageTarget != null )
 		{
 			targetTeam = damageTarget.GetTeam();
-			if( targetTeam != team ) damageTarget.Damage( damage );
+			if( targetTeam != team )
+			{
+				damageTarget.Damage( damage );
+			}
 		}
 
 		if( targetTeam != team ) Destroy( gameObject );
@@ -34,7 +37,7 @@ public class Projectile
 		this.team = team;
 	}
 
-	float damage = 0.0f;
+	[SerializeField] float damage = 1.0f;
 	int team = -1;
 
 	[SerializeField] float lifetime = 10.0f;

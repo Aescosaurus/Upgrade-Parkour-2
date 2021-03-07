@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 7892921189925389152}
   - component: {fileID: 7892921189925389155}
   - component: {fileID: 7709325400840316946}
+  - component: {fileID: -6703902350653386213}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -153,11 +154,27 @@ MonoBehaviour:
   team: 2
   maxHP: 4
   def: 0
-  hitFX: 4
+  hitFX: 3
   oofFX: 3
   shirkScale: {x: 0.8, y: 1.2, z: 0.8}
   ouchSound: {fileID: 8300000, guid: 545afd5a3f1aeda4da71428eb972af71, type: 3}
   oofSound: {fileID: 8300000, guid: 2bbf848a68af5cd479ad988a94efef35, type: 3}
+--- !u!114 &-6703902350653386213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892921189925389154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21789a1b5e0032547a1eedb64583da62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactDist: 4
+  heightOffset: 1
+  interactSound: {fileID: 0}
+  decoChance: 0.5
 --- !u!1001 &7892921188916183599
 PrefabInstance:
   m_ObjectHideFlags: 0

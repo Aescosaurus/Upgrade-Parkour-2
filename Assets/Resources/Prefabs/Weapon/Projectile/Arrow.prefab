@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6059dde9f66ac5439a0251104a70e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   lifetime: 10
 --- !u!114 &-8025537777289129997
 MonoBehaviour:
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
+  interactSound: {fileID: 0}
 --- !u!1001 &4817119918356359884
 PrefabInstance:
   m_ObjectHideFlags: 0

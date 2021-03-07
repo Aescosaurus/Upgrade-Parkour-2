@@ -494,13 +494,13 @@ MonoBehaviour:
     type: 3}
   fireballDist: 13
   fireballRefire:
-    duration: 0.23
+    duration: 0.16
   fireballDuration:
     duration: 5
   fireballPrefab: {fileID: 3716605428022485691, guid: 42f9e4f3e886d614c94e036d66a408f7,
     type: 3}
   fireballSpeed: 20
-  fireballSpread: {x: 6, y: 0.7, z: 6}
+  fireballSpread: {x: 4, y: 0.3, z: 4}
   spawnDuration:
     duration: 3
   spawnRefire:

@@ -12,10 +12,28 @@ public class CavernGenerator
 		roomPrefab = ResLoader.Load( "Prefabs/Cavern/Room" );
 		endPrefab = ResLoader.Load( "Prefabs/Cavern/CavernEnd" );
 
+		bossSpawnLoc = transform.Find( "BossSpawnLoc" );
+
 		var doors = transform.Find( "Doors" );
 
 		var tunnels = new List<int>();
-		for( int i = 0; i < doors.childCount; ++i ) tunnels.Add( Random.Range( 0,4 ) );
+		if( nPossibleTunnels > doors.childCount ) nPossibleTunnels = doors.childCount;
+		for( int i = 0; i < nPossibleTunnels; ++i ) tunnels.Add( Random.Range( 1,4 ) );
+		for( int i = 0; i < doors.childCount - nPossibleTunnels; ++i ) tunnels.Add( 0 );
+
+		for( int i = 0; i < tunnels.Count; ++i )
+		{
+			var randSpot = Random.Range( 0,tunnels.Count );
+			var temp = tunnels[i];
+			tunnels[i] = tunnels[randSpot];
+			tunnels[randSpot] = temp;
+		}
+
+		foreach( var tunnel in tunnels )
+		{
+			if( tunnel >= 3 ) nTunnels += 2;
+			else if( tunnel >= 1 ) nTunnels += 1;
+		}
 
 		for( int i = 0; i < doors.childCount; ++i )
 		{
@@ -82,6 +100,16 @@ public class CavernGenerator
 		roomScr.PopulateRoom( decoPrefabs,decoSpawnChance,enemyPrefabs,spawnChest );
 	}
 
+	public static void CollectDeco( int amount )
+	{
+		nDeco += amount;
+
+		if( nDeco == 0 )
+		{
+			// spawn boss at bossspawnloc
+		}
+	}
+
 	GameObject tunnelPrefab;
 	GameObject roomPrefab;
 	GameObject endPrefab;
@@ -89,4 +117,10 @@ public class CavernGenerator
 	[SerializeField] float decoSpawnChance = 0.2f;
 	[SerializeField] List<GameObject> decoPrefabs = new List<GameObject>();
 	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
+
+	[SerializeField] int nPossibleTunnels = 3;
+	int nTunnels;
+
+	static int nDeco = 0;
+	static Transform bossSpawnLoc;
 }
