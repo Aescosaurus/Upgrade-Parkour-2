@@ -51,7 +51,7 @@ public class CavernGenerator
 			var t2 = Instantiate( tunnelPrefab,transform );
 			t2.transform.position = exitDoor.transform.position;
 			t2.transform.rotation = exitDoor.transform.rotation;
-			StartCoroutine( PopulateRoom( t2.GetComponent<CavernRoom>() ) );
+			StartCoroutine( PopulateRoom( t2.GetComponent<CavernRoom>(),true ) );
 			// t2.transform.Rotate( Vector3.up,180.0f );
 			var endPiece = Instantiate( endPrefab,transform );
 			endPiece.transform.position = t2.transform.Find( "End" ).position;
@@ -76,10 +76,10 @@ public class CavernGenerator
 		else return( ( lval == 0 || lval == 1 ) && ( rval == 0 || rval == 1 ) );
 	}
 
-	IEnumerator PopulateRoom( CavernRoom roomScr )
+	IEnumerator PopulateRoom( CavernRoom roomScr,bool spawnChest = false )
 	{
 		yield return( new WaitForEndOfFrame() );
-		roomScr.PopulateRoom( decoPrefabs,decoSpawnChance,enemyPrefabs );
+		roomScr.PopulateRoom( decoPrefabs,decoSpawnChance,enemyPrefabs,spawnChest );
 	}
 
 	GameObject tunnelPrefab;

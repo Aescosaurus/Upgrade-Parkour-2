@@ -45,6 +45,7 @@ public class CrabAI
 						lungeTimer.Reset();
 						animCtrl.SetBool( "walk",false );
 						animCtrl.SetBool( "lunging",true );
+						appliedDamage = false;
 					}
 				}
 			}

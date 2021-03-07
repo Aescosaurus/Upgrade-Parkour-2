@@ -90,8 +90,10 @@ public class CavernRoom
 	}
 
 	public void PopulateRoom( List<GameObject> decoPrefabs,float decoSpawnChance,
-		List<GameObject> enemyPrefabs )
+		List<GameObject> enemyPrefabs,bool spawnChest = false )
 	{
+		if( chestPrefab == null ) chestPrefab = ResLoader.Load( "Prefabs/Dungeon/TreasureChest" );
+
 		var possibleSpawnAreas = new List<Transform>();
 
 		Transform spawnAreas = transform.Find( "SpawnAreas" );
@@ -113,8 +115,11 @@ public class CavernRoom
 			if( canSpawn || ignoreWalls ) possibleSpawnAreas.Add( spawnAreas.GetChild( i ) );
 		}
 
-		foreach( var area in possibleSpawnAreas )
+		// foreach( var area in possibleSpawnAreas )
+		for( int i = 0; i < possibleSpawnAreas.Count; ++i )
 		{
+			var area = possibleSpawnAreas[i];
+
 			var boxes = area.GetComponentsInChildren<BoxCollider>();
 			var chosenBox = boxes[Random.Range( 0,boxes.Length - 1 )];
 			var spawnLoc = BoxPointSelector.GetRandPointWithinBox(
@@ -122,9 +127,18 @@ public class CavernRoom
 
 			GameObject spawnedObj = null;
 
-			if( Random.Range( 0.0f,1.0f ) < decoSpawnChance )
+			if( Random.Range( 0.0f,1.0f ) < decoSpawnChance ||
+				( i >= possibleSpawnAreas.Count - 1 && spawnChest ) )
 			{
-				spawnedObj = Instantiate( decoPrefabs[Random.Range( 0,decoPrefabs.Count )] );
+				if( spawnChest )
+				{
+					spawnedObj = Instantiate( chestPrefab );
+				}
+				else
+				{
+					spawnedObj = Instantiate( decoPrefabs[Random.Range( 0,decoPrefabs.Count )] );
+				}
+
 				spawnLoc.y = area.position.y;
 			}
 			else
@@ -152,4 +166,6 @@ public class CavernRoom
 
 	static Dictionary<int,List<List<int>>> doorMap = null;
 	static Dictionary<int,List<int>> decoConns = null;
+
+	GameObject chestPrefab;
 }

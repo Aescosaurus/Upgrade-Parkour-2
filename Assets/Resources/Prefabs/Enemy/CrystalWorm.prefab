@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 3
+  maxHP: 4
   def: 0
   hitFX: 3
   oofFX: 1
