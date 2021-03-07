@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: -3170006985573393406}
   - component: {fileID: -8260715838263641663}
   - component: {fileID: 8885009942625037755}
+  - component: {fileID: 7232561914594727602}
   m_Layer: 0
   m_Name: CrystalBoss
   m_TagString: Untagged
@@ -221,8 +222,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.6350586, y: 1.8720584, z: 2.707073}
+  m_Center: {x: 0.06216228, y: 0.9592607, z: -0.069612384}
 --- !u!95 &8885009942625037755
 Animator:
   serializedVersion: 3
@@ -242,6 +243,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7232561914594727602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283789512994841261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a809a4001eed74da6345d2355b325a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 2
+  maxHP: 1
+  def: 0
+  hitFX: 0
+  oofFX: 0
+  shirkScale: {x: 0.5, y: 1.5, z: 0.5}
+  ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
+  oofSound: {fileID: 8300000, guid: b234236b5cb955743ab2c866e971c2a5, type: 3}
+  activationRange: 15
+  moveSpeed: 1
+  rotSpeed: 2.4
+  itemDropPrefab: {fileID: 0}
+  hopUpBias: 0.3
+  hopForce: 20
+  nHops: 5
+  spinRefire:
+    duration: 0.15
+  spinDuration:
+    duration: 4.6
+  projectilePrefab: {fileID: 3716605428022485691, guid: 42f9e4f3e886d614c94e036d66a408f7,
+    type: 3}
+  projectileSpeed: 10
+  circleSize: 8
+  angAdd: 550
 --- !u!1 &9106250000507295866
 GameObject:
   m_ObjectHideFlags: 0
