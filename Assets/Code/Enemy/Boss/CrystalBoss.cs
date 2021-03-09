@@ -20,98 +20,101 @@ public class CrystalBoss
 	{
 		base.Update();
 
-		switch( phase )
+		if( activated )
 		{
-			case 0:
-				animCtrl.SetBool( "hop",true );
-				if( !hopping )
-				{
-					var diff = player.transform.position - transform.position;
-					Look( diff );
-				}
-				break;
-			case 1:
-				if( spinDuration.Update( Time.deltaTime ) )
-				{
-					spinDuration.Reset();
-					phase = 2;
-
-					animCtrl.SetBool( "spin",false );
-					animCtrl.SetBool( "channel",true );
-				}
-				else
-				{
-					if( spinRefire.Update( Time.deltaTime ) )
+			switch( phase )
+			{
+				case 0:
+					animCtrl.SetBool( "hop",true );
+					if( !hopping )
 					{
-						spinRefire.Reset();
-						for( int i = 0; i < circleSize; ++i )
+						var diff = player.transform.position - transform.position;
+						Look( diff );
+					}
+					break;
+				case 1:
+					if( spinDuration.Update( Time.deltaTime ) )
+					{
+						spinDuration.Reset();
+						phase = 2;
+
+						animCtrl.SetBool( "spin",false );
+						animCtrl.SetBool( "channel",true );
+					}
+					else
+					{
+						if( spinRefire.Update( Time.deltaTime ) )
 						{
-							float ang = ( ( float )i / ( float )circleSize ) *
-								( 360.0f + spinDuration.GetPercent() * angAdd ) *
-								Mathf.Deg2Rad;
-							var dir = new Vector3(
-								Mathf.Cos( ang ),
-								0.0f,
-								Mathf.Sin( ang ) );
-							FireProjectile( projectilePrefab,transform.position + Vector3.up * 0.5f,
-								dir.normalized * projectileSpeed );
+							spinRefire.Reset();
+							for( int i = 0; i < circleSize; ++i )
+							{
+								float ang = ( ( float )i / ( float )circleSize ) *
+									( 360.0f + spinDuration.GetPercent() * angAdd ) *
+									Mathf.Deg2Rad;
+								var dir = new Vector3(
+									Mathf.Cos( ang ),
+									0.0f,
+									Mathf.Sin( ang ) );
+								FireProjectile( projectilePrefab,transform.position + Vector3.up * 0.5f,
+									dir.normalized * projectileSpeed );
+							}
 						}
 					}
-				}
-				break;
-			case 2:
-				if( spawnDuration.Update( Time.deltaTime ) )
-				{
-					spawnDuration.Reset();
-					phase = 3;
-					animCtrl.SetBool( "channel",false );
-					animCtrl.SetBool( "hop",true );
-				}
-				else
-				{
-					if( spawnRefire.Update( Time.deltaTime ) )
+					break;
+				case 2:
+					if( spawnDuration.Update( Time.deltaTime ) )
 					{
-						spawnRefire.Reset();
-
-						var minion = Instantiate( wormPrefab );
-						var spawnPos = transform.position + new Vector3(
-							Random.Range( -spawnRadius,spawnRadius ),
-							spawnHeight,
-							Random.Range( -spawnRadius,spawnRadius ) );
-						minion.transform.position = spawnPos;
-						StartCoroutine( MinionSetup( minion ) );
+						spawnDuration.Reset();
+						phase = 3;
+						animCtrl.SetBool( "channel",false );
+						animCtrl.SetBool( "hop",true );
 					}
-				}
-				break;
-			case 3:
-				if( wanderDuration.Update( Time.deltaTime ) )
-				{
-					curHop = 0;
-					phase = 0;
-				}
-				else
-				{
-					if( wanderReset.Update( Time.deltaTime ) )
+					else
 					{
-						wanderReset.Reset();
-
-						// if( Random.Range( 0.0f,1.0f ) < 0.5f )
+						if( spawnRefire.Update( Time.deltaTime ) )
 						{
-							hopDir = new Vector3(
-								Random.Range( -1.0f,1.0f ),
-								0.0f,
-								Random.Range( -1.0f,1.0f ) );
-						}
-						// else
-						// {
-						// 	hopDir = player.transform.position - transform.position;
-						// }
-					}
+							spawnRefire.Reset();
 
-					animCtrl.SetBool( "hop",true );
-					if( !hopping ) Look( hopDir );
-				}
-				break;
+							var minion = Instantiate( wormPrefab );
+							var spawnPos = transform.position + new Vector3(
+								Random.Range( -spawnRadius,spawnRadius ),
+								spawnHeight,
+								Random.Range( -spawnRadius,spawnRadius ) );
+							minion.transform.position = spawnPos;
+							StartCoroutine( MinionSetup( minion ) );
+						}
+					}
+					break;
+				case 3:
+					if( wanderDuration.Update( Time.deltaTime ) )
+					{
+						curHop = 0;
+						phase = 0;
+					}
+					else
+					{
+						if( wanderReset.Update( Time.deltaTime ) )
+						{
+							wanderReset.Reset();
+
+							// if( Random.Range( 0.0f,1.0f ) < 0.5f )
+							{
+								hopDir = new Vector3(
+									Random.Range( -1.0f,1.0f ),
+									0.0f,
+									Random.Range( -1.0f,1.0f ) );
+							}
+							// else
+							// {
+							// 	hopDir = player.transform.position - transform.position;
+							// }
+						}
+
+						animCtrl.SetBool( "hop",true );
+						if( !hopping ) Look( hopDir );
+					}
+					break;
+			}
 		}
 	}
 

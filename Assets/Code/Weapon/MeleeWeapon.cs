@@ -71,11 +71,11 @@ public class MeleeWeapon
 		// }
 	}
 
-	public void ToggleHurtArea( bool on )
-	{
-		hurtArea.enabled = on;
-		// attacking = on;
-	}
+	// public void ToggleHurtArea( bool on )
+	// {
+	// 	hurtArea.enabled = on;
+	// 	// attacking = on;
+	// }
 
 	public override void ToggleAttacking( bool on )
 	{

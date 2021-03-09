@@ -72,10 +72,7 @@ public class WeaponHolder
 		curWB.CancelAttack();
 		Destroy( curWB.gameObject );
 		InitNewWeapon( replacement );
-		animCtrl.SetBool( "aim",false );
-		animCtrl.SetBool( "swing",false );
-		animCtrl.SetBool( "throw",false );
-		animCtrl.SetBool( "drink",false );
+		CancelAnims();
 	}
 
 	void InitNewWeapon( GameObject prefab )
@@ -93,6 +90,20 @@ public class WeaponHolder
 		curWeapon.transform.SetParent( bh.GetHand( handPref ).transform,false );
 		curWeapon.transform.Rotate( Vector3.right,90.0f * ( handPref == 1 ? 1 : -1 ) );
 		curWB.LinkAnimator( animCtrl );
+	}
+
+	void CancelAnims()
+	{
+		animCtrl.SetBool( "aim",false );
+		animCtrl.SetBool( "swing",false );
+		animCtrl.SetBool( "throw",false );
+		animCtrl.SetBool( "drink",false );
+	}
+
+	public void StopAttacking()
+	{
+		CancelAnims();
+		curWB.CancelAttack();
 	}
 
 	[SerializeField] GameObject heldWeapon = null;
