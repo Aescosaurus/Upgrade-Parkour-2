@@ -9,6 +9,7 @@ public abstract class PotionBase
 	protected override void Fire()
 	{
 		animCtrl.SetBool( "drink",true );
+		GetComponent<BoxCollider>().enabled = false;
 	}
 
 	public override void ToggleAttacking( bool on )

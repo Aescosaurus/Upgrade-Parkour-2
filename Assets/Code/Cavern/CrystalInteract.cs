@@ -12,7 +12,11 @@ public class CrystalInteract
 
 		partHand = FindObjectOfType<ParticleHandler>();
 
-		if( Random.Range( 0.0f,1.0f ) < decoChance ) Destroy( this );
+		if( Random.Range( 0.0f,1.0f ) < decoChance )
+		{
+			Destroy( pickupText );
+			Destroy( this );
+		}
 		else
 		{
 			Destroy( GetComponent<Damageable>() );
