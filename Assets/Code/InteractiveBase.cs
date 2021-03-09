@@ -62,7 +62,7 @@ public abstract class InteractiveBase
 	protected GameObject player;
 	// Camera cam;
 
-	TextMesh pickupText;
+	protected TextMesh pickupText;
 	bool looking = false;
 
 	AudioSource audSrc;

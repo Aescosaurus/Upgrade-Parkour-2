@@ -22,8 +22,14 @@ public class CrystalInteract
 
 	protected override void Interact()
 	{
-		CavernGenerator.CollectDeco( 1 );
+		var leftover = -CavernGenerator.CollectDeco( 1 );
 		partHand.SpawnParticles( transform.position,35,ParticleHandler.ParticleType.Spark );
+
+		var leftoverText = Instantiate( ResLoader.Load( "Prefabs/HoverText" ) );
+		leftoverText.transform.position = pickupText.transform.position;
+		leftoverText.GetComponentInChildren<TextMesh>().text = leftover.ToString() + " remain...";
+		Destroy( leftoverText,2.5f );
+
 		Destroy( gameObject );
 	}
 

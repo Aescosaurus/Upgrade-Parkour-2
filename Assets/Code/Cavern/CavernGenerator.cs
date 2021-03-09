@@ -13,6 +13,7 @@ public class CavernGenerator
 		endPrefab = ResLoader.Load( "Prefabs/Cavern/CavernEnd" );
 
 		bossSpawnLoc = transform.Find( "BossSpawnLoc" );
+		bossPrefab = ResLoader.Load( "Prefabs/Enemy/Boss/CrystalBoss" );
 
 		var doors = transform.Find( "Doors" );
 
@@ -100,14 +101,17 @@ public class CavernGenerator
 		roomScr.PopulateRoom( decoPrefabs,decoSpawnChance,enemyPrefabs,spawnChest );
 	}
 
-	public static void CollectDeco( int amount )
+	public static int CollectDeco( int amount )
 	{
 		nDeco += amount;
 
 		if( nDeco == 0 )
 		{
-			// spawn boss at bossspawnloc
+			var boss = Instantiate( bossPrefab );
+			boss.transform.position = bossSpawnLoc.position;
 		}
+
+		return( nDeco );
 	}
 
 	GameObject tunnelPrefab;
@@ -123,4 +127,5 @@ public class CavernGenerator
 
 	static int nDeco = 0;
 	static Transform bossSpawnLoc;
+	static GameObject bossPrefab;
 }
