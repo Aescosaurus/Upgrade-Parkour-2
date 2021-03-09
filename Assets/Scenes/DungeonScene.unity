@@ -151,11 +151,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonSize: 20
   roomPercent: 0.6
-  bossFloor: 2
+  bossFloor: 1
   corridorSize: 27.97028
   nRoomEnemies:
-    min: 3
-    max: 6
+    min: 0
+    max: 4
   enemyPrefabs:
   - {fileID: 1078883488311203826, guid: 064c2f55e7627594d903e61bf9dbfb30, type: 3}
   - {fileID: 3089165843163223701, guid: 0aaa5298110c7484d98abc2e7d1431c9, type: 3}

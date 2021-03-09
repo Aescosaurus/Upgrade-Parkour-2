@@ -131,9 +131,9 @@ public class DungeonGenerator
 		Assert.IsTrue( inst >= 0 );
 		var curCorridor = Instantiate( corridorPrefabs[inst],transform );
 		curCorridor.transform.position += new Vector3( x,0,y ) * corridorSize + new Vector3(
-				Random.Range( -0.0001f,0.0001f ),
-				Random.Range( -0.0001f,0.0001f ),
-				Random.Range( -0.0001f,0.0001f ) );
+				Random.Range( -0.001f,0.001f ),
+				Random.Range( -0.001f,0.001f ),
+				Random.Range( -0.001f,0.001f ) );
 		curCorridor.transform.Rotate( Vector3.up,rot );
 		StartCoroutine( LatePopulate( curCorridor,x != 0 || y != 0,spawnExit ) );
 	}
@@ -159,7 +159,7 @@ public class DungeonGenerator
 
 		if( spawnExit )
 		{
-			prevSpawned.Add( TrySpawnPrefab( hubPortalPrefab,enemySpawnAreas,prevSpawned ) );
+			// prevSpawned.Add( TrySpawnPrefab( hubPortalPrefab,enemySpawnAreas,prevSpawned ) );
 			prevSpawned.Add( TrySpawnPrefab( stairsPrefab,enemySpawnAreas,prevSpawned ) );
 		}
 		else if( spawnEnemies )
@@ -187,8 +187,8 @@ public class DungeonGenerator
 		int tries = 50;
 		do
 		{
-			obj.transform.position = BoxPointSelector.GetRandPointWithinBox(
-				spawnAreas[Random.Range( 0,spawnAreas.Count )],spawnSpacing );
+			var box = spawnAreas[Random.Range( 0,spawnAreas.Count )];
+			obj.transform.position = BoxPointSelector.GetRandPointWithinBox( box,spawnSpacing );
 			obj.transform.position += Vector3.down * obj.transform.position.y;
 		}
 		while( CheckOverlapping( obj,prevSpawned ) && --tries > 0 );
@@ -208,7 +208,7 @@ public class DungeonGenerator
 				var diff = curObj.transform.position - obj.transform.position;
 				if( diff.sqrMagnitude < spawnSpacing * spawnSpacing )
 				{
-					return ( true );
+					return( true );
 				}
 			}
 		}
