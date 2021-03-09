@@ -227,6 +227,13 @@ public class EnemyBase
 	{
 	}
 
+	// transition from state1 to state2
+	protected void Transition( string state1,string state2 )
+	{
+		animCtrl.SetBool( state1,false );
+		animCtrl.SetBool( state2,true );
+	}
+
 	// [SerializeField] float hp = 10.0f;
 
 	// [SerializeField] GameObject bulletPrefab = null;
@@ -243,7 +250,7 @@ public class EnemyBase
 	// ParticleSystem partHand;
 	// ParticleHandler partHand;
 
-	WeaponHolder wepHolder;
+	protected WeaponHolder wepHolder;
 	LayerMask bulletLayer;
 
 	[SerializeField] float activationRange = 15.0f;

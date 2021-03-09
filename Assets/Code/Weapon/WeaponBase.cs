@@ -96,6 +96,11 @@ public abstract class WeaponBase
 		return( attacking );
 	}
 
+	public float GetRefireDuration()
+	{
+		return( refire.GetDuration() );
+	}
+
 	protected Animator animCtrl;
 	protected AudioSource audSrc;
 

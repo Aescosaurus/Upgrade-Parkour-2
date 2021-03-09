@@ -106,6 +106,11 @@ public class WeaponHolder
 		curWB.CancelAttack();
 	}
 
+	public GameObject GetWeapon()
+	{
+		return( heldWeapon );
+	}
+
 	[SerializeField] GameObject heldWeapon = null;
 
 	// GameObject curWeapon = null;
