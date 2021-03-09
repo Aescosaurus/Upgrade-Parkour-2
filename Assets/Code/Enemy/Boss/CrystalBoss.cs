@@ -11,6 +11,9 @@ public class CrystalBoss
 		base.Start();
 
 		wormPrefab = ResLoader.Load( "Prefabs/Enemy/CrystalWorm" );
+
+		hitbox = transform.Find( "Body" ).Find( "Hitbox" ).GetComponent<BoxCollider>();
+		hitbox.enabled = false;
 	}
 
 	protected override void Update()
@@ -61,6 +64,8 @@ public class CrystalBoss
 				{
 					spawnDuration.Reset();
 					phase = 3;
+					animCtrl.SetBool( "channel",false );
+					animCtrl.SetBool( "hop",true );
 				}
 				else
 				{
@@ -79,6 +84,33 @@ public class CrystalBoss
 				}
 				break;
 			case 3:
+				if( wanderDuration.Update( Time.deltaTime ) )
+				{
+					curHop = 0;
+					phase = 0;
+				}
+				else
+				{
+					if( wanderReset.Update( Time.deltaTime ) )
+					{
+						wanderReset.Reset();
+
+						// if( Random.Range( 0.0f,1.0f ) < 0.5f )
+						{
+							hopDir = new Vector3(
+								Random.Range( -1.0f,1.0f ),
+								0.0f,
+								Random.Range( -1.0f,1.0f ) );
+						}
+						// else
+						// {
+						// 	hopDir = player.transform.position - transform.position;
+						// }
+					}
+
+					animCtrl.SetBool( "hop",true );
+					if( !hopping ) Look( hopDir );
+				}
 				break;
 		}
 	}
@@ -87,38 +119,75 @@ public class CrystalBoss
 	{
 		hopping = true;
 
-		var diff = player.transform.position - transform.position;
+		// var diff = player.transform.position - transform.position;
+		var diff = transform.forward;
 		diff.y = 0.0f;
 		body.AddForce( ( diff.normalized + Vector3.up * hopUpBias ).normalized * hopForce,ForceMode.Impulse );
+
+		appliedDamage = false;
+		hitbox.enabled = true;
+	}
+
+	public void HopEnd()
+	{
+		hitbox.enabled = false;
+
+		hopping = false;
+		++curHop;
+		if( phase == 0 && curHop > nHops )
+		{
+			curHop = 0;
+			phase = 1;
+			animCtrl.SetBool( "hop",false );
+			animCtrl.SetBool( "spin",true );
+		}
 	}
 
 	protected override void OnCollisionEnter( Collision coll )
 	{
 		base.OnCollisionEnter( coll );
 
-		if( hopping )
-		{
-			hopping = false;
-			if( ++curHop > nHops )
-			{
-				curHop = 0;
-				phase = 1;
-				animCtrl.SetBool( "hop",false );
-				animCtrl.SetBool( "spin",true );
-			}
-		}
+		// if( hopping )
+		// {
+		// 	hopping = false;
+		// 	++curHop;
+		// 	if( phase == 0 && curHop > nHops )
+		// 	{
+		// 		curHop = 0;
+		// 		phase = 1;
+		// 		animCtrl.SetBool( "hop",false );
+		// 		animCtrl.SetBool( "spin",true );
+		// 	}
+		// }
 	}
 
 	IEnumerator MinionSetup( GameObject minion )
 	{
 		yield return( new WaitForEndOfFrame() );
 
-		minion.GetComponent<CrystalWormAI>().ActivateSelf();
+		var ai = minion.GetComponent<CrystalWormAI>();
+		ai.ActivateSelf();
+		ai.DisableDrops();
+	}
+
+	void OnTriggerEnter( Collider coll )
+	{
+		if( !appliedDamage )
+		{
+			var damageable = coll.GetComponent<DamageablePlayer>();
+			if( damageable != null )
+			{
+				damageable.Damage( hopDamage );
+				appliedDamage = true;
+			}
+		}
 	}
 
 	int phase = 0;
 
 	GameObject wormPrefab;
+	BoxCollider hitbox;
+	bool appliedDamage = false;
 
 	[Header("Hopping Phase" )]
 	bool hopping = false;
@@ -126,6 +195,7 @@ public class CrystalBoss
 	[SerializeField] float hopForce = 2.0f;
 	int curHop = 0;
 	[SerializeField] int nHops = 5;
+	[SerializeField] float hopDamage = 2.0f;
 
 	[Header( "Spin Cycle" )]
 	[SerializeField] Timer spinRefire = new Timer( 0.2f );
@@ -141,5 +211,8 @@ public class CrystalBoss
 	[SerializeField] Timer spawnRefire = new Timer( 0.4f );
 	[SerializeField] Timer spawnDuration = new Timer( 1.7f );
 
-	// wander phase
+	[Header( "Wander Phase" )]
+	[SerializeField] Timer wanderDuration = new Timer( 5.0f );
+	[SerializeField] Timer wanderReset = new Timer( 1.0f );
+	Vector3 hopDir = Vector3.zero;
 }

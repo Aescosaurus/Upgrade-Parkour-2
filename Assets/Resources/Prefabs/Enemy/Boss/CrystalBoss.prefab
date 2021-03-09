@@ -126,6 +126,7 @@ Transform:
   - {fileID: 6724890081321752774}
   - {fileID: 4698552839195921079}
   - {fileID: 8980640017687672779}
+  - {fileID: 1839394670459321026}
   m_Father: {fileID: 5709987620835081803}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,6 +161,50 @@ Transform:
   m_Father: {fileID: 4824556359118909214}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 19.913, y: 5.241, z: 0.92100006}
+--- !u!1 &6843783976007522056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839394670459321026}
+  - component: {fileID: 2590105042438839748}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839394670459321026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6843783976007522056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4824556359118909214}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2590105042438839748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6843783976007522056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0965734, y: 1.7338405, z: 1.4818902}
+  m_Center: {x: -0.06581116, y: 0.7587826, z: 1.3748848}
 --- !u!1 &7283789512994841261
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,20 +301,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 1
+  maxHP: 50
   def: 0
-  hitFX: 0
-  oofFX: 0
-  shirkScale: {x: 0.5, y: 1.5, z: 0.5}
+  hitFX: 3
+  oofFX: 3
+  shirkScale: {x: 0.99, y: 1.1, z: 0.9}
   ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
   oofSound: {fileID: 8300000, guid: b234236b5cb955743ab2c866e971c2a5, type: 3}
-  activationRange: 15
+  activationRange: 20
   moveSpeed: 1
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}
   hopUpBias: 0.3
   hopForce: 20
   nHops: 5
+  hopDamage: 2
   spinRefire:
     duration: 0.15
   spinDuration:
@@ -279,6 +325,16 @@ MonoBehaviour:
   projectileSpeed: 10
   circleSize: 8
   angAdd: 550
+  spawnHeight: 30
+  spawnRadius: 10
+  spawnRefire:
+    duration: 0.4
+  spawnDuration:
+    duration: 1.7
+  wanderDuration:
+    duration: 5
+  wanderReset:
+    duration: 1
 --- !u!1 &9106250000507295866
 GameObject:
   m_ObjectHideFlags: 0
