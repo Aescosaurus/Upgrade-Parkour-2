@@ -325,7 +325,7 @@ MonoBehaviour:
   projectileSpeed: 10
   circleSize: 8
   angAdd: 550
-  spawnHeight: 30
+  spawnHeight: 20
   spawnRadius: 10
   spawnRefire:
     duration: 0.4
