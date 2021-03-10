@@ -155,6 +155,14 @@ public class DungeonGenerator
 		var enemySpawnAreas = corridor.transform.Find( "EnemySpawnArea" ).GetComponents<BoxCollider>().ToList();
 		var decoSpawnAreas = corridor.transform.Find( "DecoSpawnArea" ).GetComponents<BoxCollider>().ToList();
 
+		StartCoroutine( LateDecorate( spawnExit,spawnEnemies,enemySpawnAreas,decoSpawnAreas ) );
+	}
+
+	IEnumerator LateDecorate( bool spawnExit,bool spawnEnemies,
+		List<BoxCollider> enemySpawnAreas,List<BoxCollider> decoSpawnAreas )
+	{
+		yield return( new WaitForEndOfFrame() );
+
 		var prevSpawned = new List<GameObject>();
 
 		if( spawnExit )
@@ -176,7 +184,7 @@ public class DungeonGenerator
 		{
 			prevSpawned.Add( TrySpawnPrefab( decorations[Random.Range( 0,decorations.Count )],decoSpawnAreas,prevSpawned ) );
 		}
-		
+
 		foreach( var area in enemySpawnAreas ) Destroy( area );
 		foreach( var area in decoSpawnAreas ) Destroy( area );
 	}
