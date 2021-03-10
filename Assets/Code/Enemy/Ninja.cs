@@ -18,25 +18,30 @@ public class Ninja
 	{
 		base.Update();
 
-		if( moveDuration.Update( Time.deltaTime ) )
+		if( activated )
 		{
-			Transition( "walk","strike" );
-			Attack();
-			if( shotRefire.Update( Time.deltaTime ) )
-			{
-				shotRefire.Reset();
-				if( ++curSwipe > swipeCount )
-				{
-					curSwipe = 0;
-					moveDuration.Reset();
-				}
-			}
-		}
-		else
-		{
-			Transition( "strike","walk" );
 			var diff = player.transform.position - transform.position;
 			Move( diff );
+
+			if( moveDuration.Update( Time.deltaTime ) )
+			{
+				Transition( "walk","strike" );
+				Attack();
+
+				if( shotRefire.Update( Time.deltaTime ) )
+				{
+					shotRefire.Reset();
+					if( ++curSwipe > swipeCount )
+					{
+						curSwipe = 0;
+						moveDuration.Reset();
+					}
+				}
+			}
+			else
+			{
+				Transition( "strike","walk" );
+			}
 		}
 	}
 

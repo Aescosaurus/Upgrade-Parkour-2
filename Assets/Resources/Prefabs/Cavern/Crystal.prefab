@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43adcc11aa68a164c99d3d15946ad546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 2
+  team: 3
   maxHP: 4
   def: 0
   hitFX: 3
