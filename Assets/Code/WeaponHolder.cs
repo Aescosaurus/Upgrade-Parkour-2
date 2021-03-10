@@ -111,6 +111,11 @@ public class WeaponHolder
 		return( heldWeapon );
 	}
 
+	public bool Attacking()
+	{
+		return( curWB.IsAttacking() );
+	}
+
 	[SerializeField] GameObject heldWeapon = null;
 
 	// GameObject curWeapon = null;

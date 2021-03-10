@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1a6bebb298aef48ba9f9f89cc90281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heldWeapon: {fileID: 2539344564112489218, guid: 06cb7e08d8785a4419628b245894b4ee,
+  heldWeapon: {fileID: 348844926550126866, guid: b41aed587422f9d4385b8a1f53c2160f,
     type: 3}
 --- !u!1 &8002347249502829024
 GameObject:
@@ -421,11 +421,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NinjaArm
       objectReference: {fileID: 0}
-    - target: {fileID: -6293322911203868377, guid: d0fece421c761e045b114a2bf0471984,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     - target: {fileID: -4216859302048453862, guid: d0fece421c761e045b114a2bf0471984,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -486,6 +481,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: -6293322911203868377, guid: d0fece421c761e045b114a2bf0471984,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0fece421c761e045b114a2bf0471984, type: 3}
 --- !u!4 &5863327344963086816 stripped
@@ -666,11 +666,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NinjaArm
       objectReference: {fileID: 0}
-    - target: {fileID: -6293322911203868377, guid: d0fece421c761e045b114a2bf0471984,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     - target: {fileID: -4216859302048453862, guid: d0fece421c761e045b114a2bf0471984,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -726,6 +721,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6293322911203868377, guid: d0fece421c761e045b114a2bf0471984,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0fece421c761e045b114a2bf0471984, type: 3}
 --- !u!4 &5863327345719692891 stripped

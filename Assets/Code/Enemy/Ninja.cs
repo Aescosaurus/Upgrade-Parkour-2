@@ -10,6 +10,7 @@ public class Ninja
 	{
 		base.Start();
 
+		moveDuration.Update( Random.Range( 0.0f,moveDuration.GetDuration() ) );
 		shotRefire = new Timer( wepHolder.GetWeapon().GetComponent<WeaponBase>().GetRefireDuration() );
 	}
 
@@ -20,6 +21,7 @@ public class Ninja
 		if( moveDuration.Update( Time.deltaTime ) )
 		{
 			Transition( "walk","strike" );
+			Attack();
 			if( shotRefire.Update( Time.deltaTime ) )
 			{
 				shotRefire.Reset();
