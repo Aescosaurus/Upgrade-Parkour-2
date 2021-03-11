@@ -32,7 +32,11 @@ public class NPCVendor
 
 	protected override void Interact()
 	{
-		if( !open ) base.Interact();
+		if( !open )
+		{
+			invHand.ToggleOpen( false );
+			base.Interact();
+		}
 
 		// if( curLine > lines.Count - 1 )
 		// {
@@ -70,6 +74,21 @@ public class NPCVendor
 		
 		SetText( "" );
 		OpenUI();
+	}
+
+	protected override void UnInteract()
+	{
+		base.UnInteract();
+
+		if( open )
+		{
+			// CloseUI();
+			// curUI?.GetComponent<VendorUIBase>()?.CloseUI();
+			// if( miscPanel.transform.childCount > 0 ) Destroy( miscPanel.transform.GetChild( 0 ).gameObject );
+			// 
+			// infoPanel.ClosePanel();
+			invHand.ToggleOpen( false );
+		}
 	}
 
 	[SerializeField] GameObject uiPrefab = null;

@@ -21,24 +21,32 @@ public abstract class InteractiveBase
 	protected virtual void Update()
 	{
 		var diff = player.transform.position - transform.position;
-		if( diff.sqrMagnitude < interactDist * interactDist && looking /*&& Vector3.Dot( -diff.normalized,
+		if( diff.sqrMagnitude < interactDist * interactDist /*&& looking && Vector3.Dot( -diff.normalized,
 			( cam.gameObject.transform.forward + Vector3.up * 0.2f ).normalized ) > interactTolerance*/ )
 		{
-			pickupText.gameObject.SetActive( true );
-			pickupText.transform.position = transform.position + Vector3.up * heightOffset;
-
-			if( SpiffyInput.CheckAxis( "Interact" ) )
+			if( looking )
 			{
-				Interact();
-				audSrc.PlayOneShot( interactSound );
+				pickupText.gameObject.SetActive( true );
+				pickupText.transform.position = transform.position + Vector3.up * heightOffset;
+
+				if( SpiffyInput.CheckAxis( "Interact" ) )
+				{
+					Interact();
+					audSrc.PlayOneShot( interactSound );
+				}
 			}
 		}
-		else pickupText.gameObject.SetActive( false );
+		else UnInteract();
 
 		looking = false;
 	}
 
 	protected abstract void Interact();
+
+	protected virtual void UnInteract()
+	{
+		pickupText.gameObject.SetActive( false );
+	}
 
 	void OnDestroy()
 	{
