@@ -17,6 +17,7 @@ public class Projectile
 		if( damageTarget != null && damageTarget.GetTeam() != team )
 		{
 			damageTarget.Damage( damage );
+			Destroy( gameObject );
 		}
 		// var targetTeam = -1;
 		// if( damageTarget != null )

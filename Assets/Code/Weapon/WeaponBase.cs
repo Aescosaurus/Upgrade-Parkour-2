@@ -71,14 +71,15 @@ public abstract class WeaponBase
 	{
 		var proj = Instantiate( projectile );
 		proj.GetComponent<Collider>().isTrigger = true;
-		proj.transform.position = animCtrl.transform.position + Vector3.up * 1.2f + animCtrl.transform.forward;
-		proj.transform.forward = cam.transform.forward/* + Vector3.up * upAimBias*/;
-		proj.GetComponent<Rigidbody>().AddForce( proj.transform.forward * shotSpeed,ForceMode.Impulse );
-		proj.layer = LayerMask.NameToLayer( team == 1 ? "Default" : "EnemyBullet" );
 
 		var projScr = proj.GetComponent<Projectile>();
 		projScr.SetDamage( damage );
 		projScr.SetTeam( team );
+
+		proj.transform.position = animCtrl.transform.position + Vector3.up * 1.2f + animCtrl.transform.forward;
+		proj.transform.forward = cam.transform.forward/* + Vector3.up * upAimBias*/;
+		proj.GetComponent<Rigidbody>().AddForce( proj.transform.forward * projScr.GetShotSpd(),ForceMode.Impulse );
+		proj.layer = LayerMask.NameToLayer( team == 1 ? "Default" : "EnemyBullet" );
 
 		Destroy( proj.GetComponent<LoadableItem>() );
 		Destroy( proj.GetComponent<ItemPickup>() );

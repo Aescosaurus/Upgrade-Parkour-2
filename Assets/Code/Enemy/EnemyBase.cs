@@ -58,15 +58,20 @@ public class EnemyBase
 
 	protected virtual void Move( Vector3 dir )
 	{
+		Strafe( dir );
+
 		var rot = transform.eulerAngles;
 		rot.y = Mathf.Atan2( dir.x,dir.z ) * Mathf.Rad2Deg;
 		rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
 		transform.eulerAngles = rot;
-
 		// body.velocity = dir.normalized * moveSpeed;
-		SetVel( dir.normalized * moveSpeed );
 
 		animCtrl.SetBool( "walk",true );
+	}
+
+	protected virtual void Strafe( Vector3 dir )
+	{
+		SetVel( dir.normalized * moveSpeed );
 	}
 
 	protected virtual void StopMoving()

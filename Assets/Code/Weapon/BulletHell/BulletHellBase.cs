@@ -16,7 +16,7 @@ public class BulletHellBase
 
 		if( team == 1 )
 		{
-			upAimBias = 0.05f;
+			upAimBias = 0.08f;
 			upMoveBias = 0.3f;
 		}
 	}
@@ -30,7 +30,7 @@ public class BulletHellBase
 
 		proj.GetComponent<Collider>().isTrigger = true;
 		// proj.transform.position = animCtrl.transform.position + Vector3.up * 1.2f + animCtrl.transform.forward;
-		proj.transform.position = shotSpot.position + Vector3.up * upMoveBias;
+		proj.transform.position = animCtrl.transform.position + Vector3.up * upMoveBias;
 		proj.transform.forward = cam.transform.forward + Vector3.up * upAimBias;
 		proj.GetComponent<Rigidbody>().AddForce( proj.transform.forward * projScr.GetShotSpd(),ForceMode.Impulse );
 		proj.layer = LayerMask.NameToLayer( team == 1 ? "Default" : "EnemyBullet" );

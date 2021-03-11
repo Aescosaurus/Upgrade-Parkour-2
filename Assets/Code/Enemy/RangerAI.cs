@@ -23,6 +23,12 @@ public class RangerAI
 					Attack();
 					noscopeTimer.Reset();
 					minMoveTimer.Reset();
+
+					do
+					{
+						strafeDir = Random.Range( -1,2 );
+					}
+					while( strafeDir == 0 );
 				}
 
 				noscopeTimer.Update( Time.deltaTime );
@@ -41,6 +47,7 @@ public class RangerAI
 			else
 			{
 				Look( dir );
+				Strafe( CalcStrafeDir( dir ) );
 				CancelAttack();
 				if( minMoveTimer.IsDone() )
 				{
@@ -58,12 +65,18 @@ public class RangerAI
 		}
 	}
 
+	Vector3 CalcStrafeDir( Vector3 dir )
+	{
+		return( new Vector3( dir.z,0.0f,-dir.x ) * ( float )strafeDir );
+	}
+
 	[SerializeField] Timer minMoveTimer = new Timer( 2.6f );
 	[SerializeField] float stopDist = 10.5f;
 	[SerializeField] Timer noscopeTimer = new Timer( 0.5f );
 	[SerializeField] float noscopeJumpForce = 3.0f;
 	bool noscoping = false;
 	float rotStart = 0.0f;
+	int strafeDir = -1;
 
 	[SerializeField] AudioClip jumpSound = null;
 }
