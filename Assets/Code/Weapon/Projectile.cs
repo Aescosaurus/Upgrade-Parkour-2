@@ -14,17 +14,21 @@ public class Projectile
 	void OnTriggerEnter( Collider coll )
 	{
 		var damageTarget = coll.GetComponent<Damageable>();
-		var targetTeam = -1;
-		if( damageTarget != null )
+		if( damageTarget != null && damageTarget.GetTeam() != team )
 		{
-			targetTeam = damageTarget.GetTeam();
-			if( targetTeam != team )
-			{
-				damageTarget.Damage( damage );
-			}
+			damageTarget.Damage( damage );
 		}
-
-		if( targetTeam != team ) Destroy( gameObject );
+		// var targetTeam = -1;
+		// if( damageTarget != null )
+		// {
+		// 	targetTeam = damageTarget.GetTeam();
+		// 	if( targetTeam != team )
+		// 	{
+		// 		damageTarget.Damage( damage );
+		// 	}
+		// }
+		// 
+		// if( targetTeam != team ) Destroy( gameObject );
 	}
 
 	public void SetDamage( float amount )
@@ -37,8 +41,15 @@ public class Projectile
 		this.team = team;
 	}
 
+	public float GetShotSpd()
+	{
+		return( moveSpeed );
+	}
+
 	[SerializeField] float damage = 1.0f;
 	int team = -1;
 
 	[SerializeField] float lifetime = 10.0f;
+
+	[SerializeField] float moveSpeed = 1.0f;
 }
