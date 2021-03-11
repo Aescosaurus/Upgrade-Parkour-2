@@ -95,7 +95,7 @@ public class Damageable
 	[SerializeField] float def = 0.0f;
 	[SerializeField] ParticleHandler.ParticleType hitFX = ParticleHandler.ParticleType.None;
 	[SerializeField] ParticleHandler.ParticleType oofFX = ParticleHandler.ParticleType.None;
-	[SerializeField] Vector3 shirkScale = new Vector3( 0.5f,1.5f,0.5f );
+	[SerializeField] Vector3 shirkScale = new Vector3( 0.8f,1.2f,0.8f );
 
 	protected ParticleHandler partHand;
 

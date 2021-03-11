@@ -117,6 +117,9 @@ MonoBehaviour:
   noscopeTimer:
     duration: 0.4
   noscopeJumpForce: 6
+  projectilePrefab: {fileID: 3716605428022485691, guid: 283cf7e42243dbe41b5dcfb1bbf61b40,
+    type: 3}
+  shotSpread: 0.3
   jumpSound: {fileID: 8300000, guid: 428afaa6e09ffb3479504c154d5a230e, type: 3}
 --- !u!114 &1078883488311203824
 MonoBehaviour:

@@ -37,6 +37,8 @@ public class BulletHellBase
 
 		Destroy( proj.GetComponent<LoadableItem>() );
 		Destroy( proj.GetComponent<ItemPickup>() );
+
+		animCtrl.SetBool( "swing",true );
 	}
 
 	[SerializeField] GameObject projectile = null;

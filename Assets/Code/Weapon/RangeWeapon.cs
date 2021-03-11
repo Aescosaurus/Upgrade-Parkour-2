@@ -34,7 +34,7 @@ public class RangeWeapon
 	{
 		base.ToggleAttacking( on );
 
-		if( on )
+		if( on && projectilePrefab != null )
 		{
 			FireProjectile( projectilePrefab,shotSpeed,damage,0.2f );
 			audSrc.PlayOneShot( fireSound );

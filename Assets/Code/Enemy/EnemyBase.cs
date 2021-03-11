@@ -95,9 +95,12 @@ public class EnemyBase
 	{
 		var proj = Instantiate( prefab );
 
+		var projScr = proj.GetComponent<Projectile>();
+
 		proj.GetComponent<Collider>().isTrigger = true;
 		proj.transform.position = pos;
-		proj.GetComponent<Rigidbody>().AddForce( aim,ForceMode.Impulse );
+		proj.transform.forward = aim;
+		proj.GetComponent<Rigidbody>().AddForce( aim.normalized * projScr.GetShotSpd(),ForceMode.Impulse );
 		proj.layer = bulletLayer;
 
 		proj.GetComponent<Projectile>().SetTeam( GetTeam() );
@@ -237,6 +240,16 @@ public class EnemyBase
 	{
 		animCtrl.SetBool( state1,false );
 		animCtrl.SetBool( state2,true );
+	}
+
+	protected Vector3 CalcPerp( Vector3 dir )
+	{
+		return( new Vector3( dir.z,0.0f,-dir.x ) );
+	}
+
+	public virtual void AttackStart()
+	{
+
 	}
 
 	// [SerializeField] float hp = 10.0f;

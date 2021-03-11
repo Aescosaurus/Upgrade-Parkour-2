@@ -21,6 +21,9 @@ public class RangerAI
 					noscoping = false;
 					// Look( dir );
 					Attack();
+
+					StartCoroutine( LateAttack() );
+
 					noscopeTimer.Reset();
 					minMoveTimer.Reset();
 
@@ -67,7 +70,17 @@ public class RangerAI
 
 	Vector3 CalcStrafeDir( Vector3 dir )
 	{
-		return( new Vector3( dir.z,0.0f,-dir.x ) * ( float )strafeDir );
+		return( CalcPerp( dir ) * ( float )strafeDir );
+	}
+
+	IEnumerator LateAttack()
+	{
+		yield return( new WaitForSeconds( shotDelay ) );
+
+		var shotPos = transform.position + Vector3.up * 0.8f;
+		FireProjectile( projectilePrefab,shotPos,transform.forward );
+		FireProjectile( projectilePrefab,shotPos,transform.forward + transform.right * shotSpread );
+		FireProjectile( projectilePrefab,shotPos,transform.forward - transform.right * shotSpread );
 	}
 
 	[SerializeField] Timer minMoveTimer = new Timer( 2.6f );
@@ -77,6 +90,10 @@ public class RangerAI
 	bool noscoping = false;
 	float rotStart = 0.0f;
 	int strafeDir = -1;
+
+	[SerializeField] GameObject projectilePrefab = null;
+	[SerializeField] float shotSpread = 0.3f;
+	[SerializeField] float shotDelay = 0.3f;
 
 	[SerializeField] AudioClip jumpSound = null;
 }
