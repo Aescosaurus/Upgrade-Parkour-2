@@ -110,9 +110,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   rotSpeed: 4
-  jumpPower: 0.6
+  jumpPower: 0.7
   jumpTimer:
-    duration: 0.2
+    duration: 0.3
   minJump:
     duration: 0.05
   gravAcc: 3.3
