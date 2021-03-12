@@ -9,6 +9,10 @@ public class ForestGenerator
 	void Start()
 	{
 		Generate();
+
+		var player = Instantiate( playerPrefabs[0] );
+		player.transform.position = GetRandSpawnPos();
+		FindObjectOfType<NewPlayerCam>().SetPlayer( player );
 	}
 
 	void Generate()
@@ -104,13 +108,18 @@ public class ForestGenerator
 			DrawHall( hall,0 );
 		}
 
+		var floorObj = transform.GetChild( 0 );
+		var floorScale = new Vector3( ( float )width * spacing,1.0f,( float )height * spacing );
+		floorObj.transform.localScale = floorScale;
+		floorObj.transform.position = new Vector3( floorScale.x / 2.0f,0.0f,floorScale.z / 2.0f );
+
 		for( int y = 0; y < height; ++y )
 		{
 			for( int x = 0; x < width; ++x )
 			{
-				if( GetTile( x,y ) == 1 )
+				if( GetTile( x,y ) == 1 && CheckSurroundingTiles( x,y,3 ) > 0 )
 				{
-					var wall = Instantiate( wallPrefab );
+					var wall = Instantiate( wallPrefab,transform );
 					wall.transform.position = new Vector3( ( float )x * spacing,0.0f,( float )y * spacing );
 				}
 			}
@@ -160,7 +169,41 @@ public class ForestGenerator
 
 	int GetTile( int x,int y )
 	{
+		if( x < 0 || x >= width || y < 0 || y >= height ) return( 1 );
+
 		return( tilemap[y * width + x] );
+	}
+
+	int CheckSurroundingTiles( int x,int y,int range )
+	{
+		int count = 0;
+
+		for( int cy = y - range / 2; cy <= y + range / 2; ++cy )
+		{
+			for( int cx = x - range / 2; cx <= x + range / 2; ++cx )
+			{
+				if( GetTile( cx,cy ) != 1 ) ++count;
+			}
+		}
+
+		return( count );
+	}
+
+	// In world space.
+	Vector3 GetRandSpawnPos()
+	{
+		Vector3 randPos = Vector3.zero;
+		do
+		{
+			randPos.x = Random.Range( 0,width );
+			randPos.z = Random.Range( 0,height );
+		}
+		while( GetTile( ( int )randPos.x,( int )randPos.z ) != 0 );
+
+		randPos *= spacing;
+		randPos.y = 1.0f;
+
+		return( randPos );
 	}
 
 	List<int> tilemap = new List<int>();
@@ -176,4 +219,6 @@ public class ForestGenerator
 
 	[SerializeField] GameObject wallPrefab = null;
 	[SerializeField] float spacing = 1.0f;
+
+	[SerializeField] List<GameObject> playerPrefabs = new List<GameObject>();
 }
