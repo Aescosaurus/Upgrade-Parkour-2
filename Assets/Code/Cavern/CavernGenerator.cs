@@ -40,10 +40,9 @@ public class CavernGenerator
 		{
 			if( tunnels[i] == 1 || tunnels[i] == 3 )
 			{
-				GenerateTunnel( doors.GetChild( i ).Find( "TopLevel" ),CanSpawnBranches( tunnels,i,true ) );
+				GenerateTunnel( doors.GetChild( i ).Find( "BotLevel" ),CanSpawnBranches( tunnels,i,true ) );
 			}
-
-			if( tunnels[i] == 2 || tunnels[i] == 3 )
+			else if( tunnels[i] == 2 || tunnels[i] == 3 )
 			{
 				GenerateTunnel( doors.GetChild( i ).Find( "BotLevel" ),CanSpawnBranches( tunnels,i,false ) );
 			}

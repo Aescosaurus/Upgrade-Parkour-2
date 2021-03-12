@@ -114,7 +114,7 @@ MonoBehaviour:
   jumpTimer:
     duration: 0.3
   minJump:
-    duration: 0.05
+    duration: 0.3
   gravAcc: 3.3
   knockbackDuration:
     duration: 0.22

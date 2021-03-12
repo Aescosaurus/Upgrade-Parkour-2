@@ -235,7 +235,7 @@ MonoBehaviour:
   ouchSound: {fileID: 0}
   oofSound: {fileID: 0}
   activationRange: 15
-  moveSpeed: 8
+  moveSpeed: 6.5
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}
   moveDuration:
