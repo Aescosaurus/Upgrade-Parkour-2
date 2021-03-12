@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lifetime: 10
+  lifetime: 0.5
   moveSpeed: 40
 --- !u!1001 &7227576878329632865
 PrefabInstance:
@@ -90,11 +90,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball
       objectReference: {fileID: 0}
-    - target: {fileID: -8485378471665077933, guid: 3a40c598db4d6c941afa2b10241bb948,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     - target: {fileID: -4216859302048453862, guid: 3a40c598db4d6c941afa2b10241bb948,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -150,6 +145,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8485378471665077933, guid: 3a40c598db4d6c941afa2b10241bb948,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a40c598db4d6c941afa2b10241bb948, type: 3}
 --- !u!4 &2393441298740917115 stripped

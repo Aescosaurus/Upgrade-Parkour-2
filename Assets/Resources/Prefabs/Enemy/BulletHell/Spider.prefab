@@ -302,14 +302,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 15
+  maxHP: 12
   def: 0
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.8, y: 1.2, z: 0.8}
   ouchSound: {fileID: 0}
   oofSound: {fileID: 0}
-  activationRange: 15
+  activationRange: 30
   moveSpeed: 7
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}

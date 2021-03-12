@@ -100,15 +100,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 15
+  maxHP: 10
   def: 0
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.8, y: 1.2, z: 0.8}
   ouchSound: {fileID: 8300000, guid: b964f028aa5b36d4b86039a75addbee4, type: 3}
   oofSound: {fileID: 8300000, guid: b234236b5cb955743ab2c866e971c2a5, type: 3}
-  activationRange: 15
-  moveSpeed: 4.5
+  activationRange: 30
+  moveSpeed: 8
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}
   minMoveTimer:

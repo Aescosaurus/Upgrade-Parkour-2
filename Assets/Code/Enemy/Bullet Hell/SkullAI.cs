@@ -10,21 +10,24 @@ public class SkullAI
 	{
 		base.Update();
 
-		var diff = player.transform.position - transform.position;
-		
-		Look( diff );
-		if( diff.sqrMagnitude < Mathf.Pow( desiredDist,2.0f ) )
+		if( activated )
 		{
-			// Move( -diff );
+			var diff = player.transform.position - transform.position;
 
-			if( refire.Update( Time.deltaTime ) )
+			Look( diff );
+			if( diff.sqrMagnitude < Mathf.Pow( desiredDist,2.0f ) )
 			{
-				refire.Reset();
+				// Move( -diff );
 
-				Transition( "walk","attack" );
+				if( refire.Update( Time.deltaTime ) )
+				{
+					refire.Reset();
+
+					Transition( "walk","attack" );
+				}
 			}
+			else Move( diff );
 		}
-		else Move( diff );
 	}
 
 	public override void AttackStart()

@@ -96,14 +96,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 15
+  maxHP: 12
   def: 0
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.9, y: 1.1, z: 0.9}
   ouchSound: {fileID: 0}
   oofSound: {fileID: 0}
-  activationRange: 15
+  activationRange: 30
   moveSpeed: 10
   rotSpeed: 2.4
   itemDropPrefab: {fileID: 0}
@@ -161,11 +161,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: -7429752727643265229, guid: 2dc6a3adf2595784ebc7e095f2cc3db9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     - target: {fileID: -6718955835507232778, guid: 2dc6a3adf2595784ebc7e095f2cc3db9,
         type: 3}
       propertyPath: m_Layer
@@ -226,6 +221,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7429752727643265229, guid: 2dc6a3adf2595784ebc7e095f2cc3db9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dc6a3adf2595784ebc7e095f2cc3db9, type: 3}
 --- !u!4 &3976744626020734212 stripped

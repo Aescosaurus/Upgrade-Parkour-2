@@ -21,10 +21,10 @@ public abstract class InteractiveBase
 	protected virtual void Update()
 	{
 		var diff = player.transform.position - transform.position;
-		if( diff.sqrMagnitude < interactDist * interactDist /*&& looking && Vector3.Dot( -diff.normalized,
+		if( diff.sqrMagnitude < interactDist * interactDist && looking /*&& Vector3.Dot( -diff.normalized,
 			( cam.gameObject.transform.forward + Vector3.up * 0.2f ).normalized ) > interactTolerance*/ )
 		{
-			if( looking )
+			// if( looking )
 			{
 				pickupText.gameObject.SetActive( true );
 				pickupText.transform.position = transform.position + Vector3.up * heightOffset;
