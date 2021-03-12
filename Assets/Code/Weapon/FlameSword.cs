@@ -10,7 +10,7 @@ public class FlameSword
 	{
 		base.Start();
 
-		projectilePrefab = ResLoader.Load( "Prefabs/Weapon/Projectile/FlameHurt" );
+		// projectilePrefab = ResLoader.Load( "Prefabs/Weapon/Projectile/FlameHurt" );
 	}
 
 	protected override void Fire()
@@ -32,7 +32,7 @@ public class FlameSword
 		if( on ) FireProjectile( projectilePrefab,shotSpeed,damage );
 	}
 
-	GameObject projectilePrefab;
+	[SerializeField] GameObject projectilePrefab;
 	[SerializeField] float shotSpeed = 30.0f;
 	[SerializeField] float damage = 1.0f;
 }

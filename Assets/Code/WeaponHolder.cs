@@ -69,8 +69,11 @@ public class WeaponHolder
 
 	public void ReplaceWeapon( GameObject replacement )
 	{
-		curWB.CancelAttack();
-		Destroy( curWB.gameObject );
+		if( curWB != null )
+		{
+			curWB.CancelAttack();
+			Destroy( curWB.gameObject );
+		}
 		InitNewWeapon( replacement );
 		CancelAnims();
 	}
@@ -78,6 +81,7 @@ public class WeaponHolder
 	void InitNewWeapon( GameObject prefab )
 	{
 		var curWeapon = Instantiate( prefab );
+		Destroy( curWeapon.GetComponent<ItemPickup>() );
 		curWB = curWeapon.GetComponent<WeaponBase>();
 		curWB.SetHotbar( hotbar );
 		// meleeWB = curWeapon.GetComponent<MeleeWeaponBase>();

@@ -161,7 +161,7 @@ public class DungeonGenerator
 	IEnumerator LateDecorate( bool spawnExit,bool spawnEnemies,
 		List<BoxCollider> enemySpawnAreas,List<BoxCollider> decoSpawnAreas )
 	{
-		yield return( new WaitForEndOfFrame() );
+		yield return( new WaitForSeconds( 0.01f ) );
 
 		var prevSpawned = new List<GameObject>();
 

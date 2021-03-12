@@ -6,6 +6,11 @@ public class VendorUIBase
 	:
 	MonoBehaviour
 {
+	void Start()
+	{
+		weaponPickupPrefab = ResLoader.Load( "Prefabs/WeaponPickup" );
+	}
+
 	public virtual void CloseUI()
 	{
 		vendor.GetComponent<NPCVendor>().CloseUI();
@@ -26,7 +31,16 @@ public class VendorUIBase
 		var nDrops = slot.CountItems();
 		for( int i = 0; i < nDrops; ++i )
 		{
-			var item = Instantiate( slot.GetPrefab() );
+			GameObject item;
+			if( slot.GetPrefab().GetComponent<WeaponBase>() != null )
+			{
+				item = Instantiate( weaponPickupPrefab );
+				item.GetComponent<WeaponPickup>().SetPickup( slot.GetItem() );
+			}
+			else
+			{
+				item = Instantiate( slot.GetPrefab() );
+			}
 			item.transform.position = vendor.transform.position + vendor.transform.forward + Vector3.up * 0.3f * i;
 			slot.RemoveItem();
 		}
@@ -38,4 +52,5 @@ public class VendorUIBase
 	}
 
 	GameObject vendor = null;
+	GameObject weaponPickupPrefab;
 }

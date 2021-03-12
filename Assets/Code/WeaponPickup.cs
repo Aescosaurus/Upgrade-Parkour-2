@@ -45,16 +45,27 @@ public class WeaponPickup
 	{
 		base.Start();
 
-		Assert.IsTrue( pickupPrefab != null );
-		var pickup = Instantiate( pickupPrefab.GetPrefab().transform.GetChild( 0 ).gameObject,transform );
-		// pickup.transform.Rotate( Vector3.forward,90.0f );
-		pickup.transform.position = transform.Find( "WeaponHoldPos" ).position;
+		// Assert.IsTrue( pickupPrefab != null );
+		SetPickup( pickupPrefab );
 	}
 
 	protected override void Interact()
 	{
 		player.GetComponent<PlayerInventory>().GetInv().AddItem( pickupPrefab );
 		Destroy( gameObject );
+	}
+
+	public void SetPickup( LoadableItem prefab )
+	{
+		if( prefab != null )
+		{
+			if( pickupPrefab == null ) pickupPrefab = gameObject.AddComponent<LoadableItem>();
+
+			pickupPrefab.Copy( prefab );
+
+			var actualPickup = Instantiate( pickupPrefab.GetPrefab().transform.GetChild( 0 ).gameObject,transform );
+			actualPickup.transform.position = transform.Find( "WeaponHoldPos" ).position;
+		}
 	}
 
 	// [SerializeField] float pickupDist = 4.0f;

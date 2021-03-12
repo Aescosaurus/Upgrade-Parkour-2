@@ -53,6 +53,8 @@ MonoBehaviour:
   refire:
     duration: 0.7
   fireSound: {fileID: 8300000, guid: 24fa9b660b63f0e429864c49c90133b3, type: 3}
+  projectilePrefab: {fileID: 7227576878152245275, guid: 36c93eed2407ea6448d8bb1dc4b1c630,
+    type: 3}
   shotSpeed: 30
   damage: 2
 --- !u!114 &2529357858781853021
@@ -69,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDist: 4
   heightOffset: 1
+  interactSound: {fileID: 0}
 --- !u!1001 &8217010368299354468
 PrefabInstance:
   m_ObjectHideFlags: 0
