@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79977ea75f8984e41a701b273c9cd8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonSize: 20
+  dungeonSize: 12
   roomPercent: 0.6
   bossFloor: 1
   corridorSize: 27.97028

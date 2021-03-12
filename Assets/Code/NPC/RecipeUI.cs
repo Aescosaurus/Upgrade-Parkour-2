@@ -38,6 +38,9 @@ public class RecipeUI
 	public void TryExchange()
 	{
 		bool success = true;
+
+		if( resultSpot.CountItems() > 0 ) success = false;
+
 		for( int i = 0; i < ingredientSpots.Count; ++i )
 		{
 			if( !CheckSpotMatch( ingredients[i],ingredientSpots[i],ingredientQuantities[i] ) )

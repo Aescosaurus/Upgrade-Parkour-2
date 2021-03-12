@@ -14,6 +14,8 @@ public class ItemPickup
 
 		gameObject.layer = LayerMask.NameToLayer( "ItemPickup" );
 		player = FindObjectOfType<PlayerWalk>().gameObject;
+
+		partHand = FindObjectOfType<ParticleHandler>();
 	}
 
 	void Update()
@@ -21,11 +23,13 @@ public class ItemPickup
 		if( ( player.transform.position - transform.position ).sqrMagnitude < Mathf.Pow( pickupDist,2 ) )
 		{
 			player.GetComponent<PlayerInventory>().GetInv().AddItem( itemPrefab );
+			partHand.SpawnParticles( transform.position,10,ParticleHandler.ParticleType.Smoke );
 			Destroy( gameObject );
 		}
 	}
 
 	LoadableItem itemPrefab;
-	[SerializeField] float pickupDist = 4.0f;
+	/*[SerializeField] */float pickupDist = 2.0f;
 	GameObject player;
+	ParticleHandler partHand;
 }
