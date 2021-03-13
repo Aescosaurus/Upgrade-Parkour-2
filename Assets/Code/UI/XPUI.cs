@@ -21,7 +21,15 @@ public class XPUI
 
 	public static void Win()
 	{
-		++xp;
+		// ++xp;
+		// 
+		// PlayerPrefs.SetInt( "xp",xp );
+		AddXP( 1 );
+	}
+
+	public static void AddXP( int amount )
+	{
+		xp += amount;
 
 		PlayerPrefs.SetInt( "xp",xp );
 	}

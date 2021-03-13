@@ -37,9 +37,10 @@ public class PauseMenu
 	{
 		PauseMenu.open = open;
 		
-		var c = img.color;
-		c.a = open ? initAlpha : 0.0f;
-		img.color = c;
+		// var c = img.color;
+		// c.a = open ? initAlpha : 0.0f;
+		// img.color = c;
+		img.enabled = open;
 
 		var nButtons = transform.childCount;
 		for( int i = 0; i < nButtons; ++i )
@@ -51,6 +52,11 @@ public class PauseMenu
 
 		Cursor.visible = open;
 		Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
+	}
+
+	public static void SetOpen( bool isOpen )
+	{
+		open = isOpen;
 	}
 
 	public static bool IsOpen()

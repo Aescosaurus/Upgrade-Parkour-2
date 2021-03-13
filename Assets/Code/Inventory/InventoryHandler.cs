@@ -32,7 +32,7 @@ public class InventoryHandler
 
 	void Update()
 	{
-		if( SpiffyInput.CheckAxis( "Inventory" ) ) ToggleOpen( !open );
+		// if( SpiffyInput.CheckAxis( "Inventory" ) ) ToggleOpen( !open );
 		// if( SpiffyInput.CheckAxis( "Menu" ) ) ToggleOpen( false );
 	}
 

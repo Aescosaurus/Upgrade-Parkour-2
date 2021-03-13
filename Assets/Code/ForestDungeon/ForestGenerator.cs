@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class ForestGenerator
 	:
@@ -190,17 +191,47 @@ public class ForestGenerator
 		}
 	}
 
+	void DrawLine( int x1,int y1,int x2,int y2,int val )
+	{
+		Assert.IsTrue( x1 == x2 || y1 == y2 );
+
+		if( x2 < x1 )
+		{
+			var temp = x1;
+			x1 = x2;
+			x2 = temp;
+		}
+		if( y2 < y1 )
+		{
+			var temp = y1;
+			y1 = y2;
+			y2 = temp;
+		}
+
+		for( int ry = y1; ry <= y2; ++ry )
+		{
+			for( int rx = x1; rx <= x2; ++rx )
+			{
+				SetTile( rx,ry,val );
+			}
+		}
+	}
+
 	void DrawHall( Line hall,int val )
 	{
 		if( Random.Range( 0.0f,1.0f ) < 0.5f )
 		{
-			DrawRect( hall.start.x,hall.start.y,1,hall.GetHeight() + 1,0 );
-			DrawRect( hall.start.x,hall.end.y,hall.GetWidth() + 1,1,0 );
+			// DrawRect( hall.start.x,hall.start.y,1,hall.GetHeight(),0 );
+			// DrawRect( hall.start.x,hall.end.y,hall.GetWidth(),1,0 );
+			DrawLine( hall.start.x,hall.start.y,hall.start.x,hall.end.y,0 );
+			DrawLine( hall.start.x,hall.end.y,hall.end.x,hall.end.y,0 );
 		}
 		else
 		{
-			DrawRect( hall.start.x,hall.start.y,hall.GetWidth() + 1,1,0 );
-			DrawRect( hall.end.x,hall.start.y,1,hall.GetHeight() + 1,0 );
+			// DrawRect( hall.start.x,hall.start.y,hall.GetWidth(),1,0 );
+			// DrawRect( hall.end.x,hall.start.y,1,hall.GetHeight(),0 );
+			DrawLine( hall.start.x,hall.start.y,hall.end.x,hall.start.y,0 );
+			DrawLine( hall.end.x,hall.start.y,hall.end.x,hall.end.y,0 );
 		}
 	}
 

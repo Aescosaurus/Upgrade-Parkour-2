@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 484922301}
   - component: {fileID: 484922303}
   - component: {fileID: 484922302}
+  - component: {fileID: 484922304}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -570,7 +571,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -150.1, y: -86.4}
+  m_SizeDelta: {x: 0, y: -0.01001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484922302
 MonoBehaviour:
@@ -610,6 +611,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484922300}
   m_CullTransparentMesh: 0
+--- !u!114 &484922304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484922300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1779746df1d498244af26a2418e30688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &492051803
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,12 +2220,12 @@ PrefabInstance:
     - target: {fileID: 6746587268569063224, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 119.17
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 6746587268569063224, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -79.4
+      value: -62
       objectReference: {fileID: 0}
     - target: {fileID: 6746587268569063224, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
@@ -2253,6 +2266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: reset
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db0c9d5c98cc744bb63954a64b0151e, type: 3}

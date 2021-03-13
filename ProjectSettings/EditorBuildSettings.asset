@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CavernScene.unity
     guid: 55b2ecb982e96a9468efef0db6972443
+  - enabled: 1
+    path: Assets/Scenes/ForestDungeon.unity
+    guid: e747b3a2ece703445aadd3d75ddf5deb
   m_configObjects: {}

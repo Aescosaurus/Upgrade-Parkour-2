@@ -20,7 +20,7 @@ public class RectI
 
 	public Vec2 GetRandPoint()
 	{
-		return( new Vec2( Random.Range( x,x + width ),Random.Range( y,y + height ) ) );
+		return( new Vec2( Random.Range( x,x + width - 1 ),Random.Range( y,y + height - 1 ) ) );
 	}
 
 	public int x;
