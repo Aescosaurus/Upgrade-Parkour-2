@@ -70,7 +70,7 @@ public class Damageable
 			var enemies = FindObjectsOfType<NewEnemyBase>();
 			if( enemies.Length <= 1 )
 			{
-				print( "you win!" );
+				XPUI.Win();
 			}
 
 			Destroy( gameObject );
