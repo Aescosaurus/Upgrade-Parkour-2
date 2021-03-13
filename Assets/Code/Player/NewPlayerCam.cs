@@ -34,14 +34,14 @@ public class NewPlayerCam
 			Cursor.visible = true;
 			escape = true;
 		}
-		if( SpiffyInput.CheckAxis( "Fire1" ) && !playerInv.IsOpen() && !PauseMenu.IsOpen() )
+		if( SpiffyInput.CheckAxis( "Fire1" ) && !PauseMenu.IsOpen() )
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 			escape = false;
 		}
 
-		if( !escape && !playerInv.IsOpen() && !PauseMenu.IsOpen() )
+		if( !escape && !PauseMenu.IsOpen() )
 		{
 			var aim = new Vector2( Input.GetAxis( "Mouse X" ),
 				Input.GetAxis( "Mouse Y" ) );

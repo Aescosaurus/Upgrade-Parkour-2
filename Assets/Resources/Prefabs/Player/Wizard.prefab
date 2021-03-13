@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4830054255817575578}
   - component: {fileID: 237854988535467474}
   - component: {fileID: 7382728630497165471}
+  - component: {fileID: -8914477843229087975}
+  - component: {fileID: -3904783123289014666}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2938953004737716630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 7904933217342531674}
   m_Father: {fileID: 0}
@@ -78,6 +80,38 @@ MonoBehaviour:
   accel: 180
   maxSpeed: 10
   rotSpeed: 4
+--- !u!114 &-8914477843229087975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2938953004737716630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f98bc90ae9a93d4e83a7c149b36092d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3904783123289014666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2938953004737716630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88433f3a83b85694c869312561fcdd93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 2
+  maxHP: 10
+  def: 0
+  hitFX: 1
+  oofFX: 2
+  shirkScale: {x: 0.9, y: 1, z: 0.9}
+  ouchSound: {fileID: 8300000, guid: 545afd5a3f1aeda4da71428eb972af71, type: 3}
+  oofSound: {fileID: 8300000, guid: 545afd5a3f1aeda4da71428eb972af71, type: 3}
 --- !u!1001 &2938953003773363008
 PrefabInstance:
   m_ObjectHideFlags: 0
