@@ -37,6 +37,13 @@ public class PlayerBase
 		{
 			body.velocity = body.velocity.normalized * maxSpeed;
 		}
+
+		if( SpiffyInput.CheckFree( "Fire1" ) )
+		{
+			var forward = cam.transform.forward;
+			forward.y = 0.0f;
+			transform.forward = forward;
+		}
 	}
 
 	Rigidbody body;

@@ -32,7 +32,7 @@ public class FlameSword
 		if( on ) FireProjectile( projectilePrefab,shotSpeed,damage );
 	}
 
-	[SerializeField] GameObject projectilePrefab;
+	[SerializeField] GameObject projectilePrefab = null;
 	[SerializeField] float shotSpeed = 30.0f;
 	[SerializeField] float damage = 1.0f;
 }

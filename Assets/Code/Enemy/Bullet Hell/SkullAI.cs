@@ -41,7 +41,7 @@ public class SkullAI
 
 	[SerializeField] float desiredDist = 10.0f;
 
-	[SerializeField] float shotRefire = 2.0f;
+	// [SerializeField] float shotRefire = 2.0f;
 	[SerializeField] GameObject bulletPrefab = null;
 	[SerializeField] Timer refire = new Timer( 0.7f );
 }

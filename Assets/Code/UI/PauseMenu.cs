@@ -36,7 +36,7 @@ public class PauseMenu
 	public void ToggleOpen( bool open )
 	{
 		PauseMenu.open = open;
-
+		
 		var c = img.color;
 		c.a = open ? initAlpha : 0.0f;
 		img.color = c;
