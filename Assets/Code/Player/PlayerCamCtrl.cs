@@ -26,12 +26,12 @@ public class PlayerCamCtrl
 
 	void Update()
 	{
-		if( SpiffyInput.CheckAxis( "Menu" ) )
-		{
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
-			escape = true;
-		}
+		// if( SpiffyInput.CheckAxis( "Menu" ) )
+		// {
+		// 	Cursor.lockState = CursorLockMode.None;
+		// 	Cursor.visible = true;
+		// 	escape = true;
+		// }
 		if( SpiffyInput.CheckAxis( "Fire1" ) && !playerInv.IsOpen() && !PauseMenu.IsOpen() )
 		{
 			Cursor.lockState = CursorLockMode.Locked;

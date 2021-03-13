@@ -26,6 +26,11 @@ public class XPUI
 		PlayerPrefs.SetInt( "xp",xp );
 	}
 
+	public static int GetXP()
+	{
+		return( xp );
+	}
+
 	static int xp = 0;
 
 	Text xpText;

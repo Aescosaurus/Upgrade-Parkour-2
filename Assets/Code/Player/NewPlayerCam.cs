@@ -28,20 +28,19 @@ public class NewPlayerCam
 	{
 		if( player == null ) return;
 
-		if( SpiffyInput.CheckAxis( "Menu" ) )
-		{
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
-			escape = true;
-		}
-		if( SpiffyInput.CheckAxis( "Fire1" ) && !PauseMenu.IsOpen() )
+		// if( SpiffyInput.CheckAxis( "Menu" ) )
+		// {
+		// 	Cursor.lockState = CursorLockMode.None;
+		// 	Cursor.visible = true;
+		// 	escape = true;
+		// }
+		if( Input.GetAxis( "Fire1" ) > 0.0f && !PauseMenu.IsOpen() )
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
-			escape = false;
 		}
 
-		if( !escape && !PauseMenu.IsOpen() )
+		if( !PauseMenu.IsOpen() )
 		{
 			var aim = new Vector2( Input.GetAxis( "Mouse X" ),
 				Input.GetAxis( "Mouse Y" ) );
@@ -102,8 +101,6 @@ public class NewPlayerCam
 
 	GameObject player = null;
 	Camera cam;
-
-	bool escape = false;
 
 	InventoryHandler playerInv;
 
