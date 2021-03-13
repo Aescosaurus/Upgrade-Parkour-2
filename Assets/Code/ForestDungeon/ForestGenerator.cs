@@ -160,7 +160,7 @@ public class ForestGenerator
 						break;
 					case 3: // enemies
 						{
-							var enemy = Instantiate( enemyPrefabs[0] );
+							var enemy = Instantiate( enemyPrefabs[Random.Range( 0,unlockedEnemies )] );
 							enemy.transform.position = worldPos;
 						}
 						break;
@@ -296,5 +296,6 @@ public class ForestGenerator
 	[SerializeField] List<GameObject> playerPrefabs = new List<GameObject>();
 
 	[SerializeField] RangeI nRoomEnemies = new RangeI( 1,3 );
+	[SerializeField] int unlockedEnemies = 1;
 	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 }
