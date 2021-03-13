@@ -47,6 +47,8 @@ public class PauseMenu
 			transform.GetChild( i ).gameObject.SetActive( open );
 		}
 
+		Time.timeScale = open ? 0.0f : 1.0f;
+
 		Cursor.visible = open;
 		Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
 	}

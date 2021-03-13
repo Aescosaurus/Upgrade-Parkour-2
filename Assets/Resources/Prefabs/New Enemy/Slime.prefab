@@ -115,10 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81683225c221dc246a02898d4f3584e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateRange: 15
-  hopForce: 4
-  hopHeight: 7
-  restDuration: 1
+  activateRange: 17
+  hopForce: 3
+  hopHeight: 6
+  restDuration: 1.3
 --- !u!1 &2711106870236606687
 GameObject:
   m_ObjectHideFlags: 0
