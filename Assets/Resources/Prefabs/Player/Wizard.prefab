@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2938953004737716631}
   - component: {fileID: 4830054255817575578}
-  - component: {fileID: 237854988535467474}
+  - component: {fileID: 2836163226945969773}
   - component: {fileID: 7382728630497165471}
   - component: {fileID: -8914477843229087975}
   - component: {fileID: -3904783123289014666}
@@ -53,8 +53,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &237854988535467474
-BoxCollider:
+--- !u!136 &2836163226945969773
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -63,9 +63,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.60900706, y: 0.9162197, z: 0.6159054}
-  m_Center: {x: -0.0009741485, y: 0.4597242, z: 0.00031495094}
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4770659, z: 0}
 --- !u!114 &7382728630497165471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +112,6 @@ MonoBehaviour:
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.9, y: 1, z: 0.9}
-  ouchSound: {fileID: 8300000, guid: 545afd5a3f1aeda4da71428eb972af71, type: 3}
-  oofSound: {fileID: 8300000, guid: 545afd5a3f1aeda4da71428eb972af71, type: 3}
 --- !u!1 &4749254500594934692
 GameObject:
   m_ObjectHideFlags: 0

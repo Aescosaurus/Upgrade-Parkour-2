@@ -10,7 +10,7 @@ public class SlimeGreen
 	{
 		base.Start();
 
-		Transition( "idle","hop" );
+		StartCoroutine( JumpRest( Random.Range( 0.0f,restDuration ) ) );
 	}
 
 	public override void HopStart()
@@ -36,7 +36,7 @@ public class SlimeGreen
 		base.HopEnd();
 
 		Transition( "hop","idle" );
-		StartCoroutine( JumpRest() );
+		StartCoroutine( JumpRest( restDuration ) );
 	}
 
 	// protected override void Activate()
@@ -44,9 +44,9 @@ public class SlimeGreen
 	// 	Transition( "idle","hop" );
 	// }
 
-	IEnumerator JumpRest()
+	IEnumerator JumpRest( float t )
 	{
-		yield return( new WaitForSeconds( restDuration ) );
+		yield return( new WaitForSeconds( t ) );
 
 		Transition( "idle","hop" );
 	}

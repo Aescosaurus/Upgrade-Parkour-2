@@ -40,7 +40,7 @@ public class Damageable
 		shirkTimer.Reset();
 		if( amount > 0.0f )
 		{
-			audSrc.PlayOneShot( ouchSound );
+			// audSrc.PlayOneShot( ouchSound );
 			hp -= amount;
 
 			var curFX = hitFX;
@@ -66,6 +66,12 @@ public class Damageable
 			// 	Destroy( audLeftover,oofSound.length );
 			// }
 			// else print( "Oof sound is null on " + gameObject.name );
+
+			var enemies = FindObjectsOfType<NewEnemyBase>();
+			if( enemies.Length <= 1 )
+			{
+				print( "you win!" );
+			}
 
 			Destroy( gameObject );
 		}
@@ -104,6 +110,6 @@ public class Damageable
 	bool oofed = false;
 
 	protected AudioSource audSrc;
-	[SerializeField] AudioClip ouchSound = null;
+	// [SerializeField] AudioClip ouchSound = null;
 	// [SerializeField] AudioClip oofSound = null;
 }

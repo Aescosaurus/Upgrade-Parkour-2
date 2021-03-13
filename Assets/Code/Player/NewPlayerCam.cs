@@ -64,13 +64,13 @@ public class NewPlayerCam
 			transform.forward * offset.z;
 		transform.position -= transform.forward * distToPlayer;
 
-		// var clipRay = new Ray( player.transform.position,transform.position - player.transform.position );
-		// RaycastHit clipHit;
-		// if( Physics.Raycast( clipRay,out clipHit,distToPlayer,worldMask ) )
-		// {
-		// 	transform.position = clipHit.point + clipHit.normal * cam.nearClipPlane * 1.5f;
-		// }
-		// 
+		var clipRay = new Ray( player.transform.position,transform.position - player.transform.position );
+		RaycastHit clipHit;
+		if( Physics.Raycast( clipRay,out clipHit,distToPlayer,worldMask ) )
+		{
+			transform.position = clipHit.point + clipHit.normal * cam.nearClipPlane * 1.5f;
+		}
+		
 		// var interactRay = new Ray( transform.position + transform.forward * distToPlayer / 2.0f,transform.forward );
 		// RaycastHit interactHit;
 		// if( Physics.Raycast( interactRay,out interactHit,100.0f,itemMask ) )
