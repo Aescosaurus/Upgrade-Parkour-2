@@ -46,7 +46,6 @@ public class NewPlayerCam
 			var aim = new Vector2( Input.GetAxis( "Mouse X" ),
 				Input.GetAxis( "Mouse Y" ) );
 
-			// aim.y = aim.y * rotationSpeed * sensitivity * Time.deltaTime;
 			aim = aim * rotationSpeed * sensitivity * Time.deltaTime;
 			if( aim.y > maxAimMove ) aim.y = maxAimMove;
 			if( aim.y < -maxAimMove ) aim.y = -maxAimMove;
@@ -55,14 +54,8 @@ public class NewPlayerCam
 			tempAng.x = tempAng.x - aim.y;
 			if( tempAng.x > 90.0f - verticalCutoff && tempAng.x < 180.0f ) tempAng.x = 90.0f - verticalCutoff;
 			if( tempAng.x < 270.0f + verticalCutoff && tempAng.x > 180.0f ) tempAng.x = 270.0f + verticalCutoff;
-			tempAng.y = tempAng.y + aim.x/* * rotationSpeed * Time.deltaTime*/;
+			tempAng.y = tempAng.y + aim.x;
 			transform.eulerAngles = tempAng;
-
-			// distToPlayer -= Input.GetAxis( "Mouse ScrollWheel" ) *
-			// 	scrollSpeed * Time.deltaTime;
-
-			// distToPlayer = Mathf.Max( minDistToPlayer,distToPlayer );
-			// distToPlayer = Mathf.Min( maxDistToPlayer,distToPlayer );
 		}
 
 		transform.position = player.transform.position +
@@ -71,19 +64,19 @@ public class NewPlayerCam
 			transform.forward * offset.z;
 		transform.position -= transform.forward * distToPlayer;
 
-		var clipRay = new Ray( player.transform.position,transform.position - player.transform.position );
-		RaycastHit clipHit;
-		if( Physics.Raycast( clipRay,out clipHit,distToPlayer,worldMask ) )
-		{
-			transform.position = clipHit.point + clipHit.normal * cam.nearClipPlane * 1.5f;
-		}
-
-		var interactRay = new Ray( transform.position + transform.forward * distToPlayer / 2.0f,transform.forward );
-		RaycastHit interactHit;
-		if( Physics.Raycast( interactRay,out interactHit,100.0f,itemMask ) )
-		{
-			interactHit.transform.GetComponent<InteractiveBase>()?.Look();
-		}
+		// var clipRay = new Ray( player.transform.position,transform.position - player.transform.position );
+		// RaycastHit clipHit;
+		// if( Physics.Raycast( clipRay,out clipHit,distToPlayer,worldMask ) )
+		// {
+		// 	transform.position = clipHit.point + clipHit.normal * cam.nearClipPlane * 1.5f;
+		// }
+		// 
+		// var interactRay = new Ray( transform.position + transform.forward * distToPlayer / 2.0f,transform.forward );
+		// RaycastHit interactHit;
+		// if( Physics.Raycast( interactRay,out interactHit,100.0f,itemMask ) )
+		// {
+		// 	interactHit.transform.GetComponent<InteractiveBase>()?.Look();
+		// }
 	}
 
 	public static void SetSensitivity( float sens )

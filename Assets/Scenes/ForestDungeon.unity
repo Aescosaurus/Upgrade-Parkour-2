@@ -329,21 +329,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomWidth:
     min: 3
-    max: 15
+    max: 5
   roomHeight:
     min: 3
-    max: 15
+    max: 5
   hallLen:
     min: 3
-    max: 15
+    max: 5
   roomCount:
-    min: 15
-    max: 35
+    min: 3
+    max: 5
   wallPrefab: {fileID: 7346416341326219652, guid: 15cdeee445f2b194faffa561bf1d367e,
     type: 3}
   spacing: 6.25
   playerPrefabs:
   - {fileID: 2938953004737716630, guid: 0f27d20f3685d00488dbd83b5af71156, type: 3}
+  nRoomEnemies:
+    min: 1
+    max: 3
+  enemyPrefabs:
+  - {fileID: 707566122651550406, guid: cec53b57fc661ac4aa0d8c0f09477938, type: 3}
 --- !u!4 &238349734
 Transform:
   m_ObjectHideFlags: 0

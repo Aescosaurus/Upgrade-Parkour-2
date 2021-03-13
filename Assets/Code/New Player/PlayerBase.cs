@@ -14,6 +14,8 @@ public class PlayerBase
 
 	void Update()
 	{
+		if( PauseMenu.IsOpen() ) return;
+
 		var move = new Vector3(
 			Input.GetAxis( "Horizontal" ),
 			0.0f,

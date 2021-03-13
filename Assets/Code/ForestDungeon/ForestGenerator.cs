@@ -8,14 +8,10 @@ public class ForestGenerator
 {
 	void Start()
 	{
-		Generate();
-
-		var player = Instantiate( playerPrefabs[0] );
-		player.transform.position = GetRandSpawnPos();
-		FindObjectOfType<NewPlayerCam>().SetPlayer( player );
+		GenerateLayout();
 	}
 
-	void Generate()
+	void GenerateLayout()
 	{
 		var rooms = new List<RectI>();
 
@@ -98,15 +94,40 @@ public class ForestGenerator
 			halls.Add( new Line( curRoom.GetRandPoint(),nextRoom.GetRandPoint() ) );
 		}
 
-		foreach( var room in rooms )
+		// foreach( var room in rooms )
+		int playerRoom = Random.Range( 0,rooms.Count );
+		Vec2 playerPos = new Vec2( -1,-1 );
+		for( int i = 0; i < rooms.Count; ++i )
 		{
+			var room = rooms[i];
 			DrawRect( room.x,room.y,room.width,room.height,0 );
+
+			if( i == playerRoom )
+			{
+				playerPos = room.GetRandPoint();
+			}
+			else
+			{
+				int nEnemies = nRoomEnemies.Rand();
+				for( int j = 0; j < nEnemies; ++j )
+				{
+					Vec2 pos;
+					do
+					{
+						pos = room.GetRandPoint();
+					}
+					while( GetTile( pos.x,pos.y ) != 0 );
+					SetTile( pos.x,pos.y,3 );
+				}
+			}
 		}
 		
 		foreach( var hall in halls )
 		{
 			DrawHall( hall,0 );
 		}
+
+		SetTile( playerPos.x,playerPos.y,2 );
 
 		var floorObj = transform.GetChild( 0 );
 		var floorScale = new Vector3( ( float )width * spacing,1.0f,( float )height * spacing );
@@ -117,10 +138,31 @@ public class ForestGenerator
 		{
 			for( int x = 0; x < width; ++x )
 			{
-				if( GetTile( x,y ) == 1 && CheckSurroundingTiles( x,y,3 ) > 0 )
+				var tile = GetTile( x,y );
+				var worldPos = new Vector3( ( float )x * spacing,0.0f,( float )y * spacing );
+				switch( tile )
 				{
-					var wall = Instantiate( wallPrefab,transform );
-					wall.transform.position = new Vector3( ( float )x * spacing,0.0f,( float )y * spacing );
+					// 0 = empty
+					case 1: // wall
+						if( CheckSurroundingTiles( x,y,3 ) > 0 )
+						{
+							var wall = Instantiate( wallPrefab,transform );
+							wall.transform.position = worldPos;
+						}
+						break;
+					case 2: // player
+						{
+							var player = Instantiate( playerPrefabs[0] );
+							player.transform.position = worldPos;
+							FindObjectOfType<NewPlayerCam>().SetPlayer( player );
+						}
+						break;
+					case 3: // enemies
+						{
+							var enemy = Instantiate( enemyPrefabs[0] );
+							enemy.transform.position = worldPos;
+						}
+						break;
 				}
 			}
 		}
@@ -152,13 +194,13 @@ public class ForestGenerator
 	{
 		if( Random.Range( 0.0f,1.0f ) < 0.5f )
 		{
-			DrawRect( hall.start.x,hall.start.y,1,hall.GetHeight(),0 );
-			DrawRect( hall.start.x,hall.end.y,hall.GetWidth(),1,0 );
+			DrawRect( hall.start.x,hall.start.y,1,hall.GetHeight() + 1,0 );
+			DrawRect( hall.start.x,hall.end.y,hall.GetWidth() + 1,1,0 );
 		}
 		else
 		{
-			DrawRect( hall.start.x,hall.start.y,hall.GetWidth(),1,0 );
-			DrawRect( hall.end.x,hall.start.y,1,hall.GetHeight(),0 );
+			DrawRect( hall.start.x,hall.start.y,hall.GetWidth() + 1,1,0 );
+			DrawRect( hall.end.x,hall.start.y,1,hall.GetHeight() + 1,0 );
 		}
 	}
 
@@ -221,4 +263,7 @@ public class ForestGenerator
 	[SerializeField] float spacing = 1.0f;
 
 	[SerializeField] List<GameObject> playerPrefabs = new List<GameObject>();
+
+	[SerializeField] RangeI nRoomEnemies = new RangeI( 1,3 );
+	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 }

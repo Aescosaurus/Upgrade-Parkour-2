@@ -15,6 +15,6 @@ public class SensitivitySlider
 	public void UpdateSens( float val )
 	{
 		PlayerPrefs.SetFloat( "sens",val );
-		PlayerCamCtrl.SetSensitivity( val );
+		NewPlayerCam.SetSensitivity( val );
 	}
 }

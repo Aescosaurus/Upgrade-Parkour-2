@@ -58,14 +58,14 @@ public class Damageable
 		if( !oofed )
 		{
 			oofed = true;
-			if( oofSound != null )
-			{
-				// audSrc.PlayOneShot( oofSound );
-				var audLeftover = Instantiate( ResLoader.Load( "Prefabs/AudioLeftover" ) );
-				audLeftover.AddComponent<AudioSource>().PlayOneShot( oofSound );
-				Destroy( audLeftover,oofSound.length );
-			}
-			else print( "Oof sound is null on " + gameObject.name );
+			// if( oofSound != null )
+			// {
+			// 	// audSrc.PlayOneShot( oofSound );
+			// 	var audLeftover = Instantiate( ResLoader.Load( "Prefabs/AudioLeftover" ) );
+			// 	audLeftover.AddComponent<AudioSource>().PlayOneShot( oofSound );
+			// 	Destroy( audLeftover,oofSound.length );
+			// }
+			// else print( "Oof sound is null on " + gameObject.name );
 
 			Destroy( gameObject );
 		}
@@ -105,5 +105,5 @@ public class Damageable
 
 	protected AudioSource audSrc;
 	[SerializeField] AudioClip ouchSound = null;
-	[SerializeField] AudioClip oofSound = null;
+	// [SerializeField] AudioClip oofSound = null;
 }
