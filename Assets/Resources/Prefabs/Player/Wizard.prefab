@@ -126,11 +126,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 10
+  maxHP: 5
   def: 0
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.9, y: 1, z: 0.9}
+  knockbackForce: 30
+  knockbackForceUp: 10
+  pauseDur: 0.7
 --- !u!1 &4749254500594934692
 GameObject:
   m_ObjectHideFlags: 0

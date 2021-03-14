@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Damageable
 	:
@@ -15,6 +16,7 @@ public class Damageable
 		hp = maxHP;
 
 		audSrc = gameObject.AddComponent<AudioSource>();
+		body = GetComponent<Rigidbody>();
 	}
 
 	protected virtual void Update()
@@ -34,7 +36,7 @@ public class Damageable
 		else transform.localScale = origScale;
 	}
 
-	public virtual void Damage( float amount )
+	public virtual void Damage( Vector3 forceDir,float amount )
 	{
 		amount -= def;
 		shirkTimer.Reset();
@@ -42,6 +44,8 @@ public class Damageable
 		{
 			// audSrc.PlayOneShot( ouchSound );
 			hp -= amount;
+
+			body.AddForce( forceDir * knockbackForce + Vector3.up * knockbackForceUp,ForceMode.Impulse );
 
 			var curFX = hitFX;
 			if( hp <= 0.0f )
@@ -51,6 +55,11 @@ public class Damageable
 			}
 			partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),curFX );
 		}
+	}
+
+	public void Damage( float amount )
+	{
+		Assert.IsTrue( false );
 	}
 
 	protected virtual void Oof()
@@ -107,9 +116,12 @@ public class Damageable
 
 	Timer shirkTimer = new Timer( 0.3f );
 	Vector3 origScale;
-	bool oofed = false;
+	protected bool oofed = false;
 
 	protected AudioSource audSrc;
+	Rigidbody body;
+	[SerializeField] float knockbackForce = 10.0f;
+	[SerializeField] float knockbackForceUp = 3.0f;
 	// [SerializeField] AudioClip ouchSound = null;
 	// [SerializeField] AudioClip oofSound = null;
 }

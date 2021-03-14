@@ -175,16 +175,16 @@ public class EnemyBase
 		}
 	}
 
-	public override void Damage( float amount )
-	{
-		base.Damage( amount );
-
-		if( !activated )
-		{
-			ActivateSelf();
-			ActivateNearby();
-		}
-	}
+	// public override void Damage( float amount )
+	// {
+	// 	base.Damage( amount );
+	// 
+	// 	if( !activated )
+	// 	{
+	// 		ActivateSelf();
+	// 		ActivateNearby();
+	// 	}
+	// }
 
 	protected override void Oof()
 	{

@@ -16,7 +16,7 @@ public class Projectile
 		var damageTarget = coll.GetComponent<Damageable>();
 		if( damageTarget != null && damageTarget.GetTeam() != team )
 		{
-			damageTarget.Damage( damage );
+			damageTarget.Damage( transform.forward,damage );
 			Destroy( gameObject );
 		}
 		// var targetTeam = -1;

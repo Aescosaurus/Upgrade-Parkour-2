@@ -9,7 +9,24 @@ public class DamageablePlayer
 {
 	protected override void Oof()
 	{
-		// base.Oof();
-		SceneManager.LoadScene( "HubScene" );
+		if( !oofed )
+		{
+			oofed = true;
+			// base.Oof();
+
+			// PauseMenu.SetOpen( true );
+			Destroy( GetComponent<PlayerBase>() );
+
+			StartCoroutine( ReloadScene() );
+		}
 	}
+
+	IEnumerator ReloadScene()
+	{
+		yield return( new WaitForSeconds( pauseDur ) );
+
+		SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
+	}
+
+	[SerializeField] float pauseDur = 0.5f;
 }

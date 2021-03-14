@@ -9,6 +9,9 @@ public class SlimeBase
 	protected override void Start()
 	{
 		base.Start();
+
+		hitbox = transform.Find( "Body" ).Find( "Hitbox" ).GetComponent<BoxCollider>();
+		hitbox.enabled = false;
 	}
 
 	protected override void Update()
@@ -18,12 +21,12 @@ public class SlimeBase
 
 	public virtual void HopStart()
 	{
-
+		hitbox.enabled = true;
 	}
 
 	public virtual void HopEnd()
 	{
-
+		hitbox.enabled = false;
 	}
 
 	protected virtual void Hop( Vector3 dir )
@@ -34,6 +37,13 @@ public class SlimeBase
 		body.AddForce( dir.normalized * hopForce + Vector3.up * hopHeight,ForceMode.Impulse );
 	}
 
+	void OnTriggerEnter( Collider coll )
+	{
+		coll.GetComponent<DamageablePlayer>()?.Damage( transform.forward,1.0f );
+	}
+
 	[SerializeField] protected float hopForce = 10.0f;
 	[SerializeField] protected float hopHeight = 0.3f;
+
+	BoxCollider hitbox;
 }
