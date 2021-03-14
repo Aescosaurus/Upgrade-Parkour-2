@@ -107,6 +107,11 @@ public class ForestGenerator
 			halls.Add( new Line( curRoom.GetRandPoint(),nextRoom.GetRandPoint() ) );
 		}
 
+		foreach( var hall in halls )
+		{
+			DrawHall( hall,0 );
+		}
+
 		// foreach( var room in rooms )
 		int playerRoom = Random.Range( 0,rooms.Count );
 		Vec2 playerPos = new Vec2( -1,-1 );
@@ -133,11 +138,6 @@ public class ForestGenerator
 					SetTile( pos.x,pos.y,3 );
 				}
 			}
-		}
-		
-		foreach( var hall in halls )
-		{
-			DrawHall( hall,0 );
 		}
 
 		SetTile( playerPos.x,playerPos.y,2 );
