@@ -9,7 +9,7 @@ public class XPUI
 {
 	void Start()
 	{
-		xp = PlayerPrefs.GetInt( "xp",0 );
+		LoadXP();
 
 		xpText = GetComponentInChildren<Text>();
 		upgradePanel = FindObjectOfType<UpgradePanel>();
@@ -25,7 +25,9 @@ public class XPUI
 		// ++xp;
 		// 
 		// PlayerPrefs.SetInt( "xp",xp );
-		AddXP( 1 );
+
+		// AddXP( 1 );
+		AddXP( 5 );
 
 		upgradePanel.LateOpen();
 	}
@@ -37,12 +39,18 @@ public class XPUI
 		PlayerPrefs.SetInt( "xp",xp );
 	}
 
+	static void LoadXP()
+	{
+		xp = PlayerPrefs.GetInt( "xp",0 );
+	}
+
 	public static int GetXP()
 	{
+		if( xp < 0 ) LoadXP();
 		return( xp );
 	}
 
-	static int xp = 0;
+	static int xp = -1;
 
 	Text xpText;
 

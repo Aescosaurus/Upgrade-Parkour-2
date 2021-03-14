@@ -9,8 +9,9 @@ public class ForestGenerator
 {
 	void Start()
 	{
-		int roomSize = PlayerPrefs.GetInt( "Room Size upgrade",0 );
+		int roomSize = PlayerPrefs.GetInt( "Room Size upgrade",0 ) * 2;
 		roomWidth.Add( roomSize );
+		roomHeight.Add( roomSize );
 
 		int roomNumber = PlayerPrefs.GetInt( "Room Count upgrade",0 );
 		roomCount.Add( roomNumber );
@@ -19,7 +20,7 @@ public class ForestGenerator
 		nRoomEnemies.Add( enemyCount );
 
 		int enemyvariety = PlayerPrefs.GetInt( "Enemy Variety upgrade",0 );
-		unlockedEnemies = enemyvariety;
+		unlockedEnemies = enemyvariety + 1;
 
 		GenerateLayout();
 	}
