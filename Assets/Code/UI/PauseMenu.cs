@@ -35,7 +35,7 @@ public class PauseMenu
 
 	public void ToggleOpen( bool open )
 	{
-		PauseMenu.open = open;
+		// PauseMenu.open = open;
 		
 		// var c = img.color;
 		// c.a = open ? initAlpha : 0.0f;
@@ -48,15 +48,17 @@ public class PauseMenu
 			transform.GetChild( i ).gameObject.SetActive( open );
 		}
 
-		Time.timeScale = open ? 0.0f : 1.0f;
-
-		Cursor.visible = open;
-		Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
+		SetOpen( open );
 	}
 
 	public static void SetOpen( bool isOpen )
 	{
 		open = isOpen;
+
+		Time.timeScale = isOpen ? 0.0f : 1.0f;
+
+		Cursor.visible = isOpen;
+		Cursor.lockState = isOpen ? CursorLockMode.None : CursorLockMode.Locked;
 	}
 
 	public static bool IsOpen()

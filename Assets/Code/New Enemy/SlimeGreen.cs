@@ -13,6 +13,17 @@ public class SlimeGreen
 		StartCoroutine( JumpRest( Random.Range( 0.0f,restDuration ) ) );
 	}
 
+	protected override void Update()
+	{
+		base.Update();
+
+		if( activated )
+		{
+			var diff = player.transform.position - transform.position;
+			Look( diff );
+		}
+	}
+
 	public override void HopStart()
 	{
 		base.HopStart();

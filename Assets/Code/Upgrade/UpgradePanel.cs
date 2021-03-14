@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UpgradePanel
 	:
@@ -22,10 +23,10 @@ public class UpgradePanel
 
 	void Update()
 	{
-		if( SpiffyInput.CheckAxis( "Inventory",true ) ) ToggleOpen( !open );
+		// if( SpiffyInput.CheckAxis( "Inventory",true ) ) ToggleOpen( !open );
 	}
 
-	void ToggleOpen( bool open )
+	public void ToggleOpen( bool open )
 	{
 		this.open = open;
 
@@ -41,8 +42,25 @@ public class UpgradePanel
 
 		PauseMenu.SetOpen( open );
 
-		Cursor.visible = open;
-		Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
+		// Cursor.visible = open;
+		// Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
+	}
+
+	public void RegenDungeon()
+	{
+		SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
+	}
+
+	public void LateOpen()
+	{
+		StartCoroutine( ToggleOpenLate( 1.0f ) );
+	}
+
+	IEnumerator ToggleOpenLate( float t )
+	{
+		yield return( new WaitForSeconds( t ) );
+
+		ToggleOpen( true );
 	}
 
 	Image img;

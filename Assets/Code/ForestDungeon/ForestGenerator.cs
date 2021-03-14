@@ -296,7 +296,7 @@ public class ForestGenerator
 	int height;
 
 	// enable to use serializefield values
-	[SerializeField] bool serializeFieldOverride = false;
+	// [SerializeField] bool serializeFieldOverride = false;
 
 	[SerializeField] RangeI roomWidth = new RangeI( 3,5 );
 	[SerializeField] RangeI roomHeight = new RangeI( 3,5 );
