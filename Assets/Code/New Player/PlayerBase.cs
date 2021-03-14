@@ -10,6 +10,7 @@ public class PlayerBase
 	{
 		body = GetComponent<Rigidbody>();
 		cam = Camera.main;
+		animCtrl = GetComponent<Animator>();
 	}
 
 	void Update()
@@ -40,16 +41,20 @@ public class PlayerBase
 			body.velocity = body.velocity.normalized * maxSpeed;
 		}
 
+		animCtrl.SetBool( "attack",false );
 		if( SpiffyInput.CheckFree( "Fire1" ) )
 		{
 			var forward = cam.transform.forward;
 			forward.y = 0.0f;
 			transform.forward = forward;
+
+			animCtrl.SetBool( "attack",true );
 		}
 	}
 
 	Rigidbody body;
 	Camera cam;
+	Animator animCtrl;
 
 	[SerializeField] float accel = 10.0f;
 	[SerializeField] float maxSpeed = 10.0f;

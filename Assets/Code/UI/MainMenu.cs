@@ -15,7 +15,7 @@ public class MainMenu
 
 	public void Play()
 	{
-		SceneManager.LoadScene( "HubScene" );
+		SceneManager.LoadScene( "ForestDungeon" );
 	}
 
 	public void Tutorial()

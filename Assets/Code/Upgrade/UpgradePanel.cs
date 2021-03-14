@@ -18,6 +18,9 @@ public class UpgradePanel
 			children.Add( transform.GetChild( i ).gameObject );
 		}
 
+		tutPanel = FindObjectOfType<TutorialPanel>();
+		pauseMenu = FindObjectOfType<PauseMenu>();
+
 		ToggleOpen( false );
 	}
 
@@ -41,6 +44,12 @@ public class UpgradePanel
 		}
 
 		PauseMenu.SetOpen( open );
+
+		if( open )
+		{
+			Destroy( tutPanel.gameObject );
+			Destroy( pauseMenu.gameObject );
+		}
 
 		// Cursor.visible = open;
 		// Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked;
@@ -66,6 +75,9 @@ public class UpgradePanel
 	Image img;
 	float origOpacity;
 	List<GameObject> children = new List<GameObject>();
+
+	TutorialPanel tutPanel;
+	PauseMenu pauseMenu;
 
 	bool open = false;
 }

@@ -17,7 +17,7 @@ public class PauseMenu
 
 	void Update()
 	{
-		if( SpiffyInput.CheckAxis( "Menu",true ) )
+		if( SpiffyInput.CheckAxis( "Menu",true ) || Input.GetKeyDown( KeyCode.Escape ) )
 		{
 			ToggleOpen( !open );
 		}
