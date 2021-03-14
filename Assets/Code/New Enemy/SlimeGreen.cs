@@ -19,7 +19,11 @@ public class SlimeGreen
 
 		Vector3 hopDir;
 
-		if( activated ) hopDir = player.transform.position - transform.position;
+		if( activated )
+		{
+			hopDir = player.transform.position - transform.position;
+			Look( hopDir );
+		}
 		else
 		{
 			hopDir = new Vector3(

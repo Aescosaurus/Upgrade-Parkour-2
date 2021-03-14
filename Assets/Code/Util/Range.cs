@@ -30,6 +30,12 @@ public class RangeI
 		this.max = max;
 	}
 
+	public void Add( int amount )
+	{
+		min += amount;
+		max += amount;
+	}
+
 	public int Rand()
 	{
 		return( Random.Range( min,max + 1 ) );

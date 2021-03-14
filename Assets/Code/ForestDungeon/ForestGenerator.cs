@@ -9,6 +9,18 @@ public class ForestGenerator
 {
 	void Start()
 	{
+		int roomSize = PlayerPrefs.GetInt( "Room Size upgrade",0 );
+		roomWidth.Add( roomSize );
+
+		int roomNumber = PlayerPrefs.GetInt( "Room Count upgrade",0 );
+		roomCount.Add( roomNumber );
+
+		int enemyCount = PlayerPrefs.GetInt( "Enemy Count upgrade",0 );
+		nRoomEnemies.Add( enemyCount );
+
+		int enemyvariety = PlayerPrefs.GetInt( "Enemy Variety upgrade",0 );
+		unlockedEnemies = enemyvariety;
+
 		GenerateLayout();
 	}
 
@@ -282,6 +294,9 @@ public class ForestGenerator
 	List<int> tilemap = new List<int>();
 	int width;
 	int height;
+
+	// enable to use serializefield values
+	[SerializeField] bool serializeFieldOverride = false;
 
 	[SerializeField] RangeI roomWidth = new RangeI( 3,5 );
 	[SerializeField] RangeI roomHeight = new RangeI( 3,5 );

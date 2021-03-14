@@ -99,8 +99,8 @@ MonoBehaviour:
   team: 2
   maxHP: 7
   def: 0
-  hitFX: 0
-  oofFX: 0
+  hitFX: 1
+  oofFX: 2
   shirkScale: {x: 0.8, y: 1.2, z: 0.8}
 --- !u!114 &6209579502753174452
 MonoBehaviour:

@@ -9,7 +9,7 @@ public class Upgrade
 {
 	void Start()
 	{
-		if( !reset ) costLevel = PlayerPrefs.GetInt( gameObject.name + "upgrade",0 );
+		if( !reset ) costLevel = PlayerPrefs.GetInt( gameObject.name + " upgrade",0 );
 
 		nameText = transform.Find( "Text" ).GetComponent<Text>();
 		upgradeButton = transform.Find( "Button" ).GetComponent<Button>();
@@ -28,7 +28,7 @@ public class Upgrade
 			print( "yay upgrade" );
 			XPUI.AddXP( -costTiers[costLevel] );
 			++costLevel;
-			PlayerPrefs.SetInt( gameObject.name + "upgrade",costLevel );
+			PlayerPrefs.SetInt( gameObject.name + " upgrade",costLevel );
 			RefreshUI();
 		}
 		else
@@ -40,10 +40,22 @@ public class Upgrade
 	void RefreshUI()
 	{
 		nameText.text = gameObject.name;
-		buttonText.text = "Upgrade (" + costTiers[costLevel].ToString() + " XP)";
-		fillImage.fillAmount = ( float )costLevel / ( float )costTiers.Count;
 
-		upgradeButton.interactable = XPUI.GetXP() >= costTiers[costLevel];
+		var fill = ( float )costLevel / ( float )costTiers.Count;
+		if( fill < 0.0f ) fill = 0.0f;
+		if( fill > 1.0f ) fill = 1.0f;
+		fillImage.fillAmount = fill;
+
+		if( costLevel >= costTiers.Count )
+		{
+			upgradeButton.interactable = false;
+			buttonText.text = "";
+		}
+		else
+		{
+			upgradeButton.interactable = XPUI.GetXP() >= costTiers[costLevel];
+			buttonText.text = "Upgrade (" + costTiers[costLevel].ToString() + " XP)";
+		}
 	}
 
 	Text nameText;
