@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Assertions;
 
 public class DamageablePlayer
 	:
 	Damageable
 {
+	protected override void Start()
+	{
+		base.Start();
+
+		Assert.IsTrue( GetTeam() == 1 );
+	}
+
 	protected override void Oof()
 	{
 		if( !oofed )

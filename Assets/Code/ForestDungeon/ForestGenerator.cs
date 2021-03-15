@@ -7,7 +7,7 @@ public class ForestGenerator
 	:
 	MonoBehaviour
 {
-	void Start()
+	public void Generate()
 	{
 		int roomSize = PlayerPrefs.GetInt( "Room Size upgrade",0 ) * 2;
 		roomWidth.Add( roomSize );
@@ -130,13 +130,14 @@ public class ForestGenerator
 				int nEnemies = nRoomEnemies.Rand();
 				for( int j = 0; j < nEnemies; ++j )
 				{
+					int tries = 500;
 					Vec2 pos;
 					do
 					{
 						pos = room.GetRandPoint();
 					}
-					while( GetTile( pos.x,pos.y ) != 0 );
-					SetTile( pos.x,pos.y,3 );
+					while( GetTile( pos.x,pos.y ) != 0 && --tries > 0 );
+					if( tries > 1 ) SetTile( pos.x,pos.y,3 );
 				}
 			}
 		}

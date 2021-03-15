@@ -27,7 +27,7 @@ public class XPUI
 		// PlayerPrefs.SetInt( "xp",xp );
 
 		// AddXP( 1 );
-		AddXP( 5 );
+		AddXP( 10 );
 
 		upgradePanel.LateOpen();
 	}

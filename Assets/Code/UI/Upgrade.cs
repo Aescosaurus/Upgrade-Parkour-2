@@ -7,8 +7,11 @@ public class Upgrade
 	:
 	MonoBehaviour
 {
-	void Start()
+	public void Start()
 	{
+		if( started ) return;
+		started = true;
+
 		if( !reset ) costLevel = PlayerPrefs.GetInt( gameObject.name + " upgrade",0 );
 		SetLevel();
 
@@ -26,7 +29,7 @@ public class Upgrade
 
 		if( xp >= costTiers[costLevel] )
 		{
-			print( "yay upgrade" );
+			// print( "yay upgrade" );
 			XPUI.AddXP( -costTiers[costLevel] );
 			++costLevel;
 			SetLevel();
@@ -34,7 +37,7 @@ public class Upgrade
 		}
 		else
 		{
-			print( "no go" );
+			// print( "no go" );
 		}
 	}
 
@@ -64,6 +67,11 @@ public class Upgrade
 		PlayerPrefs.SetInt( gameObject.name + " upgrade",costLevel );
 	}
 
+	void OnEnable()
+	{
+		if( started ) RefreshUI();
+	}
+
 	Text nameText;
 	Button upgradeButton;
 	Text buttonText;
@@ -72,5 +80,7 @@ public class Upgrade
 	[SerializeField] bool reset = false;
 	[SerializeField] List<int> costTiers = new List<int>();
 
-	int costLevel;
+	int costLevel = 0;
+
+	bool started = false;
 }

@@ -35,11 +35,7 @@ public class PlayerBase
 			transform.eulerAngles = rot;
 		}
 
-		body.AddForce( new Vector3( xMove,0.0f,yMove ) * accel );
-		if( body.velocity.sqrMagnitude > maxSpeed * maxSpeed )
-		{
-			body.velocity = body.velocity.normalized * maxSpeed;
-		}
+		bodyMove = new Vector3( xMove,0.0f,yMove );
 
 		animCtrl.SetBool( "attack",false );
 		if( SpiffyInput.CheckFree( "Fire1" ) )
@@ -52,6 +48,15 @@ public class PlayerBase
 		}
 	}
 
+	void FixedUpdate()
+	{
+		body.AddForce( bodyMove * accel );
+		if( body.velocity.sqrMagnitude > maxSpeed * maxSpeed )
+		{
+			body.velocity = body.velocity.normalized * maxSpeed;
+		}
+	}
+
 	Rigidbody body;
 	Camera cam;
 	Animator animCtrl;
@@ -59,4 +64,6 @@ public class PlayerBase
 	[SerializeField] float accel = 10.0f;
 	[SerializeField] float maxSpeed = 10.0f;
 	[SerializeField] float rotSpeed = 4.0f;
+
+	Vector3 bodyMove = Vector3.zero;
 }

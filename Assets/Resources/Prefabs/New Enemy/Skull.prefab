@@ -102,6 +102,8 @@ MonoBehaviour:
   hitFX: 1
   oofFX: 2
   shirkScale: {x: 0.8, y: 1.2, z: 0.8}
+  knockbackForce: 6
+  knockbackForceUp: 5
 --- !u!114 &6209579502753174452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateRange: 20
-  accel: 150
+  accel: 110
   maxSpeed: 5
   desiredDist: 10
   bulletPrefab: {fileID: 1011056612319427365, guid: ec52604f97995894d8d38990874e9099,

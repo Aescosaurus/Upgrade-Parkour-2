@@ -16,12 +16,15 @@ public class UpgradePanel
 		for( int i = 0; i < transform.childCount; ++i )
 		{
 			children.Add( transform.GetChild( i ).gameObject );
+			children[i].GetComponent<Upgrade>()?.Start();
 		}
 
 		tutPanel = FindObjectOfType<TutorialPanel>();
 		pauseMenu = FindObjectOfType<PauseMenu>();
 
 		ToggleOpen( false );
+
+		FindObjectOfType<ForestGenerator>().Generate();
 	}
 
 	void Update()

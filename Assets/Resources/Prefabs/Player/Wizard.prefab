@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88433f3a83b85694c869312561fcdd93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 2
-  maxHP: 5
+  team: 1
+  maxHP: 10
   def: 0
   hitFX: 1
   oofFX: 2

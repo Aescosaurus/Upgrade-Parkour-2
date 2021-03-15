@@ -33,7 +33,7 @@ public class Skull
 
 	public void AttackStart()
 	{
-		FireProjectile( bulletPrefab,transform.position + Vector3.up * 0.2f,transform.forward );
+		FireProjectile( bulletPrefab,transform.position + Vector3.down * 0.2f,transform.forward );
 
 		Transition( "attack","walk" );
 	}
