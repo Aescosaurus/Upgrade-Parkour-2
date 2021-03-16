@@ -47,7 +47,7 @@ public class Upgrade
 	void RefreshUI()
 	{
 		nameText.text = gameObject.name;
-		xpBonusText.text = "xp bonus percent: " + xpBonusPercent.ToString() + "%";
+		xpBonusText.text = "xp bonus: " + xpBonusPercent.ToString() + "%";
 
 		var fill = ( float )costLevel / ( float )costTiers.Count;
 		if( fill < 0.0f ) fill = 0.0f;

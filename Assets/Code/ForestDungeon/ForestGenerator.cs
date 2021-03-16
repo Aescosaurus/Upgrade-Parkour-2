@@ -22,6 +22,9 @@ public class ForestGenerator
 		int enemyvariety = PlayerPrefs.GetInt( "Enemy Variety upgrade",0 );
 		unlockedEnemies = enemyvariety + 1;
 
+		int wallVariety = PlayerPrefs.GetInt( "Decoration Level upgrade",0 );
+		unlockedWalls = wallVariety + 1;
+
 		GenerateLayout();
 	}
 
@@ -145,7 +148,9 @@ public class ForestGenerator
 		SetTile( playerPos.x,playerPos.y,2 );
 
 		var floorObj = transform.GetChild( 0 );
-		var floorScale = new Vector3( ( float )width * spacing,1.0f,( float )height * spacing );
+		var floorScale = new Vector3( ( float )width * spacing + floorScaleBump,
+			1.0f,
+			( float )height * spacing + floorScaleBump );
 		floorObj.transform.localScale = floorScale;
 		floorObj.transform.position = new Vector3( floorScale.x / 2.0f,0.0f,floorScale.z / 2.0f );
 
@@ -161,7 +166,7 @@ public class ForestGenerator
 					case 1: // wall
 						if( CheckSurroundingTiles( x,y,3 ) > 0 )
 						{
-							var wall = Instantiate( wallPrefab,transform );
+							var wall = Instantiate( GetRandWallPrefab(),transform );
 							wall.transform.position = worldPos;
 						}
 						break;
@@ -293,6 +298,11 @@ public class ForestGenerator
 		return( randPos );
 	}
 
+	GameObject GetRandWallPrefab()
+	{
+		return( wallPrefabs[Random.Range( 0,unlockedWalls )] );
+	}
+
 	List<int> tilemap = new List<int>();
 	int width;
 	int height;
@@ -300,6 +310,7 @@ public class ForestGenerator
 	// enable to use serializefield values
 	// [SerializeField] bool serializeFieldOverride = false;
 
+	[Header( "Generation" )]
 	[SerializeField] RangeI roomWidth = new RangeI( 3,5 );
 	[SerializeField] RangeI roomHeight = new RangeI( 3,5 );
 
@@ -307,11 +318,14 @@ public class ForestGenerator
 
 	[SerializeField] RangeI roomCount = new RangeI( 3,5 );
 
-	[SerializeField] GameObject wallPrefab = null;
+	[SerializeField] List<GameObject> wallPrefabs = new List<GameObject>();
+	[SerializeField] int unlockedWalls = 1;
 	[SerializeField] float spacing = 1.0f;
+	[SerializeField] float floorScaleBump = 50.0f;
 
 	[SerializeField] List<GameObject> playerPrefabs = new List<GameObject>();
 
+	[Header( "Enemies" )]
 	[SerializeField] RangeI nRoomEnemies = new RangeI( 1,3 );
 	[SerializeField] int unlockedEnemies = 1;
 	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
