@@ -26,7 +26,7 @@ public class MainMenu
 	public void ResetProgress()
 	{
 		Upgrade.reset = true;
-		XPUI.AddXP( -XPUI.GetXP() );
+		XPUI.ResetAll();
 
 		Play();
 	}

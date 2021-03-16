@@ -103,7 +103,7 @@ MonoBehaviour:
   oofFX: 2
   shirkScale: {x: 0.8, y: 1.2, z: 0.8}
   knockbackForce: 6
-  knockbackForceUp: 5
+  knockbackForceUp: 1
 --- !u!114 &6209579502753174452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,11 +119,12 @@ MonoBehaviour:
   activateRange: 20
   accel: 110
   maxSpeed: 5
+  rotSpeed: 2.4
   desiredDist: 10
   bulletPrefab: {fileID: 1011056612319427365, guid: ec52604f97995894d8d38990874e9099,
     type: 3}
   refire:
-    duration: 2
+    duration: 1
 --- !u!1 &4795801238339704204
 GameObject:
   m_ObjectHideFlags: 0

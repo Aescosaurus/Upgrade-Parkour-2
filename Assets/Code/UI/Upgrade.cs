@@ -15,7 +15,8 @@ public class Upgrade
 		if( !reset ) costLevel = PlayerPrefs.GetInt( gameObject.name + " upgrade",0 );
 		SetLevel();
 
-		nameText = transform.Find( "Text" ).GetComponent<Text>();
+		nameText = transform.Find( "UpgradeName" ).GetComponent<Text>();
+		xpBonusText = transform.Find( "XPBonusText" ).GetComponent<Text>();
 		upgradeButton = transform.Find( "Button" ).GetComponent<Button>();
 		buttonText = upgradeButton.GetComponentInChildren<Text>();
 		fillImage = transform.Find( "Image" ).GetComponent<Image>();
@@ -31,6 +32,8 @@ public class Upgrade
 		{
 			// print( "yay upgrade" );
 			XPUI.AddXP( -costTiers[costLevel] );
+			XPUI.AddXPBonus( xpBonusPercent );
+			
 			++costLevel;
 			SetLevel();
 			RefreshUI();
@@ -44,6 +47,7 @@ public class Upgrade
 	void RefreshUI()
 	{
 		nameText.text = gameObject.name;
+		xpBonusText.text = "xp bonus percent: " + xpBonusPercent.ToString() + "%";
 
 		var fill = ( float )costLevel / ( float )costTiers.Count;
 		if( fill < 0.0f ) fill = 0.0f;
@@ -73,11 +77,14 @@ public class Upgrade
 	}
 
 	Text nameText;
+	Text xpBonusText;
 	Button upgradeButton;
 	Text buttonText;
 	Image fillImage;
 
 	/*[SerializeField]*/ public static bool reset = false;
+	// x / 100
+	[SerializeField] int xpBonusPercent = 0;
 	[SerializeField] List<int> costTiers = new List<int>();
 
 	int costLevel = 0;
