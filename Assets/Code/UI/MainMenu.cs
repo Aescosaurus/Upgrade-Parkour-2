@@ -23,6 +23,14 @@ public class MainMenu
 		SceneManager.LoadScene( "TutorialScene" );
 	}
 
+	public void ResetProgress()
+	{
+		Upgrade.reset = true;
+		XPUI.AddXP( -XPUI.GetXP() );
+
+		Play();
+	}
+
 	public void Quit()
 	{
 		Application.Quit();

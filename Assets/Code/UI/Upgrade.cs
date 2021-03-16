@@ -77,7 +77,7 @@ public class Upgrade
 	Text buttonText;
 	Image fillImage;
 
-	[SerializeField] bool reset = false;
+	/*[SerializeField]*/ public static bool reset = false;
 	[SerializeField] List<int> costTiers = new List<int>();
 
 	int costLevel = 0;
