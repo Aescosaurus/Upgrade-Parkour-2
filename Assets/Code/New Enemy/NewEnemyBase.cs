@@ -42,9 +42,17 @@ public class NewEnemyBase
 		}
 	}
 
-	protected virtual void Move( Vector3 dir )
+	protected virtual void Move( Vector3 dir,bool slowRotate = false )
 	{
 		dir.y = 0.0f;
+
+		if( slowRotate )
+		{
+			var rot = transform.eulerAngles;
+			rot.y = Mathf.Atan2( dir.x,dir.z ) * Mathf.Rad2Deg;
+			rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
+			transform.eulerAngles = rot;
+		}
 
 		body.AddForce( dir.normalized * accel );
 		if( body.velocity.sqrMagnitude > maxSpeed * maxSpeed )
@@ -86,6 +94,7 @@ public class NewEnemyBase
 	[SerializeField] float activateRange = 15.0f;
 	[SerializeField] float accel = 100.0f;
 	[SerializeField] float maxSpeed = 5.0f;
+	[SerializeField] float rotSpeed = 2.4f;
 
 	protected bool activated = false;
 }
