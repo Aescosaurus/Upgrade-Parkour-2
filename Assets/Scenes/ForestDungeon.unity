@@ -426,6 +426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
+      propertyPath: descs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
       propertyPath: costTiers.Array.data[0]
       value: 20
       objectReference: {fileID: 0}
@@ -453,6 +458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: xpBonusPercent
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834459082490317441, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.17498016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db0c9d5c98cc744bb63954a64b0151e, type: 3}
@@ -1697,6 +1707,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
+      propertyPath: descs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
       propertyPath: costTiers.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
@@ -1719,6 +1734,11 @@ PrefabInstance:
         type: 3}
       propertyPath: costTiers.Array.data[4]
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834459082490317441, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.17498016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db0c9d5c98cc744bb63954a64b0151e, type: 3}
@@ -1852,6 +1872,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
+      propertyPath: descs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
       propertyPath: costTiers.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
@@ -1879,6 +1904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: xpBonusPercent
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834459082490317441, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.17498016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db0c9d5c98cc744bb63954a64b0151e, type: 3}
@@ -2012,6 +2042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
+      propertyPath: descs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
       propertyPath: costTiers.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
@@ -2039,6 +2074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: xpBonusPercent
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834459082490317441, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.17498016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db0c9d5c98cc744bb63954a64b0151e, type: 3}
@@ -3582,6 +3622,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
+      propertyPath: descs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
       propertyPath: costTiers.Array.data[2]
       value: 80
       objectReference: {fileID: 0}
@@ -3609,6 +3654,31 @@ PrefabInstance:
         type: 3}
       propertyPath: xpBonusPercent
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: descs.Array.data[3]
+      value: last upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: descs.Array.data[0]
+      value: ranged skull enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: descs.Array.data[1]
+      value: jumping spider enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: descs.Array.data[2]
+      value: tunneling worm enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834459082490317441, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.17498016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db0c9d5c98cc744bb63954a64b0151e, type: 3}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 
 public class Upgrade
 	:
@@ -17,9 +18,15 @@ public class Upgrade
 
 		nameText = transform.Find( "UpgradeName" ).GetComponent<Text>();
 		xpBonusText = transform.Find( "XPBonusText" ).GetComponent<Text>();
-		upgradeButton = transform.Find( "Button" ).GetComponent<Button>();
+		upgradeButton = transform.Find( "UpgradeButton" ).GetComponent<Button>();
+		helpButtonText = transform.Find( "HelpButton" ).GetComponentInChildren<Text>();
 		buttonText = upgradeButton.GetComponentInChildren<Text>();
 		fillImage = transform.Find( "Image" ).GetComponent<Image>();
+		infoText = transform.Find( "InfoText" ).GetComponent<Text>();
+
+		infoText.enabled = false;
+
+		Assert.IsTrue( descs.Count == costTiers.Count + 1 );
 
 		RefreshUI();
 	}
@@ -37,6 +44,8 @@ public class Upgrade
 			++costLevel;
 			SetLevel();
 			RefreshUI();
+			var otherUpgrades = FindObjectsOfType<Upgrade>();
+			foreach( var other in otherUpgrades ) other.RefreshUI();
 		}
 		else
 		{
@@ -76,18 +85,39 @@ public class Upgrade
 		if( started ) RefreshUI();
 	}
 
+	public void HelpSwap()
+	{
+		// todo spiffy flip animation
+		helpOpen = !helpOpen;
+
+		infoText.text = descs[costLevel];
+
+		infoText.enabled = helpOpen;
+		nameText.enabled = !helpOpen;
+		xpBonusText.enabled = !helpOpen;
+		upgradeButton.gameObject.SetActive( !helpOpen );
+		fillImage.enabled = !helpOpen;
+
+		helpButtonText.text = ( helpOpen ? "X" : "?" );
+	}
+
 	Text nameText;
 	Text xpBonusText;
 	Button upgradeButton;
+	Text helpButtonText;
 	Text buttonText;
 	Image fillImage;
+	Text infoText;
 
 	/*[SerializeField]*/ public static bool reset = false;
 	// x / 100
 	[SerializeField] int xpBonusPercent = 0;
 	[SerializeField] List<int> costTiers = new List<int>();
+	[SerializeField] List<string> descs = new List<string>();
 
 	int costLevel = 0;
 
 	bool started = false;
+
+	bool helpOpen = false;
 }

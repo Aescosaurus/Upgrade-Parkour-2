@@ -38,26 +38,33 @@ public class XPUI
 	{
 		xp += ( int )Mathf.Ceil( ( ( float )amount ) * ( 1.0f + ( float )xpBonus / 100.0f ) );
 
-		PlayerPrefs.SetInt( "xp",xp );
+		SaveXP();
 	}
 
 	public static void AddXPBonus( int amount )
 	{
 		xpBonus += amount;
 
-		PlayerPrefs.SetInt( "xpbonus",xpBonus );
+		SaveXP();
 	}
 
 	public static void ResetAll()
 	{
 		xp = 0;
 		xpBonus = 0;
+		SaveXP();
 	}
 
 	static void LoadXP()
 	{
 		xp = PlayerPrefs.GetInt( "xp",0 );
 		xpBonus = PlayerPrefs.GetInt( "xpbonus",0 );
+	}
+
+	static void SaveXP()
+	{
+		PlayerPrefs.SetInt( "xp",xp );
+		PlayerPrefs.SetInt( "xpbonus",xpBonus );
 	}
 
 	public static int GetXP()
