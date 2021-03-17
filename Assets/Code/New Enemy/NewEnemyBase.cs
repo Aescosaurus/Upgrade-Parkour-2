@@ -87,6 +87,24 @@ public class NewEnemyBase
 		return ( dist.sqrMagnitude < Mathf.Pow( range,2 ) );
 	}
 
+	void OnTriggerEnter( Collider coll )
+	{
+		if( !appliedDamage )
+		{
+			var damageable = coll.GetComponent<DamageablePlayer>();
+			if( damageable != null )
+			{
+				damageable.Damage( transform.forward,triggerDamage );
+				appliedDamage = true;
+			}
+		}
+	}
+
+	void OnTriggerExit( Collider coll )
+	{
+		appliedDamage = false;
+	}
+
 	protected GameObject player;
 	protected Rigidbody body;
 	protected Animator animCtrl;
@@ -95,6 +113,9 @@ public class NewEnemyBase
 	[SerializeField] float accel = 100.0f;
 	[SerializeField] float maxSpeed = 5.0f;
 	[SerializeField] float rotSpeed = 2.4f;
+	[SerializeField] float triggerDamage = 1.0f;
+	
+	bool appliedDamage = false;
 
 	protected bool activated = false;
 }

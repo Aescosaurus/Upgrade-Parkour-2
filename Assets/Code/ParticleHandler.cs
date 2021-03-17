@@ -14,6 +14,7 @@ public class ParticleHandler
 		Smoke,
 		Crystal,
 		Spark,
+		Worm,
 		Count
 	}
 
@@ -26,6 +27,7 @@ public class ParticleHandler
 		LoadParticle( ParticleType.Smoke,"SmokePart" );
 		LoadParticle( ParticleType.Crystal,"CrystalPart" );
 		LoadParticle( ParticleType.Spark,"SparkPart" );
+		LoadParticle( ParticleType.Worm,"WormPart" );
 	}
 
 	public void SpawnParticles( Vector3 loc,int amount,ParticleType type )
@@ -40,6 +42,22 @@ public class ParticleHandler
 			var partSys = curPartObj.GetComponent<ParticleSystem>();
 			partSys.Emit( amount );
 			Destroy( curPartObj,partSys.main.duration );
+		}
+	}
+
+	public void SpawnLastingParticles( Transform follow,float duration,ParticleType type )
+	{
+		Assert.IsTrue( type != ParticleType.Count );
+
+		if( type != ParticleType.None )
+		{
+			var curPartObj = Instantiate( particlePrefabs[( int )type],follow );
+			// curPartObj.transform.position = loc;
+
+			// var partSys = curPartObj.GetComponent<ParticleSystem>();
+			// partSys.Emit( amount );
+			// Destroy( curPartObj,partSys.main.duration );
+			Destroy( curPartObj,duration );
 		}
 	}
 

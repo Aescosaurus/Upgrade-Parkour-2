@@ -44,7 +44,7 @@ public class NewSpider
 						lunging = true;
 						lungeTimer.Reset();
 						Transition( "walk","lunging" );
-						appliedDamage = false;
+						// appliedDamage = false;
 					}
 				}
 			}
@@ -96,19 +96,6 @@ public class NewSpider
 		}
 	}
 
-	void OnTriggerEnter( Collider coll )
-	{
-		if( !appliedDamage )
-		{
-			var damageable = coll.GetComponent<DamageablePlayer>();
-			if( damageable != null )
-			{
-				damageable.Damage( transform.forward,lungeDamage );
-				appliedDamage = true;
-			}
-		}
-	}
-
 	[SerializeField] float strafeDist = 5.0f;
 	[SerializeField] float fleeDist = 3.0f;
 	int strafeDir = 0;
@@ -117,8 +104,6 @@ public class NewSpider
 	[SerializeField] float lungePower = 5.0f;
 	[SerializeField] float lungeUpBias = 0.2f;
 	BoxCollider hitbox;
-	[SerializeField] float lungeDamage = 2.0f;
-	bool appliedDamage = false;
 
 	// [SerializeField] AudioClip jumpSound = null;
 }

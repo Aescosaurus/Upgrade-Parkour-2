@@ -677,6 +677,7 @@ MonoBehaviour:
   - {fileID: 1210309856925194847, guid: d578cad1c8b917d40ba9dc34b38ca925, type: 3}
   unlockedWalls: 1
   spacing: 6.25
+  floorScaleBump: 50
   playerPrefabs:
   - {fileID: 2938953004737716630, guid: 0f27d20f3685d00488dbd83b5af71156, type: 3}
   nRoomEnemies:
@@ -684,9 +685,10 @@ MonoBehaviour:
     max: 3
   unlockedEnemies: 2
   enemyPrefabs:
-  - {fileID: 707566122651550406, guid: cec53b57fc661ac4aa0d8c0f09477938, type: 3}
+  - {fileID: 7223817539412407462, guid: 5776d145ec34d5648a0339fd2c19e99c, type: 3}
   - {fileID: 4117907379730968056, guid: a36c14eef100f6d448de5deb1af65665, type: 3}
   - {fileID: 3089165843163223701, guid: aee38f71353353646b569b35a758f329, type: 3}
+  - {fileID: 7223817539412407462, guid: 5776d145ec34d5648a0339fd2c19e99c, type: 3}
 --- !u!4 &238349734
 Transform:
   m_ObjectHideFlags: 0
