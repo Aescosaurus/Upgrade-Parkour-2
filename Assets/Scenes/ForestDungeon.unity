@@ -427,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[0]
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
@@ -685,7 +685,7 @@ MonoBehaviour:
     max: 3
   unlockedEnemies: 2
   enemyPrefabs:
-  - {fileID: 7223817539412407462, guid: 5776d145ec34d5648a0339fd2c19e99c, type: 3}
+  - {fileID: 707566122651550406, guid: cec53b57fc661ac4aa0d8c0f09477938, type: 3}
   - {fileID: 4117907379730968056, guid: a36c14eef100f6d448de5deb1af65665, type: 3}
   - {fileID: 3089165843163223701, guid: aee38f71353353646b569b35a758f329, type: 3}
   - {fileID: 7223817539412407462, guid: 5776d145ec34d5648a0339fd2c19e99c, type: 3}
@@ -1703,22 +1703,22 @@ PrefabInstance:
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[1]
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[2]
-      value: 3
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[3]
-      value: 4
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[4]
-      value: 5
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db0c9d5c98cc744bb63954a64b0151e, type: 3}
@@ -1858,22 +1858,22 @@ PrefabInstance:
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
-        type: 3}
-      propertyPath: costTiers.Array.data[2]
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
-      propertyPath: costTiers.Array.data[3]
+      propertyPath: costTiers.Array.data[2]
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
+      propertyPath: costTiers.Array.data[3]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
       propertyPath: costTiers.Array.data[4]
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
@@ -2018,22 +2018,22 @@ PrefabInstance:
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
-        type: 3}
-      propertyPath: costTiers.Array.data[2]
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
+      propertyPath: costTiers.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
+        type: 3}
       propertyPath: costTiers.Array.data[3]
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[4]
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
@@ -3578,12 +3578,12 @@ PrefabInstance:
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}
       propertyPath: costTiers.Array.data[2]
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6875191844829404439, guid: 5db0c9d5c98cc744bb63954a64b0151e,
         type: 3}

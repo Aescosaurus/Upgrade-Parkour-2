@@ -115,7 +115,7 @@ public class NewEnemyBase
 	[SerializeField] float rotSpeed = 2.4f;
 	[SerializeField] float triggerDamage = 1.0f;
 	
-	bool appliedDamage = false;
+	protected bool appliedDamage = false;
 
 	protected bool activated = false;
 }

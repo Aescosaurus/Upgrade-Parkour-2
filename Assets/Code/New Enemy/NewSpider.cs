@@ -44,7 +44,7 @@ public class NewSpider
 						lunging = true;
 						lungeTimer.Reset();
 						Transition( "walk","lunging" );
-						// appliedDamage = false;
+						appliedDamage = false;
 					}
 				}
 			}
