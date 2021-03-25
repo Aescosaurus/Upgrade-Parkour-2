@@ -60,6 +60,8 @@ public class UpgradePanel
 
 	public void RegenDungeon()
 	{
+		Upgrade.UnReset();
+
 		SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
 	}
 

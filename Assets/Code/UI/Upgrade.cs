@@ -101,6 +101,11 @@ public class Upgrade
 		helpButtonText.text = ( helpOpen ? "X" : "?" );
 	}
 
+	public static void UnReset()
+	{
+		reset = false;
+	}
+
 	Text nameText;
 	Text xpBonusText;
 	Button upgradeButton;

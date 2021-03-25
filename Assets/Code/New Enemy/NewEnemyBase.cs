@@ -105,6 +105,11 @@ public class NewEnemyBase
 		appliedDamage = false;
 	}
 
+	public virtual void StopAttacking()
+	{
+
+	}
+
 	protected GameObject player;
 	protected Rigidbody body;
 	protected Animator animCtrl;

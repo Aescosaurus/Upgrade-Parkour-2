@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 7
+  maxHP: 6
   def: 0
   hitFX: 1
   oofFX: 2
@@ -120,6 +120,7 @@ MonoBehaviour:
   accel: 110
   maxSpeed: 5
   rotSpeed: 2.4
+  triggerDamage: 1
   desiredDist: 10
   bulletPrefab: {fileID: 1011056612319427365, guid: ec52604f97995894d8d38990874e9099,
     type: 3}

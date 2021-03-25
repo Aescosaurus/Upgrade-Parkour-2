@@ -25,6 +25,8 @@ public class ForestGenerator
 		int wallVariety = PlayerPrefs.GetInt( "Decoration Level upgrade",0 );
 		unlockedWalls = wallVariety + 1;
 
+		unlockedBosses = PlayerPrefs.GetInt( "Boss Variety upgrade",0 );
+
 		GenerateLayout();
 	}
 
@@ -154,6 +156,9 @@ public class ForestGenerator
 		floorObj.transform.localScale = floorScale;
 		floorObj.transform.position = new Vector3( floorScale.x / 2.0f,0.0f,floorScale.z / 2.0f );
 
+		List<int> spawnedBosses = new List<int>();
+		for( int i = 0; i < unlockedBosses; ++i ) spawnedBosses.Add( i );
+
 		for( int y = 0; y < height; ++y )
 		{
 			for( int x = 0; x < width; ++x )
@@ -179,7 +184,15 @@ public class ForestGenerator
 						break;
 					case 3: // enemies
 						{
-							var enemy = Instantiate( enemyPrefabs[Random.Range( 0,unlockedEnemies )] );
+							GameObject enemy = null;
+							if( spawnedBosses.Count > 0 )
+							{
+								int spawnSpot = Random.Range( 0,spawnedBosses.Count );
+								enemy = Instantiate( bossPrefabs[spawnedBosses[spawnSpot]] );
+								spawnedBosses.RemoveAt( spawnSpot );
+							}
+							else enemy = Instantiate( enemyPrefabs[Random.Range( 0,unlockedEnemies )] );
+
 							enemy.transform.position = worldPos;
 						}
 						break;
@@ -327,6 +340,9 @@ public class ForestGenerator
 
 	[Header( "Enemies" )]
 	[SerializeField] RangeI nRoomEnemies = new RangeI( 1,3 );
-	[SerializeField] int unlockedEnemies = 1;
+	int unlockedEnemies = 1;
 	[SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
+
+	int unlockedBosses = 0;
+	[SerializeField] List<GameObject> bossPrefabs = new List<GameObject>();
 }

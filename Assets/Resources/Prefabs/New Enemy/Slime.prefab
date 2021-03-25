@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  maxHP: 4
+  maxHP: 3
   def: 0
   hitFX: 1
   oofFX: 2
@@ -119,6 +119,8 @@ MonoBehaviour:
   activateRange: 17
   accel: 100
   maxSpeed: 5
+  rotSpeed: 2.4
+  triggerDamage: 1
   hopForce: 6
   hopHeight: 4
   restDuration: 0.7
