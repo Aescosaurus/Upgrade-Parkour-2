@@ -19,6 +19,9 @@ public class BulletHellBase
 			upAimBias = 0.08f;
 			upMoveBias = 0.3f;
 		}
+
+		int dmgAdd = PlayerPrefs.GetInt( "Player Damage",0 );
+		damage += dmgAdd;
 	}
 
 	protected override void Fire()
@@ -27,6 +30,7 @@ public class BulletHellBase
 
 		var projScr = proj.GetComponent<Projectile>();
 		projScr.SetTeam( team );
+		projScr.SetDamage( damage );
 
 		proj.GetComponent<Collider>().isTrigger = true;
 		// proj.transform.position = animCtrl.transform.position + Vector3.up * 1.2f + animCtrl.transform.forward;
@@ -46,4 +50,6 @@ public class BulletHellBase
 	Transform shotSpot;
 	float upAimBias = 0.0f;
 	float upMoveBias = 0.0f;
+
+	[SerializeField] float damage = 1.0f;
 }

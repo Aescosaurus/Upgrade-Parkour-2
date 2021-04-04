@@ -94,6 +94,12 @@ public class Damageable
 		partHand.SpawnParticles( transform.position,( int )( ( amount + 0.5f ) * 15.0f ),hitFX );
 	}
 
+	public void AddMaxHP( float amount )
+	{
+		maxHP += amount;
+		hp += amount;
+	}
+
 	public int GetTeam()
 	{
 		return( team );

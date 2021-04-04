@@ -22,6 +22,8 @@ public class NewPlayerCam
 		itemMask = ~LayerMask.GetMask( "Player" );
 
 		sensitivity = PlayerPrefs.GetFloat( "sens",1.0f );
+
+		transparentColor = new Color( 1.0f,1.0f,1.0f,0.0f );
 	}
 
 	void Update()
@@ -108,4 +110,6 @@ public class NewPlayerCam
 	LayerMask itemMask;
 
 	static float sensitivity = 1.0f;
+
+	Color transparentColor;
 }

@@ -11,6 +11,9 @@ public class PlayerBase
 		body = GetComponent<Rigidbody>();
 		cam = Camera.main;
 		animCtrl = GetComponent<Animator>();
+
+		int hpAdd = PlayerPrefs.GetInt( "Player Health",0 ) * 5;
+		GetComponent<Damageable>().AddMaxHP( hpAdd );
 	}
 
 	void Update()
