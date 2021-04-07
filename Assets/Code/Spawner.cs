@@ -6,10 +6,17 @@ public class Spawner
 	:
 	MonoBehaviour
 {
+	void Start()
+	{
+		spawnPeriod.Update( spawnPeriod.GetDuration() );
+	}
+
 	void Update()
 	{
 		if( spawnPeriod.Update( Time.deltaTime ) )
 		{
+			spawnPeriod.Reset();
+
 			var obj = Instantiate( spawnPrefab );
 			obj.transform.position = transform.position;
 		}	
