@@ -17,7 +17,7 @@ public class PauseMenu
 
 	void Update()
 	{
-		if( SpiffyInput.CheckAxis( "Menu",true ) || Input.GetKeyDown( KeyCode.Escape ) )
+		if( SpiffyInput.CheckAxis( "Menu",true )/* || Input.GetKeyDown( KeyCode.Escape )*/ )
 		{
 			ToggleOpen( !open );
 		}
@@ -30,7 +30,7 @@ public class PauseMenu
 
 	public void LoadMainMenu()
 	{
-		SceneManager.LoadScene( "MainMenuScene" );
+		SceneManager.LoadScene( 0 );
 	}
 
 	public void ToggleOpen( bool open )
@@ -55,7 +55,7 @@ public class PauseMenu
 	{
 		open = isOpen;
 
-		Time.timeScale = isOpen ? 0.0f : 1.0f;
+		// Time.timeScale = isOpen ? 0.0f : 1.0f;
 
 		Cursor.visible = isOpen;
 		Cursor.lockState = isOpen ? CursorLockMode.None : CursorLockMode.Locked;

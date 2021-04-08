@@ -18,10 +18,15 @@ public class PlayerMove
 		transform.Find( "Model" ).gameObject.SetActive( false );
 
 		PlayerPrefs.SetInt( "save_scene",SceneManager.GetActiveScene().buildIndex );
+
+		Instantiate( Resources.Load<GameObject>( "Prefabs/Canvas" ) );
+		Instantiate( Resources.Load<GameObject>( "Prefabs/EventSys" ) );
 	}
 
 	void /*Fixed*/Update()
 	{
+		if( PauseMenu.IsOpen() ) return;
+
 		if( CanJump() )
 		{
 			canJump = true;
