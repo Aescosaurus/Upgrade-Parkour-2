@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Mover
 	:
-	MonoBehaviour
+	Activateable
 {
 	void Start()
 	{
 		moveDir.Normalize();
 	}
 
-	void Update()
+	public override void Activate()
 	{
 		transform.Translate( moveDir * moveSpeed * Time.deltaTime );
 

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Spawner
 	:
-	MonoBehaviour
+	Activateable
 {
 	void Start()
 	{
 		spawnPeriod.Update( spawnPeriod.GetDuration() );
 	}
 
-	void Update()
+	public override void Activate()
 	{
 		if( spawnPeriod.Update( Time.deltaTime ) )
 		{

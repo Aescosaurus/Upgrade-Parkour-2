@@ -15,7 +15,7 @@ public class PlayerMove
 		charCtrl = GetComponent<CharacterController>();
 	}
 
-	void FixedUpdate()
+	void /*Fixed*/Update()
 	{
 		if( CanJump() )
 		{
@@ -95,17 +95,29 @@ public class PlayerMove
 
 		if( vel.magnitude > maxSpeed ) vel = vel.normalized * maxSpeed;
 
-		charCtrl.Move( new Vector3( vel.x,yVel,vel.y ) * moveSpeed * Time.deltaTime );
-
-		vel *= decel;
+		if( resetPos == Vector3.zero )
+		{
+			charCtrl.Move( new Vector3( vel.x,yVel,vel.y ) * moveSpeed * Time.deltaTime );
+		}
+		else
+		{
+			var diff = resetPos - transform.position;
+			charCtrl.Move( diff );
+			resetPos = Vector3.zero;
+		}
 
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
 		// animCtrl.SetBool( "jump",!canJump );
 	}
 
+	void FixedUpdate()
+	{
+		vel *= decel;
+	}
+
 	bool CanJump()
 	{
-		return ( charCtrl.isGrounded );
+		return( charCtrl.isGrounded );
 	}
 
 	void StopJumping()
@@ -114,6 +126,15 @@ public class PlayerMove
 		jumpTimer.Reset();
 		minJump.Reset();
 		yVel /= 2.0f;
+	}
+
+	public void Reset( Vector3 resetPos )
+	{
+		yVel = 0.0f;
+		vel.Set( 0.0f,0.0f );
+		canJump = false;
+
+		this.resetPos = resetPos;
 	}
 
 	Rigidbody body;
@@ -141,4 +162,6 @@ public class PlayerMove
 
 	[SerializeField] Timer jumpLeniency = new Timer( 0.2f );
 	bool canJump = false;
+
+	Vector3 resetPos = Vector3.zero;
 }
