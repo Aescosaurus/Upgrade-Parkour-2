@@ -13,6 +13,8 @@ public class PlayerMove
 		// animCtrl = GetComponent<Animator>();
 		// coll = GetComponent<Collider>();
 		charCtrl = GetComponent<CharacterController>();
+
+		transform.Find( "Model" ).gameObject.SetActive( false );
 	}
 
 	void /*Fixed*/Update()
