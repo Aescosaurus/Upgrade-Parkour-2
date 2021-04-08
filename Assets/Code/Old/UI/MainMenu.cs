@@ -31,6 +31,16 @@ public class MainMenu
 		Play();
 	}
 
+	public void Continue()
+	{
+		SceneManager.LoadScene( PlayerPrefs.GetInt( "save_scene",1 ) );
+	}
+
+	public void NewGame()
+	{
+		SceneManager.LoadScene( 1 );
+	}
+
 	public void Quit()
 	{
 		Application.Quit();

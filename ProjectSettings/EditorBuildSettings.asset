@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/old2/MainMenuScene.unity
-    guid: 9484257ed5698084ea7c1f8286aa2fc9
+    path: Assets/Scenes/Main Menu.unity
+    guid: b0680cfde1498eb4abc9dad3547c6dc1
   - enabled: 1
-    path: Assets/Scenes/old2/ForestDungeon.unity
-    guid: e747b3a2ece703445aadd3d75ddf5deb
+    path: Assets/Scenes/Level1.unity
+    guid: 65b6c0ac2eba9c14f9936343141c08df
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 3715cf496584bb8439df17621edd6a1d
   m_configObjects: {}

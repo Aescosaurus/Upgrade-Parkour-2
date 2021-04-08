@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove
 	:
@@ -15,6 +16,8 @@ public class PlayerMove
 		charCtrl = GetComponent<CharacterController>();
 
 		transform.Find( "Model" ).gameObject.SetActive( false );
+
+		PlayerPrefs.SetInt( "save_scene",SceneManager.GetActiveScene().buildIndex );
 	}
 
 	void /*Fixed*/Update()
@@ -157,7 +160,7 @@ public class PlayerMove
 	[SerializeField] float gravAcc = 0.3f;
 
 	float yVel = 0.0f;
-	Vector2 vel = Vector2.one;
+	Vector2 vel = Vector2.zero;
 
 	[SerializeField] float decel = 0.9f;
 	[SerializeField] float maxSpeed = 1.0f;

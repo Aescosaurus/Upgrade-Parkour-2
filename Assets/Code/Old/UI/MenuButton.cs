@@ -13,14 +13,14 @@ public class MenuButton
 
 	public void Hover()
 	{
-		audSrc.PlayOneShot( hoverSound );
+		// audSrc.PlayOneShot( hoverSound );
 	}
 
 	public void Click()
 	{
-		var audLeftover = Instantiate( ResLoader.Load( "Prefabs/AudioLeftover" ) );
-		audLeftover.AddComponent<AudioSource>().PlayOneShot( clickSound );
-		Destroy( audLeftover,clickSound.length );
+		// var audLeftover = Instantiate( ResLoader.Load( "Prefabs/AudioLeftover" ) );
+		// audLeftover.AddComponent<AudioSource>().PlayOneShot( clickSound );
+		// Destroy( audLeftover,clickSound.length );
 	}
 
 	AudioSource audSrc;
