@@ -38,7 +38,11 @@ public class MainMenu
 
 	public void NewGame()
 	{
-		SceneManager.LoadScene( 1 );
+		// todo reset player save itenz
+
+		PlayerPrefs.SetInt( "save_scene",1 );
+
+		Continue();
 	}
 
 	public void Quit()

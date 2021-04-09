@@ -25,6 +25,6 @@ public class MenuButton
 
 	AudioSource audSrc;
 
-	[SerializeField] AudioClip hoverSound = null;
-	[SerializeField] AudioClip clickSound = null;
+	// [SerializeField] AudioClip hoverSound = null;
+	// [SerializeField] AudioClip clickSound = null;
 }

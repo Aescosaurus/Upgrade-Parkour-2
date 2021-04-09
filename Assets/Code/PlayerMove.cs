@@ -19,8 +19,15 @@ public class PlayerMove
 
 		PlayerPrefs.SetInt( "save_scene",SceneManager.GetActiveScene().buildIndex );
 
-		Instantiate( Resources.Load<GameObject>( "Prefabs/Canvas" ) );
-		Instantiate( Resources.Load<GameObject>( "Prefabs/EventSys" ) );
+		Instantiate( ResLoader.Load( "Prefabs/Canvas" ) );
+		Instantiate( ResLoader.Load( "Prefabs/EventSys" ) );
+
+		// todo load save items
+
+		if( hasShotgun )
+		{
+			Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
+		}
 	}
 
 	void /*Fixed*/Update()
@@ -107,7 +114,7 @@ public class PlayerMove
 
 		if( resetPos == Vector3.zero )
 		{
-			charCtrl.Move( new Vector3( vel.x,yVel,vel.y ) * moveSpeed * Time.deltaTime );
+			charCtrl.Move( ( new Vector3( vel.x,yVel,vel.y ) * moveSpeed + forceMove ) * Time.deltaTime );
 		}
 		else
 		{
@@ -118,16 +125,25 @@ public class PlayerMove
 
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
 		// animCtrl.SetBool( "jump",!canJump );
+
+		if( charCtrl.isGrounded )
+		{
+			forceMove.Set( 0.0f,0.0f,0.0f );
+		}
 	}
 
 	void FixedUpdate()
 	{
 		vel *= decel;
+		forceMove *= forceDecay;
 	}
 
-	bool CanJump()
+	void OnTriggerEnter( Collider coll )
 	{
-		return( charCtrl.isGrounded );
+		if( coll.gameObject != gameObject )
+		{
+			forceMove *= forcePenalty;
+		}
 	}
 
 	void StopJumping()
@@ -145,6 +161,16 @@ public class PlayerMove
 		canJump = false;
 
 		this.resetPos = resetPos;
+	}
+
+	public void ApplyForceMove( Vector3 move )
+	{
+		forceMove += move;
+	}
+
+	bool CanJump()
+	{
+		return ( charCtrl.isGrounded );
 	}
 
 	Rigidbody body;
@@ -174,4 +200,10 @@ public class PlayerMove
 	bool canJump = false;
 
 	Vector3 resetPos = Vector3.zero;
+
+	[SerializeField] bool hasShotgun = false;
+
+	Vector3 forceMove = Vector3.zero;
+	[SerializeField] float forceDecay = 0.9f;
+	[SerializeField] float forcePenalty = 0.5f;
 }
