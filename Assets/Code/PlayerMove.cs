@@ -27,6 +27,7 @@ public class PlayerMove
 		if( hasShotgun )
 		{
 			Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
+			stopForceMove = true;
 		}
 	}
 
@@ -128,7 +129,23 @@ public class PlayerMove
 
 		if( charCtrl.isGrounded )
 		{
-			forceMove.Set( 0.0f,0.0f,0.0f );
+			if( stopForceMove || !SpiffyInput.CheckFree( "Sprint" ) )
+			{
+				forceMove.Set( 0.0f,0.0f,0.0f );
+			}
+		}
+
+		if( canSprint )
+		{
+			if( SpiffyInput.CheckFree( "Sprint" ) )
+			{
+				if( forceMove.sqrMagnitude < maxSprintSpd * maxSprintSpd )
+				{
+					forceMove += cam.transform.forward * sprintAccel * Time.deltaTime;
+					// forceMove.x += xMove * sprintAccel * Time.deltaTime;
+					// forceMove.z += yMove * sprintAccel * Time.deltaTime;
+				}
+			}
 		}
 	}
 
@@ -140,7 +157,7 @@ public class PlayerMove
 
 	void OnTriggerEnter( Collider coll )
 	{
-		if( coll.gameObject != gameObject )
+		if( coll.gameObject != gameObject && stopForceMove )
 		{
 			forceMove *= forcePenalty;
 		}
@@ -170,7 +187,7 @@ public class PlayerMove
 
 	bool CanJump()
 	{
-		return ( charCtrl.isGrounded );
+		return( charCtrl.isGrounded );
 	}
 
 	Rigidbody body;
@@ -202,8 +219,13 @@ public class PlayerMove
 	Vector3 resetPos = Vector3.zero;
 
 	[SerializeField] bool hasShotgun = false;
+	[SerializeField] bool canSprint = false;
+
+	bool stopForceMove = false;
 
 	Vector3 forceMove = Vector3.zero;
 	[SerializeField] float forceDecay = 0.9f;
 	[SerializeField] float forcePenalty = 0.5f;
+	[SerializeField] float sprintAccel = 10.0f;
+	[SerializeField] float maxSprintSpd = 30.0f;
 }
