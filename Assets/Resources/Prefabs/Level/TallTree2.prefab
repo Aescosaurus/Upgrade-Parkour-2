@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2089657, y: 2.4419103, z: 1.2279329}
-  m_Center: {x: -0.014576992, y: 1.2267916, z: 0.004589399}
+  m_Size: {x: 1.2089657, y: 2.365065, z: 1.2279329}
+  m_Center: {x: -0.014577008, y: 1.188369, z: 0.0045894147}
 --- !u!1001 &1179484128302977565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,15 +62,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: -5827887317859011191, guid: e7f4f1b7ba2f6e343bd574b187b2c5da,
+    - target: {fileID: -2725551006368545287, guid: e7f4f1b7ba2f6e343bd574b187b2c5da,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
-    - target: {fileID: -5827887317859011191, guid: e7f4f1b7ba2f6e343bd574b187b2c5da,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 2
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e7f4f1b7ba2f6e343bd574b187b2c5da,
         type: 3}
@@ -127,10 +122,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -2725551006368545287, guid: e7f4f1b7ba2f6e343bd574b187b2c5da,
+    - target: {fileID: -5827887317859011191, guid: e7f4f1b7ba2f6e343bd574b187b2c5da,
         type: 3}
-      propertyPath: m_Layer
-      value: 9
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+    - target: {fileID: -5827887317859011191, guid: e7f4f1b7ba2f6e343bd574b187b2c5da,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f4f1b7ba2f6e343bd574b187b2c5da, type: 3}

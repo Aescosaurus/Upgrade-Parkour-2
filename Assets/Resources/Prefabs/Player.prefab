@@ -187,9 +187,9 @@ MonoBehaviour:
   decel: 0.87
   maxSpeed: 1.2
   jumpLeniency:
-    duration: 0.2
+    duration: 0.35
   hasShotgun: 0
-  canSprint: 1
+  canSprint: 0
   forceDecay: 0.98
   forcePenalty: 0.5
   sprintAccel: 20
