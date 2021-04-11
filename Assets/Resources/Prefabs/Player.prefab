@@ -181,8 +181,8 @@ MonoBehaviour:
   jumpTimer:
     duration: 0.01
   minJump:
-    duration: 0.05
-  variableJump: 0
+    duration: 0.005
+  variableJump: 1
   gravAcc: 3
   decel: 0.87
   maxSpeed: 1.2

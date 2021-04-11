@@ -33,7 +33,7 @@ public class PlayerMove
 
 	void /*Fixed*/Update()
 	{
-		if( PauseMenu.IsOpen() ) return;
+		// if( PauseMenu.IsOpen() ) return;
 
 		if( CanJump() )
 		{
@@ -46,13 +46,13 @@ public class PlayerMove
 			canJump = false;
 		}
 
-		var vertAxis = Input.GetAxis( "Vertical" );
+		var vertAxis = SpiffyInput.GetAxis( "Vertical" );
 		var forwardAxisPower = vertAxis;
 
 		// if( canJump ) forwardAxisPower = vertAxis;
 
 		var move = new Vector3(
-			Input.GetAxis( "Horizontal" ),
+			SpiffyInput.GetAxis( "Horizontal" ),
 			0.0f,
 			forwardAxisPower
 		);
@@ -82,7 +82,7 @@ public class PlayerMove
 		// 	// animCtrl.SetBool( "walk",false );
 		// }
 
-		if( Input.GetAxis( "Jump" ) > 0.0f )
+		if( SpiffyInput.GetAxis( "Jump" ) > 0.0f )
 		{
 			if( !jumping && canJump )
 			{
