@@ -8,12 +8,19 @@ public class MusicPlayer
 {
 	void Start()
 	{
-		// todo global volume
-		var audSrc = GetComponent<AudioSource>();
+		audSrc = GetComponent<AudioSource>();
+		UpdateMusicVol( PlayerPrefs.GetFloat( "music",1.0f ) );
 		audSrc.clip = music;
 		audSrc.loop = true;
 		audSrc.Play();
 	}
+
+	public static void UpdateMusicVol( float newVol )
+	{
+		audSrc.volume = newVol;
+	}
+
+	static AudioSource audSrc = null;
 
 	[SerializeField] AudioClip music = null;
 }
