@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7335189851546644914}
   - component: {fileID: 990939354913570776}
   m_Layer: 0
-  m_Name: TutorialText
+  m_Name: HoverText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,13 +86,13 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 50
+  m_FontSize: 30
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4290990632
+    rgba: 4291019048
 --- !u!114 &990939354913570776
 MonoBehaviour:
   m_ObjectHideFlags: 0

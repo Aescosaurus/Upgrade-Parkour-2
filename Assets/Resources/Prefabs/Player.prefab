@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1fe5d7da157af46961f6332072bd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnY: -10
+  respawnY: -5
 --- !u!1 &5859038215848269644
 GameObject:
   m_ObjectHideFlags: 0
