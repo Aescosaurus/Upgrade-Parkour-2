@@ -100,6 +100,7 @@ public class PlayerMove
 		if( jumping )
 		{
 			yVel = jumpPower;
+			cachedGrav = yVel;
 
 			if( jumpTimer.Update( Time.deltaTime ) )
 			{
@@ -109,6 +110,7 @@ public class PlayerMove
 		else
 		{
 			yVel -= gravAcc * Time.deltaTime;
+			cachedGrav = yVel;
 		}
 
 		if( vel.magnitude > maxSpeed ) vel = vel.normalized * maxSpeed;
@@ -190,6 +192,11 @@ public class PlayerMove
 		return( charCtrl.isGrounded );
 	}
 
+	public float GetCachedGrav()
+	{
+		return( cachedGrav );
+	}
+
 	Rigidbody body;
 	Camera cam;
 	// Animator animCtrl;
@@ -208,6 +215,7 @@ public class PlayerMove
 	[SerializeField] float gravAcc = 0.3f;
 
 	float yVel = 0.0f;
+	float cachedGrav = 0.0f;
 	Vector2 vel = Vector2.zero;
 
 	[SerializeField] float decel = 0.9f;

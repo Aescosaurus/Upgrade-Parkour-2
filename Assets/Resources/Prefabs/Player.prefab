@@ -145,9 +145,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.6
-  m_Height: 2.2
+  m_Height: 2.384289
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.09214437, z: 0}
 --- !u!143 &5859038214962224428
 CharacterController:
   m_ObjectHideFlags: 0
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594da0d41d06ddc47b040078add069cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 0}
 --- !u!82 &190845762635062842
 AudioSource:
   m_ObjectHideFlags: 0

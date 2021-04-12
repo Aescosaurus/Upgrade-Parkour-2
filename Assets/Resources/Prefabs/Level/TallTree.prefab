@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6405852117667288836}
   - component: {fileID: 8812383032279790684}
+  - component: {fileID: 5069113525703499666}
   m_Layer: 9
   m_Name: TallTree
   m_TagString: Untagged
@@ -43,8 +44,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2089657, y: 1.8514031, z: 1.2279329}
-  m_Center: {x: -0.014577008, y: 0.93153805, z: 0.0045894147}
+  m_Size: {x: 1.2089657, y: 1.7810162, z: 1.2279329}
+  m_Center: {x: -0.014577008, y: 1.5175409, z: 0.0045894147}
+--- !u!65 &5069113525703499666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7346416341326219652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.41661444, y: 0.6071052, z: 0.38425058}
+  m_Center: {x: -0.010658169, y: 0.30087447, z: -0.009501445}
 --- !u!1001 &3406811855517757846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75,7 +89,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: fee610da1073de94cb61d154eea4b657,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.528
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fee610da1073de94cb61d154eea4b657,
         type: 3}
