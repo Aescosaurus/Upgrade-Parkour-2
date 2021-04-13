@@ -33,6 +33,10 @@ public class PlayerMove
 
 	void /*Fixed*/Update()
 	{
+	}
+
+	void FixedUpdate()
+	{
 		// if( PauseMenu.IsOpen() ) return;
 
 		if( CanJump() )
@@ -41,7 +45,7 @@ public class PlayerMove
 			jumpLeniency.Reset();
 			yVel = 0.0f;
 		}
-		else if( jumpLeniency.Update( Time.deltaTime ) )
+		else if( jumpLeniency.Update( Time.fixedDeltaTime ) )
 		{
 			canJump = false;
 		}
@@ -62,8 +66,8 @@ public class PlayerMove
 		var xMove = Mathf.Cos( ang ) * move.z + Mathf.Sin( ang + Mathf.PI ) * move.x;
 		var yMove = -Mathf.Sin( ang ) * move.z + Mathf.Cos( ang + Mathf.PI ) * move.x;
 
-		vel.x += xMove * moveSpeed * Time.deltaTime;
-		vel.y += yMove * moveSpeed * Time.deltaTime;
+		vel.x += xMove * moveSpeed * Time.fixedDeltaTime;
+		vel.y += yMove * moveSpeed * Time.fixedDeltaTime;
 
 		// xMove *= bhMod * bhStrafeMod;
 		// yMove *= bhMod;
@@ -72,7 +76,7 @@ public class PlayerMove
 		// {
 		// 	var rot = transform.eulerAngles;
 		// 	rot.y = Mathf.Atan2( xMove,yMove ) * Mathf.Rad2Deg;
-		// 	rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.deltaTime );
+		// 	rot.y = Mathf.LerpAngle( transform.eulerAngles.y,rot.y,rotSpeed * Time.fixedDeltaTime );
 		// 	// transform.eulerAngles = rot;
 		// 
 		// 	// animCtrl.SetBool( "walk",true );
@@ -91,7 +95,7 @@ public class PlayerMove
 		}
 		else if( variableJump )
 		{
-			if( jumping && minJump.Update( Time.deltaTime ) )
+			if( jumping && minJump.Update( Time.fixedDeltaTime ) )
 			{
 				StopJumping();
 			}
@@ -100,24 +104,22 @@ public class PlayerMove
 		if( jumping )
 		{
 			yVel = jumpPower;
-			cachedGrav = yVel;
 
-			if( jumpTimer.Update( Time.deltaTime ) )
+			if( jumpTimer.Update( Time.fixedDeltaTime ) )
 			{
 				StopJumping();
 			}
 		}
 		else
 		{
-			yVel -= gravAcc * Time.deltaTime;
-			cachedGrav = yVel;
+			yVel -= gravAcc * Time.fixedDeltaTime;
 		}
 
 		if( vel.magnitude > maxSpeed ) vel = vel.normalized * maxSpeed;
 
 		if( resetPos == Vector3.zero )
 		{
-			charCtrl.Move( ( new Vector3( vel.x,yVel,vel.y ) * moveSpeed + forceMove ) * Time.deltaTime );
+			charCtrl.Move( ( new Vector3( vel.x,yVel,vel.y ) * moveSpeed + forceMove ) * Time.fixedDeltaTime );
 		}
 		else
 		{
@@ -143,16 +145,12 @@ public class PlayerMove
 			{
 				if( forceMove.sqrMagnitude < maxSprintSpd * maxSprintSpd )
 				{
-					forceMove += cam.transform.forward * sprintAccel * Time.deltaTime;
-					// forceMove.x += xMove * sprintAccel * Time.deltaTime;
-					// forceMove.z += yMove * sprintAccel * Time.deltaTime;
+					forceMove += cam.transform.forward * sprintAccel * Time.fixedDeltaTime;
+					// forceMove.x += xMove * sprintAccel * Time.fixedDeltaTime;
+					// forceMove.z += yMove * sprintAccel * Time.fixedDeltaTime;
 				}
 			}
 		}
-	}
-
-	void FixedUpdate()
-	{
 		vel *= decel;
 		forceMove *= forceDecay;
 	}
@@ -192,11 +190,6 @@ public class PlayerMove
 		return( charCtrl.isGrounded );
 	}
 
-	public float GetCachedGrav()
-	{
-		return( cachedGrav );
-	}
-
 	Rigidbody body;
 	Camera cam;
 	// Animator animCtrl;
@@ -215,7 +208,6 @@ public class PlayerMove
 	[SerializeField] float gravAcc = 0.3f;
 
 	float yVel = 0.0f;
-	float cachedGrav = 0.0f;
 	Vector2 vel = Vector2.zero;
 
 	[SerializeField] float decel = 0.9f;

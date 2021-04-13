@@ -23,10 +23,11 @@ public class PlayerRespawn
 			// SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
 
 			var moveScr = GetComponent<PlayerMove>();
-			moveScr.enabled = false;
-			transform.position = safeSpot;
+			// moveScr.enabled = false;
+			// transform.position = safeSpot;
+			moveScr.Reset( safeSpot );
 			cam.transform.rotation = safeRot;
-			moveScr.enabled = true;
+			// moveScr.enabled = true;
 		}
 
 		// if( charCtrl.isGrounded )

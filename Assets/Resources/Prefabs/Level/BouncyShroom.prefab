@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df91350a9fc08fb44a3c3ddfd5c991b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceForce: 50
+  bounceForce: 60
 --- !u!1001 &7839061481933305590
 PrefabInstance:
   m_ObjectHideFlags: 0
