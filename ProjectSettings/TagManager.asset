@@ -19,7 +19,7 @@ TagManager:
   - EnemyBullet
   - ItemPickup
   - Boss
-  - 
+  - NoCollide
   - 
   - 
   - 

@@ -26,6 +26,7 @@ public class PlayerRespawn
 			// moveScr.enabled = false;
 			// transform.position = safeSpot;
 			moveScr.Reset( safeSpot );
+			gameObject.layer = LayerMask.NameToLayer( "NoCollide" );
 			cam.transform.rotation = safeRot;
 			// moveScr.enabled = true;
 		}

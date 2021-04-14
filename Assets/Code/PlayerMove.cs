@@ -126,6 +126,7 @@ public class PlayerMove
 			var diff = resetPos - transform.position;
 			charCtrl.Move( diff );
 			resetPos = Vector3.zero;
+			gameObject.layer = LayerMask.NameToLayer( "Player" );
 		}
 
 		// animCtrl.SetBool( "jump",yVel > 0.0f );
@@ -175,6 +176,7 @@ public class PlayerMove
 	{
 		yVel = 0.0f;
 		vel.Set( 0.0f,0.0f );
+		forceMove.Set( 0.0f,0.0f,0.0f );
 		canJump = false;
 
 		this.resetPos = resetPos;
