@@ -15,7 +15,7 @@ public class PlayerMove
 		// coll = GetComponent<Collider>();
 		charCtrl = GetComponent<CharacterController>();
 
-		transform.Find( "Model" ).gameObject.SetActive( false );
+		// transform.Find( "Model" ).gameObject.SetActive( false );
 
 		PlayerPrefs.SetInt( "save_scene",SceneManager.GetActiveScene().buildIndex );
 

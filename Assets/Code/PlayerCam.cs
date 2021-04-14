@@ -19,7 +19,7 @@ public class PlayerCam
 		sensitivity = PlayerPrefs.GetFloat( "sens",1.0f );
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		if( PauseMenu.IsOpen() ) return;
 
@@ -46,11 +46,11 @@ public class PlayerCam
 		if( aim.y < -maxAimMove ) aim.y = -maxAimMove;
 
 		var tempAng = cam.transform.eulerAngles;
-		tempAng.x = tempAng.x - aim.y * rotationSpeed * Time.deltaTime;
+		tempAng.x = tempAng.x - aim.y * rotationSpeed * Time.fixedDeltaTime;
 		// if( tempAng.x < 0.0f + verticalCutoff ) tempAng.x = 0.0f + verticalCutoff;
 		if( tempAng.x > 90.0f - verticalCutoff && tempAng.x < 180.0f ) tempAng.x = 90.0f - verticalCutoff;
 		if( tempAng.x < 270.0f + verticalCutoff && tempAng.x > 180.0f ) tempAng.x = 270.0f + verticalCutoff;
-		tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.deltaTime;
+		tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.fixedDeltaTime;
 		tempAng.z = 0.0f;
 		cam.transform.eulerAngles = tempAng;
 	}
