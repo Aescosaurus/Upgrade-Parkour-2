@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu
 	:
@@ -11,6 +12,9 @@ public class MainMenu
 	{
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.None;
+
+		transform.Find( "ContinueButton" ).GetComponent<Button>().interactable =
+			( PlayerPrefs.GetInt( "save_scene",0 ) > 0 );
 	}
 
 	public void Play()

@@ -383,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 2301280894011927342, guid: 3cc7e9b1dbca54548b6abc8dcb447d12,
         type: 3}
       propertyPath: m_Name
-      value: MenuButton
+      value: ContinueButton
       objectReference: {fileID: 0}
     - target: {fileID: 4109762274725333386, guid: 3cc7e9b1dbca54548b6abc8dcb447d12,
         type: 3}
@@ -523,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 8897334974263437895, guid: 3cc7e9b1dbca54548b6abc8dcb447d12,
         type: 3}
       propertyPath: m_Text
-      value: Play
+      value: Continue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cc7e9b1dbca54548b6abc8dcb447d12, type: 3}
