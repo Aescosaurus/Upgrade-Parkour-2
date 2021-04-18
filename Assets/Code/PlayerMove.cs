@@ -22,7 +22,8 @@ public class PlayerMove
 		Instantiate( ResLoader.Load( "Prefabs/Canvas" ) );
 		Instantiate( ResLoader.Load( "Prefabs/EventSys" ) );
 
-		// todo load save items
+		hasShotgun = PlayerPrefs.GetInt( "has_shotgun",0 ) > 0;
+		canSprint = PlayerPrefs.GetInt( "has_sprint",0 ) > 0;
 
 		if( hasShotgun )
 		{
@@ -146,7 +147,8 @@ public class PlayerMove
 			{
 				if( forceMove.sqrMagnitude < maxSprintSpd * maxSprintSpd )
 				{
-					forceMove += cam.transform.forward * sprintAccel * Time.fixedDeltaTime;
+					forceMove += ( cam.transform.forward + Vector3.up * sprintUpBias ) *
+						sprintAccel * Time.fixedDeltaTime;
 					// forceMove.x += xMove * sprintAccel * Time.fixedDeltaTime;
 					// forceMove.z += yMove * sprintAccel * Time.fixedDeltaTime;
 				}
@@ -185,6 +187,13 @@ public class PlayerMove
 	public void ApplyForceMove( Vector3 move )
 	{
 		forceMove += move;
+	}
+
+	// Force move but sets y dir instead of adding.
+	public void ForceMoveCancel( Vector3 move )
+	{
+		forceMove.y = 0.0f;
+		ApplyForceMove( move );
 	}
 
 	bool CanJump()
@@ -230,4 +239,5 @@ public class PlayerMove
 	[SerializeField] float forcePenalty = 0.5f;
 	[SerializeField] float sprintAccel = 10.0f;
 	[SerializeField] float maxSprintSpd = 30.0f;
+	[SerializeField] float sprintUpBias = 0.15f;
 }

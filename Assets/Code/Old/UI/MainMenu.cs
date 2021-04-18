@@ -14,7 +14,7 @@ public class MainMenu
 		Cursor.lockState = CursorLockMode.None;
 
 		transform.Find( "ContinueButton" ).GetComponent<Button>().interactable =
-			( PlayerPrefs.GetInt( "save_scene",0 ) > 0 );
+			( PlayerPrefs.GetInt( "save_scene",0 ) > 1 );
 	}
 
 	public void Play()
@@ -45,6 +45,8 @@ public class MainMenu
 		// todo reset player save itenz
 
 		PlayerPrefs.SetInt( "save_scene",1 );
+		PlayerPrefs.SetInt( "has_shotgun",0 );
+		PlayerPrefs.SetInt( "has_sprint",0 );
 
 		Continue();
 	}

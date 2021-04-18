@@ -28,6 +28,11 @@ public class WorldSelector
 
 			if( SpiffyInput.CheckAxis( interactAxis ) )
 			{
+				if( prefAdd.Length > 0 )
+				{
+					PlayerPrefs.SetInt( prefAdd,1 );
+				}
+
 				SceneManager.LoadScene( targetScene );
 			}
 
@@ -58,4 +63,5 @@ public class WorldSelector
 	[SerializeField] string interactAxis = "";
 	[SerializeField] string interactMsg = "";
 	[SerializeField] string targetScene = "";
+	[SerializeField] string prefAdd = "";
 }

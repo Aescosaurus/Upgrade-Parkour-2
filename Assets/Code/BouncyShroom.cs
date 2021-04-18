@@ -11,7 +11,7 @@ public class BouncyShroom
 		var playerScr = coll.GetComponent<PlayerMove>();
 		if( playerScr != null )
 		{
-			playerScr.ApplyForceMove( transform.up * bounceForce );
+			playerScr.ForceMoveCancel( transform.up * bounceForce );
 		}
 	}
 
