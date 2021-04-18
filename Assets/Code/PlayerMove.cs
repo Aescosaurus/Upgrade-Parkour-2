@@ -22,8 +22,11 @@ public class PlayerMove
 		Instantiate( ResLoader.Load( "Prefabs/Canvas" ) );
 		Instantiate( ResLoader.Load( "Prefabs/EventSys" ) );
 
-		hasShotgun = PlayerPrefs.GetInt( "has_shotgun",0 ) > 0;
-		canSprint = PlayerPrefs.GetInt( "has_sprint",0 ) > 0;
+		if( !overrideSave )
+		{
+			hasShotgun = PlayerPrefs.GetInt( "has_shotgun",0 ) > 0;
+			canSprint = PlayerPrefs.GetInt( "has_sprint",0 ) > 0;
+		}
 
 		if( hasShotgun )
 		{
@@ -229,6 +232,7 @@ public class PlayerMove
 
 	Vector3 resetPos = Vector3.zero;
 
+	[SerializeField] bool overrideSave = false;
 	[SerializeField] bool hasShotgun = false;
 	[SerializeField] bool canSprint = false;
 
