@@ -183,6 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b761da4ab622ad34ab9dd4e8ae6c0f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverSound: {fileID: 8300000, guid: 9525e1d50a059834f9baddc0ede92e34, type: 3}
+  clickSound: {fileID: 0}
 --- !u!1 &7183469852173511458
 GameObject:
   m_ObjectHideFlags: 0
