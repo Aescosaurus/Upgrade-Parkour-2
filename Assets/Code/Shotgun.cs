@@ -30,7 +30,7 @@ public class Shotgun
 			if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,999.0f,shotMask ) )
 			{
 				playerMoveScr.ApplyForceMove( knockbackDir.normalized * Mathf.Min(
-					knockbackForce * ( 1.0f / hit.distance ),maxForce ) );
+					knockbackForce * ( 2.0f / hit.distance ),maxForce ) );
 
 				canFire = false;
 				refire.Reset();
