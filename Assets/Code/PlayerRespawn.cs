@@ -16,6 +16,10 @@ public class PlayerRespawn
 		safeRot = cam.transform.rotation;
 
 		respawnParticles = transform.Find( "Main Camera" ).Find( "RespawnParticles" ).GetComponent<ParticleSystem>();
+
+		audSrc = transform.Find( "SFX" ).GetComponent<AudioSource>();
+		saveSound = Resources.Load<AudioClip>( "Audio/RespawnSave" );
+		respawnSound = Resources.Load<AudioClip>( "Audio/Respawn" );
 	}
 
 	void Update()
@@ -32,6 +36,8 @@ public class PlayerRespawn
 			cam.transform.rotation = safeRot;
 			// moveScr.enabled = true;
 			StartCoroutine( RespawnParts() );
+
+			audSrc.PlayOneShot( respawnSound );
 		}
 
 		// if( charCtrl.isGrounded )
@@ -48,6 +54,7 @@ public class PlayerRespawn
 			safeRot = cam.transform.rotation;
 			respawnParticles.Emit( savePartCount.Rand() );
 			Destroy( coll.gameObject );
+			audSrc.PlayOneShot( saveSound );
 		}
 	}
 
@@ -61,6 +68,9 @@ public class PlayerRespawn
 	CharacterController charCtrl;
 	Camera cam;
 	ParticleSystem respawnParticles;
+	AudioSource audSrc;
+	AudioClip saveSound;
+	AudioClip respawnSound;
 
 	[SerializeField] float respawnY = -5.0f;
 	[SerializeField] RangeI savePartCount = new RangeI( 15,22 );

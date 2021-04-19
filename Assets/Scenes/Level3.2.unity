@@ -988,6 +988,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5859038214962224426, guid: 1c4825c8c00e3d448a8ba188b1cf85aa,
+        type: 3}
+      propertyPath: footstepSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d6debe7b9b2ff74e8211ac1ff42324f, type: 3}
+    - target: {fileID: 5859038214962224426, guid: 1c4825c8c00e3d448a8ba188b1cf85aa,
+        type: 3}
+      propertyPath: footstepSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a75b44c1496e30a45a85cf0b58cdc227, type: 3}
     - target: {fileID: 6248724091336539677, guid: 1c4825c8c00e3d448a8ba188b1cf85aa,
         type: 3}
       propertyPath: music

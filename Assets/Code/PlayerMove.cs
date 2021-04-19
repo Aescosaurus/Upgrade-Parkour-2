@@ -14,6 +14,7 @@ public class PlayerMove
 		// animCtrl = GetComponent<Animator>();
 		// coll = GetComponent<Collider>();
 		charCtrl = GetComponent<CharacterController>();
+		audSrc = transform.Find( "SFX" ).GetComponent<AudioSource>();
 
 		// transform.Find( "Model" ).gameObject.SetActive( false );
 
@@ -33,6 +34,9 @@ public class PlayerMove
 			Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
 			stopForceMove = true;
 		}
+		
+		jumpSound = Resources.Load<AudioClip>( "Audio/Jump" );
+		landSound = Resources.Load<AudioClip>( "Audio/Land" );
 	}
 
 	void /*Fixed*/Update()
@@ -95,6 +99,8 @@ public class PlayerMove
 			if( !jumping && canJump )
 			{
 				jumping = true;
+
+				if( yVel < 0.2f ) audSrc.PlayOneShot( jumpSound );
 			}
 		}
 		else if( variableJump )
@@ -124,6 +130,12 @@ public class PlayerMove
 		if( resetPos == Vector3.zero )
 		{
 			charCtrl.Move( ( new Vector3( vel.x,yVel,vel.y ) * moveSpeed + forceMove ) * Time.fixedDeltaTime );
+
+			if( footstepTimer.Update( Time.fixedDeltaTime ) && charCtrl.isGrounded && move.sqrMagnitude > 0.2f )
+			{
+				footstepTimer.Reset();
+				audSrc.PlayOneShot( footstepSounds[Random.Range( 0,footstepSounds.Count )] );
+			}
 		}
 		else
 		{
@@ -148,6 +160,7 @@ public class PlayerMove
 		{
 			if( SpiffyInput.CheckFree( "Sprint" ) )
 			{
+				footstepTimer.Update( Time.fixedDeltaTime );
 				if( forceMove.sqrMagnitude < maxSprintSpd * maxSprintSpd )
 				{
 					forceMove += ( cam.transform.forward + Vector3.up * sprintUpBias ) *
@@ -163,9 +176,10 @@ public class PlayerMove
 
 	void OnTriggerEnter( Collider coll )
 	{
-		if( coll.gameObject != gameObject && stopForceMove )
+		if( coll.gameObject != gameObject )
 		{
-			forceMove *= forcePenalty;
+			if( stopForceMove ) forceMove *= forcePenalty;
+			audSrc.PlayOneShot( landSound );
 		}
 	}
 
@@ -209,6 +223,7 @@ public class PlayerMove
 	// Animator animCtrl;
 	// Collider coll;
 	CharacterController charCtrl;
+	AudioSource audSrc;
 
 	[SerializeField] float moveSpeed = 10.0f;
 
@@ -244,4 +259,9 @@ public class PlayerMove
 	[SerializeField] float sprintAccel = 10.0f;
 	[SerializeField] float maxSprintSpd = 30.0f;
 	[SerializeField] float sprintUpBias = 0.15f;
+
+	[SerializeField] List<AudioClip> footstepSounds = new List<AudioClip>();
+	[SerializeField] Timer footstepTimer = new Timer( 0.2f );
+	AudioClip jumpSound;
+	AudioClip landSound;
 }

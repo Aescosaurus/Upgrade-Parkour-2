@@ -18,6 +18,11 @@ public class Shotgun
 
 		bulletPrefab = ResLoader.Load( "Prefabs/ShotgunTrail" );
 		shotLoc = transform.Find( "ShotLoc" );
+
+		audSrc = GetComponent<AudioSource>();
+
+		shootAud = Resources.Load<AudioClip>( "Audio/ShotgunShoot" );
+		reloadAud = Resources.Load<AudioClip>( "Audio/ShotgunReload" );
 	}
 
 	void Update()
@@ -44,11 +49,14 @@ public class Shotgun
 						Random.Range( 0.0f,1.0f ) ) *
 						Mathf.Max( minSpread,pelletSpread * Mathf.Sqrt( hit.distance ) ) );
 				}
+
+				audSrc.PlayOneShot( shootAud );
 			}
 		}
 
 		if( charCtrl.isGrounded )
 		{
+			if( !canFire ) audSrc.PlayOneShot( reloadAud );
 			canFire = true;
 		}
 	}
@@ -70,6 +78,9 @@ public class Shotgun
 	CharacterController charCtrl;
 	GameObject bulletPrefab;
 	Transform shotLoc;
+	AudioSource audSrc;
+	AudioClip shootAud;
+	AudioClip reloadAud;
 
 	[SerializeField] float knockbackForce = 10.0f;
 	[SerializeField] float maxForce = 500.0f;
