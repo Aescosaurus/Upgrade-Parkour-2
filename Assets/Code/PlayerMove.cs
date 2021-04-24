@@ -41,6 +41,11 @@ public class PlayerMove
 
 	void /*Fixed*/Update()
 	{
+		move = new Vector3(
+			SpiffyInput.GetAxis( "Horizontal" ),
+			0.0f,
+			SpiffyInput.GetAxis( "Vertical" )
+		);
 	}
 
 	void FixedUpdate()
@@ -58,16 +63,7 @@ public class PlayerMove
 			canJump = false;
 		}
 
-		var vertAxis = SpiffyInput.GetAxis( "Vertical" );
-		var forwardAxisPower = vertAxis;
-
 		// if( canJump ) forwardAxisPower = vertAxis;
-
-		var move = new Vector3(
-			SpiffyInput.GetAxis( "Horizontal" ),
-			0.0f,
-			forwardAxisPower
-		);
 		// move.Normalize();
 		var ang = cam.transform.eulerAngles.y * Mathf.Deg2Rad - Mathf.PI / 2.0f;
 
@@ -264,4 +260,6 @@ public class PlayerMove
 	[SerializeField] Timer footstepTimer = new Timer( 0.2f );
 	AudioClip jumpSound;
 	AudioClip landSound;
+
+	Vector3 move = Vector3.zero;
 }

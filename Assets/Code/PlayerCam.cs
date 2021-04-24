@@ -19,10 +19,8 @@ public class PlayerCam
 		sensitivity = PlayerPrefs.GetFloat( "sens",1.0f );
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
-		if( PauseMenu.IsOpen() ) return;
-
 		if( Input.GetKeyDown( KeyCode.Escape ) )
 		{
 			Cursor.lockState = CursorLockMode.None;
@@ -34,8 +32,13 @@ public class PlayerCam
 			Cursor.visible = false;
 		}
 
-		var aim = new Vector2( Input.GetAxis( "Mouse X" ),
+		aim = new Vector2( Input.GetAxis( "Mouse X" ),
 			Input.GetAxis( "Mouse Y" ) ) * sensitivity;
+	}
+
+	void FixedUpdate()
+	{
+		if( PauseMenu.IsOpen() ) return;
 
 		// cam.transform.eulerAngles = new Vector3(
 		// 	cam.eulerAngles.x - aim.y * rotationSpeed * Time.deltaTime,
@@ -67,4 +70,6 @@ public class PlayerCam
 	const float maxAimMove = 90.0f - 1.0f;
 
 	static float sensitivity = 1.0f;
+
+	Vector3 aim = Vector3.zero;
 }
