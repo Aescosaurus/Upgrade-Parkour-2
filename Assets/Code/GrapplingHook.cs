@@ -13,6 +13,10 @@ public class GrapplingHook
 		var player = transform.root.gameObject;
 		playerMoveScr = player.GetComponent<PlayerMove>();
 		charCtrl = player.GetComponent<CharacterController>();
+		trailPrefab = ResLoader.Load( "Prefabs/GrapplingHookTrail" );
+		hook = transform.Find( "GrapplingHook" ).gameObject;
+		particlePrefab = ResLoader.Load( "Prefabs/GrappleParticles" );
+		playerParticles = player.transform.Find( "Main Camera" ).Find( "GrappleParticles" ).gameObject;
 
 		shotMask = LayerMask.GetMask( "Default" );
 
@@ -23,6 +27,8 @@ public class GrapplingHook
 		// 
 		// shootAud = Resources.Load<AudioClip>( "Audio/ShotgunShoot" );
 		// reloadAud = Resources.Load<AudioClip>( "Audio/ShotgunReload" );
+
+		FireReset();
 	}
 
 	void Update()
@@ -38,7 +44,19 @@ public class GrapplingHook
 					if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,range,shotMask ) )
 					{
 						hitObj = hit.transform;
-						hitOffset = hitObj.position - hit.point + Vector3.up * upBias;
+						hitOffset = hit.point - hitObj.position;
+
+						Destroy( curTrail?.gameObject );
+						curTrail = Instantiate( trailPrefab ).GetComponent<LineRenderer>();
+
+						Destroy( hookParticles );
+						hookParticles = Instantiate( particlePrefab );
+						hookParticles.transform.position = hit.point;
+						hookParticles.transform.up = ( hit.point - transform.position );
+
+						playerParticles.SetActive( true );
+
+						hook.SetActive( false );
 
 						// canFire = false;
 						// refire.Reset();
@@ -58,8 +76,12 @@ public class GrapplingHook
 				}
 				else
 				{
-					var knockbackDir = ( hitObj.position + hitOffset ) - transform.position;
+					var hitPos = ( hitObj.position + hitOffset );
+					var knockbackDir = hitPos - transform.position;
 					playerMoveScr.ApplyForceMove( knockbackDir.normalized * knockbackForce );
+
+					curTrail.SetPosition( 0,transform.position );
+					curTrail.SetPosition( 1,hitPos );
 
 					if( pullDuration.Update( Time.deltaTime ) )
 					{
@@ -70,14 +92,20 @@ public class GrapplingHook
 		}
 		else
 		{
-			// FireReset();
-			hitObj = null;
+			if( hitObj != null )
+			{
+				FireReset();
+			}
 		}
 
 		if( charCtrl.isGrounded )
 		{
-			// if( !canFire ) audSrc.PlayOneShot( reloadAud );
-			canFire = true;
+			if( !canFire )
+			{
+				// audSrc.PlayOneShot( reloadAud );
+				canFire = true;
+				hook.SetActive( true );
+			}
 		}
 	}
 
@@ -96,15 +124,27 @@ public class GrapplingHook
 	{
 		refire.Reset();
 		pullDuration.Reset();
+
 		canFire = false;
 		hitObj = null;
 		hitOffset = Vector3.zero;
+
+		playerMoveScr.ResetGrav();
+
+		Destroy( curTrail?.gameObject );
+		curTrail = null;
+		Destroy( hookParticles );
+		hookParticles = null;
+		playerParticles.SetActive( false );
 	}
 
 	Camera cam;
 	PlayerMove playerMoveScr;
 	LayerMask shotMask;
 	CharacterController charCtrl;
+	GameObject trailPrefab;
+	GameObject particlePrefab;
+	GameObject playerParticles;
 	// GameObject bulletPrefab;
 	// Transform shotLoc;
 	// AudioSource audSrc;
@@ -112,12 +152,14 @@ public class GrapplingHook
 	// AudioClip reloadAud;
 	Transform hitObj = null;
 	Vector3 hitOffset = Vector3.zero;
+	LineRenderer curTrail = null;
+	GameObject hook = null;
+	GameObject hookParticles = null;
 
 	[SerializeField] float knockbackForce = 10.0f;
 	[SerializeField] Timer refire = new Timer( 0.1f );
 	[SerializeField] Timer pullDuration = new Timer( 0.5f );
 	[SerializeField] float range = 20.0f;
-	[SerializeField] float upBias = 1.0f;
 	// [SerializeField] float bulletDespawn = 0.3f;
 	// [SerializeField] RangeI pelletCount = new RangeI( 3,5 );
 	// [SerializeField] float pelletSpread = 0.7f;

@@ -215,6 +215,11 @@ public class PlayerMove
 		ApplyForceMove( move );
 	}
 
+	public void ResetGrav()
+	{
+		yVel = 0.0f;
+	}
+
 	bool CanJump()
 	{
 		return( charCtrl.isGrounded );
