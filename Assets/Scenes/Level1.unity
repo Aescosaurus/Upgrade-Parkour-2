@@ -313,6 +313,7 @@ MonoBehaviour:
   interactAxis: Interact2
   interactMsg: '[Q] Cube Land'
   targetScene: Level2.1
+  prefAdd: 
 --- !u!1 &74225578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3597,7 @@ MonoBehaviour:
   interactAxis: Interact1
   interactMsg: '[E] Forest'
   targetScene: Level2.2
+  prefAdd: 
 --- !u!1 &1914902004
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class PlayerMove
 {
 	void Start()
 	{
-		body = GetComponent<Rigidbody>();
+		// body = GetComponent<Rigidbody>();
 		cam = Camera.main;
 		// animCtrl = GetComponent<Animator>();
 		// coll = GetComponent<Collider>();
@@ -28,6 +28,7 @@ public class PlayerMove
 			hasShotgun = PlayerPrefs.GetInt( "has_shotgun",0 ) > 0;
 			canSprint = PlayerPrefs.GetInt( "has_sprint",0 ) > 0;
 			hasGrapple = PlayerPrefs.GetInt( "has_grapple",0 ) > 0;
+			canJetpack = PlayerPrefs.GetInt( "has_jetpack",0 ) > 0;
 		}
 
 		if( hasShotgun )
@@ -43,6 +44,8 @@ public class PlayerMove
 		
 		jumpSound = Resources.Load<AudioClip>( "Audio/Jump" );
 		landSound = Resources.Load<AudioClip>( "Audio/Land" );
+
+		transform.Find( "Main Camera" ).Find( "GrappleParticles" ).gameObject.SetActive( false );
 	}
 
 	void /*Fixed*/Update()
@@ -172,6 +175,16 @@ public class PlayerMove
 				}
 			}
 		}
+
+		if( canJetpack )
+		{
+			if( SpiffyInput.CheckFree( "Jump" ) )
+			{
+				var forceDir = cam.transform.forward + Vector3.up * jetpackUpBias;
+				forceMove += forceDir * jetpackAccel * Time.fixedDeltaTime;
+			}
+		}
+
 		vel *= decel;
 		forceMove *= forceDecay;
 	}
@@ -193,14 +206,14 @@ public class PlayerMove
 		yVel /= 2.0f;
 	}
 
-	public void Reset( Vector3 resetPos )
+	public void Reset( Vector3 resetSpot )
 	{
 		yVel = 0.0f;
 		vel.Set( 0.0f,0.0f );
 		forceMove.Set( 0.0f,0.0f,0.0f );
 		canJump = false;
 
-		this.resetPos = resetPos;
+		this.resetPos = resetSpot;
 	}
 
 	public void ApplyForceMove( Vector3 move )
@@ -225,7 +238,7 @@ public class PlayerMove
 		return( charCtrl.isGrounded );
 	}
 
-	Rigidbody body;
+	// Rigidbody body;
 	Camera cam;
 	// Animator animCtrl;
 	// Collider coll;
@@ -258,6 +271,7 @@ public class PlayerMove
 	[SerializeField] bool hasShotgun = false;
 	[SerializeField] bool canSprint = false;
 	[SerializeField] bool hasGrapple = false;
+	[SerializeField] bool canJetpack = false;
 
 	bool stopForceMove = false;
 
@@ -267,6 +281,9 @@ public class PlayerMove
 	[SerializeField] float sprintAccel = 10.0f;
 	[SerializeField] float maxSprintSpd = 30.0f;
 	[SerializeField] float sprintUpBias = 0.15f;
+
+	[SerializeField] float jetpackUpBias = 1.5f;
+	[SerializeField] float jetpackAccel = 5.0f;
 
 	[SerializeField] List<AudioClip> footstepSounds = new List<AudioClip>();
 	[SerializeField] Timer footstepTimer = new Timer( 0.2f );

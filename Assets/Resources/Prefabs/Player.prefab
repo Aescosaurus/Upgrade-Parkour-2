@@ -9871,12 +9871,15 @@ MonoBehaviour:
   overrideSave: 1
   hasShotgun: 0
   canSprint: 0
-  hasGrapple: 1
+  hasGrapple: 0
+  canJetpack: 1
   forceDecay: 0.98
   forcePenalty: 0.5
   sprintAccel: 20
   maxSprintSpd: 50
   sprintUpBias: 0.2
+  jetpackUpBias: 1.5
+  jetpackAccel: 15
   footstepSounds:
   - {fileID: 8300000, guid: e9dfb0275aeb05f44abf767ca0504e70, type: 3}
   - {fileID: 8300000, guid: 8acd479aedfcb01449a133e665637e70, type: 3}
