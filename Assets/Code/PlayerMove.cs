@@ -27,12 +27,18 @@ public class PlayerMove
 		{
 			hasShotgun = PlayerPrefs.GetInt( "has_shotgun",0 ) > 0;
 			canSprint = PlayerPrefs.GetInt( "has_sprint",0 ) > 0;
+			hasGrapple = PlayerPrefs.GetInt( "has_grapple",0 ) > 0;
 		}
 
 		if( hasShotgun )
 		{
 			Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
 			stopForceMove = true;
+		}
+
+		if( hasGrapple )
+		{
+			Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
 		}
 		
 		jumpSound = Resources.Load<AudioClip>( "Audio/Jump" );
@@ -246,6 +252,7 @@ public class PlayerMove
 	[SerializeField] bool overrideSave = false;
 	[SerializeField] bool hasShotgun = false;
 	[SerializeField] bool canSprint = false;
+	[SerializeField] bool hasGrapple = false;
 
 	bool stopForceMove = false;
 
