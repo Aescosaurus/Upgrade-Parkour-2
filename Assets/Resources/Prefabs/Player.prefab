@@ -9870,9 +9870,9 @@ MonoBehaviour:
     duration: 0.35
   overrideSave: 1
   hasShotgun: 0
-  canSprint: 0
-  hasGrapple: 0
-  canJetpack: 1
+  canSprint: 1
+  hasGrapple: 1
+  canJetpack: 0
   forceDecay: 0.98
   forcePenalty: 0.5
   sprintAccel: 20
