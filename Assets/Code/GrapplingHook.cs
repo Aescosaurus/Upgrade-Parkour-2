@@ -11,7 +11,7 @@ public class GrapplingHook
 		cam = Camera.main;
 
 		var player = transform.root.gameObject;
-		playerMoveScr = player.GetComponent<PlayerMove>();
+		playerMoveScr = player.GetComponent<PlayerMove2>();
 		charCtrl = player.GetComponent<CharacterController>();
 		trailPrefab = ResLoader.Load( "Prefabs/GrapplingHookTrail" );
 		hook = transform.Find( "GrapplingHook" ).gameObject;
@@ -34,7 +34,7 @@ public class GrapplingHook
 	void Update()
 	{
 		refire.Update( Time.deltaTime );
-		if( SpiffyInput.CheckFree( "Fire2" ) )
+		if( SpiffyInput.CheckFree( inputKey ) )
 		{
 			if( canFire && refire.IsDone() )
 			{
@@ -98,7 +98,7 @@ public class GrapplingHook
 			}
 		}
 
-		if( charCtrl.isGrounded )
+		if( charCtrl.isGrounded || true )
 		{
 			if( !canFire )
 			{
@@ -138,8 +138,13 @@ public class GrapplingHook
 		playerParticles.SetActive( false );
 	}
 
+	public void SetInputKey( string key )
+	{
+		inputKey = key;
+	}
+
 	Camera cam;
-	PlayerMove playerMoveScr;
+	PlayerMove2 playerMoveScr;
 	LayerMask shotMask;
 	CharacterController charCtrl;
 	GameObject trailPrefab;
@@ -166,4 +171,6 @@ public class GrapplingHook
 	// [SerializeField] float minSpread = 0.5f;
 
 	bool canFire = true;
+
+	string inputKey = "Fire1";
 }
