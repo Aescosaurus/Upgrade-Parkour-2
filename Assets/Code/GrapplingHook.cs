@@ -8,17 +8,14 @@ public class GrapplingHook
 {
 	void Start()
 	{
-		cam = Camera.main;
-
 		var player = transform.root.gameObject;
-		playerMoveScr = player.GetComponent<PlayerMove2>();
 		charCtrl = player.GetComponent<CharacterController>();
 		trailPrefab = ResLoader.Load( "Prefabs/GrapplingHookTrail" );
 		hook = transform.Find( "GrapplingHook" ).gameObject;
 		particlePrefab = ResLoader.Load( "Prefabs/GrappleParticles" );
 		playerParticles = player.transform.Find( "Main Camera" ).Find( "GrappleParticles" ).gameObject;
 
-		shotMask = LayerMask.GetMask( "Default" );
+		shotMask = ~LayerMask.GetMask( "Player" );
 
 		// bulletPrefab = ResLoader.Load( "Prefabs/ShotgunTrail" );
 		// shotLoc = transform.Find( "ShotLoc" );
@@ -138,8 +135,6 @@ public class GrapplingHook
 		playerParticles.SetActive( false );
 	}
 
-	Camera cam;
-	PlayerMove2 playerMoveScr;
 	LayerMask shotMask;
 	CharacterController charCtrl;
 	GameObject trailPrefab;

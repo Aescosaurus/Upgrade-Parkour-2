@@ -6,23 +6,6 @@ public class C4
 	:
 	ToolBase
 {
-	void Start()
-	{
-		cam = Camera.main;
-
-		var player = transform.root.gameObject;
-		playerMoveScr = player.GetComponent<PlayerMove2>();
-		charCtrl = player.GetComponent<CharacterController>();
-		// trailPrefab = ResLoader.Load( "Prefabs/GrapplingHookTrail" );
-		// hook = transform.Find( "GrapplingHook" ).gameObject;
-		// particlePrefab = ResLoader.Load( "Prefabs/GrappleParticles" );
-		playerParticles = player.transform.Find( "Main Camera" ).Find( "GrappleParticles" ).gameObject;
-
-		// shotMask = LayerMask.GetMask( "Default" );
-
-		FireReset();
-	}
-
 	void Update()
 	{
 		refire.Update( Time.deltaTime );
@@ -42,52 +25,31 @@ public class C4
 			if( c4Obj != null )
 			{
 				// explode
-				var dir = c4Obj.transform.position - playerMoveScr.transform.position;
-				float force = Mathf.Pow( explodeRange,2 ) - dir.sqrMagnitude;
-				if( force > 0.0f ) playerMoveScr.ApplyForceMove( -dir.normalized * force * explodeForce );
+				var playerForce = GetExplodeForce( playerMoveScr.gameObject );
+				playerMoveScr.ApplyForceMove( playerForce );
+				var explodables = FindObjectsOfType<Explodable>();
+				foreach( var ex in explodables )
+				{
+					ex.GetComponent<Rigidbody>().AddForce( GetExplodeForce( ex.gameObject ) );
+				}
 				Destroy( c4Obj );
 				c4Obj = null;
 			}
 		}
 	}
 
-	void FireReset()
+	Vector3 GetExplodeForce( GameObject obj )
 	{
-		refire.Reset();
-		pullDuration.Reset();
-
-		canFire = false;
-		hitObj = null;
-		hitOffset = Vector3.zero;
-
-		playerMoveScr.ResetGrav();
-
-		Destroy( curTrail?.gameObject );
-		curTrail = null;
-		Destroy( hookParticles );
-		hookParticles = null;
-		playerParticles.SetActive( false );
+		var dir = c4Obj.transform.position - obj.transform.position;
+		float force = Mathf.Pow( explodeRange,2 ) - dir.sqrMagnitude;
+		if( force > 0.0f ) return( -dir.normalized * force * explodeForce );
+		
+		return( Vector3.zero );
 	}
-
-	Camera cam;
-	PlayerMove2 playerMoveScr;
-	LayerMask shotMask;
-	CharacterController charCtrl;
-	GameObject trailPrefab;
-	GameObject particlePrefab;
-	GameObject playerParticles;
-	Transform hitObj = null;
-	Vector3 hitOffset = Vector3.zero;
-	LineRenderer curTrail = null;
-	GameObject hook = null;
-	GameObject hookParticles = null;
 
 	[SerializeField] float knockbackForce = 10.0f;
 	[SerializeField] Timer refire = new Timer( 0.1f );
-	[SerializeField] Timer pullDuration = new Timer( 0.5f );
 	[SerializeField] float range = 20.0f;
-
-	bool canFire = true;
 
 	GameObject c4Obj = null;
 	[SerializeField] GameObject c4Prefab = null;
