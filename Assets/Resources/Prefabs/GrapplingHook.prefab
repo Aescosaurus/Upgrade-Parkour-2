@@ -49,9 +49,8 @@ MonoBehaviour:
   refire:
     duration: 0.1
   pullDuration:
-    duration: 1
+    duration: 9999
   range: 100
-  upBias: 0
 --- !u!1001 &1995034104916028219
 PrefabInstance:
   m_ObjectHideFlags: 0

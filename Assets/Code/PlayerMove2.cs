@@ -41,9 +41,10 @@ public class PlayerMove2
 		// {
 		// }
 		var grapple1 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
-		var grapple2 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		grapple1.GetComponent<GrapplingHook>().SetInputKey( "Fire2" );
-		grapple2.GetComponent<GrapplingHook>().SetInputKey( "Fire1" );
+		// var grapple2 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
+		var grapple2 = Instantiate( ResLoader.Load( "Prefabs/C4" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
+		grapple1.GetComponent<ToolBase>().SetInputKey( "Fire2" );
+		grapple2.GetComponent<ToolBase>().SetInputKey( "Fire1" );
 
 		jumpSound = Resources.Load<AudioClip>( "Audio/Jump" );
 		landSound = Resources.Load<AudioClip>( "Audio/Land" );
@@ -137,7 +138,7 @@ public class PlayerMove2
 
 		if( resetPos == Vector3.zero )
 		{
-			charCtrl.Move( ( new Vector3( vel.x,yVel,vel.y ) * moveSpeed + forceMove ) * Time.fixedDeltaTime );
+			charCtrl.Move( GetVel() * Time.fixedDeltaTime );
 
 			if( footstepTimer.Update( Time.fixedDeltaTime ) && charCtrl.isGrounded && move.sqrMagnitude > 0.2f )
 			{
@@ -239,6 +240,11 @@ public class PlayerMove2
 	bool CanJump()
 	{
 		return( charCtrl.isGrounded );
+	}
+
+	public Vector3 GetVel()
+	{
+		return( new Vector3( vel.x,yVel,vel.y ) * moveSpeed + forceMove );
 	}
 
 	// Rigidbody body;

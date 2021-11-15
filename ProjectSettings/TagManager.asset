@@ -20,7 +20,7 @@ TagManager:
   - ItemPickup
   - Boss
   - NoCollide
-  - 
+  - PlayerProjectile
   - 
   - 
   - 

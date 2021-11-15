@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrapplingHook
 	:
-	MonoBehaviour
+	ToolBase
 {
 	void Start()
 	{
@@ -138,11 +138,6 @@ public class GrapplingHook
 		playerParticles.SetActive( false );
 	}
 
-	public void SetInputKey( string key )
-	{
-		inputKey = key;
-	}
-
 	Camera cam;
 	PlayerMove2 playerMoveScr;
 	LayerMask shotMask;
@@ -171,6 +166,4 @@ public class GrapplingHook
 	// [SerializeField] float minSpread = 0.5f;
 
 	bool canFire = true;
-
-	string inputKey = "Fire1";
 }
