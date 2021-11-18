@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class Shotgun
 	:
-	MonoBehaviour
+	ToolBase
 {
 	void Start()
 	{
-		cam = Camera.main;
-
 		var player = transform.root.gameObject;
-		playerMoveScr = player.GetComponent<PlayerMove>();
 		charCtrl = player.GetComponent<CharacterController>();
 
-		shotMask = LayerMask.GetMask( "Default" );
+		shotMask = ~LayerMask.GetMask( "Player" );
 
 		bulletPrefab = ResLoader.Load( "Prefabs/ShotgunTrail" );
 		shotLoc = transform.Find( "ShotLoc" );
@@ -34,8 +31,15 @@ public class Shotgun
 			RaycastHit hit;
 			if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,999.0f,shotMask ) )
 			{
-				playerMoveScr.ApplyForceMove( knockbackDir.normalized * Mathf.Min(
-					knockbackForce * ( 2.0f / hit.distance ),maxForce ) );
+				var knockForce = knockbackDir.normalized * Mathf.Min( knockbackForce * ( 2.0f / hit.distance ),maxForce );
+				if( hit.transform.gameObject.GetComponent<Explodable>() == null )
+				{
+					playerMoveScr.ApplyForceMove( knockForce );
+				}
+				else
+				{
+					hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * hitForceMult,ForceMode.Impulse );
+				}
 
 				canFire = false;
 				refire.Reset();
@@ -72,8 +76,6 @@ public class Shotgun
 		Destroy( bullet,bulletDespawn );
 	}
 
-	Camera cam;
-	PlayerMove playerMoveScr;
 	LayerMask shotMask;
 	CharacterController charCtrl;
 	GameObject bulletPrefab;
@@ -89,6 +91,8 @@ public class Shotgun
 	[SerializeField] RangeI pelletCount = new RangeI( 3,5 );
 	[SerializeField] float pelletSpread = 0.7f;
 	[SerializeField] float minSpread = 0.5f;
+
+	[SerializeField] float hitForceMult = 1.0f;
 
 	bool canFire = true;
 }

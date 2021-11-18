@@ -139,12 +139,12 @@ MonoBehaviour:
   knockbackForce: 10
   refire:
     duration: 0.1
-  pullDuration:
-    duration: 0.5
   range: 20
   c4Prefab: {fileID: 7365904140447355585, guid: fe9cdeec62e06614b9276865914f5db2,
     type: 3}
   throwStartDist: 1
   throwForce: 10
   explodeRange: 10
-  explodeForce: 0.7
+  explodeForce: 0.2
+  explodeUpBias: 0.6
+  playerExplodeForce: 0.6

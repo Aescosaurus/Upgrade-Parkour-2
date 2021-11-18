@@ -56,6 +56,7 @@ MonoBehaviour:
     max: 7
   pelletSpread: 0.6
   minSpread: 0.2
+  hitForceMult: 0.3
 --- !u!82 &-6798960106612024327
 AudioSource:
   m_ObjectHideFlags: 0

@@ -42,7 +42,8 @@ public class PlayerMove2
 		// }
 		var grapple1 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
 		// var grapple2 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		var grapple2 = Instantiate( ResLoader.Load( "Prefabs/C4" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
+		// var grapple2 = Instantiate( ResLoader.Load( "Prefabs/C4" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
+		var grapple2 = Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
 		grapple1.GetComponent<ToolBase>().SetInputKey( "Fire2" );
 		grapple2.GetComponent<ToolBase>().SetInputKey( "Fire1" );
 

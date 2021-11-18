@@ -26,11 +26,11 @@ public class C4
 			{
 				// explode
 				var playerForce = GetExplodeForce( playerMoveScr.gameObject );
-				playerMoveScr.ApplyForceMove( playerForce );
+				playerMoveScr.ApplyForceMove( playerForce * playerExplodeForce );
 				var explodables = FindObjectsOfType<Explodable>();
 				foreach( var ex in explodables )
 				{
-					ex.GetComponent<Rigidbody>().AddForce( GetExplodeForce( ex.gameObject ) );
+					ex.GetComponent<Rigidbody>().AddForce( GetExplodeForce( ex.gameObject ) * explodeForce,ForceMode.Impulse );
 				}
 				Destroy( c4Obj );
 				c4Obj = null;
@@ -42,7 +42,7 @@ public class C4
 	{
 		var dir = c4Obj.transform.position - obj.transform.position;
 		float force = Mathf.Pow( explodeRange,2 ) - dir.sqrMagnitude;
-		if( force > 0.0f ) return( -dir.normalized * force * explodeForce );
+		if( force > 0.0f ) return( ( -dir.normalized + Vector3.up * explodeUpBias ) * force );
 		
 		return( Vector3.zero );
 	}
@@ -57,4 +57,6 @@ public class C4
 	[SerializeField] float throwForce = 0.5f;
 	[SerializeField] float explodeRange = 3.0f;
 	[SerializeField] float explodeForce = 30.0f;
+	[SerializeField] float explodeUpBias = 0.8f;
+	[SerializeField] float playerExplodeForce = 30.0f;
 }
