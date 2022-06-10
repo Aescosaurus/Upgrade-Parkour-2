@@ -10,9 +10,9 @@ public class GrapplingHook
 	{
 		var player = transform.root.gameObject;
 		charCtrl = player.GetComponent<CharacterController>();
-		trailPrefab = ResLoader.Load( "Prefabs/GrapplingHookTrail" );
+		trailPrefab = ResLoader.Load( "Prefabs/Equips/GrapplingHookTrail" );
 		hook = transform.Find( "GrapplingHook" ).gameObject;
-		particlePrefab = ResLoader.Load( "Prefabs/GrappleParticles" );
+		particlePrefab = ResLoader.Load( "Prefabs/Equips/GrappleParticles" );
 		playerParticles = player.transform.Find( "Main Camera" ).Find( "GrappleParticles" ).gameObject;
 
 		shotMask = ~LayerMask.GetMask( "Player" );

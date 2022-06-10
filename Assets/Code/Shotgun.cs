@@ -13,7 +13,7 @@ public class Shotgun
 
 		shotMask = ~LayerMask.GetMask( "Player" );
 
-		bulletPrefab = ResLoader.Load( "Prefabs/ShotgunTrail" );
+		bulletPrefab = ResLoader.Load( "Prefabs/Equips/ShotgunTrail" );
 		shotLoc = transform.Find( "ShotLoc" );
 
 		audSrc = GetComponent<AudioSource>();
