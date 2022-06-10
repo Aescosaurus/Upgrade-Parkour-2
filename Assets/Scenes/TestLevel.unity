@@ -3083,7 +3083,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8acd479aedfcb01449a133e665637e70, type: 3}
   footstepTimer:
     duration: 0.35
-  item1: 3
+  item1: 2
   item2: 1
 --- !u!1 &1880852447
 GameObject:

@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fb1ef0fc6a8f4da4efbf4cf33cfc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 2
+  knockbackForce: 1.2
   refire:
     duration: 0.1
   pullDuration:
-    duration: 9999
-  range: 100
+    duration: 1.2
+  range: 50
 --- !u!1001 &1995034104916028219
 PrefabInstance:
   m_ObjectHideFlags: 0

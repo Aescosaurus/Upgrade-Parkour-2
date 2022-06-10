@@ -42,14 +42,13 @@ public class C4
 	{
 		var dir = c4Obj.transform.position - obj.transform.position;
 		float force = Mathf.Pow( explodeRange,2 ) - dir.sqrMagnitude;
-		if( force > 0.0f ) return( ( -dir.normalized + Vector3.up * explodeUpBias ) * force );
+		if( force > 0.0f ) return( ( -dir.normalized + Vector3.up * explodeUpBias ) * force * knockbackForce );
 		
 		return( Vector3.zero );
 	}
 
-	[SerializeField] float knockbackForce = 10.0f;
+	[SerializeField] float knockbackForce = 1.0f;
 	[SerializeField] Timer refire = new Timer( 0.1f );
-	[SerializeField] float range = 20.0f;
 
 	GameObject c4Obj = null;
 	[SerializeField] GameObject c4Prefab = null;

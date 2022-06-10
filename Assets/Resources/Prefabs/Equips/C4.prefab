@@ -136,10 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034c2c9add2d4d54abbdbaf99419dec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 10
+  knockbackForce: 0.4
   refire:
     duration: 0.1
-  range: 20
   c4Prefab: {fileID: 7365904140447355585, guid: fe9cdeec62e06614b9276865914f5db2,
     type: 3}
   throwStartDist: 1

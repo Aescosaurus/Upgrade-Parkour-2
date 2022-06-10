@@ -215,13 +215,13 @@ public class PlayerMove2
 		switch( item )
 		{
 			case Equip.Grapple:
-				prefab = ResLoader.Load( "Prefabs/GrapplingHook" );
+				prefab = ResLoader.Load( "Prefabs/Equips/GrapplingHook" );
 				break;
 			case Equip.Shotgun:
-				prefab = ResLoader.Load( "Prefabs/Shotgun" );
+				prefab = ResLoader.Load( "Prefabs/Equips/Shotgun" );
 				break;
 			case Equip.C4:
-				prefab = ResLoader.Load( "Prefabs/C4" );
+				prefab = ResLoader.Load( "Prefabs/Equips/C4" );
 				break;
 		}
 
