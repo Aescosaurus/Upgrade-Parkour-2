@@ -28,7 +28,7 @@ public class PlayerRespawn
 		{
 			// SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
 
-			var moveScr = GetComponent<PlayerMove>();
+			var moveScr = GetComponent<PlayerMove2>();
 			// moveScr.enabled = false;
 			// transform.position = safeSpot;
 			moveScr.Reset( safeSpot );
