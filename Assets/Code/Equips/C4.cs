@@ -27,11 +27,11 @@ public class C4
 				// explode
 				var playerForce = GetExplodeForce( playerMoveScr.gameObject );
 				playerMoveScr.ApplyForceMove( playerForce * playerExplodeForce );
-				var explodables = FindObjectsOfType<Explodable>();
-				foreach( var ex in explodables )
-				{
-					ex.GetComponent<Rigidbody>().AddForce( GetExplodeForce( ex.gameObject ) * explodeForce,ForceMode.Impulse );
-				}
+				// var explodables = FindObjectsOfType<Explodable>();
+				// foreach( var ex in explodables )
+				// {
+				// 	ex.GetComponent<Rigidbody>().AddForce( GetExplodeForce( ex.gameObject ) * explodeForce,ForceMode.Impulse );
+				// }
 				Destroy( c4Obj );
 				c4Obj = null;
 			}
@@ -55,7 +55,6 @@ public class C4
 	[SerializeField] float throwStartDist = 1.0f;
 	[SerializeField] float throwForce = 0.5f;
 	[SerializeField] float explodeRange = 3.0f;
-	[SerializeField] float explodeForce = 30.0f;
 	[SerializeField] float explodeUpBias = 0.8f;
 	[SerializeField] float playerExplodeForce = 30.0f;
 }
