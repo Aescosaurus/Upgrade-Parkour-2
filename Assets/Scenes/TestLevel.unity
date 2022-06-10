@@ -2519,8 +2519,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2985425027817913297}
   - {fileID: 8795581578439461383}
+  - {fileID: 2985425027817913297}
   - {fileID: 83190131076557906}
   - {fileID: 6595745459057799905}
   m_Father: {fileID: 1855809929}
@@ -3064,6 +3064,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  decel: 0.87
+  maxSpeed: 1.3
   jumpPower: 2
   jumpTimer:
     duration: 0.07
@@ -3072,27 +3074,17 @@ MonoBehaviour:
   variableJump: 1
   jumpEndPenalty: 0.26
   gravAcc: 3
-  decel: 0.87
-  maxSpeed: 1.3
   jumpLeniency:
     duration: 0.35
-  overrideSave: 0
-  hasShotgun: 0
-  canSprint: 0
-  hasGrapple: 0
-  canJetpack: 0
   forceDecay: 0.98
   forcePenalty: 0.5
-  sprintAccel: 20
-  maxSprintSpd: 50
-  sprintUpBias: 0.2
-  jetpackUpBias: 1.5
-  jetpackAccel: 15
   footstepSounds:
   - {fileID: 8300000, guid: e9dfb0275aeb05f44abf767ca0504e70, type: 3}
   - {fileID: 8300000, guid: 8acd479aedfcb01449a133e665637e70, type: 3}
   footstepTimer:
     duration: 0.35
+  item1: 3
+  item2: 1
 --- !u!1 &1880852447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,7 +3670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2985425027817913297}
   m_Layer: 8
-  m_Name: WepHoldSpot
+  m_Name: WepHoldSpot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8368,7 +8360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540187120}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3053920261604372518
 Rigidbody:
@@ -18130,7 +18122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8795581578439461383}
   m_Layer: 8
-  m_Name: WepHoldSpot2
+  m_Name: WepHoldSpot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18148,7 +18140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540187120}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8853179102619210802
 MonoBehaviour:

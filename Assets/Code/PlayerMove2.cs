@@ -7,45 +7,27 @@ public class PlayerMove2
 	:
 	MonoBehaviour
 {
+	enum Equip
+	{
+		None,
+		Grapple,
+		Shotgun,
+		C4
+	}
+
 	void Start()
 	{
-		// body = GetComponent<Rigidbody>();
 		cam = Camera.main;
-		// animCtrl = GetComponent<Animator>();
-		// coll = GetComponent<Collider>();
 		charCtrl = GetComponent<CharacterController>();
 		audSrc = transform.Find( "SFX" ).GetComponent<AudioSource>();
 
-		// transform.Find( "Model" ).gameObject.SetActive( false );
-
-		PlayerPrefs.SetInt( "save_scene",SceneManager.GetActiveScene().buildIndex );
+		// PlayerPrefs.SetInt( "save_scene",SceneManager.GetActiveScene().buildIndex );
 
 		Instantiate( ResLoader.Load( "Prefabs/UI/Canvas" ) );
 		Instantiate( ResLoader.Load( "Prefabs/UI/EventSys" ) );
 
-		// if( !overrideSave )
-		// {
-		// 	hasShotgun = PlayerPrefs.GetInt( "has_shotgun",0 ) > 0;
-		// 	canSprint = PlayerPrefs.GetInt( "has_sprint",0 ) > 0;
-		// 	hasGrapple = PlayerPrefs.GetInt( "has_grapple",0 ) > 0;
-		// 	canJetpack = PlayerPrefs.GetInt( "has_jetpack",0 ) > 0;
-		// }
-		// 
-		// if( hasShotgun )
-		// {
-		// 	Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
-		// 	stopForceMove = true;
-		// }
-		// 
-		// if( hasGrapple )
-		// {
-		// }
-		var grapple1 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
-		// var grapple2 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		// var grapple2 = Instantiate( ResLoader.Load( "Prefabs/C4" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		var grapple2 = Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		grapple1.GetComponent<ToolBase>().SetInputKey( "Fire2" );
-		grapple2.GetComponent<ToolBase>().SetInputKey( "Fire1" );
+		EquipItem( item1,1 );
+		EquipItem( item2,2 );
 
 		jumpSound = Resources.Load<AudioClip>( "Audio/Jump" );
 		landSound = Resources.Load<AudioClip>( "Audio/Land" );
@@ -166,30 +148,6 @@ public class PlayerMove2
 			}
 		}
 
-		if( canSprint )
-		{
-			if( SpiffyInput.CheckFree( "Sprint" ) )
-			{
-				footstepTimer.Update( Time.fixedDeltaTime );
-				if( forceMove.sqrMagnitude < maxSprintSpd * maxSprintSpd )
-				{
-					forceMove += ( cam.transform.forward + Vector3.up * sprintUpBias ) *
-						sprintAccel * Time.fixedDeltaTime;
-					// forceMove.x += xMove * sprintAccel * Time.fixedDeltaTime;
-					// forceMove.z += yMove * sprintAccel * Time.fixedDeltaTime;
-				}
-			}
-		}
-
-		if( canJetpack )
-		{
-			if( SpiffyInput.CheckFree( "Jump" ) )
-			{
-				var forceDir = cam.transform.forward + Vector3.up * jetpackUpBias;
-				forceMove += forceDir * jetpackAccel * Time.fixedDeltaTime;
-			}
-		}
-
 		vel *= decel;
 		forceMove *= forceDecay;
 	}
@@ -244,6 +202,36 @@ public class PlayerMove2
 		yVel = 0.0f;
 	}
 
+	void EquipItem( Equip item,int hand )
+	{
+		// var grapple1 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
+		// // var grapple2 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
+		// // var grapple2 = Instantiate( ResLoader.Load( "Prefabs/C4" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
+		// var grapple2 = Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
+		// grapple1.GetComponent<ToolBase>().SetInputKey( "Fire2" );
+		// grapple2.GetComponent<ToolBase>().SetInputKey( "Fire1" );
+
+		GameObject prefab = null;
+		switch( item )
+		{
+			case Equip.Grapple:
+				prefab = ResLoader.Load( "Prefabs/GrapplingHook" );
+				break;
+			case Equip.Shotgun:
+				prefab = ResLoader.Load( "Prefabs/Shotgun" );
+				break;
+			case Equip.C4:
+				prefab = ResLoader.Load( "Prefabs/C4" );
+				break;
+		}
+
+		if( prefab != null )
+		{
+			var curItem = Instantiate( prefab,cam.transform.Find( "WepHoldSpot" + hand.ToString() ) );
+			curItem.GetComponent<ToolBase>().SetInputKey( "Fire" + hand.ToString() );
+		}
+	}
+
 	bool CanJump()
 	{
 		return( charCtrl.isGrounded );
@@ -261,8 +249,12 @@ public class PlayerMove2
 	CharacterController charCtrl;
 	AudioSource audSrc;
 
+	[Header( "Movement" )]
 	[SerializeField] float moveSpeed = 10.0f;
+	[SerializeField] float decel = 0.9f;
+	[SerializeField] float maxSpeed = 1.0f;
 
+	[Header( "Jumping" )]
 	[SerializeField] float jumpPower = 3.0f;
 	[SerializeField] Timer jumpTimer = new Timer( 2.0f );
 	[SerializeField] Timer minJump = new Timer( 0.5f );
@@ -276,36 +268,27 @@ public class PlayerMove2
 	float yVel = 0.0f;
 	Vector2 vel = Vector2.zero;
 
-	[SerializeField] float decel = 0.9f;
-	[SerializeField] float maxSpeed = 1.0f;
-
 	[SerializeField] Timer jumpLeniency = new Timer( 0.2f );
 	bool canJump = false;
 
 	Vector3 resetPos = Vector3.zero;
 
-	[SerializeField] bool overrideSave = false;
-	[SerializeField] bool hasShotgun = false;
-	[SerializeField] bool canSprint = false;
-	[SerializeField] bool hasGrapple = false;
-	[SerializeField] bool canJetpack = false;
-
 	bool stopForceMove = false;
 
+	[Header( "Force Stuff" )]
 	Vector3 forceMove = Vector3.zero;
 	[SerializeField] float forceDecay = 0.9f;
 	[SerializeField] float forcePenalty = 0.5f;
-	[SerializeField] float sprintAccel = 10.0f;
-	[SerializeField] float maxSprintSpd = 30.0f;
-	[SerializeField] float sprintUpBias = 0.15f;
 
-	[SerializeField] float jetpackUpBias = 1.5f;
-	[SerializeField] float jetpackAccel = 5.0f;
-
+	[Header( "Audio" )]
 	[SerializeField] List<AudioClip> footstepSounds = new List<AudioClip>();
 	[SerializeField] Timer footstepTimer = new Timer( 0.2f );
 	AudioClip jumpSound;
 	AudioClip landSound;
 
 	Vector3 move = Vector3.zero;
+
+	[Header( "Items" )]
+	[SerializeField] Equip item1 = Equip.None;
+	[SerializeField] Equip item2 = Equip.None;
 }
