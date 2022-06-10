@@ -214,7 +214,7 @@ public class PlayerMove2
 		jumping = false;
 		jumpTimer.Reset();
 		minJump.Reset();
-		yVel /= 2.0f;
+		yVel *= jumpEndPenalty;
 	}
 
 	public void Reset( Vector3 resetSpot )
@@ -267,6 +267,7 @@ public class PlayerMove2
 	[SerializeField] Timer jumpTimer = new Timer( 2.0f );
 	[SerializeField] Timer minJump = new Timer( 0.5f );
 	[SerializeField] bool variableJump = true;
+	[SerializeField] float jumpEndPenalty = 0.5f;
 
 	bool jumping = false;
 

@@ -3064,12 +3064,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  jumpPower: 3.5
+  jumpPower: 2
   jumpTimer:
-    duration: 0.005
+    duration: 0.07
   minJump:
-    duration: 0.001
+    duration: 0.03
   variableJump: 1
+  jumpEndPenalty: 0.26
   gravAcc: 3
   decel: 0.87
   maxSpeed: 1.3
