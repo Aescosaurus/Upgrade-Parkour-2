@@ -14,7 +14,9 @@ public class StatsPanel
 		comboReset.Update( comboReset.GetDuration() );
 
 		coinText = transform.Find( "CoinText" ).GetComponent<Text>();
+		coinHop = coinText.GetComponent<TextHop>();
 		comboText = transform.Find( "ComboText" ).GetComponent<Text>();
+		comboHop = comboText.GetComponent<TextHop>();
 		comboMeter = transform.Find( "ComboMeter" ).GetComponent<RectTransform>();
 
 		UpdateStatText();
@@ -42,9 +44,11 @@ public class StatsPanel
 	public static void CollectCoin()
 	{
 		self.coinCount += self.comboMult;
+		self.coinHop.Hop();
 		self.UpdateStatText();
 
 		++self.comboMult;
+		self.comboHop.Hop();
 		self.comboReset.Reset();
 	}
 
@@ -54,7 +58,9 @@ public class StatsPanel
 	int comboMult = 1;
 
 	Text coinText;
+	TextHop coinHop;
 	Text comboText;
+	TextHop comboHop;
 	RectTransform comboMeter;
 
 	[SerializeField] Timer comboReset = new Timer( 3.0f );
