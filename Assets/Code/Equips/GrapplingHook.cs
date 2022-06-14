@@ -17,14 +17,6 @@ public class GrapplingHook
 
 		shotMask = ~LayerMask.GetMask( "Player" );
 
-		// bulletPrefab = ResLoader.Load( "Prefabs/ShotgunTrail" );
-		// shotLoc = transform.Find( "ShotLoc" );
-		// 
-		// audSrc = GetComponent<AudioSource>();
-		// 
-		// shootAud = Resources.Load<AudioClip>( "Audio/ShotgunShoot" );
-		// reloadAud = Resources.Load<AudioClip>( "Audio/ShotgunReload" );
-
 		FireReset();
 	}
 
@@ -56,21 +48,6 @@ public class GrapplingHook
 						hook.SetActive( false );
 
 						hitObjIsExplodable = ( hitObj.GetComponent<Explodable>() != null );
-
-						// canFire = false;
-						// refire.Reset();
-
-						// var curPellets = pelletCount.Rand();
-						// for( int i = 0; i < curPellets; ++i )
-						// {
-						// 	SpawnTrail( hit.point + new Vector3(
-						// 		Random.Range( 0.0f,1.0f ),
-						// 		Random.Range( 0.0f,1.0f ),
-						// 		Random.Range( 0.0f,1.0f ) ) *
-						// 		Mathf.Max( minSpread,pelletSpread * Mathf.Sqrt( hit.distance ) ) );
-						// }
-						// 
-						// audSrc.PlayOneShot( shootAud );
 					}
 				}
 				else // hitobj not null -> grappling in progress
@@ -103,7 +80,7 @@ public class GrapplingHook
 			}
 		}
 
-		if( charCtrl.isGrounded || true )
+		if( charCtrl.isGrounded/* || true*/ )
 		{
 			if( !canFire )
 			{
@@ -113,17 +90,6 @@ public class GrapplingHook
 			}
 		}
 	}
-
-	// void SpawnTrail( Vector3 hitLoc )
-	// {
-	// 	var bullet = Instantiate( bulletPrefab );
-	// 	bullet.transform.position = hitLoc;
-	// 	var lr = bullet.GetComponent<LineRenderer>();
-	// 	lr.SetPosition( 0,shotLoc.position );
-	// 	lr.SetPosition( 1,hitLoc );
-	// 
-	// 	Destroy( bullet,bulletDespawn );
-	// }
 
 	void FireReset()
 	{
@@ -148,11 +114,6 @@ public class GrapplingHook
 	GameObject trailPrefab;
 	GameObject particlePrefab;
 	GameObject playerParticles;
-	// GameObject bulletPrefab;
-	// Transform shotLoc;
-	// AudioSource audSrc;
-	// AudioClip shootAud;
-	// AudioClip reloadAud;
 	Transform hitObj = null;
 	Vector3 hitOffset = Vector3.zero;
 	LineRenderer curTrail = null;
