@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5502870199845369835}
   - component: {fileID: 4036794404747530952}
+  - component: {fileID: 238732643902141154}
   m_Layer: 0
   m_Name: BarrelExploding
-  m_TagString: Untagged
+  m_TagString: Exploding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 2.75, z: 2.5}
   m_Center: {x: 0, y: 1.375, z: 0}
+--- !u!114 &238732643902141154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502870199845369832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72106ed754cc424ba9595e2ef79e7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explodeForce: 100
 --- !u!1001 &21160507110034177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,6 +67,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 5502870199845369835}
     m_Modifications:
     - target: {fileID: -927199367670048503, guid: 708bc658de6b0644bba0b2c54ac43e2b,
+        type: 3}
+      propertyPath: m_Name
+      value: BarrelExploding
+      objectReference: {fileID: 0}
+    - target: {fileID: -552707742446321369, guid: 708bc658de6b0644bba0b2c54ac43e2b,
         type: 3}
       propertyPath: m_Name
       value: BarrelExploding

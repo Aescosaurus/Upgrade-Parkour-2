@@ -32,14 +32,8 @@ public class Shotgun
 			if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,999.0f,shotMask ) )
 			{
 				var knockForce = knockbackDir.normalized * Mathf.Min( knockbackForce * ( 2.0f / hit.distance ),maxForce );
-				// if( hit.transform.gameObject.GetComponent<Explodable>() == null )
-				{
-					playerMoveScr.ApplyForceMove( knockForce );
-				}
-				// else
-				// {
-				// 	hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * hitForceMult,ForceMode.Impulse );
-				// }
+				hit.transform.GetComponent<Explodable>()?.Explode();
+				playerMoveScr.ApplyForceMove( knockForce );
 
 				canFire = false;
 				refire.Reset();

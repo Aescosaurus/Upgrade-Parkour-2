@@ -144,6 +144,6 @@ MonoBehaviour:
   throwStartDist: 1
   throwForce: 10
   explodeRange: 10
-  explodeForce: 0.2
   explodeUpBias: 0.6
   playerExplodeForce: 0.6
+  explodeForceMult: 5

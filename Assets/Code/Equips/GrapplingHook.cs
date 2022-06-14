@@ -55,6 +55,8 @@ public class GrapplingHook
 
 						hook.SetActive( false );
 
+						hitObjIsExplodable = ( hitObj.GetComponent<Explodable>() != null );
+
 						// canFire = false;
 						// refire.Reset();
 
@@ -71,7 +73,7 @@ public class GrapplingHook
 						// audSrc.PlayOneShot( shootAud );
 					}
 				}
-				else
+				else // hitobj not null -> grappling in progress
 				{
 					var hitPos = ( hitObj.position + hitOffset );
 					var knockbackDir = hitPos - transform.position;
@@ -79,6 +81,12 @@ public class GrapplingHook
 
 					curTrail.SetPosition( 0,transform.position );
 					curTrail.SetPosition( 1,hitPos );
+
+					if( hitObjIsExplodable && ( hitPos - transform.position ).sqrMagnitude < Mathf.Pow( explodableActivateDist,2 ) )
+					{
+						hitObj.GetComponent<Explodable>().Explode( explodeForceMult );
+						FireReset();
+					}
 
 					if( pullDuration.Update( Time.deltaTime ) )
 					{
@@ -155,10 +163,10 @@ public class GrapplingHook
 	[SerializeField] Timer refire = new Timer( 0.1f );
 	[SerializeField] Timer pullDuration = new Timer( 0.5f );
 	[SerializeField] float range = 20.0f;
-	// [SerializeField] float bulletDespawn = 0.3f;
-	// [SerializeField] RangeI pelletCount = new RangeI( 3,5 );
-	// [SerializeField] float pelletSpread = 0.7f;
-	// [SerializeField] float minSpread = 0.5f;
+
+	[SerializeField] float explodableActivateDist = 5.0f;
+	[SerializeField] float explodeForceMult = 5.0f;
 
 	bool canFire = true;
+	bool hitObjIsExplodable = false;
 }

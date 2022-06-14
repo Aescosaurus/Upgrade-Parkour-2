@@ -4858,11 +4858,11 @@ MonoBehaviour:
   moveSpeed: 8
   decel: 0.87
   maxSpeed: 1.3
-  jumpPower: 2
+  jumpPower: 1.8
   jumpTimer:
-    duration: 0.07
+    duration: 0.065
   minJump:
-    duration: 0.03
+    duration: 0.045
   variableJump: 1
   jumpEndPenalty: 0.26
   gravAcc: 3

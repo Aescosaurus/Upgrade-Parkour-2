@@ -51,6 +51,8 @@ MonoBehaviour:
   pullDuration:
     duration: 1.2
   range: 50
+  explodableActivateDist: 5
+  explodeForceMult: 5
 --- !u!1001 &1995034104916028219
 PrefabInstance:
   m_ObjectHideFlags: 0
