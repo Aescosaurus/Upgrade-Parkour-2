@@ -17,7 +17,7 @@ public class Explodable
 
 		player.GetComponent<PlayerMove2>().ApplyForceMove( diff.normalized / diff.magnitude * explodeForce * forceMult );
 
-		// todo: spawn explode particles
+		PartHand.SpawnParts( transform.position,explodePartCount,PartHand.PartType.ExplodeBarrel );
 
 		if( destroyOnExplode ) Destroy( gameObject );
 	}
@@ -26,4 +26,5 @@ public class Explodable
 
 	[SerializeField] float explodeForce = 10.0f;
 	[SerializeField] bool destroyOnExplode = true;
+	[SerializeField] int explodePartCount = 20;
 }
