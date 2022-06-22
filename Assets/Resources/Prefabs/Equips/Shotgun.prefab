@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33906423776a0d4e95cb4e501ff0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 20
+  knockbackForce: 25
   maxForce: 30
   refire:
     duration: 0.1
@@ -56,7 +56,7 @@ MonoBehaviour:
     max: 7
   pelletSpread: 0.6
   minSpread: 0.2
-  hitForceMult: 0.3
+  interactiveKnockback: 4
 --- !u!82 &-6798960106612024327
 AudioSource:
   m_ObjectHideFlags: 0

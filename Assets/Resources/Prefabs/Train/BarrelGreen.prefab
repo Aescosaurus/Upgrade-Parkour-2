@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5015323281274466683}
+  - component: {fileID: -5334531176303012495}
   - component: {fileID: 5986718807064994993}
   m_Layer: 0
   m_Name: BarrelGreen
-  m_TagString: Untagged
+  m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +33,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &-5334531176303012495
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854796657267636777}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &5986718807064994993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56,16 +73,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BarrelGreen
-      objectReference: {fileID: 0}
-    - target: {fileID: -4767264284456504028, guid: a9f07c77e80e06e469112ca163c9ac71,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
-    - target: {fileID: -4767264284456504028, guid: a9f07c77e80e06e469112ca163c9ac71,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a9f07c77e80e06e469112ca163c9ac71,
         type: 3}
@@ -136,6 +143,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4767264284456504028, guid: a9f07c77e80e06e469112ca163c9ac71,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f474e5f8351ef3d429fbe60596f65267, type: 2}
+    - target: {fileID: -4767264284456504028, guid: a9f07c77e80e06e469112ca163c9ac71,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9f07c77e80e06e469112ca163c9ac71, type: 3}

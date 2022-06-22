@@ -33,6 +33,10 @@ public class Shotgun
 			{
 				var knockForce = knockbackDir.normalized * Mathf.Min( knockbackForce * ( 2.0f / hit.distance ),maxForce );
 				hit.transform.GetComponent<Explodable>()?.Explode();
+				if( hit.transform.tag == "Interactive" )
+				{
+					hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * interactiveKnockback,ForceMode.Impulse );
+				}
 				playerMoveScr.ApplyForceMove( knockForce );
 
 				canFire = false;
@@ -85,6 +89,8 @@ public class Shotgun
 	[SerializeField] RangeI pelletCount = new RangeI( 3,5 );
 	[SerializeField] float pelletSpread = 0.7f;
 	[SerializeField] float minSpread = 0.5f;
+
+	[SerializeField] float interactiveKnockback = 1.0f;
 
 	bool canFire = true;
 }

@@ -48,6 +48,12 @@ public class GrapplingHook
 						hook.SetActive( false );
 
 						hitObjIsExplodable = ( hitObj.GetComponent<Explodable>() != null );
+						if( hitObj.tag == "Interactive" )
+						{
+							var knockbackDir = ( hitObj.position + hitOffset ) - transform.position;
+							hitObj.GetComponent<Rigidbody>().AddForce( -knockbackDir.normalized * interactivePullForce +
+								Vector3.up * interactiveUpForce,ForceMode.Impulse );
+						}
 					}
 				}
 				else // hitobj not null -> grappling in progress
@@ -125,8 +131,13 @@ public class GrapplingHook
 	[SerializeField] Timer pullDuration = new Timer( 0.5f );
 	[SerializeField] float range = 20.0f;
 
+	[Header( "Explodable" )]
 	[SerializeField] float explodableActivateDist = 5.0f;
 	[SerializeField] float explodeForceMult = 5.0f;
+
+	[Header( "Interactive" )]
+	[SerializeField] float interactivePullForce = 2.0f;
+	[SerializeField] float interactiveUpForce = 1.0f;
 
 	bool canFire = true;
 	bool hitObjIsExplodable = false;

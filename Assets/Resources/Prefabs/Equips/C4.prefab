@@ -147,3 +147,7 @@ MonoBehaviour:
   explodeUpBias: 0.6
   playerExplodeForce: 0.6
   explodeForceMult: 5
+  explodableHitRange: 16
+  interactiveForceMult: 24
+  interactiveHitRange: 14
+  interactiveUpForce: 3
