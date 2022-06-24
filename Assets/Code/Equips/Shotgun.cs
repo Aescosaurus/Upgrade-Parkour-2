@@ -31,7 +31,8 @@ public class Shotgun
 			RaycastHit hit;
 			if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,999.0f,shotMask ) )
 			{
-				var knockForce = knockbackDir.normalized * Mathf.Min( knockbackForce * ( 2.0f / hit.distance ),maxForce );
+				// var knockForce = knockbackDir.normalized * Mathf.Min( knockbackForce * ( 2.0f / hit.distance ),maxForce );
+				var knockForce = knockbackDir.normalized / hit.distance * knockbackForce;
 				hit.transform.GetComponent<Explodable>()?.Explode();
 				if( hit.transform.tag == "Interactive" )
 				{
@@ -83,7 +84,6 @@ public class Shotgun
 	AudioClip reloadAud;
 
 	[SerializeField] float knockbackForce = 10.0f;
-	[SerializeField] float maxForce = 500.0f;
 	[SerializeField] Timer refire = new Timer( 0.1f );
 	[SerializeField] float bulletDespawn = 0.3f;
 	[SerializeField] RangeI pelletCount = new RangeI( 3,5 );

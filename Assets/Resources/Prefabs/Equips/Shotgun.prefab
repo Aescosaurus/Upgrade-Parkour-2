@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33906423776a0d4e95cb4e501ff0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 25
-  maxForce: 30
+  knockbackForce: 70
   refire:
     duration: 0.1
   bulletDespawn: 0.3
