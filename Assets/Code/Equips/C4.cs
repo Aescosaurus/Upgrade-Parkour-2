@@ -13,6 +13,7 @@ public class C4
 		{
 			if( c4Obj == null && refire.IsDone() )
 			{
+				refire.Reset();
 				c4Obj = Instantiate( c4Prefab/*,playerMoveScr.transform*/ );
 				c4Obj.transform.position = cam.transform.position + cam.transform.forward * throwStartDist;
 				var rb = c4Obj.GetComponent<Rigidbody>();

@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackForce: 0.4
   refire:
-    duration: 0.1
+    duration: 2
   c4Prefab: {fileID: 7365904140447355585, guid: fe9cdeec62e06614b9276865914f5db2,
     type: 3}
   throwStartDist: 1

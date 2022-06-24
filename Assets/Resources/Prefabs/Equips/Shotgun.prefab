@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackForce: 70
   refire:
-    duration: 0.1
+    duration: 2
   bulletDespawn: 0.3
   pelletCount:
     min: 5
