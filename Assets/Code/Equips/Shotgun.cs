@@ -20,6 +20,11 @@ public class Shotgun
 
 		shootAud = Resources.Load<AudioClip>( "Audio/ShotgunShoot" );
 		reloadAud = Resources.Load<AudioClip>( "Audio/ShotgunReload" );
+
+		refire.Update( refire.GetDuration() );
+		indicator = transform.Find( "ShotgunIndicator" ).gameObject;
+		indicatorOff = transform.Find( "ShotgunIndicatorOff" ).gameObject;
+		ToggleIndicator( true );
 	}
 
 	void Update()
@@ -55,12 +60,15 @@ public class Shotgun
 
 				audSrc.PlayOneShot( shootAud );
 			}
+
+			ToggleIndicator( false );
 		}
 
 		if( charCtrl.isGrounded )
 		{
 			if( !canFire ) audSrc.PlayOneShot( reloadAud );
 			canFire = true;
+			if( refire.IsDone() ) ToggleIndicator( true );
 		}
 	}
 
@@ -75,6 +83,12 @@ public class Shotgun
 		Destroy( bullet,bulletDespawn );
 	}
 
+	void ToggleIndicator( bool on )
+	{
+		indicator.SetActive( on );
+		indicatorOff.SetActive( !on );
+	}
+
 	LayerMask shotMask;
 	CharacterController charCtrl;
 	GameObject bulletPrefab;
@@ -82,6 +96,8 @@ public class Shotgun
 	AudioSource audSrc;
 	AudioClip shootAud;
 	AudioClip reloadAud;
+	GameObject indicator;
+	GameObject indicatorOff;
 
 	[SerializeField] float knockbackForce = 10.0f;
 	[SerializeField] Timer refire = new Timer( 0.1f );
