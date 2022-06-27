@@ -305,6 +305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunIndicatorOff
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1a3c2f49a54822c46bac6aa4da61fa1f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1a3c2f49a54822c46bac6aa4da61fa1f,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,9 +6,18 @@ public class C4
 	:
 	ToolBase
 {
+	void Start()
+	{
+		controller = transform.Find( "C4Controller" ).gameObject;
+		controllerOff = transform.Find( "C4ControllerOff" ).gameObject;
+
+		refire.Update( refire.GetDuration() );
+		ToggleIndicator( true );
+	}
+
 	void Update()
 	{
-		refire.Update( Time.deltaTime );
+		if( refire.Update( Time.deltaTime ) ) ToggleIndicator( true );
 		if( SpiffyInput.CheckFree( inputKey ) )
 		{
 			if( c4Obj == null && refire.IsDone() )
@@ -51,6 +60,8 @@ public class C4
 
 				Destroy( c4Obj );
 				c4Obj = null;
+
+				ToggleIndicator( false );
 			}
 		}
 	}
@@ -62,6 +73,12 @@ public class C4
 		if( force > 0.0f ) return( ( -dir.normalized + Vector3.up * explodeUpBias ) * force * knockbackForce );
 		
 		return( Vector3.zero );
+	}
+
+	void ToggleIndicator( bool on )
+	{
+		controller.SetActive( on );
+		controllerOff.SetActive( !on );
 	}
 
 	[SerializeField] float knockbackForce = 1.0f;
@@ -83,4 +100,7 @@ public class C4
 	[SerializeField] float interactiveForceMult = 1.0f;
 	[SerializeField] float interactiveHitRange = 10.0f;
 	[SerializeField] float interactiveUpForce = 3.0f;
+
+	GameObject controller;
+	GameObject controllerOff;
 }
