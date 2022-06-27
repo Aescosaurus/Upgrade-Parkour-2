@@ -17,6 +17,8 @@ public class GrapplingHook
 
 		shotMask = ~LayerMask.GetMask( "Player" );
 
+		refire.Update( refire.GetDuration() );
+
 		FireReset();
 	}
 
