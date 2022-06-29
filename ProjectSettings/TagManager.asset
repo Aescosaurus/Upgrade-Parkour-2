@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Interactive
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Boss
   - NoCollide
   - PlayerProjectile
-  - 
+  - Pickup
   - 
   - 
   - 

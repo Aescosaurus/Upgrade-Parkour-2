@@ -89,6 +89,13 @@ public class Shotgun
 		indicatorOff.SetActive( !on );
 	}
 
+	public override void Reload()
+	{
+		refire.Update( refire.GetDuration() );
+		canFire = true;
+		ToggleIndicator( true );
+	}
+
 	LayerMask shotMask;
 	CharacterController charCtrl;
 	GameObject bulletPrefab;

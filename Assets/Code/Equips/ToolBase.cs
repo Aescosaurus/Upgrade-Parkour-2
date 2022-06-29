@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToolBase
+public abstract class ToolBase
 	:
 	MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class ToolBase
 	{
 		inputKey = key;
 	}
+
+	public abstract void Reload();
 
 	protected Camera cam;
 	protected PlayerMove2 playerMoveScr;

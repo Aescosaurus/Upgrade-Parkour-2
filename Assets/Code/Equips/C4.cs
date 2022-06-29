@@ -66,19 +66,25 @@ public class C4
 		}
 	}
 
-	Vector3 GetExplodeForce( GameObject obj )
-	{
-		var dir = c4Obj.transform.position - obj.transform.position;
-		float force = Mathf.Pow( explodeRange,2 ) - dir.sqrMagnitude;
-		if( force > 0.0f ) return( ( -dir.normalized + Vector3.up * explodeUpBias ) * force * knockbackForce );
-		
-		return( Vector3.zero );
-	}
-
 	void ToggleIndicator( bool on )
 	{
 		controller.SetActive( on );
 		controllerOff.SetActive( !on );
+	}
+
+	public override void Reload()
+	{
+		refire.Update( refire.GetDuration() );
+		ToggleIndicator( true );
+	}
+
+	Vector3 GetExplodeForce( GameObject obj )
+	{
+		var dir = c4Obj.transform.position - obj.transform.position;
+		float force = Mathf.Pow( explodeRange,2 ) - dir.sqrMagnitude;
+		if( force > 0.0f ) return ( ( -dir.normalized + Vector3.up * explodeUpBias ) * force * knockbackForce );
+
+		return ( Vector3.zero );
 	}
 
 	[SerializeField] float knockbackForce = 1.0f;

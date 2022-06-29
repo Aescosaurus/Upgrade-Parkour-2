@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Assertions;
 
 public class PlayerMove2
 	:
@@ -204,6 +204,8 @@ public class PlayerMove2
 
 	void EquipItem( Equip item,int hand )
 	{
+		Assert.IsTrue( hand == 1 || hand == 2 );
+
 		// var grapple1 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
 		// // var grapple2 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
 		// // var grapple2 = Instantiate( ResLoader.Load( "Prefabs/C4" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
@@ -228,8 +230,16 @@ public class PlayerMove2
 		if( prefab != null )
 		{
 			var curItem = Instantiate( prefab,cam.transform.Find( "WepHoldSpot" + hand.ToString() ) );
-			curItem.GetComponent<ToolBase>().SetInputKey( "Fire" + hand.ToString() );
+			var curTool = curItem.GetComponent<ToolBase>();
+			curTool.SetInputKey( "Fire" + hand.ToString() );
+
+			curEquips[hand - 1] = curTool;
 		}
+	}
+
+	public void ReloadEquips()
+	{
+		foreach( var equip in curEquips ) equip.Reload();
 	}
 
 	bool CanJump()
@@ -291,4 +301,6 @@ public class PlayerMove2
 	[Header( "Items" )]
 	[SerializeField] Equip item1 = Equip.None;
 	[SerializeField] Equip item2 = Equip.None;
+
+	ToolBase[] curEquips = new ToolBase[2];
 }

@@ -15,11 +15,10 @@ public class GrapplingHook
 		particlePrefab = ResLoader.Load( "Prefabs/Equips/GrappleParticles" );
 		playerParticles = player.transform.Find( "Main Camera" ).Find( "GrappleParticles" ).gameObject;
 
-		shotMask = ~LayerMask.GetMask( "Player" );
-
-		refire.Update( refire.GetDuration() );
+		shotMask = ~LayerMask.GetMask( "Player","Pickup" );
 
 		FireReset();
+		refire.Update( refire.GetDuration() );
 	}
 
 	void Update()
@@ -86,6 +85,8 @@ public class GrapplingHook
 			{
 				FireReset();
 			}
+
+			if( canFire && refire.IsDone() ) hook.SetActive( true );
 		}
 
 		if( charCtrl.isGrounded/* || true*/ )
@@ -94,7 +95,6 @@ public class GrapplingHook
 			{
 				// audSrc.PlayOneShot( reloadAud );
 				canFire = true;
-				hook.SetActive( true );
 			}
 		}
 	}
@@ -114,7 +114,15 @@ public class GrapplingHook
 		curTrail = null;
 		Destroy( hookParticles );
 		hookParticles = null;
+		hook.SetActive( false );
 		playerParticles.SetActive( false );
+	}
+
+	public override void Reload()
+	{
+		refire.Update( refire.GetDuration() );
+		canFire = true;
+		hook.SetActive( true );
 	}
 
 	LayerMask shotMask;
