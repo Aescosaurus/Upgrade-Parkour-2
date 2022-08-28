@@ -11,8 +11,7 @@ public class C4
 		controller = transform.Find( "C4Controller" ).gameObject;
 		controllerOff = transform.Find( "C4ControllerOff" ).gameObject;
 
-		refire.Update( refire.GetDuration() );
-		ToggleIndicator( true );
+		Reload();
 	}
 
 	void Update()

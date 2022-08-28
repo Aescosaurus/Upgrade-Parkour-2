@@ -21,16 +21,15 @@ public class Shotgun
 		shootAud = Resources.Load<AudioClip>( "Audio/ShotgunShoot" );
 		reloadAud = Resources.Load<AudioClip>( "Audio/ShotgunReload" );
 
-		refire.Update( refire.GetDuration() );
 		indicator = transform.Find( "ShotgunIndicator" ).gameObject;
 		indicatorOff = transform.Find( "ShotgunIndicatorOff" ).gameObject;
-		ToggleIndicator( true );
+		Reload();
 	}
 
 	void Update()
 	{
 		refire.Update( Time.deltaTime );
-		if( SpiffyInput.CheckAxis( "Fire1" ) && canFire && refire.IsDone() )
+		if( SpiffyInput.CheckAxis( inputKey ) && canFire && refire.IsDone() )
 		{
 			var knockbackDir = -cam.transform.forward;
 			RaycastHit hit;
