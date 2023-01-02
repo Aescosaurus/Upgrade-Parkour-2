@@ -1,0 +1,6 @@
+rocket that launches you in a certain direction for a bit then explodes
+implement train tracks models
+make trees look actually good - diff color base & random color leaves
+	just use cubes instead of models probs better
+figure out a way to do skyboxes - just more clutter around the edges and impassable walls?
+fix deltatime not working without vsync

@@ -19,26 +19,29 @@ public class PlayerCam
 		sensitivity = PlayerPrefs.GetFloat( "sens",1.0f );
 	}
 
+	// void Update()
+	// {
+	// 	// if( Input.GetKeyDown( KeyCode.Escape ) )
+	// 	// {
+	// 	// 	Cursor.lockState = CursorLockMode.None;
+	// 	// 	Cursor.visible = true;
+	// 	// }
+	// 	// if( Input.GetMouseButtonDown( 0 ) )
+	// 	// {
+	// 	// 	Cursor.lockState = CursorLockMode.Locked;
+	// 	// 	Cursor.visible = false;
+	// 	// }
+	// 
+	// 	aim = new Vector2( Input.GetAxis( "Mouse X" ),
+	// 		Input.GetAxis( "Mouse Y" ) ) * sensitivity;
+	// }
+
 	void Update()
 	{
-		// if( Input.GetKeyDown( KeyCode.Escape ) )
-		// {
-		// 	Cursor.lockState = CursorLockMode.None;
-		// 	Cursor.visible = true;
-		// }
-		// if( Input.GetMouseButtonDown( 0 ) )
-		// {
-		// 	Cursor.lockState = CursorLockMode.Locked;
-		// 	Cursor.visible = false;
-		// }
+		if( PauseMenu.IsOpen() ) return;
 
 		aim = new Vector2( Input.GetAxis( "Mouse X" ),
 			Input.GetAxis( "Mouse Y" ) ) * sensitivity;
-	}
-
-	void FixedUpdate()
-	{
-		if( PauseMenu.IsOpen() ) return;
 
 		// cam.transform.eulerAngles = new Vector3(
 		// 	cam.eulerAngles.x - aim.y * rotationSpeed * Time.deltaTime,
@@ -49,11 +52,11 @@ public class PlayerCam
 		if( aim.y < -maxAimMove ) aim.y = -maxAimMove;
 
 		var tempAng = cam.transform.eulerAngles;
-		tempAng.x = tempAng.x - aim.y * rotationSpeed * Time.fixedDeltaTime;
+		tempAng.x = tempAng.x - aim.y * rotationSpeed * Time.deltaTime;
 		// if( tempAng.x < 0.0f + verticalCutoff ) tempAng.x = 0.0f + verticalCutoff;
 		if( tempAng.x > 90.0f - verticalCutoff && tempAng.x < 180.0f ) tempAng.x = 90.0f - verticalCutoff;
 		if( tempAng.x < 270.0f + verticalCutoff && tempAng.x > 180.0f ) tempAng.x = 270.0f + verticalCutoff;
-		tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.fixedDeltaTime;
+		tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.deltaTime;
 		tempAng.z = 0.0f;
 		cam.transform.eulerAngles = tempAng;
 	}
