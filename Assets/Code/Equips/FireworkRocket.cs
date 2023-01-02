@@ -9,6 +9,9 @@ public class FireworkRocket
 	void Start()
 	{
 		fuse = transform.Find( "FireworkRocketFuse" ).gameObject;
+		
+		flyingParts = transform.Find( "FlyingParticles" ).gameObject;
+		flyingParts.SetActive( false );
 
 		Reload();
 	}
@@ -22,7 +25,10 @@ public class FireworkRocket
 			if( flyDur.Update( Time.deltaTime ) )
 			{
 				flying = false;
+				flyingParts.SetActive( false );
 				CauseExplosion( transform.position );
+				PartHand.SpawnParts( transform.position + cam.transform.forward * explodeSpawnDist,
+					explodePartCount,PartHand.PartType.FireworkRocket );
 			}
 		}
 		else
@@ -37,6 +43,7 @@ public class FireworkRocket
 					refire.Reset();
 					flyDur.Reset();
 					flying = true;
+					flyingParts.SetActive( true );
 					ToggleIndicator( false );
 				}
 			}
@@ -61,6 +68,7 @@ public class FireworkRocket
 	}
 
 	GameObject fuse;
+	GameObject flyingParts;
 
 	bool flying = false;
 
@@ -68,4 +76,7 @@ public class FireworkRocket
 	[SerializeField] Timer flyDur = new Timer( 1.0f );
 	[SerializeField] float flySpd = 10.0f;
 	[SerializeField] float flyUpBias = 3.0f;
+
+	[SerializeField] int explodePartCount = 20;
+	[SerializeField] float explodeSpawnDist = 3.0f;
 }

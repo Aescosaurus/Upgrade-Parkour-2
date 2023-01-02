@@ -9,6 +9,7 @@ public class PartHand
 	{
 		None,
 		ExplodeBarrel,
+		FireworkRocket,
 		Count
 	}
 
@@ -18,7 +19,13 @@ public class PartHand
 
 		for( int i = 0; i < ( int )PartType.Count; ++i ) partPrefabs.Add( null );
 
-		LoadPart( PartType.ExplodeBarrel );
+		for( int i = ( int )PartType.None + 1; i < ( int )PartType.Count; ++i )
+		{
+			LoadPart( ( PartType )i );
+			// Debug.Log( ( ( PartType )i ).ToString() );
+		}
+
+		loadedParts = true;
 	}
 
 	public static void SpawnParts( Vector3 loc,int amount,PartType type )
