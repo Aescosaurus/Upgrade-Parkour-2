@@ -12,7 +12,8 @@ public class PlayerMove2
 		None,
 		Grapple,
 		Shotgun,
-		C4
+		C4,
+		Firework
 	}
 
 	void Start()
@@ -224,6 +225,9 @@ public class PlayerMove2
 				break;
 			case Equip.C4:
 				prefab = ResLoader.Load( "Prefabs/Equips/C4" );
+				break;
+			case Equip.Firework:
+				prefab = ResLoader.Load( "Prefabs/Equips/FireworkRocket" );
 				break;
 		}
 
