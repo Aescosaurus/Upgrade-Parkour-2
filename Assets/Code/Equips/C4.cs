@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class C4
 	:
-	ToolBase
+	ExplosiveToolBase
 {
 	void Start()
 	{
@@ -37,25 +37,7 @@ public class C4
 				var playerForce = GetExplodeForce( playerMoveScr.gameObject );
 				playerMoveScr.ApplyForceMove( playerForce * playerExplodeForce );
 
-				var explodables = FindObjectsOfType<Explodable>();
-				foreach( var ex in explodables )
-				{
-					if( ( ex.transform.position - c4Obj.transform.position ).sqrMagnitude < explodableHitRange * explodableHitRange )
-					{
-						ex.Explode( explodeForceMult );
-					}
-				}
-
-				var interactives = GameObject.FindGameObjectsWithTag( "Interactive" );
-				foreach( var interactive in interactives )
-				{
-					if( ( interactive.transform.position - c4Obj.transform.position ).sqrMagnitude < interactiveHitRange * interactiveHitRange )
-					{
-						var pushVec = interactive.transform.position - c4Obj.transform.position;
-						interactive.GetComponent<Rigidbody>().AddForce( ( pushVec.normalized / pushVec.magnitude ) * interactiveForceMult +
-							Vector3.up * interactiveUpForce,ForceMode.Impulse );
-					}
-				}
+				CauseExplosion( c4Obj.transform.position );
 
 				Destroy( c4Obj );
 				c4Obj = null;
@@ -96,15 +78,6 @@ public class C4
 	[SerializeField] float explodeRange = 3.0f;
 	[SerializeField] float explodeUpBias = 0.8f;
 	[SerializeField] float playerExplodeForce = 30.0f;
-
-	[Header( "Explodable" )]
-	[SerializeField] float explodeForceMult = 5.0f; // extra force applide on player when this explodes an explodable
-	[SerializeField] float explodableHitRange = 10.0f;
-
-	[Header( "Interactive" )]
-	[SerializeField] float interactiveForceMult = 1.0f;
-	[SerializeField] float interactiveHitRange = 10.0f;
-	[SerializeField] float interactiveUpForce = 3.0f;
 
 	GameObject controller;
 	GameObject controllerOff;
