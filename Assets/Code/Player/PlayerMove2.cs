@@ -13,7 +13,8 @@ public class PlayerMove2
 		Grapple,
 		Shotgun,
 		C4,
-		Firework
+		Firework,
+		ZipHook
 	}
 
 	void Start()
@@ -214,22 +215,26 @@ public class PlayerMove2
 		// grapple1.GetComponent<ToolBase>().SetInputKey( "Fire2" );
 		// grapple2.GetComponent<ToolBase>().SetInputKey( "Fire1" );
 
-		GameObject prefab = null;
-		switch( item )
-		{
-			case Equip.Grapple:
-				prefab = ResLoader.Load( "Prefabs/Equips/GrapplingHook" );
-				break;
-			case Equip.Shotgun:
-				prefab = ResLoader.Load( "Prefabs/Equips/Shotgun" );
-				break;
-			case Equip.C4:
-				prefab = ResLoader.Load( "Prefabs/Equips/C4" );
-				break;
-			case Equip.Firework:
-				prefab = ResLoader.Load( "Prefabs/Equips/FireworkRocket" );
-				break;
-		}
+		// GameObject prefab = null;
+		// switch( item )
+		// {
+		// 	case Equip.Grapple:
+		// 		prefab = ResLoader.Load( "Prefabs/Equips/GrapplingHook" );
+		// 		break;
+		// 	case Equip.Shotgun:
+		// 		prefab = ResLoader.Load( "Prefabs/Equips/Shotgun" );
+		// 		break;
+		// 	case Equip.C4:
+		// 		prefab = ResLoader.Load( "Prefabs/Equips/C4" );
+		// 		break;
+		// 	case Equip.Firework:
+		// 		prefab = ResLoader.Load( "Prefabs/Equips/FireworkRocket" );
+		// 		break;
+		// 	case Equip.ZipHook:
+		// 		prefab = ResLoader.Load( "Prefabs/Equips/ZipHook" );
+		// 		break;
+		// }
+		var prefab = ResLoader.Load( "Prefabs/Equips/" + item.ToString() );
 
 		if( prefab != null )
 		{

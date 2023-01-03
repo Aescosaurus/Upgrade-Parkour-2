@@ -1,4 +1,4 @@
-implement train area models
+implement train area models - give them physics
 make trees look actually good - diff color base & random color leaves
 	just use cubes instead of models probs better
 figure out a way to do skyboxes - just more clutter around the edges and impassable walls?
@@ -6,3 +6,10 @@ fix deltatime not working without vsync
 coins scattered throughout levels that are used to upgrade equips
 	equips have levels that buff stats
 a hookblade equip would be mega cool - we just need to figure out how it works XD
+	click sends you flying perpendicular & a bit up from the normal of the clicked surface
+		indicator to tell if you're in range - short/no cooldown but range is small
+	model is zipline handle style object with 3 arrows
+launchpad that you can throw down that launches you in the air like a mega jump
+equip that shoots a zipline then you ride it - looks like harpoon launcher
+
+short animation to show weapon has reloaded - quick whip to the side or smth
