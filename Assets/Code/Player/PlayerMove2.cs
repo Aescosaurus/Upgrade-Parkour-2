@@ -10,10 +10,10 @@ public class PlayerMove2
 	enum Equip
 	{
 		None,
-		Grapple,
+		GrapplingHook,
 		Shotgun,
 		C4,
-		Firework,
+		FireworkRocket,
 		ZipHook
 	}
 
