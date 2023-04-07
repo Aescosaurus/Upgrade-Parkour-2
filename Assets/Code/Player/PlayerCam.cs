@@ -40,6 +40,7 @@ public class PlayerCam
 	{
 		if( PauseMenu.IsOpen() ) return;
 
+		// no multiply by dt, I guess since the mouse moves the same # of pixels it doesn't matter? idk
 		aim = new Vector2( Input.GetAxis( "Mouse X" ),
 			Input.GetAxis( "Mouse Y" ) ) * sensitivity;
 
@@ -52,11 +53,11 @@ public class PlayerCam
 		if( aim.y < -maxAimMove ) aim.y = -maxAimMove;
 
 		var tempAng = cam.transform.eulerAngles;
-		tempAng.x = tempAng.x - aim.y * rotationSpeed * Time.deltaTime;
+		tempAng.x = tempAng.x - aim.y * rotationSpeed;
 		// if( tempAng.x < 0.0f + verticalCutoff ) tempAng.x = 0.0f + verticalCutoff;
 		if( tempAng.x > 90.0f - verticalCutoff && tempAng.x < 180.0f ) tempAng.x = 90.0f - verticalCutoff;
 		if( tempAng.x < 270.0f + verticalCutoff && tempAng.x > 180.0f ) tempAng.x = 270.0f + verticalCutoff;
-		tempAng.y = tempAng.y + aim.x * rotationSpeed * Time.deltaTime;
+		tempAng.y = tempAng.y + aim.x * rotationSpeed;
 		tempAng.z = 0.0f;
 		cam.transform.eulerAngles = tempAng;
 	}
