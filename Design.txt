@@ -2,14 +2,17 @@ implement train area models - give them physics
 make trees look actually good - diff color base & random color leaves
 	just use cubes instead of models probs better
 figure out a way to do skyboxes - just more clutter around the edges and impassable walls?
+	use pixel art of trees or smth for *visible* wall
 coins scattered throughout levels that are used to upgrade equips
 	equips have levels that buff stats
 launchpad that you can throw down that launches you in the air like a mega jump
 equip that shoots a zipline then you ride it - looks like harpoon launcher with hook at the end instead of spear
+	lasts a little while and you can ride it both ways for a little while
 
 short animation to show weapon has reloaded - quick whip to the side or smth
 
 c4 model
+c4 explosion particles
 
-boat parkour level
+boat/ferry parkour level
 
