@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6833504607882608673}
   - {fileID: 7371633575904305978}
@@ -45,16 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fb1ef0fc6a8f4da4efbf4cf33cfc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 1.2
+  pullForce: 60
   refire:
     duration: 2
   pullDuration:
     duration: 1.2
-  range: 50
+  range: 9999
   explodableActivateDist: 5
   explodeForceMult: 5
-  interactivePullForce: 14
-  interactiveUpForce: 5
+  interactivePullForce: 840
+  interactiveUpForce: 300
 --- !u!1001 &1995034104916028219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,15 +63,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8789937909983730434}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 51fa8a563ded6b24a839e5b518603039,
+    - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
         type: 3}
-      propertyPath: m_Name
-      value: GrapplingHook
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 51fa8a563ded6b24a839e5b518603039,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
         type: 3}
@@ -89,6 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -100,16 +101,6 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 51fa8a563ded6b24a839e5b518603039,
@@ -126,6 +117,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 51fa8a563ded6b24a839e5b518603039,
+        type: 3}
+      propertyPath: m_Name
+      value: GrapplingHook
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 51fa8a563ded6b24a839e5b518603039,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9159935589078367304, guid: 51fa8a563ded6b24a839e5b518603039,
         type: 3}
@@ -147,10 +148,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8789937909983730434}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a466812be902eac4a8c5fe21db280492,
+    - target: {fileID: -4216859302048453862, guid: a466812be902eac4a8c5fe21db280492,
         type: 3}
-      propertyPath: m_Name
-      value: GrappleNoHook
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a466812be902eac4a8c5fe21db280492,
         type: 3}
@@ -169,6 +170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a466812be902eac4a8c5fe21db280492,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a466812be902eac4a8c5fe21db280492,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -184,16 +190,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a466812be902eac4a8c5fe21db280492,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: a466812be902eac4a8c5fe21db280492,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: a466812be902eac4a8c5fe21db280492,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -206,6 +202,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a466812be902eac4a8c5fe21db280492,
+        type: 3}
+      propertyPath: m_Name
+      value: GrappleNoHook
       objectReference: {fileID: 0}
     - target: {fileID: 5568028267310361403, guid: a466812be902eac4a8c5fe21db280492,
         type: 3}

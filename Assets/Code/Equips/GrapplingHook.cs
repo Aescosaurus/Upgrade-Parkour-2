@@ -52,8 +52,8 @@ public class GrapplingHook
 						if( hitObj.tag == "Interactive" )
 						{
 							var knockbackDir = ( hitObj.position + hitOffset ) - transform.position;
-							hitObj.GetComponent<Rigidbody>().AddForce( -knockbackDir.normalized * interactivePullForce +
-								Vector3.up * interactiveUpForce,ForceMode.Impulse );
+							hitObj.GetComponent<Rigidbody>().AddForce( ( -knockbackDir.normalized * interactivePullForce +
+								Vector3.up * interactiveUpForce ) * Time.deltaTime,ForceMode.Impulse );
 						}
 					}
 				}
@@ -61,7 +61,7 @@ public class GrapplingHook
 				{
 					var hitPos = ( hitObj.position + hitOffset );
 					var knockbackDir = hitPos - transform.position;
-					playerMoveScr.ApplyForceMove( knockbackDir.normalized * knockbackForce );
+					playerMoveScr.ApplyForceMove( knockbackDir.normalized * pullForce * Time.deltaTime );
 
 					curTrail.SetPosition( 0,transform.position );
 					curTrail.SetPosition( 1,hitPos );
@@ -136,7 +136,7 @@ public class GrapplingHook
 	GameObject hook = null;
 	GameObject hookParticles = null;
 
-	[SerializeField] float knockbackForce = 10.0f;
+	[SerializeField] float pullForce = 10.0f;
 	[SerializeField] Timer refire = new Timer( 0.1f );
 	[SerializeField] Timer pullDuration = new Timer( 0.5f );
 	[SerializeField] float range = 20.0f;
