@@ -30,7 +30,7 @@ public abstract class ExplosiveToolBase
 	}
 
 	[Header( "Explodable" )]
-	[SerializeField] float explodeForceMult = 5.0f;
+	[SerializeField] float explodeForceMult = 1.0f;
 	[SerializeField] float explodableHitRange = 10.0f;
 
 	[SerializeField] float interactiveForceMult = 1.0f;

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034c2c9add2d4d54abbdbaf99419dec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeForceMult: 50
+  explodeForceMult: 0.7
   explodableHitRange: 16
   interactiveForceMult: 24
   interactiveHitRange: 14
