@@ -36,13 +36,20 @@ public class Shotgun
 			if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,999.0f,shotMask ) )
 			{
 				// var knockForce = knockbackDir.normalized * Mathf.Min( knockbackForce * ( 2.0f / hit.distance ),maxForce );
-				var knockForce = knockbackDir.normalized / hit.distance * knockbackForce;
+				// var knockForce = knockbackDir.normalized / hit.distance;
+				var nerfAmount = Mathf.Max( hit.distance - distNerfStart,1.0f );
+				// var nerfAmount = hit.distance;
+				// if( nerfAmount < distNerfStart * distNerfStart ) nerfAmount = 1.0f;
+				// else nerfAmount = hit.distance - distNerfStart;
+
+				var knockForce = knockbackDir.normalized / nerfAmount;
+
 				hit.transform.GetComponent<Explodable>()?.Explode();
 				if( hit.transform.tag == "Interactive" )
 				{
 					hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * interactiveKnockback,ForceMode.Impulse );
 				}
-				playerMoveScr.ApplyForceMove( knockForce );
+				playerMoveScr.ApplyForceMove( knockForce * knockbackForce );
 
 				canFire = false;
 				refire.Reset();
@@ -111,6 +118,8 @@ public class Shotgun
 	[SerializeField] RangeI pelletCount = new RangeI( 3,5 );
 	[SerializeField] float pelletSpread = 0.7f;
 	[SerializeField] float minSpread = 0.5f;
+	// distance at which falloff starts applying
+	[SerializeField] float distNerfStart = 5.0f;
 
 	[SerializeField] float interactiveKnockback = 1.0f;
 
