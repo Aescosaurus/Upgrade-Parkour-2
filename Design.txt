@@ -13,6 +13,7 @@ short animation to show weapon has reloaded - quick whip to the side or smth
 
 c4 model
 c4 explosion particles
+coin pickup particles
 
 boat/ferry parkour level
 

@@ -41,9 +41,9 @@ public class StatsPanel
 		comboText.text = comboMult.ToString() + 'x';
 	}
 
-	public static void CollectCoin()
+	public static void CollectCoin( int value )
 	{
-		self.coinCount += self.comboMult;
+		self.coinCount += value * self.comboMult;
 		self.coinHop.Hop();
 		self.UpdateStatText();
 

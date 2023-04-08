@@ -156,13 +156,7 @@ public class PlayerMove2
 
 	void OnTriggerEnter( Collider coll )
 	{
-		if( coll.tag == "Coin" )
-		{
-			coll.gameObject.GetComponent<Collider>().enabled = false; // prevents double-collecting same coin
-			Destroy( coll.gameObject );
-			StatsPanel.CollectCoin();
-		}
-		else if( coll.gameObject != gameObject )
+		if( coll.gameObject != gameObject )
 		{
 			if( stopForceMove ) forceMove *= forcePenalty;
 			audSrc.PlayOneShot( landSound );
