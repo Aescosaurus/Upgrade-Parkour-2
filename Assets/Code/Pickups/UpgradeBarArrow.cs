@@ -18,6 +18,8 @@ public class UpgradeBarArrow
 			fullBars[i - 1] = bar.Find( "BarFull" ).gameObject;
 		}
 
+		curLevel = ToolManager.GetEquipLevel( equipType );
+
 		UpdateBarsFilled();
 		UpdateInteractText();
 
