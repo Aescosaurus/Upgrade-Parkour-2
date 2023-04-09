@@ -9,6 +9,7 @@ public class ToolPickup
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag( "Player" );
+		playerMove = player.GetComponent<PlayerMove2>();
 		cam = Camera.main;
 		
 		pickupText = Instantiate( ResLoader.Load( "Prefabs/HoverText" ) )
@@ -37,9 +38,21 @@ public class ToolPickup
 				{
 					textActive = true;
 					
-					if( Input.GetAxis( interactKey ) > 0.0f )
+					int pickupSlot = -1;
+					
+					if( SpiffyInput.CheckAxis( "Interact1" ) ) pickupSlot = 2;
+					else if( SpiffyInput.CheckAxis( "Interact2" ) ) pickupSlot = 1;
+					
+					if( pickupSlot > 0 )
 					{
-						// todo: equip tool
+						playerMove.EquipItem( equip,pickupSlot );
+						ToolManager.EquipItem( equip,pickupSlot );
+
+						if( destroyAfterPickup )
+						{
+							Destroy( pickupText.gameObject );
+							Destroy( gameObject );
+						}
 					}
 				}
 			}
@@ -49,13 +62,15 @@ public class ToolPickup
 	}
 
 	GameObject player;
+	PlayerMove2 playerMove;
 	Camera cam;
 	TextMesh pickupText;
 
 	[SerializeField] float pickupDist = 3.0f;
 	[SerializeField] float heightOffset = 1.0f;
-	[SerializeField] string interactMsg = "[E] Pickup Shotgun";
-	[SerializeField] string interactKey = "Interact1";
+	[SerializeField] string interactMsg = "[E]/[Q] Pickup";
+	[SerializeField] PlayerMove2.Equip equip = PlayerMove2.Equip.None;
+	[SerializeField] bool destroyAfterPickup = false;
 
 	LayerMask rayMask;
 	bool textActive = false;

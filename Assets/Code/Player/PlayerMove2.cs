@@ -7,7 +7,7 @@ public class PlayerMove2
 	:
 	MonoBehaviour
 {
-	enum Equip
+	public enum Equip
 	{
 		None,
 		GrapplingHook,
@@ -200,40 +200,16 @@ public class PlayerMove2
 		yVel = 0.0f;
 	}
 
-	void EquipItem( Equip item,int hand )
+	public void EquipItem( Equip item,int hand )
 	{
 		Assert.IsTrue( hand == 1 || hand == 2 );
 
-		// var grapple1 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot" ) );
-		// // var grapple2 = Instantiate( ResLoader.Load( "Prefabs/GrapplingHook" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		// // var grapple2 = Instantiate( ResLoader.Load( "Prefabs/C4" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		// var grapple2 = Instantiate( ResLoader.Load( "Prefabs/Shotgun" ),transform.Find( "Main Camera" ).Find( "WepHoldSpot2" ) );
-		// grapple1.GetComponent<ToolBase>().SetInputKey( "Fire2" );
-		// grapple2.GetComponent<ToolBase>().SetInputKey( "Fire1" );
-
-		// GameObject prefab = null;
-		// switch( item )
-		// {
-		// 	case Equip.Grapple:
-		// 		prefab = ResLoader.Load( "Prefabs/Equips/GrapplingHook" );
-		// 		break;
-		// 	case Equip.Shotgun:
-		// 		prefab = ResLoader.Load( "Prefabs/Equips/Shotgun" );
-		// 		break;
-		// 	case Equip.C4:
-		// 		prefab = ResLoader.Load( "Prefabs/Equips/C4" );
-		// 		break;
-		// 	case Equip.Firework:
-		// 		prefab = ResLoader.Load( "Prefabs/Equips/FireworkRocket" );
-		// 		break;
-		// 	case Equip.ZipHook:
-		// 		prefab = ResLoader.Load( "Prefabs/Equips/ZipHook" );
-		// 		break;
-		// }
 		var prefab = ResLoader.Load( "Prefabs/Equips/" + item.ToString() );
 
 		if( prefab != null )
 		{
+			if( curEquips[hand - 1] != null ) Destroy( curEquips[hand - 1].gameObject );
+
 			var curItem = Instantiate( prefab,cam.transform.Find( "WepHoldSpot" + hand.ToString() ) );
 			var curTool = curItem.GetComponent<ToolBase>();
 			curTool.SetInputKey( "Fire" + hand.ToString() );
