@@ -1,4 +1,3 @@
-implement train area models - give them physics
 make trees look actually good - diff color base & random color leaves
 	just use cubes instead of models probs better
 figure out a way to do skyboxes - just more clutter around the edges and impassable walls?
@@ -18,4 +17,5 @@ coin pickup particles
 boat/ferry parkour level
 
 hub world
+	physical/diegetic ui for upgrades/etc
 

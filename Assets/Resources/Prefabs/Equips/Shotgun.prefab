@@ -58,7 +58,8 @@ MonoBehaviour:
     max: 7
   pelletSpread: 0.6
   minSpread: 0.2
-  interactiveKnockback: 280
+  distNerfStart: 5
+  interactiveKnockback: 100
 --- !u!82 &-6798960106612024327
 AudioSource:
   m_ObjectHideFlags: 0

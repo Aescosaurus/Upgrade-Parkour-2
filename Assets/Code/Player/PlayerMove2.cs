@@ -121,7 +121,7 @@ public class PlayerMove2
 
 		if( vel.magnitude > maxSpeed ) vel = vel.normalized * maxSpeed;
 
-		if( resetPos == Vector3.zero )
+		if( !resetPending )
 		{
 			charCtrl.Move( GetVel() * Time.fixedDeltaTime );
 
@@ -136,6 +136,7 @@ public class PlayerMove2
 			var diff = resetPos - transform.position;
 			charCtrl.Move( diff );
 			resetPos = Vector3.zero;
+			resetPending = false;
 			gameObject.layer = LayerMask.NameToLayer( "Player" );
 		}
 
@@ -179,6 +180,7 @@ public class PlayerMove2
 		canJump = false;
 
 		this.resetPos = resetSpot;
+		resetPending = true;
 	}
 
 	public void ApplyForceMove( Vector3 move )
@@ -285,6 +287,7 @@ public class PlayerMove2
 	bool canJump = false;
 
 	Vector3 resetPos = Vector3.zero;
+	bool resetPending = false;
 
 	bool stopForceMove = false;
 
