@@ -11,13 +11,6 @@ public class ToolPickup
 		base.Start();
 
 		playerMove = player.GetComponent<PlayerMove2>();
-
-		pickupText = Instantiate( ResLoader.Load( "Prefabs/HoverText" ) )
-			.GetComponentInChildren<TextMesh>();
-		pickupText.text = interactMsg;
-		pickupText.gameObject.SetActive( false );
-
-		pickupText.transform.position = transform.position + Vector3.up * heightOffset;
 	}
 
 	protected override void OnInteract()
@@ -34,22 +27,14 @@ public class ToolPickup
 
 			if( destroyAfterPickup )
 			{
-				Destroy( pickupText.gameObject );
+				Destroy( interactText.gameObject );
 				Destroy( gameObject );
 			}
 		}
 	}
 
-	protected override void OnInteractToggle( bool on )
-	{
-		pickupText.gameObject.SetActive( on );
-	}
-
 	PlayerMove2 playerMove;
-	TextMesh pickupText;
 
-	[SerializeField] float heightOffset = 1.0f;
-	[SerializeField] string interactMsg = "[E]/[Q] Pickup";
 	[SerializeField] PlayerMove2.Equip equip = PlayerMove2.Equip.None;
 	[SerializeField] bool destroyAfterPickup = false;
 }

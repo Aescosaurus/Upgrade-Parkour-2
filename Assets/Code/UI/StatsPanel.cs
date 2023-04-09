@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class StatsPanel
@@ -9,7 +10,7 @@ public class StatsPanel
 {
 	void Start()
 	{
-		self = this;
+		if( self == null ) self = this;
 
 		comboReset.Update( comboReset.GetDuration() );
 
@@ -52,9 +53,22 @@ public class StatsPanel
 		self.comboReset.Reset();
 	}
 
-	static StatsPanel self;
+	public static void AddRemoveCoins( int amount )
+	{
+		Assert.IsTrue( self.coinCount > amount );
 
-	int coinCount = 0;
+		self.coinCount += amount;
+		self.UpdateStatText();
+	}
+
+	public static int GetCoinCount()
+	{
+		return( self.coinCount );
+	}
+
+	static StatsPanel self = null;
+
+	int coinCount = 10000;
 	int comboMult = 1;
 
 	Text coinText;
