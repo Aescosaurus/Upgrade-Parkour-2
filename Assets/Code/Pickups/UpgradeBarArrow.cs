@@ -37,7 +37,6 @@ public class UpgradeBarArrow
 				{
 					StatsPanel.AddRemoveCoins( -upgradeCost[curLevel - 1] );
 					++curLevel;
-					// todo: actually upgrade tool
 					ToggleShowText( curLevel < barCount );
 					updatedLevel = true;
 				}
@@ -61,6 +60,8 @@ public class UpgradeBarArrow
 
 				otherArrow.curLevel = curLevel;
 				otherArrow.ToggleShowText( true );
+				
+				ToolManager.SetEquipLevel( equipType,curLevel );
 			}
 		}
 	}
@@ -94,4 +95,6 @@ public class UpgradeBarArrow
 	[SerializeField] int[] upgradeCost = new int[barCount - 1];
 
 	[SerializeField] UpgradeBarArrow otherArrow = null;
+
+	[SerializeField] PlayerMove2.Equip equipType = PlayerMove2.Equip.None;
 }

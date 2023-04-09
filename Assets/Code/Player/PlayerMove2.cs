@@ -28,8 +28,16 @@ public class PlayerMove2
 		Instantiate( ResLoader.Load( "Prefabs/UI/Canvas" ) );
 		Instantiate( ResLoader.Load( "Prefabs/UI/EventSys" ) );
 
-		EquipItem( item1,1 );
-		EquipItem( item2,2 );
+		if( forceEquipItems )
+		{
+			EquipItem( item1,1 );
+			EquipItem( item2,2 );
+		}
+		else
+		{
+			EquipItem( ToolManager.GetHandEquip( 1 ),1 );
+			EquipItem( ToolManager.GetHandEquip( 2 ),2 );
+		}
 
 		jumpSound = Resources.Load<AudioClip>( "Audio/Jump" );
 		landSound = Resources.Load<AudioClip>( "Audio/Land" );
@@ -283,6 +291,8 @@ public class PlayerMove2
 	[Header( "Items" )]
 	[SerializeField] Equip item1 = Equip.None;
 	[SerializeField] Equip item2 = Equip.None;
+	[Tooltip( "true = don't load items from save" )]
+	[SerializeField] bool forceEquipItems = false;
 
 	ToolBase[] curEquips = new ToolBase[2];
 }

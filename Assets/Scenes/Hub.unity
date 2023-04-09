@@ -1610,6 +1610,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1369755399346550418, guid: d0d8e08179e572c47adbc3f1ee923710,
+        type: 3}
+      propertyPath: equipType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369755399346550418, guid: d0d8e08179e572c47adbc3f1ee923710,
+        type: 3}
+      propertyPath: interactMsg
+      value: '[E] Downgrade Shotgun'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917955697251669551, guid: d0d8e08179e572c47adbc3f1ee923710,
+        type: 3}
+      propertyPath: equipType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917955697251669551, guid: d0d8e08179e572c47adbc3f1ee923710,
+        type: 3}
+      propertyPath: interactMsg
+      value: '[E] Upgrade Shotgun'
+      objectReference: {fileID: 0}
     - target: {fileID: 6095178046353267613, guid: d0d8e08179e572c47adbc3f1ee923710,
         type: 3}
       propertyPath: m_RootOrder
