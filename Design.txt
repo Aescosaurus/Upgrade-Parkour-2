@@ -7,15 +7,23 @@ coins scattered throughout levels that are used to upgrade equips
 /launchpad that you can throw down that launches you in the air like a mega jump
 /equip that shoots a zipline then you ride it - looks like harpoon launcher with hook at the end instead of spear
 /	lasts a little while and you can ride it both ways for a little while
+come up with more tool ideas
 
 short animation to show weapon has reloaded - quick whip to the side or smth
 
 c4 model
 c4 explosion particles
-coin pickup particles
+coin pickup particles based on coin type
 
 boat/ferry parkour level
 
 hub world
 	physical/diegetic ui for upgrades/etc
+		+/- button or up/down arrows & bars in between light up to indicate tool level
+	contains portals to each level - have to parkour to get to each one
 
+remove coin multiplier - just count normally
+	can still have meter for chain coin collecting for end of level achievements
+		get extra coins for achievements during level
+			collect coins before meter goes down, collect all coins, etc
+	collect x% of coins to spawn exit portal? spawn exit portal at spawn loc?

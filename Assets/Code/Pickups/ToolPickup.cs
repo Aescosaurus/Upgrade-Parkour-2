@@ -4,74 +4,52 @@ using UnityEngine;
 
 public class ToolPickup
 	:
-	MonoBehaviour
+	HoverInteract
 {
-	void Start()
+	protected override void Start()
 	{
-		player = GameObject.FindGameObjectWithTag( "Player" );
+		base.Start();
+
 		playerMove = player.GetComponent<PlayerMove2>();
-		cam = Camera.main;
-		
+
 		pickupText = Instantiate( ResLoader.Load( "Prefabs/HoverText" ) )
 			.GetComponentInChildren<TextMesh>();
 		pickupText.text = interactMsg;
 		pickupText.gameObject.SetActive( false );
 
-		rayMask = LayerMask.GetMask( "ToolPickup" );
 		pickupText.transform.position = transform.position + Vector3.up * heightOffset;
 	}
 
-	void Update()
+	protected override void OnInteract()
 	{
-		bool oldActive = textActive;
-		textActive = false;
-
-		var dist = player.transform.position - transform.position;
-		if( dist.sqrMagnitude < pickupDist * pickupDist )
+		int pickupSlot = -1;
+		
+		if( SpiffyInput.CheckAxis( "Interact1" ) ) pickupSlot = 2;
+		else if( SpiffyInput.CheckAxis( "Interact2" ) ) pickupSlot = 1;
+		
+		if( pickupSlot > 0 )
 		{
-			var ray = new Ray( cam.transform.position,cam.transform.forward );
-			RaycastHit hit;
+			playerMove.EquipItem( equip,pickupSlot );
+			ToolManager.EquipItem( equip,pickupSlot );
 
-			if( Physics.Raycast( ray,out hit,pickupDist * 2,rayMask ) )
+			if( destroyAfterPickup )
 			{
-				if( hit.transform.gameObject == gameObject )
-				{
-					textActive = true;
-					
-					int pickupSlot = -1;
-					
-					if( SpiffyInput.CheckAxis( "Interact1" ) ) pickupSlot = 2;
-					else if( SpiffyInput.CheckAxis( "Interact2" ) ) pickupSlot = 1;
-					
-					if( pickupSlot > 0 )
-					{
-						playerMove.EquipItem( equip,pickupSlot );
-						ToolManager.EquipItem( equip,pickupSlot );
-
-						if( destroyAfterPickup )
-						{
-							Destroy( pickupText.gameObject );
-							Destroy( gameObject );
-						}
-					}
-				}
+				Destroy( pickupText.gameObject );
+				Destroy( gameObject );
 			}
 		}
-
-		if( textActive != oldActive ) pickupText.gameObject.SetActive( textActive );
 	}
 
-	GameObject player;
+	protected override void OnInteractToggle( bool on )
+	{
+		pickupText.gameObject.SetActive( on );
+	}
+
 	PlayerMove2 playerMove;
-	Camera cam;
 	TextMesh pickupText;
 
-	[SerializeField] float pickupDist = 3.0f;
 	[SerializeField] float heightOffset = 1.0f;
 	[SerializeField] string interactMsg = "[E]/[Q] Pickup";
 	[SerializeField] PlayerMove2.Equip equip = PlayerMove2.Equip.None;
 	[SerializeField] bool destroyAfterPickup = false;
-
-	LayerMask rayMask;
-	bool textActive = false;
 }
