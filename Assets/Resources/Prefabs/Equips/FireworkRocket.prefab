@@ -9701,13 +9701,28 @@ MonoBehaviour:
   interactiveHitRange: 11
   interactiveUpForce: 3
   refire:
-    duration: 2
+  - duration: 2.5
+  - duration: 2
+  - duration: 1.5
+  - duration: 1
+  - duration: 0.5
   flyDur:
-    duration: 1
-  flySpd: 80
+  - duration: 0.7
+  - duration: 1
+  - duration: 1.2
+  - duration: 1.5
+  - duration: 2
+  flySpd:
+  - 60
+  - 70
+  - 80
+  - 90
+  - 100
   flyUpBias: 0.4
   explodePartCount: 20
   explodeSpawnDist: 10
+  curLevel: 1
+  forceSetLevel: 0
 --- !u!1001 &4883876101933090173
 PrefabInstance:
   m_ObjectHideFlags: 0

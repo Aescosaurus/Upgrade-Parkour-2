@@ -64,6 +64,9 @@ public class UpgradeBarArrow
 				otherArrow.ToggleShowText( true );
 				
 				ToolManager.SetEquipLevel( equipType,curLevel );
+
+				var tools = FindObjectsOfType<ToolBase>();
+				foreach( var tool in tools ) tool.UpdateLevel();
 			}
 		}
 	}
@@ -85,7 +88,7 @@ public class UpgradeBarArrow
 		}
 	}
 
-	const int barCount = 5;
+	const int barCount = ToolManager.levelCount;
 	GameObject[] emptyBars = new GameObject[barCount];
 	GameObject[] fullBars = new GameObject[barCount];
 

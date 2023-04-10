@@ -28,4 +28,6 @@ public class ToolManager
 		if( PlayerPrefs.HasKey( equipKey ) ) return( PlayerPrefs.GetInt( equipKey ) );
 		else return( 1 );
 	}
+
+	public const int levelCount = 5;
 }

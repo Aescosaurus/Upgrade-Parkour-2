@@ -51,16 +51,47 @@ MonoBehaviour:
   interactiveForceMult: 24
   interactiveHitRange: 14
   interactiveUpForce: 3
-  knockbackForce: 0.4
+  knockbackForce:
+  - 0.33
+  - 0.37
+  - 0.4
+  - 0.47
+  - 0.6
   refire:
-    duration: 2
+  - duration: 2.5
+  - duration: 2
+  - duration: 1.5
+  - duration: 1
+  - duration: 0.4
   c4Prefab: {fileID: 7365904140447355585, guid: fe9cdeec62e06614b9276865914f5db2,
     type: 3}
   throwStartDist: 1
-  throwForce: 10
-  explodeRange: 10
-  explodeUpBias: 0.6
-  playerExplodeForce: 0.6
+  throwForce:
+  - 8
+  - 9
+  - 10
+  - 12
+  - 14
+  explodeRange:
+  - 6
+  - 7
+  - 9
+  - 10
+  - 12
+  explodeUpBias:
+  - 0.6
+  - 0.6
+  - 0.6
+  - 0.6
+  - 0.6
+  playerExplodeForce:
+  - 0.55
+  - 0.57
+  - 0.6
+  - 0.62
+  - 0.65
+  curLevel: 1
+  forceSetLevel: 0
 --- !u!1001 &1607483085072481554
 PrefabInstance:
   m_ObjectHideFlags: 0

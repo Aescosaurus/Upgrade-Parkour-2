@@ -14,15 +14,17 @@ public class FireworkRocket
 		flyingParts.SetActive( false );
 
 		Reload();
+
+		if( !forceSetLevel ) UpdateLevel();
 	}
 
 	void Update()
 	{
 		if( flying )
 		{
-			playerMoveScr.ApplyForceMove( ( cam.transform.forward + Vector3.up * flyUpBias ) * flySpd * Time.deltaTime );
+			playerMoveScr.ApplyForceMove( ( cam.transform.forward + Vector3.up * flyUpBias ) * flySpd[curLevel] * Time.deltaTime );
 
-			if( flyDur.Update( Time.deltaTime ) )
+			if( flyDur[curLevel].Update( Time.deltaTime ) )
 			{
 				flying = false;
 				flyingParts.SetActive( false );
@@ -33,15 +35,15 @@ public class FireworkRocket
 		}
 		else
 		{
-			refire.Update( Time.deltaTime );
-			if( refire.IsDone() )
+			refire[curLevel].Update( Time.deltaTime );
+			if( refire[curLevel].IsDone() )
 			{
 				ToggleIndicator( true );
 
 				if( SpiffyInput.CheckFree( inputKey ) )
 				{
-					refire.Reset();
-					flyDur.Reset();
+					refire[curLevel].Reset();
+					flyDur[curLevel].Reset();
 					flying = true;
 					flyingParts.SetActive( true );
 					ToggleIndicator( false );
@@ -52,10 +54,10 @@ public class FireworkRocket
 
 	public override void Reload()
 	{
-		if( flying ) flyDur.Reset(); // extend flying duration if already flying
+		if( flying ) flyDur[curLevel].Reset(); // extend flying duration if already flying
 		else
 		{
-			refire.Update( refire.GetDuration() );
+			refire[curLevel].Update( refire[curLevel].GetDuration() );
 			ToggleIndicator( true );
 		}
 
@@ -67,16 +69,25 @@ public class FireworkRocket
 		fuse.SetActive( on );
 	}
 
+	public override void UpdateLevel()
+	{
+		curLevel = ToolManager.GetEquipLevel( PlayerMove2.Equip.FireworkRocket ) - 1;
+		refire[curLevel].Update( refire[curLevel].GetDuration() );
+	}
+
 	GameObject fuse;
 	GameObject flyingParts;
 
 	bool flying = false;
 
-	[SerializeField] Timer refire = new Timer( 5.0f );
-	[SerializeField] Timer flyDur = new Timer( 1.0f );
-	[SerializeField] float flySpd = 10.0f;
+	[SerializeField] Timer[] refire = new Timer[ToolManager.levelCount];
+	[SerializeField] Timer[] flyDur = new Timer[ToolManager.levelCount];
+	[SerializeField] float[] flySpd = new float[ToolManager.levelCount];
 	[SerializeField] float flyUpBias = 3.0f;
 
 	[SerializeField] int explodePartCount = 20;
 	[SerializeField] float explodeSpawnDist = 3.0f;
+
+	[SerializeField] int curLevel = 1;
+	[SerializeField] bool forceSetLevel = false;
 }

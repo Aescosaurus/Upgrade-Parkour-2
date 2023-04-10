@@ -21,6 +21,8 @@ public abstract class ToolBase
 
 	public abstract void Reload();
 
+	public abstract void UpdateLevel();
+
 	protected Camera cam;
 	protected PlayerMove2 playerMoveScr;
 

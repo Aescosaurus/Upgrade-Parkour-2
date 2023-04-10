@@ -24,12 +24,14 @@ public class Shotgun
 		indicator = transform.Find( "ShotgunIndicator" ).gameObject;
 		indicatorOff = transform.Find( "ShotgunIndicatorOff" ).gameObject;
 		Reload();
+
+		if( !forceSetLevel ) UpdateLevel();
 	}
 
 	void Update()
 	{
-		refire.Update( Time.deltaTime );
-		if( SpiffyInput.CheckAxis( inputKey ) && canFire && refire.IsDone() )
+		refire[curLevel].Update( Time.deltaTime );
+		if( SpiffyInput.CheckAxis( inputKey ) && canFire && refire[curLevel].IsDone() )
 		{
 			var knockbackDir = -cam.transform.forward;
 			RaycastHit hit;
@@ -37,7 +39,7 @@ public class Shotgun
 			{
 				// var knockForce = knockbackDir.normalized * Mathf.Min( knockbackForce * ( 2.0f / hit.distance ),maxForce );
 				// var knockForce = knockbackDir.normalized / hit.distance;
-				var nerfAmount = Mathf.Max( hit.distance - distNerfStart,1.0f );
+				var nerfAmount = Mathf.Max( hit.distance - distNerfStart[curLevel],1.0f );
 				// var nerfAmount = hit.distance;
 				// if( nerfAmount < distNerfStart * distNerfStart ) nerfAmount = 1.0f;
 				// else nerfAmount = hit.distance - distNerfStart;
@@ -47,12 +49,12 @@ public class Shotgun
 				hit.transform.GetComponent<Explodable>()?.Explode();
 				if( hit.transform.tag == "Interactive" )
 				{
-					hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * interactiveKnockback,ForceMode.Impulse );
+					hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * interactiveKnockback[curLevel],ForceMode.Impulse );
 				}
-				playerMoveScr.ApplyForceMove( knockForce * knockbackForce );
+				playerMoveScr.ApplyForceMove( knockForce * knockbackForce[curLevel] );
 
 				canFire = false;
-				refire.Reset();
+				refire[curLevel].Reset();
 
 				var curPellets = pelletCount.Rand();
 				for( int i = 0; i < curPellets; ++i )
@@ -74,7 +76,7 @@ public class Shotgun
 		{
 			if( !canFire ) audSrc.PlayOneShot( reloadAud );
 			canFire = true;
-			if( refire.IsDone() ) ToggleIndicator( true );
+			if( refire[curLevel].IsDone() ) ToggleIndicator( true );
 		}
 	}
 
@@ -97,9 +99,15 @@ public class Shotgun
 
 	public override void Reload()
 	{
-		refire.Update( refire.GetDuration() );
+		refire[curLevel].Update( refire[curLevel].GetDuration() );
 		canFire = true;
 		ToggleIndicator( true );
+	}
+
+	public override void UpdateLevel()
+	{
+		curLevel = ToolManager.GetEquipLevel( PlayerMove2.Equip.Shotgun ) - 1;
+		refire[curLevel].Update( refire[curLevel].GetDuration() );
 	}
 
 	LayerMask shotMask;
@@ -112,16 +120,20 @@ public class Shotgun
 	GameObject indicator;
 	GameObject indicatorOff;
 
-	[SerializeField] float knockbackForce = 10.0f;
-	[SerializeField] Timer refire = new Timer( 0.1f );
+	[SerializeField] float[] knockbackForce = new float[ToolManager.levelCount];
+	[SerializeField] Timer[] refire = new Timer[ToolManager.levelCount];
+
 	[SerializeField] float bulletDespawn = 0.3f;
 	[SerializeField] RangeI pelletCount = new RangeI( 3,5 );
 	[SerializeField] float pelletSpread = 0.7f;
 	[SerializeField] float minSpread = 0.5f;
 	// distance at which falloff starts applying
-	[SerializeField] float distNerfStart = 5.0f;
+	[SerializeField] float[] distNerfStart = new float[ToolManager.levelCount];
 
-	[SerializeField] float interactiveKnockback = 1.0f;
+	[SerializeField] float[] interactiveKnockback = new float[ToolManager.levelCount];
 
 	bool canFire = true;
+
+	[SerializeField] int curLevel = 1;
+	[SerializeField] bool forceSetLevel = false;
 }

@@ -49,17 +49,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33906423776a0d4e95cb4e501ff0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 22
+  knockbackForce:
+  - 18
+  - 22
+  - 25
+  - 28
+  - 30
   refire:
-    duration: 2
+  - duration: 2.2
+  - duration: 2
+  - duration: 1.5
+  - duration: 0.9
+  - duration: 0.5
   bulletDespawn: 0.3
   pelletCount:
     min: 5
     max: 7
   pelletSpread: 0.6
   minSpread: 0.2
-  distNerfStart: 5
-  interactiveKnockback: 100
+  distNerfStart:
+  - 2
+  - 3
+  - 5
+  - 6
+  - 6.5
+  interactiveKnockback:
+  - 50
+  - 75
+  - 100
+  - 150
+  - 200
+  curLevel: 1
+  forceSetLevel: 0
 --- !u!82 &-6798960106612024327
 AudioSource:
   m_ObjectHideFlags: 0

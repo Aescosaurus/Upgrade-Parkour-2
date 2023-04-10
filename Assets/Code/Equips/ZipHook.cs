@@ -13,21 +13,23 @@ public class ZipHook
 		hookOff = transform.Find( "ZipHookOff" ).gameObject;
 
 		Reload();
+
+		if( !forceSetLevel ) UpdateLevel();
 	}
 	
 	void Update()
 	{
-		if( refire.Update( Time.deltaTime ) )
+		if( refire[curLevel].Update( Time.deltaTime ) )
 		{
 			var wallRay = new Ray( rayLoc.position,rayLoc.forward );
 			RaycastHit wallHit;
-			if( Physics.Raycast( wallRay,out wallHit,range ) )
+			if( Physics.Raycast( wallRay,out wallHit,range[curLevel] ) )
 			{
 				ToggleIndicator( true );
 
 				if( SpiffyInput.CheckFree( inputKey ) )
 				{
-					refire.Reset();
+					refire[curLevel].Reset();
 
 					// jump
 					var forward = cam.transform.forward;
@@ -35,7 +37,7 @@ public class ZipHook
 					var norm = wallHit.normal;
 
 					playerMoveScr.ApplyForceMove( ( forward * jumpForwardBias +
-						up * jumpUpBias + norm * jumpNormBias ) * jumpForce );
+						up * jumpUpBias + norm * jumpNormBias ) * jumpForce[curLevel] );
 				}
 			}
 			else ToggleIndicator( false );
@@ -51,19 +53,28 @@ public class ZipHook
 
 	public override void Reload()
 	{
-		refire.Update( refire.GetDuration() );
+		refire[curLevel].Update( refire[curLevel].GetDuration() );
 		ToggleIndicator( true );
+	}
+
+	public override void UpdateLevel()
+	{
+		curLevel = ToolManager.GetEquipLevel( PlayerMove2.Equip.ZipHook ) - 1;
+		refire[curLevel].Update( refire[curLevel].GetDuration() );
 	}
 
 	Transform rayLoc;
 	GameObject hook;
 	GameObject hookOff;
 
-	[SerializeField] Timer refire = new Timer( 1.0f );
-	[SerializeField] float range = 10.0f;
+	[SerializeField] Timer[] refire = new Timer[ToolManager.levelCount];
+	[SerializeField] float[] range = new float[ToolManager.levelCount];
 
-	[SerializeField] float jumpForce = 50.0f;
+	[SerializeField] float[] jumpForce = new float[ToolManager.levelCount];
 	[SerializeField] float jumpForwardBias = 0.5f;
 	[SerializeField] float jumpUpBias = 0.7f;
 	[SerializeField] float jumpNormBias = 0.2f;
+
+	[SerializeField] int curLevel = 1;
+	[SerializeField] bool forceSetLevel = false;
 }

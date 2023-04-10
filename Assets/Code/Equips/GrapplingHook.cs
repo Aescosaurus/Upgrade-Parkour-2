@@ -19,19 +19,21 @@ public class GrapplingHook
 
 		FireReset();
 		Reload();
+
+		if( !forceSetLevel ) UpdateLevel();
 	}
 
 	void Update()
 	{
-		refire.Update( Time.deltaTime );
+		refire[curLevel].Update( Time.deltaTime );
 		if( SpiffyInput.CheckFree( inputKey ) )
 		{
-			if( canFire && refire.IsDone() )
+			if( canFire && refire[curLevel].IsDone() )
 			{
 				if( hitObj == null )
 				{
 					RaycastHit hit;
-					if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,range,shotMask ) )
+					if( Physics.Raycast( cam.transform.position,cam.transform.forward,out hit,range[curLevel],shotMask ) )
 					{
 						hitObj = hit.transform;
 						hitOffset = hit.point - hitObj.position;
@@ -52,8 +54,8 @@ public class GrapplingHook
 						if( hitObj.tag == "Interactive" )
 						{
 							var knockbackDir = ( hitObj.position + hitOffset ) - transform.position;
-							hitObj.GetComponent<Rigidbody>().AddForce( ( -knockbackDir.normalized * interactivePullForce +
-								Vector3.up * interactiveUpForce ) * Time.deltaTime,ForceMode.Impulse );
+							hitObj.GetComponent<Rigidbody>().AddForce( ( -knockbackDir.normalized * interactivePullForce[curLevel] +
+								Vector3.up * interactiveUpForce[curLevel] ) * Time.deltaTime,ForceMode.Impulse );
 						}
 					}
 				}
@@ -61,7 +63,7 @@ public class GrapplingHook
 				{
 					var hitPos = ( hitObj.position + hitOffset );
 					var knockbackDir = hitPos - transform.position;
-					playerMoveScr.ApplyForceMove( knockbackDir.normalized * pullForce * Time.deltaTime );
+					playerMoveScr.ApplyForceMove( knockbackDir.normalized * pullForce[curLevel] * Time.deltaTime );
 
 					curTrail.SetPosition( 0,transform.position );
 					curTrail.SetPosition( 1,hitPos );
@@ -72,7 +74,7 @@ public class GrapplingHook
 						FireReset();
 					}
 
-					if( pullDuration.Update( Time.deltaTime ) )
+					if( pullDuration[curLevel].Update( Time.deltaTime ) )
 					{
 						FireReset();
 					}
@@ -86,7 +88,7 @@ public class GrapplingHook
 				FireReset();
 			}
 
-			if( canFire && refire.IsDone() ) hook.SetActive( true );
+			if( canFire && refire[curLevel].IsDone() ) hook.SetActive( true );
 		}
 
 		if( charCtrl.isGrounded/* || true*/ )
@@ -101,8 +103,8 @@ public class GrapplingHook
 
 	void FireReset()
 	{
-		refire.Reset();
-		pullDuration.Reset();
+		refire[curLevel].Reset();
+		pullDuration[curLevel].Reset();
 
 		canFire = false;
 		hitObj = null;
@@ -120,9 +122,15 @@ public class GrapplingHook
 
 	public override void Reload()
 	{
-		refire.Update( refire.GetDuration() );
+		refire[curLevel].Update( refire[curLevel].GetDuration() );
 		canFire = true;
 		hook.SetActive( true );
+	}
+
+	public override void UpdateLevel()
+	{
+		curLevel = ToolManager.GetEquipLevel( PlayerMove2.Equip.GrapplingHook ) - 1;
+		refire[curLevel].Update( refire[curLevel].GetDuration() );
 	}
 
 	LayerMask shotMask;
@@ -136,19 +144,22 @@ public class GrapplingHook
 	GameObject hook = null;
 	GameObject hookParticles = null;
 
-	[SerializeField] float pullForce = 10.0f;
-	[SerializeField] Timer refire = new Timer( 0.1f );
-	[SerializeField] Timer pullDuration = new Timer( 0.5f );
-	[SerializeField] float range = 20.0f;
+	[SerializeField] float[] pullForce = new float[ToolManager.levelCount];
+	[SerializeField] Timer[] refire = new Timer[ToolManager.levelCount];
+	[SerializeField] Timer[] pullDuration = new Timer[ToolManager.levelCount];
+	[SerializeField] float[] range = new float[ToolManager.levelCount];
 
 	[Header( "Explodable" )]
 	[SerializeField] float explodableActivateDist = 5.0f;
 	[SerializeField] float explodeForceMult = 5.0f;
 
 	[Header( "Interactive" )]
-	[SerializeField] float interactivePullForce = 2.0f;
-	[SerializeField] float interactiveUpForce = 1.0f;
+	[SerializeField] float[] interactivePullForce = new float[ToolManager.levelCount];
+	[SerializeField] float[] interactiveUpForce = new float[ToolManager.levelCount];
 
 	bool canFire = true;
 	bool hitObjIsExplodable = false;
+
+	[SerializeField] int curLevel = 1;
+	[SerializeField] bool forceSetLevel = false;
 }

@@ -48,12 +48,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refire:
-    duration: 1
-  range: 3
-  jumpForce: 30
+  - duration: 1.6
+  - duration: 1.3
+  - duration: 1
+  - duration: 0.5
+  - duration: 0.2
+  range:
+  - 2
+  - 2.5
+  - 3
+  - 3.5
+  - 4
+  jumpForce:
+  - 20
+  - 25
+  - 30
+  - 35
+  - 40
   jumpForwardBias: 0.7
   jumpUpBias: 0.7
   jumpNormBias: 0.2
+  curLevel: 1
+  forceSetLevel: 0
 --- !u!1 &7261632360402984948
 GameObject:
   m_ObjectHideFlags: 0
