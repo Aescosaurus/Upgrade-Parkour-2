@@ -31,6 +31,7 @@ public class Shotgun
 	void Update()
 	{
 		refire[curLevel].Update( Time.deltaTime );
+		if( refire[curLevel].IsDone() ) ToggleIndicator( true );
 		if( SpiffyInput.CheckAxis( inputKey ) && canFire && refire[curLevel].IsDone() )
 		{
 			var knockbackDir = -cam.transform.forward;
@@ -53,7 +54,7 @@ public class Shotgun
 				}
 				playerMoveScr.ApplyForceMove( knockForce * knockbackForce[curLevel] );
 
-				canFire = false;
+				// canFire = false;
 				refire[curLevel].Reset();
 
 				var curPellets = pelletCount.Rand();
@@ -72,12 +73,12 @@ public class Shotgun
 			ToggleIndicator( false );
 		}
 
-		if( charCtrl.isGrounded )
-		{
-			if( !canFire ) audSrc.PlayOneShot( reloadAud );
-			canFire = true;
-			if( refire[curLevel].IsDone() ) ToggleIndicator( true );
-		}
+		// if( charCtrl.isGrounded )
+		// {
+		// 	if( !canFire ) audSrc.PlayOneShot( reloadAud );
+		// 	canFire = true;
+		// 	if( refire[curLevel].IsDone() ) ToggleIndicator( true );
+		// }
 	}
 
 	void SpawnTrail( Vector3 hitLoc )

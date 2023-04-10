@@ -91,14 +91,14 @@ public class GrapplingHook
 			if( canFire && refire[curLevel].IsDone() ) hook.SetActive( true );
 		}
 
-		if( charCtrl.isGrounded/* || true*/ )
-		{
-			if( !canFire )
-			{
-				// audSrc.PlayOneShot( reloadAud );
-				canFire = true;
-			}
-		}
+		// if( charCtrl.isGrounded/* || true*/ )
+		// {
+		// 	if( !canFire )
+		// 	{
+		// 		// audSrc.PlayOneShot( reloadAud );
+		// 		canFire = true;
+		// 	}
+		// }
 	}
 
 	void FireReset()
@@ -106,7 +106,7 @@ public class GrapplingHook
 		refire[curLevel].Reset();
 		pullDuration[curLevel].Reset();
 
-		canFire = false;
+		// canFire = false;
 		hitObj = null;
 		hitOffset = Vector3.zero;
 
