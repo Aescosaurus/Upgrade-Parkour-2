@@ -62,6 +62,7 @@ public class UpgradeBarArrow
 
 				otherArrow.curLevel = curLevel;
 				otherArrow.ToggleShowText( true );
+				otherArrow.UpdateInteractText();
 				
 				ToolManager.SetEquipLevel( equipType,curLevel );
 
