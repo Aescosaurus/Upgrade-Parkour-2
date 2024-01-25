@@ -54,14 +54,19 @@ public class GrapplingHook
 						if( hitObj.tag == "Interactive" )
 						{
 							var knockbackDir = ( hitObj.position + hitOffset ) - transform.position;
-							hitObj.GetComponent<Rigidbody>().AddForce( ( -knockbackDir.normalized * interactivePullForce[curLevel] +
-								Vector3.up * interactiveUpForce[curLevel] ) * Time.deltaTime,ForceMode.Impulse );
+							// hitObj.GetComponent<Rigidbody>().AddForce( ( -knockbackDir.normalized * interactivePullForce[curLevel] +
+							// 	Vector3.up * interactiveUpForce[curLevel] ) * Time.deltaTime,ForceMode.Impulse );
+							hitObj.GetComponent<Rigidbody>().AddForceAtPosition( ( -knockbackDir.normalized * interactivePullForce[curLevel] +
+								Vector3.up * interactiveUpForce[curLevel] ) * Time.deltaTime,
+								( hitObj.position + hitOffset ),
+								ForceMode.Impulse );
 						}
 					}
 				}
 				else // hitobj not null -> grappling in progress
 				{
-					var hitPos = ( hitObj.position + hitOffset );
+					// var hitPos = ( hitObj.position + hitOffset );
+					var hitPos = ( hitObj.position + hitObj.transform.rotation * hitOffset );
 					var knockbackDir = hitPos - transform.position;
 					playerMoveScr.ApplyForceMove( knockbackDir.normalized * pullForce[curLevel] * Time.deltaTime );
 

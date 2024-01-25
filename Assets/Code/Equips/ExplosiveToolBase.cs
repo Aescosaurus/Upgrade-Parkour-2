@@ -23,8 +23,12 @@ public abstract class ExplosiveToolBase
 			if( ( interactive.transform.position - explodePos ).sqrMagnitude < interactiveHitRange * interactiveHitRange )
 			{
 				var pushVec = interactive.transform.position - explodePos;
-				interactive.GetComponent<Rigidbody>().AddForce( ( pushVec.normalized / pushVec.magnitude ) * interactiveForceMult +
-					Vector3.up * interactiveUpForce,ForceMode.Impulse );
+				// interactive.GetComponent<Rigidbody>().AddForce( ( pushVec.normalized / pushVec.magnitude ) * interactiveForceMult +
+				// 	Vector3.up * interactiveUpForce,ForceMode.Impulse );
+				interactive.GetComponent<Rigidbody>().AddForceAtPosition( ( pushVec.normalized / pushVec.magnitude ) * interactiveForceMult +
+					Vector3.up * interactiveUpForce,
+					transform.position,
+					ForceMode.Impulse );
 			}
 		}
 	}

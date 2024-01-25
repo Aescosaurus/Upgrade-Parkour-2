@@ -50,7 +50,10 @@ public class Shotgun
 				hit.transform.GetComponent<Explodable>()?.Explode();
 				if( hit.transform.tag == "Interactive" )
 				{
-					hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * interactiveKnockback[curLevel],ForceMode.Impulse );
+					// hit.transform.GetComponent<Rigidbody>().AddForce( -knockForce * interactiveKnockback[curLevel],ForceMode.Impulse );
+					hit.transform.GetComponent<Rigidbody>().AddForceAtPosition( -knockForce * interactiveKnockback[curLevel],
+						hit.point,
+						ForceMode.Impulse );
 				}
 				playerMoveScr.ApplyForceMove( knockForce * knockbackForce[curLevel] );
 
